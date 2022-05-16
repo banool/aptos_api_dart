@@ -4,9 +4,14 @@
 
 # Ensure we have the necessary binaries.
 which openapi-generator || exit
+which flutter || exit
+which dart || exit
 
 # Make sure the code will be formatted
-export DART_POST_PROCESS_FILE="/Users/dport/.flutter/bin/dart format --fix"
+export DART_POST_PROCESS_FILE="dart format --fix"
+
+# Delete the existing test files
+rm -rf "test/*"
 
 # Generate code
 openapi-generator generate \

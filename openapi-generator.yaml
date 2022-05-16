@@ -5,3 +5,7 @@ pubDescription: "Aptos API generated with OpenAPI Generator"
 pubAuthor: "Daniel Porteous"
 pubAuthorEmail: "danielporteous1@gmail.com"
 pubHomepage: "https://github.com/banool/aptos_api_dart"
+# See the following:
+# - https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/dart.md
+# - https://github.com/OpenAPITools/openapi-generator/issues/9507
+legacyDiscriminatorBehavior: true
