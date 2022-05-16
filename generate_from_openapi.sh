@@ -28,3 +28,6 @@ flutter pub run build_runner build
 
 # Fix up the README
 sed -i '' -E 's@ \(EXPERIMENTAL\)@@' README.md
+
+# Make sure the user fixes up the version and bumps it
+echo "WARNING: This script resets the version, make sure to bump it yourself manually from what it was"

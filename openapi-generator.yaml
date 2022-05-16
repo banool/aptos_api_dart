@@ -9,3 +9,5 @@ pubHomepage: "https://github.com/banool/aptos_api_dart"
 # - https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/dart.md
 # - https://github.com/OpenAPITools/openapi-generator/issues/9507
 legacyDiscriminatorBehavior: true
+# disallowAdditionalPropertiesIfNotPresent: false
+useEnumExtension: true
