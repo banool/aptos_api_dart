@@ -1,0 +1,7 @@
+pubName: aptos_api_dart
+pubLibrary: "aptos_api_dart"
+pubVersion: 0.0.1
+pubDescription: "Aptos API generated with OpenAPI Generator"
+pubAuthor: "Daniel Porteous"
+pubAuthorEmail: "danielporteous1@gmail.com"
+pubHomepage: "https://github.com/banool/aptos_api_dart"
