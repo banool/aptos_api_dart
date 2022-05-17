@@ -30,7 +30,7 @@ class _$TransactionSignature extends TransactionSignature {
 
   factory _$TransactionSignature(
           [void Function(TransactionSignatureBuilder)? updates]) =>
-      (new TransactionSignatureBuilder()..update(updates)).build();
+      (TransactionSignatureBuilder()..update(updates)).build();
 
   _$TransactionSignature._(
       {required this.type,
@@ -72,7 +72,7 @@ class _$TransactionSignature extends TransactionSignature {
 
   @override
   TransactionSignatureBuilder toBuilder() =>
-      new TransactionSignatureBuilder()..replace(this);
+      TransactionSignatureBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -147,13 +147,13 @@ class TransactionSignatureBuilder
 
   ListBuilder<String>? _publicKeys;
   ListBuilder<String> get publicKeys =>
-      _$this._publicKeys ??= new ListBuilder<String>();
+      _$this._publicKeys ??= ListBuilder<String>();
   set publicKeys(ListBuilder<String>? publicKeys) =>
       _$this._publicKeys = publicKeys;
 
   ListBuilder<String>? _signatures;
   ListBuilder<String> get signatures =>
-      _$this._signatures ??= new ListBuilder<String>();
+      _$this._signatures ??= ListBuilder<String>();
   set signatures(ListBuilder<String>? signatures) =>
       _$this._signatures = signatures;
 
@@ -167,18 +167,18 @@ class TransactionSignatureBuilder
 
   AccountSignatureBuilder? _sender;
   AccountSignatureBuilder get sender =>
-      _$this._sender ??= new AccountSignatureBuilder();
+      _$this._sender ??= AccountSignatureBuilder();
   set sender(AccountSignatureBuilder? sender) => _$this._sender = sender;
 
   ListBuilder<String>? _secondarySignerAddresses;
   ListBuilder<String> get secondarySignerAddresses =>
-      _$this._secondarySignerAddresses ??= new ListBuilder<String>();
+      _$this._secondarySignerAddresses ??= ListBuilder<String>();
   set secondarySignerAddresses(ListBuilder<String>? secondarySignerAddresses) =>
       _$this._secondarySignerAddresses = secondarySignerAddresses;
 
   ListBuilder<AccountSignature>? _secondarySigners;
   ListBuilder<AccountSignature> get secondarySigners =>
-      _$this._secondarySigners ??= new ListBuilder<AccountSignature>();
+      _$this._secondarySigners ??= ListBuilder<AccountSignature>();
   set secondarySigners(ListBuilder<AccountSignature>? secondarySigners) =>
       _$this._secondarySigners = secondarySigners;
 
@@ -220,7 +220,7 @@ class TransactionSignatureBuilder
     _$TransactionSignature _$result;
     try {
       _$result = _$v ??
-          new _$TransactionSignature._(
+          _$TransactionSignature._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'TransactionSignature', 'type'),
               publicKey: BuiltValueNullFieldError.checkNotNull(
@@ -251,7 +251,7 @@ class TransactionSignatureBuilder
         _$failedField = 'secondarySigners';
         secondarySigners.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'TransactionSignature', _$failedField, e.toString());
       }
       rethrow;

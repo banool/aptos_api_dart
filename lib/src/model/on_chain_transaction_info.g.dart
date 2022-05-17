@@ -28,7 +28,7 @@ class _$OnChainTransactionInfo extends OnChainTransactionInfo {
 
   factory _$OnChainTransactionInfo(
           [void Function(OnChainTransactionInfoBuilder)? updates]) =>
-      (new OnChainTransactionInfoBuilder()..update(updates)).build();
+      (OnChainTransactionInfoBuilder()..update(updates)).build();
 
   _$OnChainTransactionInfo._(
       {required this.version,
@@ -68,7 +68,7 @@ class _$OnChainTransactionInfo extends OnChainTransactionInfo {
 
   @override
   OnChainTransactionInfoBuilder toBuilder() =>
-      new OnChainTransactionInfoBuilder()..replace(this);
+      OnChainTransactionInfoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -160,7 +160,7 @@ class OnChainTransactionInfoBuilder
 
   ListBuilder<WriteSetChange>? _changes;
   ListBuilder<WriteSetChange> get changes =>
-      _$this._changes ??= new ListBuilder<WriteSetChange>();
+      _$this._changes ??= ListBuilder<WriteSetChange>();
   set changes(ListBuilder<WriteSetChange>? changes) =>
       _$this._changes = changes;
 
@@ -201,7 +201,7 @@ class OnChainTransactionInfoBuilder
     _$OnChainTransactionInfo _$result;
     try {
       _$result = _$v ??
-          new _$OnChainTransactionInfo._(
+          _$OnChainTransactionInfo._(
               version: BuiltValueNullFieldError.checkNotNull(
                   version, 'OnChainTransactionInfo', 'version'),
               hash: BuiltValueNullFieldError.checkNotNull(
@@ -225,7 +225,7 @@ class OnChainTransactionInfoBuilder
         _$failedField = 'changes';
         changes.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'OnChainTransactionInfo', _$failedField, e.toString());
       }
       rethrow;

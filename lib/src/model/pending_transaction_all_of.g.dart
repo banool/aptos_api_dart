@@ -14,7 +14,7 @@ class _$PendingTransactionAllOf extends PendingTransactionAllOf {
 
   factory _$PendingTransactionAllOf(
           [void Function(PendingTransactionAllOfBuilder)? updates]) =>
-      (new PendingTransactionAllOfBuilder()..update(updates)).build();
+      (PendingTransactionAllOfBuilder()..update(updates)).build();
 
   _$PendingTransactionAllOf._({required this.type, required this.hash})
       : super._() {
@@ -31,7 +31,7 @@ class _$PendingTransactionAllOf extends PendingTransactionAllOf {
 
   @override
   PendingTransactionAllOfBuilder toBuilder() =>
-      new PendingTransactionAllOfBuilder()..replace(this);
+      PendingTransactionAllOfBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -96,7 +96,7 @@ class PendingTransactionAllOfBuilder
   @override
   _$PendingTransactionAllOf build() {
     final _$result = _$v ??
-        new _$PendingTransactionAllOf._(
+        _$PendingTransactionAllOf._(
             type: BuiltValueNullFieldError.checkNotNull(
                 type, 'PendingTransactionAllOf', 'type'),
             hash: BuiltValueNullFieldError.checkNotNull(

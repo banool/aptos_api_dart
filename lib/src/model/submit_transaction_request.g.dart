@@ -26,7 +26,7 @@ class _$SubmitTransactionRequest extends SubmitTransactionRequest {
 
   factory _$SubmitTransactionRequest(
           [void Function(SubmitTransactionRequestBuilder)? updates]) =>
-      (new SubmitTransactionRequestBuilder()..update(updates)).build();
+      (SubmitTransactionRequestBuilder()..update(updates)).build();
 
   _$SubmitTransactionRequest._(
       {required this.sender,
@@ -63,7 +63,7 @@ class _$SubmitTransactionRequest extends SubmitTransactionRequest {
 
   @override
   SubmitTransactionRequestBuilder toBuilder() =>
-      new SubmitTransactionRequestBuilder()..replace(this);
+      SubmitTransactionRequestBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -146,12 +146,12 @@ class SubmitTransactionRequestBuilder
 
   TransactionPayloadBuilder? _payload;
   TransactionPayloadBuilder get payload =>
-      _$this._payload ??= new TransactionPayloadBuilder();
+      _$this._payload ??= TransactionPayloadBuilder();
   set payload(TransactionPayloadBuilder? payload) => _$this._payload = payload;
 
   TransactionSignatureBuilder? _signature;
   TransactionSignatureBuilder get signature =>
-      _$this._signature ??= new TransactionSignatureBuilder();
+      _$this._signature ??= TransactionSignatureBuilder();
   set signature(TransactionSignatureBuilder? signature) =>
       _$this._signature = signature;
 
@@ -191,7 +191,7 @@ class SubmitTransactionRequestBuilder
     _$SubmitTransactionRequest _$result;
     try {
       _$result = _$v ??
-          new _$SubmitTransactionRequest._(
+          _$SubmitTransactionRequest._(
               sender: BuiltValueNullFieldError.checkNotNull(
                   sender, 'SubmitTransactionRequest', 'sender'),
               sequenceNumber: BuiltValueNullFieldError.checkNotNull(
@@ -218,7 +218,7 @@ class SubmitTransactionRequestBuilder
         _$failedField = 'signature';
         signature.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'SubmitTransactionRequest', _$failedField, e.toString());
       }
       rethrow;

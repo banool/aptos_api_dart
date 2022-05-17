@@ -8,10 +8,14 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:aptos_api_dart/src/api_util.dart';
-import 'package:aptos_api_dart/src/model/aptos_error.dart';
-import 'package:aptos_api_dart/src/model/inline_response200.dart';
+import 'package:aptos_api_dart/src/model/create_signing_message200_response.dart';
+import 'package:aptos_api_dart/src/model/get_account404_response.dart';
+import 'package:aptos_api_dart/src/model/get_ledger_info400_response.dart';
+import 'package:aptos_api_dart/src/model/get_ledger_info500_response.dart';
 import 'package:aptos_api_dart/src/model/on_chain_transaction.dart';
 import 'package:aptos_api_dart/src/model/pending_transaction.dart';
+import 'package:aptos_api_dart/src/model/submit_transaction413_response.dart';
+import 'package:aptos_api_dart/src/model/submit_transaction415_response.dart';
 import 'package:aptos_api_dart/src/model/submit_transaction_request.dart';
 import 'package:aptos_api_dart/src/model/transaction.dart';
 import 'package:aptos_api_dart/src/model/user_transaction_request.dart';
@@ -36,9 +40,9 @@ class TransactionsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [InlineResponse200] as data
+  /// Returns a [Future] containing a [Response] with a [CreateSigningMessage200Response] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<InlineResponse200>> createSigningMessage({
+  Future<Response<CreateSigningMessage200Response>> createSigningMessage({
     required UserTransactionRequest userTransactionRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -87,14 +91,14 @@ class TransactionsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    InlineResponse200 _responseData;
+    CreateSigningMessage200Response _responseData;
 
     try {
-      const _responseType = FullType(InlineResponse200);
+      const _responseType = FullType(CreateSigningMessage200Response);
       _responseData = _serializers.deserialize(
         _response.data!,
         specifiedType: _responseType,
-      ) as InlineResponse200;
+      ) as CreateSigningMessage200Response;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -104,7 +108,7 @@ class TransactionsApi {
       )..stackTrace = stackTrace;
     }
 
-    return Response<InlineResponse200>(
+    return Response<CreateSigningMessage200Response>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

@@ -21,7 +21,7 @@ class _$WriteSetChange extends WriteSetChange {
   final TableItemWrite data;
 
   factory _$WriteSetChange([void Function(WriteSetChangeBuilder)? updates]) =>
-      (new WriteSetChangeBuilder()..update(updates)).build();
+      (WriteSetChangeBuilder()..update(updates)).build();
 
   _$WriteSetChange._(
       {required this.type,
@@ -46,8 +46,7 @@ class _$WriteSetChange extends WriteSetChange {
       (toBuilder()..update(updates)).build();
 
   @override
-  WriteSetChangeBuilder toBuilder() =>
-      new WriteSetChangeBuilder()..replace(this);
+  WriteSetChangeBuilder toBuilder() => WriteSetChangeBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -111,8 +110,7 @@ class WriteSetChangeBuilder
   set resource(String? resource) => _$this._resource = resource;
 
   TableItemWriteBuilder? _data;
-  TableItemWriteBuilder get data =>
-      _$this._data ??= new TableItemWriteBuilder();
+  TableItemWriteBuilder get data => _$this._data ??= TableItemWriteBuilder();
   set data(TableItemWriteBuilder? data) => _$this._data = data;
 
   WriteSetChangeBuilder() {
@@ -149,7 +147,7 @@ class WriteSetChangeBuilder
     _$WriteSetChange _$result;
     try {
       _$result = _$v ??
-          new _$WriteSetChange._(
+          _$WriteSetChange._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'WriteSetChange', 'type'),
               stateKeyHash: BuiltValueNullFieldError.checkNotNull(
@@ -167,7 +165,7 @@ class WriteSetChangeBuilder
         _$failedField = 'data';
         data.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'WriteSetChange', _$failedField, e.toString());
       }
       rethrow;

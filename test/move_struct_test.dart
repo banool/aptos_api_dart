@@ -22,7 +22,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<MoveStructGenericTypeParams> genericTypeParams
+    // BuiltList<MoveStructGenericTypeParamsInner> genericTypeParams
     test('to test the property `genericTypeParams`', () async {
       // TODO
     });

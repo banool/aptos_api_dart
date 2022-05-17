@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **name** | **String** |  | 
 **isNative** | **bool** |  | 
 **abilities** | [**BuiltList&lt;MoveAbility&gt;**](MoveAbility.md) |  | 
-**genericTypeParams** | [**BuiltList&lt;MoveStructGenericTypeParams&gt;**](MoveStructGenericTypeParams.md) |  | 
+**genericTypeParams** | [**BuiltList&lt;MoveStructGenericTypeParamsInner&gt;**](MoveStructGenericTypeParamsInner.md) |  | 
 **fields** | [**BuiltList&lt;MoveStructField&gt;**](MoveStructField.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

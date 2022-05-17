@@ -5,41 +5,48 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'inline_response200.g.dart';
+part 'create_signing_message200_response.g.dart';
 
-/// InlineResponse200
+/// CreateSigningMessage200Response
 ///
 /// Properties:
 /// * [message] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
-abstract class InlineResponse200
-    implements Built<InlineResponse200, InlineResponse200Builder> {
+abstract class CreateSigningMessage200Response
+    implements
+        Built<CreateSigningMessage200Response,
+            CreateSigningMessage200ResponseBuilder> {
   /// All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
   @BuiltValueField(wireName: r'message')
   String get message;
 
-  InlineResponse200._();
+  CreateSigningMessage200Response._();
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(InlineResponse200Builder b) => b;
+  static void _defaults(CreateSigningMessage200ResponseBuilder b) => b;
 
-  factory InlineResponse200([void updates(InlineResponse200Builder b)]) =
-      _$InlineResponse200;
+  factory CreateSigningMessage200Response(
+          [void updates(CreateSigningMessage200ResponseBuilder b)]) =
+      _$CreateSigningMessage200Response;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<InlineResponse200> get serializer =>
-      _$InlineResponse200Serializer();
+  static Serializer<CreateSigningMessage200Response> get serializer =>
+      _$CreateSigningMessage200ResponseSerializer();
 }
 
-class _$InlineResponse200Serializer
-    implements StructuredSerializer<InlineResponse200> {
+class _$CreateSigningMessage200ResponseSerializer
+    implements StructuredSerializer<CreateSigningMessage200Response> {
   @override
-  final Iterable<Type> types = const [InlineResponse200, _$InlineResponse200];
+  final Iterable<Type> types = const [
+    CreateSigningMessage200Response,
+    _$CreateSigningMessage200Response
+  ];
 
   @override
-  final String wireName = r'InlineResponse200';
+  final String wireName = r'CreateSigningMessage200Response';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, InlineResponse200 object,
+  Iterable<Object?> serialize(
+      Serializers serializers, CreateSigningMessage200Response object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[];
     result
@@ -50,10 +57,10 @@ class _$InlineResponse200Serializer
   }
 
   @override
-  InlineResponse200 deserialize(
+  CreateSigningMessage200Response deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = InlineResponse200Builder();
+    final result = CreateSigningMessage200ResponseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {

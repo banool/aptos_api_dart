@@ -4,7 +4,7 @@
 
 import 'package:aptos_api_dart/src/model/move_ability.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:aptos_api_dart/src/model/move_struct_generic_type_params.dart';
+import 'package:aptos_api_dart/src/model/move_struct_generic_type_params_inner.dart';
 import 'package:aptos_api_dart/src/model/move_struct_field.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -30,7 +30,7 @@ abstract class MoveStruct implements Built<MoveStruct, MoveStructBuilder> {
   BuiltList<MoveAbility> get abilities;
 
   @BuiltValueField(wireName: r'generic_type_params')
-  BuiltList<MoveStructGenericTypeParams> get genericTypeParams;
+  BuiltList<MoveStructGenericTypeParamsInner> get genericTypeParams;
 
   @BuiltValueField(wireName: r'fields')
   BuiltList<MoveStructField> get fields;
@@ -73,7 +73,7 @@ class _$MoveStructSerializer implements StructuredSerializer<MoveStruct> {
       ..add(r'generic_type_params')
       ..add(serializers.serialize(object.genericTypeParams,
           specifiedType: const FullType(
-              BuiltList, [FullType(MoveStructGenericTypeParams)])));
+              BuiltList, [FullType(MoveStructGenericTypeParamsInner)])));
     result
       ..add(r'fields')
       ..add(serializers.serialize(object.fields,
@@ -114,8 +114,8 @@ class _$MoveStructSerializer implements StructuredSerializer<MoveStruct> {
         case r'generic_type_params':
           final valueDes = serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, [FullType(MoveStructGenericTypeParams)]))
-              as BuiltList<MoveStructGenericTypeParams>;
+                      BuiltList, [FullType(MoveStructGenericTypeParamsInner)]))
+              as BuiltList<MoveStructGenericTypeParamsInner>;
           result.genericTypeParams.replace(valueDes);
           break;
         case r'fields':

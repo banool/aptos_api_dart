@@ -24,7 +24,7 @@ class _$TransactionPayload extends TransactionPayload {
 
   factory _$TransactionPayload(
           [void Function(TransactionPayloadBuilder)? updates]) =>
-      (new TransactionPayloadBuilder()..update(updates)).build();
+      (TransactionPayloadBuilder()..update(updates)).build();
 
   _$TransactionPayload._(
       {required this.type,
@@ -56,7 +56,7 @@ class _$TransactionPayload extends TransactionPayload {
 
   @override
   TransactionPayloadBuilder toBuilder() =>
-      new TransactionPayloadBuilder()..replace(this);
+      TransactionPayloadBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -113,27 +113,27 @@ class TransactionPayloadBuilder
 
   ListBuilder<String>? _typeArguments;
   ListBuilder<String> get typeArguments =>
-      _$this._typeArguments ??= new ListBuilder<String>();
+      _$this._typeArguments ??= ListBuilder<String>();
   set typeArguments(ListBuilder<String>? typeArguments) =>
       _$this._typeArguments = typeArguments;
 
   ListBuilder<JsonObject?>? _arguments;
   ListBuilder<JsonObject?> get arguments =>
-      _$this._arguments ??= new ListBuilder<JsonObject?>();
+      _$this._arguments ??= ListBuilder<JsonObject?>();
   set arguments(ListBuilder<JsonObject?>? arguments) =>
       _$this._arguments = arguments;
 
   MoveScriptBuilder? _code;
-  MoveScriptBuilder get code => _$this._code ??= new MoveScriptBuilder();
+  MoveScriptBuilder get code => _$this._code ??= MoveScriptBuilder();
   set code(MoveScriptBuilder? code) => _$this._code = code;
 
   ListBuilder<MoveModule>? _modules;
   ListBuilder<MoveModule> get modules =>
-      _$this._modules ??= new ListBuilder<MoveModule>();
+      _$this._modules ??= ListBuilder<MoveModule>();
   set modules(ListBuilder<MoveModule>? modules) => _$this._modules = modules;
 
   WriteSetBuilder? _writeSet;
-  WriteSetBuilder get writeSet => _$this._writeSet ??= new WriteSetBuilder();
+  WriteSetBuilder get writeSet => _$this._writeSet ??= WriteSetBuilder();
   set writeSet(WriteSetBuilder? writeSet) => _$this._writeSet = writeSet;
 
   TransactionPayloadBuilder() {
@@ -171,7 +171,7 @@ class TransactionPayloadBuilder
     _$TransactionPayload _$result;
     try {
       _$result = _$v ??
-          new _$TransactionPayload._(
+          _$TransactionPayload._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'TransactionPayload', 'type'),
               function_: BuiltValueNullFieldError.checkNotNull(
@@ -195,7 +195,7 @@ class TransactionPayloadBuilder
         _$failedField = 'writeSet';
         writeSet.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'TransactionPayload', _$failedField, e.toString());
       }
       rethrow;

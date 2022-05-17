@@ -34,7 +34,7 @@ class _$GenesisTransaction extends GenesisTransaction {
 
   factory _$GenesisTransaction(
           [void Function(GenesisTransactionBuilder)? updates]) =>
-      (new GenesisTransactionBuilder()..update(updates)).build();
+      (GenesisTransactionBuilder()..update(updates)).build();
 
   _$GenesisTransaction._(
       {required this.type,
@@ -81,7 +81,7 @@ class _$GenesisTransaction extends GenesisTransaction {
 
   @override
   GenesisTransactionBuilder toBuilder() =>
-      new GenesisTransactionBuilder()..replace(this);
+      GenesisTransactionBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -155,12 +155,12 @@ class GenesisTransactionBuilder
   set type(String? type) => _$this._type = type;
 
   ListBuilder<Event>? _events;
-  ListBuilder<Event> get events => _$this._events ??= new ListBuilder<Event>();
+  ListBuilder<Event> get events => _$this._events ??= ListBuilder<Event>();
   set events(ListBuilder<Event>? events) => _$this._events = events;
 
   WriteSetPayloadBuilder? _payload;
   WriteSetPayloadBuilder get payload =>
-      _$this._payload ??= new WriteSetPayloadBuilder();
+      _$this._payload ??= WriteSetPayloadBuilder();
   set payload(WriteSetPayloadBuilder? payload) => _$this._payload = payload;
 
   String? _version;
@@ -200,7 +200,7 @@ class GenesisTransactionBuilder
 
   ListBuilder<WriteSetChange>? _changes;
   ListBuilder<WriteSetChange> get changes =>
-      _$this._changes ??= new ListBuilder<WriteSetChange>();
+      _$this._changes ??= ListBuilder<WriteSetChange>();
   set changes(ListBuilder<WriteSetChange>? changes) =>
       _$this._changes = changes;
 
@@ -244,7 +244,7 @@ class GenesisTransactionBuilder
     _$GenesisTransaction _$result;
     try {
       _$result = _$v ??
-          new _$GenesisTransaction._(
+          _$GenesisTransaction._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'GenesisTransaction', 'type'),
               events: events.build(),
@@ -277,7 +277,7 @@ class GenesisTransactionBuilder
         _$failedField = 'changes';
         changes.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'GenesisTransaction', _$failedField, e.toString());
       }
       rethrow;

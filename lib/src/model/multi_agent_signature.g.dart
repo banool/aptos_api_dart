@@ -18,7 +18,7 @@ class _$MultiAgentSignature extends MultiAgentSignature {
 
   factory _$MultiAgentSignature(
           [void Function(MultiAgentSignatureBuilder)? updates]) =>
-      (new MultiAgentSignatureBuilder()..update(updates)).build();
+      (MultiAgentSignatureBuilder()..update(updates)).build();
 
   _$MultiAgentSignature._(
       {required this.type,
@@ -42,7 +42,7 @@ class _$MultiAgentSignature extends MultiAgentSignature {
 
   @override
   MultiAgentSignatureBuilder toBuilder() =>
-      new MultiAgentSignatureBuilder()..replace(this);
+      MultiAgentSignatureBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -83,18 +83,18 @@ class MultiAgentSignatureBuilder
 
   AccountSignatureBuilder? _sender;
   AccountSignatureBuilder get sender =>
-      _$this._sender ??= new AccountSignatureBuilder();
+      _$this._sender ??= AccountSignatureBuilder();
   set sender(AccountSignatureBuilder? sender) => _$this._sender = sender;
 
   ListBuilder<String>? _secondarySignerAddresses;
   ListBuilder<String> get secondarySignerAddresses =>
-      _$this._secondarySignerAddresses ??= new ListBuilder<String>();
+      _$this._secondarySignerAddresses ??= ListBuilder<String>();
   set secondarySignerAddresses(ListBuilder<String>? secondarySignerAddresses) =>
       _$this._secondarySignerAddresses = secondarySignerAddresses;
 
   ListBuilder<AccountSignature>? _secondarySigners;
   ListBuilder<AccountSignature> get secondarySigners =>
-      _$this._secondarySigners ??= new ListBuilder<AccountSignature>();
+      _$this._secondarySigners ??= ListBuilder<AccountSignature>();
   set secondarySigners(ListBuilder<AccountSignature>? secondarySigners) =>
       _$this._secondarySigners = secondarySigners;
 
@@ -130,7 +130,7 @@ class MultiAgentSignatureBuilder
     _$MultiAgentSignature _$result;
     try {
       _$result = _$v ??
-          new _$MultiAgentSignature._(
+          _$MultiAgentSignature._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'MultiAgentSignature', 'type'),
               sender: sender.build(),
@@ -146,7 +146,7 @@ class MultiAgentSignatureBuilder
         _$failedField = 'secondarySigners';
         secondarySigners.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'MultiAgentSignature', _$failedField, e.toString());
       }
       rethrow;

@@ -19,7 +19,7 @@ class _$WriteSet extends WriteSet {
   final BuiltList<Event> events;
 
   factory _$WriteSet([void Function(WriteSetBuilder)? updates]) =>
-      (new WriteSetBuilder()..update(updates)).build();
+      (WriteSetBuilder()..update(updates)).build();
 
   _$WriteSet._(
       {required this.type,
@@ -40,7 +40,7 @@ class _$WriteSet extends WriteSet {
       (toBuilder()..update(updates)).build();
 
   @override
-  WriteSetBuilder toBuilder() => new WriteSetBuilder()..replace(this);
+  WriteSetBuilder toBuilder() => WriteSetBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -87,17 +87,17 @@ class WriteSetBuilder implements Builder<WriteSet, WriteSetBuilder> {
   set executeAs(String? executeAs) => _$this._executeAs = executeAs;
 
   ScriptBuilder? _script;
-  ScriptBuilder get script => _$this._script ??= new ScriptBuilder();
+  ScriptBuilder get script => _$this._script ??= ScriptBuilder();
   set script(ScriptBuilder? script) => _$this._script = script;
 
   ListBuilder<WriteSetChange>? _changes;
   ListBuilder<WriteSetChange> get changes =>
-      _$this._changes ??= new ListBuilder<WriteSetChange>();
+      _$this._changes ??= ListBuilder<WriteSetChange>();
   set changes(ListBuilder<WriteSetChange>? changes) =>
       _$this._changes = changes;
 
   ListBuilder<Event>? _events;
-  ListBuilder<Event> get events => _$this._events ??= new ListBuilder<Event>();
+  ListBuilder<Event> get events => _$this._events ??= ListBuilder<Event>();
   set events(ListBuilder<Event>? events) => _$this._events = events;
 
   WriteSetBuilder() {
@@ -133,7 +133,7 @@ class WriteSetBuilder implements Builder<WriteSet, WriteSetBuilder> {
     _$WriteSet _$result;
     try {
       _$result = _$v ??
-          new _$WriteSet._(
+          _$WriteSet._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'WriteSet', 'type'),
               executeAs: BuiltValueNullFieldError.checkNotNull(
@@ -151,7 +151,7 @@ class WriteSetBuilder implements Builder<WriteSet, WriteSetBuilder> {
         _$failedField = 'events';
         events.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'WriteSet', _$failedField, e.toString());
       }
       rethrow;

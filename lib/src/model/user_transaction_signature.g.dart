@@ -12,7 +12,7 @@ class _$UserTransactionSignature extends UserTransactionSignature {
 
   factory _$UserTransactionSignature(
           [void Function(UserTransactionSignatureBuilder)? updates]) =>
-      (new UserTransactionSignatureBuilder()..update(updates)).build();
+      (UserTransactionSignatureBuilder()..update(updates)).build();
 
   _$UserTransactionSignature._({required this.signature}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
@@ -26,7 +26,7 @@ class _$UserTransactionSignature extends UserTransactionSignature {
 
   @override
   UserTransactionSignatureBuilder toBuilder() =>
-      new UserTransactionSignatureBuilder()..replace(this);
+      UserTransactionSignatureBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -54,7 +54,7 @@ class UserTransactionSignatureBuilder
 
   TransactionSignatureBuilder? _signature;
   TransactionSignatureBuilder get signature =>
-      _$this._signature ??= new TransactionSignatureBuilder();
+      _$this._signature ??= TransactionSignatureBuilder();
   set signature(TransactionSignatureBuilder? signature) =>
       _$this._signature = signature;
 
@@ -87,14 +87,14 @@ class UserTransactionSignatureBuilder
     _$UserTransactionSignature _$result;
     try {
       _$result =
-          _$v ?? new _$UserTransactionSignature._(signature: signature.build());
+          _$v ?? _$UserTransactionSignature._(signature: signature.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'signature';
         signature.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'UserTransactionSignature', _$failedField, e.toString());
       }
       rethrow;

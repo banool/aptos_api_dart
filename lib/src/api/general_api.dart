@@ -7,7 +7,8 @@ import 'dart:async';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:aptos_api_dart/src/model/aptos_error.dart';
+import 'package:aptos_api_dart/src/model/get_ledger_info400_response.dart';
+import 'package:aptos_api_dart/src/model/get_ledger_info500_response.dart';
 import 'package:aptos_api_dart/src/model/ledger_info.dart';
 
 class GeneralApi {

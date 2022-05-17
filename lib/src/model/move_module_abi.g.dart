@@ -19,7 +19,7 @@ class _$MoveModuleABI extends MoveModuleABI {
   final BuiltList<MoveStruct> structs;
 
   factory _$MoveModuleABI([void Function(MoveModuleABIBuilder)? updates]) =>
-      (new MoveModuleABIBuilder()..update(updates)).build();
+      (MoveModuleABIBuilder()..update(updates)).build();
 
   _$MoveModuleABI._(
       {required this.address,
@@ -41,7 +41,7 @@ class _$MoveModuleABI extends MoveModuleABI {
       (toBuilder()..update(updates)).build();
 
   @override
-  MoveModuleABIBuilder toBuilder() => new MoveModuleABIBuilder()..replace(this);
+  MoveModuleABIBuilder toBuilder() => MoveModuleABIBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -87,19 +87,18 @@ class MoveModuleABIBuilder
   set name(String? name) => _$this._name = name;
 
   ListBuilder<String>? _friends;
-  ListBuilder<String> get friends =>
-      _$this._friends ??= new ListBuilder<String>();
+  ListBuilder<String> get friends => _$this._friends ??= ListBuilder<String>();
   set friends(ListBuilder<String>? friends) => _$this._friends = friends;
 
   ListBuilder<MoveFunction>? _exposedFunctions;
   ListBuilder<MoveFunction> get exposedFunctions =>
-      _$this._exposedFunctions ??= new ListBuilder<MoveFunction>();
+      _$this._exposedFunctions ??= ListBuilder<MoveFunction>();
   set exposedFunctions(ListBuilder<MoveFunction>? exposedFunctions) =>
       _$this._exposedFunctions = exposedFunctions;
 
   ListBuilder<MoveStruct>? _structs;
   ListBuilder<MoveStruct> get structs =>
-      _$this._structs ??= new ListBuilder<MoveStruct>();
+      _$this._structs ??= ListBuilder<MoveStruct>();
   set structs(ListBuilder<MoveStruct>? structs) => _$this._structs = structs;
 
   MoveModuleABIBuilder() {
@@ -135,7 +134,7 @@ class MoveModuleABIBuilder
     _$MoveModuleABI _$result;
     try {
       _$result = _$v ??
-          new _$MoveModuleABI._(
+          _$MoveModuleABI._(
               address: BuiltValueNullFieldError.checkNotNull(
                   address, 'MoveModuleABI', 'address'),
               name: BuiltValueNullFieldError.checkNotNull(
@@ -153,7 +152,7 @@ class MoveModuleABIBuilder
         _$failedField = 'structs';
         structs.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'MoveModuleABI', _$failedField, e.toString());
       }
       rethrow;

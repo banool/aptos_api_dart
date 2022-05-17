@@ -15,7 +15,7 @@ class _$Script extends Script {
   final BuiltList<JsonObject?> arguments;
 
   factory _$Script([void Function(ScriptBuilder)? updates]) =>
-      (new ScriptBuilder()..update(updates)).build();
+      (ScriptBuilder()..update(updates)).build();
 
   _$Script._(
       {required this.code,
@@ -33,7 +33,7 @@ class _$Script extends Script {
       (toBuilder()..update(updates)).build();
 
   @override
-  ScriptBuilder toBuilder() => new ScriptBuilder()..replace(this);
+  ScriptBuilder toBuilder() => ScriptBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -64,18 +64,18 @@ class ScriptBuilder implements Builder<Script, ScriptBuilder> {
   _$Script? _$v;
 
   MoveScriptBuilder? _code;
-  MoveScriptBuilder get code => _$this._code ??= new MoveScriptBuilder();
+  MoveScriptBuilder get code => _$this._code ??= MoveScriptBuilder();
   set code(MoveScriptBuilder? code) => _$this._code = code;
 
   ListBuilder<String>? _typeArguments;
   ListBuilder<String> get typeArguments =>
-      _$this._typeArguments ??= new ListBuilder<String>();
+      _$this._typeArguments ??= ListBuilder<String>();
   set typeArguments(ListBuilder<String>? typeArguments) =>
       _$this._typeArguments = typeArguments;
 
   ListBuilder<JsonObject?>? _arguments;
   ListBuilder<JsonObject?> get arguments =>
-      _$this._arguments ??= new ListBuilder<JsonObject?>();
+      _$this._arguments ??= ListBuilder<JsonObject?>();
   set arguments(ListBuilder<JsonObject?>? arguments) =>
       _$this._arguments = arguments;
 
@@ -110,7 +110,7 @@ class ScriptBuilder implements Builder<Script, ScriptBuilder> {
     _$Script _$result;
     try {
       _$result = _$v ??
-          new _$Script._(
+          _$Script._(
               code: code.build(),
               typeArguments: typeArguments.build(),
               arguments: arguments.build());
@@ -124,8 +124,7 @@ class ScriptBuilder implements Builder<Script, ScriptBuilder> {
         _$failedField = 'arguments';
         arguments.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            'Script', _$failedField, e.toString());
+        throw BuiltValueNestedFieldError('Script', _$failedField, e.toString());
       }
       rethrow;
     }

@@ -1,4 +1,4 @@
-# aptos_api_dart.model.InlineResponse200
+# aptos_api_dart.model.GetLedgerInfo500Response
 
 ## Load the model package
 ```dart
@@ -8,7 +8,9 @@ import 'package:aptos_api_dart/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**message** | **String** | All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.  | 
+**code** | **int** |  | 
+**message** | **String** |  | 
+**aptosLedgerVersion** | **String** | The version of the latest transaction in the ledger.  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

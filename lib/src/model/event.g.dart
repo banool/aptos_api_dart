@@ -17,7 +17,7 @@ class _$Event extends Event {
   final JsonObject? data;
 
   factory _$Event([void Function(EventBuilder)? updates]) =>
-      (new EventBuilder()..update(updates)).build();
+      (EventBuilder()..update(updates)).build();
 
   _$Event._(
       {required this.key,
@@ -36,7 +36,7 @@ class _$Event extends Event {
       (toBuilder()..update(updates)).build();
 
   @override
-  EventBuilder toBuilder() => new EventBuilder()..replace(this);
+  EventBuilder toBuilder() => EventBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -116,7 +116,7 @@ class EventBuilder implements Builder<Event, EventBuilder> {
   @override
   _$Event build() {
     final _$result = _$v ??
-        new _$Event._(
+        _$Event._(
             key: BuiltValueNullFieldError.checkNotNull(key, 'Event', 'key'),
             sequenceNumber: BuiltValueNullFieldError.checkNotNull(
                 sequenceNumber, 'Event', 'sequenceNumber'),

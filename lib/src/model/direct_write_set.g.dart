@@ -15,7 +15,7 @@ class _$DirectWriteSet extends DirectWriteSet {
   final BuiltList<Event> events;
 
   factory _$DirectWriteSet([void Function(DirectWriteSetBuilder)? updates]) =>
-      (new DirectWriteSetBuilder()..update(updates)).build();
+      (DirectWriteSetBuilder()..update(updates)).build();
 
   _$DirectWriteSet._(
       {required this.type, required this.changes, required this.events})
@@ -30,8 +30,7 @@ class _$DirectWriteSet extends DirectWriteSet {
       (toBuilder()..update(updates)).build();
 
   @override
-  DirectWriteSetBuilder toBuilder() =>
-      new DirectWriteSetBuilder()..replace(this);
+  DirectWriteSetBuilder toBuilder() => DirectWriteSetBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -68,12 +67,12 @@ class DirectWriteSetBuilder
 
   ListBuilder<WriteSetChange>? _changes;
   ListBuilder<WriteSetChange> get changes =>
-      _$this._changes ??= new ListBuilder<WriteSetChange>();
+      _$this._changes ??= ListBuilder<WriteSetChange>();
   set changes(ListBuilder<WriteSetChange>? changes) =>
       _$this._changes = changes;
 
   ListBuilder<Event>? _events;
-  ListBuilder<Event> get events => _$this._events ??= new ListBuilder<Event>();
+  ListBuilder<Event> get events => _$this._events ??= ListBuilder<Event>();
   set events(ListBuilder<Event>? events) => _$this._events = events;
 
   DirectWriteSetBuilder() {
@@ -107,7 +106,7 @@ class DirectWriteSetBuilder
     _$DirectWriteSet _$result;
     try {
       _$result = _$v ??
-          new _$DirectWriteSet._(
+          _$DirectWriteSet._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'DirectWriteSet', 'type'),
               changes: changes.build(),
@@ -120,7 +119,7 @@ class DirectWriteSetBuilder
         _$failedField = 'events';
         events.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'DirectWriteSet', _$failedField, e.toString());
       }
       rethrow;

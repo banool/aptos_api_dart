@@ -15,7 +15,7 @@ class _$WriteTableItem extends WriteTableItem {
   final TableItemWrite data;
 
   factory _$WriteTableItem([void Function(WriteTableItemBuilder)? updates]) =>
-      (new WriteTableItemBuilder()..update(updates)).build();
+      (WriteTableItemBuilder()..update(updates)).build();
 
   _$WriteTableItem._(
       {required this.type, required this.stateKeyHash, required this.data})
@@ -31,8 +31,7 @@ class _$WriteTableItem extends WriteTableItem {
       (toBuilder()..update(updates)).build();
 
   @override
-  WriteTableItemBuilder toBuilder() =>
-      new WriteTableItemBuilder()..replace(this);
+  WriteTableItemBuilder toBuilder() => WriteTableItemBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -72,8 +71,7 @@ class WriteTableItemBuilder
   set stateKeyHash(String? stateKeyHash) => _$this._stateKeyHash = stateKeyHash;
 
   TableItemWriteBuilder? _data;
-  TableItemWriteBuilder get data =>
-      _$this._data ??= new TableItemWriteBuilder();
+  TableItemWriteBuilder get data => _$this._data ??= TableItemWriteBuilder();
   set data(TableItemWriteBuilder? data) => _$this._data = data;
 
   WriteTableItemBuilder() {
@@ -107,7 +105,7 @@ class WriteTableItemBuilder
     _$WriteTableItem _$result;
     try {
       _$result = _$v ??
-          new _$WriteTableItem._(
+          _$WriteTableItem._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'WriteTableItem', 'type'),
               stateKeyHash: BuiltValueNullFieldError.checkNotNull(
@@ -119,7 +117,7 @@ class WriteTableItemBuilder
         _$failedField = 'data';
         data.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'WriteTableItem', _$failedField, e.toString());
       }
       rethrow;

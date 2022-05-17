@@ -16,7 +16,7 @@ class _$Ed25519Signature extends Ed25519Signature {
 
   factory _$Ed25519Signature(
           [void Function(Ed25519SignatureBuilder)? updates]) =>
-      (new Ed25519SignatureBuilder()..update(updates)).build();
+      (Ed25519SignatureBuilder()..update(updates)).build();
 
   _$Ed25519Signature._(
       {required this.type, required this.publicKey, required this.signature})
@@ -34,7 +34,7 @@ class _$Ed25519Signature extends Ed25519Signature {
 
   @override
   Ed25519SignatureBuilder toBuilder() =>
-      new Ed25519SignatureBuilder()..replace(this);
+      Ed25519SignatureBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -106,7 +106,7 @@ class Ed25519SignatureBuilder
   @override
   _$Ed25519Signature build() {
     final _$result = _$v ??
-        new _$Ed25519Signature._(
+        _$Ed25519Signature._(
             type: BuiltValueNullFieldError.checkNotNull(
                 type, 'Ed25519Signature', 'type'),
             publicKey: BuiltValueNullFieldError.checkNotNull(

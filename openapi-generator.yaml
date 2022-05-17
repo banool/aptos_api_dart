@@ -8,6 +8,8 @@ pubHomepage: "https://github.com/banool/aptos_api_dart"
 # See the following:
 # - https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/dart.md
 # - https://github.com/OpenAPITools/openapi-generator/issues/9507
-legacyDiscriminatorBehavior: true
+legacyDiscriminatorBehavior: false
+# This setting causes the compilation to fail
 # disallowAdditionalPropertiesIfNotPresent: false
 useEnumExtension: true
+enablePostProcessFile: true

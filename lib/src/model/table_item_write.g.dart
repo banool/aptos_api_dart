@@ -15,7 +15,7 @@ class _$TableItemWrite extends TableItemWrite {
   final String value;
 
   factory _$TableItemWrite([void Function(TableItemWriteBuilder)? updates]) =>
-      (new TableItemWriteBuilder()..update(updates)).build();
+      (TableItemWriteBuilder()..update(updates)).build();
 
   _$TableItemWrite._(
       {required this.handle, required this.key, required this.value})
@@ -30,8 +30,7 @@ class _$TableItemWrite extends TableItemWrite {
       (toBuilder()..update(updates)).build();
 
   @override
-  TableItemWriteBuilder toBuilder() =>
-      new TableItemWriteBuilder()..replace(this);
+  TableItemWriteBuilder toBuilder() => TableItemWriteBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -102,7 +101,7 @@ class TableItemWriteBuilder
   @override
   _$TableItemWrite build() {
     final _$result = _$v ??
-        new _$TableItemWrite._(
+        _$TableItemWrite._(
             handle: BuiltValueNullFieldError.checkNotNull(
                 handle, 'TableItemWrite', 'handle'),
             key: BuiltValueNullFieldError.checkNotNull(

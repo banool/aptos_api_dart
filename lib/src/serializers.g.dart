@@ -6,13 +6,14 @@ part of 'serializers.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializers _$serializers = (new Serializers().toBuilder()
+Serializers _$serializers = (Serializers().toBuilder()
       ..add(Account.serializer)
       ..add(AccountResource.serializer)
       ..add(AccountSignature.serializer)
       ..add(AptosError.serializer)
       ..add(BlockMetadataTransaction.serializer)
       ..add(BlockMetadataTransactionAllOf.serializer)
+      ..add(CreateSigningMessage200Response.serializer)
       ..add(DeleteModule.serializer)
       ..add(DeleteResource.serializer)
       ..add(DeleteTableItem.serializer)
@@ -21,19 +22,21 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Event.serializer)
       ..add(GenesisTransaction.serializer)
       ..add(GenesisTransactionAllOf.serializer)
-      ..add(InlineResponse200.serializer)
+      ..add(GetAccount404Response.serializer)
+      ..add(GetLedgerInfo400Response.serializer)
+      ..add(GetLedgerInfo500Response.serializer)
       ..add(LedgerInfo.serializer)
       ..add(ModuleBundlePayload.serializer)
       ..add(MoveAbility.serializer)
       ..add(MoveFunction.serializer)
-      ..add(MoveFunctionGenericTypeParams.serializer)
+      ..add(MoveFunctionGenericTypeParamsInner.serializer)
       ..add(MoveFunctionVisibilityEnum.serializer)
       ..add(MoveModule.serializer)
       ..add(MoveModuleABI.serializer)
       ..add(MoveScript.serializer)
       ..add(MoveStruct.serializer)
       ..add(MoveStructField.serializer)
-      ..add(MoveStructGenericTypeParams.serializer)
+      ..add(MoveStructGenericTypeParamsInner.serializer)
       ..add(MultiAgentSignature.serializer)
       ..add(MultiEd25519Signature.serializer)
       ..add(OnChainTransaction.serializer)
@@ -44,6 +47,8 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ScriptFunctionPayload.serializer)
       ..add(ScriptPayload.serializer)
       ..add(ScriptWriteSet.serializer)
+      ..add(SubmitTransaction413Response.serializer)
+      ..add(SubmitTransaction415Response.serializer)
       ..add(SubmitTransactionRequest.serializer)
       ..add(TableItemDeletion.serializer)
       ..add(TableItemRequest.serializer)
@@ -61,165 +66,119 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(WriteSetChange.serializer)
       ..add(WriteSetPayload.serializer)
       ..add(WriteTableItem.serializer)
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(Event)]),
-          () => new ListBuilder<Event>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(Event)]),
-          () => new ListBuilder<Event>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(Event)]),
-          () => new ListBuilder<Event>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(WriteSetChange)]),
-          () => new ListBuilder<WriteSetChange>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(Event)]),
-          () => new ListBuilder<Event>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(WriteSetChange)]),
-          () => new ListBuilder<WriteSetChange>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(Event)]),
-          () => new ListBuilder<Event>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(WriteSetChange)]),
-          () => new ListBuilder<WriteSetChange>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(Event)]),
-          () => new ListBuilder<Event>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(WriteSetChange)]),
-          () => new ListBuilder<WriteSetChange>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(MoveAbility)]),
-          () => new ListBuilder<MoveAbility>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(MoveAbility)]),
-          () => new ListBuilder<MoveAbility>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(MoveAbility)]),
-          () => new ListBuilder<MoveAbility>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(Event)]),
+          () => ListBuilder<Event>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(Event)]),
+          () => ListBuilder<Event>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(Event)]),
+          () => ListBuilder<Event>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(WriteSetChange)]),
+          () => ListBuilder<WriteSetChange>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(Event)]),
+          () => ListBuilder<Event>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(WriteSetChange)]),
+          () => ListBuilder<WriteSetChange>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(Event)]),
+          () => ListBuilder<Event>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(WriteSetChange)]),
+          () => ListBuilder<WriteSetChange>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
+          () => ListBuilder<String>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(Event)]),
+          () => ListBuilder<Event>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(WriteSetChange)]),
+          () => ListBuilder<WriteSetChange>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
+          () => ListBuilder<String>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(MoveAbility)]),
+          () => ListBuilder<MoveAbility>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(MoveAbility)]),
+          () => ListBuilder<MoveAbility>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(MoveAbility)]),
+          () => ListBuilder<MoveAbility>())
       ..addBuilderFactory(
           const FullType(
-              BuiltList, const [const FullType(MoveStructGenericTypeParams)]),
-          () => new ListBuilder<MoveStructGenericTypeParams>())
+              BuiltList, [FullType(MoveStructGenericTypeParamsInner)]),
+          () => ListBuilder<MoveStructGenericTypeParamsInner>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(MoveStructField)]),
-          () => new ListBuilder<MoveStructField>())
-      ..addBuilderFactory(
-          const FullType(
-              BuiltList, const [const FullType(MoveFunctionGenericTypeParams)]),
-          () => new ListBuilder<MoveFunctionGenericTypeParams>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(MoveModule)]),
-          () => new ListBuilder<MoveModule>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AccountSignature)]),
-          () => new ListBuilder<AccountSignature>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(MoveFunction)]),
-          () => new ListBuilder<MoveFunction>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(MoveStruct)]),
-          () => new ListBuilder<MoveStruct>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(AccountSignature)]),
-          () => new ListBuilder<AccountSignature>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(WriteSetChange)]),
-          () => new ListBuilder<WriteSetChange>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          const FullType(BuiltList, [FullType(MoveStructField)]),
+          () => ListBuilder<MoveStructField>())
       ..addBuilderFactory(
           const FullType(
-              BuiltList, const [const FullType.nullable(JsonObject)]),
-          () => new ListBuilder<JsonObject?>())
+              BuiltList, [FullType(MoveFunctionGenericTypeParamsInner)]),
+          () => ListBuilder<MoveFunctionGenericTypeParamsInner>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
+          () => ListBuilder<String>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
+          () => ListBuilder<String>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(MoveModule)]),
+          () => ListBuilder<MoveModule>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
+          () => ListBuilder<String>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
+          () => ListBuilder<String>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          const FullType(BuiltList, [FullType(AccountSignature)]),
+          () => ListBuilder<AccountSignature>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
+          () => ListBuilder<String>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(MoveFunction)]),
+          () => ListBuilder<MoveFunction>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(MoveStruct)]),
+          () => ListBuilder<MoveStruct>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
+          () => ListBuilder<String>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
+          () => ListBuilder<String>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
+          () => ListBuilder<String>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
+          () => ListBuilder<String>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
+          () => ListBuilder<String>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
+          () => ListBuilder<String>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
+          () => ListBuilder<String>())
       ..addBuilderFactory(
-          const FullType(
-              BuiltList, const [const FullType.nullable(JsonObject)]),
-          () => new ListBuilder<JsonObject?>())
+          const FullType(BuiltList, [FullType(AccountSignature)]),
+          () => ListBuilder<AccountSignature>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
+          () => ListBuilder<String>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(WriteSetChange)]),
+          () => ListBuilder<WriteSetChange>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
+          () => ListBuilder<String>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          const FullType(BuiltList, [FullType.nullable(JsonObject)]),
+          () => ListBuilder<JsonObject?>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
+          () => ListBuilder<String>())
       ..addBuilderFactory(
-          const FullType(
-              BuiltList, const [const FullType.nullable(JsonObject)]),
-          () => new ListBuilder<JsonObject?>())
+          const FullType(BuiltList, [FullType.nullable(JsonObject)]),
+          () => ListBuilder<JsonObject?>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
+          () => ListBuilder<String>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          const FullType(BuiltList, [FullType.nullable(JsonObject)]),
+          () => ListBuilder<JsonObject?>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
+          () => ListBuilder<String>())
       ..addBuilderFactory(
-          const FullType(
-              BuiltList, const [const FullType.nullable(JsonObject)]),
-          () => new ListBuilder<JsonObject?>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(MoveModule)]),
-          () => new ListBuilder<MoveModule>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(WriteSetChange)]),
-          () => new ListBuilder<WriteSetChange>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(WriteSetChange)]),
-          () => new ListBuilder<WriteSetChange>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(Event)]),
-          () => new ListBuilder<Event>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(WriteSetChange)]),
-          () => new ListBuilder<WriteSetChange>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(Event)]),
-          () => new ListBuilder<Event>()))
+          const FullType(BuiltList, [FullType.nullable(JsonObject)]),
+          () => ListBuilder<JsonObject?>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(MoveModule)]),
+          () => ListBuilder<MoveModule>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(WriteSetChange)]),
+          () => ListBuilder<WriteSetChange>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(WriteSetChange)]),
+          () => ListBuilder<WriteSetChange>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(Event)]),
+          () => ListBuilder<Event>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(WriteSetChange)]),
+          () => ListBuilder<WriteSetChange>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(Event)]),
+          () => ListBuilder<Event>()))
     .build();
 
 // ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new

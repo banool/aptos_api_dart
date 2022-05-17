@@ -15,7 +15,7 @@ class _$ScriptWriteSet extends ScriptWriteSet {
   final Script script;
 
   factory _$ScriptWriteSet([void Function(ScriptWriteSetBuilder)? updates]) =>
-      (new ScriptWriteSetBuilder()..update(updates)).build();
+      (ScriptWriteSetBuilder()..update(updates)).build();
 
   _$ScriptWriteSet._(
       {required this.type, required this.executeAs, required this.script})
@@ -31,8 +31,7 @@ class _$ScriptWriteSet extends ScriptWriteSet {
       (toBuilder()..update(updates)).build();
 
   @override
-  ScriptWriteSetBuilder toBuilder() =>
-      new ScriptWriteSetBuilder()..replace(this);
+  ScriptWriteSetBuilder toBuilder() => ScriptWriteSetBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -72,7 +71,7 @@ class ScriptWriteSetBuilder
   set executeAs(String? executeAs) => _$this._executeAs = executeAs;
 
   ScriptBuilder? _script;
-  ScriptBuilder get script => _$this._script ??= new ScriptBuilder();
+  ScriptBuilder get script => _$this._script ??= ScriptBuilder();
   set script(ScriptBuilder? script) => _$this._script = script;
 
   ScriptWriteSetBuilder() {
@@ -106,7 +105,7 @@ class ScriptWriteSetBuilder
     _$ScriptWriteSet _$result;
     try {
       _$result = _$v ??
-          new _$ScriptWriteSet._(
+          _$ScriptWriteSet._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'ScriptWriteSet', 'type'),
               executeAs: BuiltValueNullFieldError.checkNotNull(
@@ -118,7 +117,7 @@ class ScriptWriteSetBuilder
         _$failedField = 'script';
         script.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'ScriptWriteSet', _$failedField, e.toString());
       }
       rethrow;

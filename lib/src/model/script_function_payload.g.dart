@@ -18,7 +18,7 @@ class _$ScriptFunctionPayload extends ScriptFunctionPayload {
 
   factory _$ScriptFunctionPayload(
           [void Function(ScriptFunctionPayloadBuilder)? updates]) =>
-      (new ScriptFunctionPayloadBuilder()..update(updates)).build();
+      (ScriptFunctionPayloadBuilder()..update(updates)).build();
 
   _$ScriptFunctionPayload._(
       {required this.type,
@@ -43,7 +43,7 @@ class _$ScriptFunctionPayload extends ScriptFunctionPayload {
 
   @override
   ScriptFunctionPayloadBuilder toBuilder() =>
-      new ScriptFunctionPayloadBuilder()..replace(this);
+      ScriptFunctionPayloadBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -88,13 +88,13 @@ class ScriptFunctionPayloadBuilder
 
   ListBuilder<String>? _typeArguments;
   ListBuilder<String> get typeArguments =>
-      _$this._typeArguments ??= new ListBuilder<String>();
+      _$this._typeArguments ??= ListBuilder<String>();
   set typeArguments(ListBuilder<String>? typeArguments) =>
       _$this._typeArguments = typeArguments;
 
   ListBuilder<JsonObject?>? _arguments;
   ListBuilder<JsonObject?> get arguments =>
-      _$this._arguments ??= new ListBuilder<JsonObject?>();
+      _$this._arguments ??= ListBuilder<JsonObject?>();
   set arguments(ListBuilder<JsonObject?>? arguments) =>
       _$this._arguments = arguments;
 
@@ -130,7 +130,7 @@ class ScriptFunctionPayloadBuilder
     _$ScriptFunctionPayload _$result;
     try {
       _$result = _$v ??
-          new _$ScriptFunctionPayload._(
+          _$ScriptFunctionPayload._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'ScriptFunctionPayload', 'type'),
               function_: BuiltValueNullFieldError.checkNotNull(
@@ -145,7 +145,7 @@ class ScriptFunctionPayloadBuilder
         _$failedField = 'arguments';
         arguments.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'ScriptFunctionPayload', _$failedField, e.toString());
       }
       rethrow;

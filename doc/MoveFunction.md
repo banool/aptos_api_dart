@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** | Move function name | 
 **visibility** | **String** |  | 
-**genericTypeParams** | [**BuiltList&lt;MoveFunctionGenericTypeParams&gt;**](MoveFunctionGenericTypeParams.md) |  | 
+**genericTypeParams** | [**BuiltList&lt;MoveFunctionGenericTypeParamsInner&gt;**](MoveFunctionGenericTypeParamsInner.md) |  | 
 **params** | **BuiltList&lt;String&gt;** |  | 
 **return_** | **BuiltList&lt;String&gt;** |  | 
 

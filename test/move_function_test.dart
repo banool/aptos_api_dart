@@ -18,7 +18,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<MoveFunctionGenericTypeParams> genericTypeParams
+    // BuiltList<MoveFunctionGenericTypeParamsInner> genericTypeParams
     test('to test the property `genericTypeParams`', () async {
       // TODO
     });

@@ -2,8 +2,8 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
+import 'package:aptos_api_dart/src/model/move_function_generic_type_params_inner.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:aptos_api_dart/src/model/move_function_generic_type_params.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -28,7 +28,7 @@ abstract class MoveFunction
   // enum visibilityEnum {  public,  script,  friend,  };
 
   @BuiltValueField(wireName: r'generic_type_params')
-  BuiltList<MoveFunctionGenericTypeParams> get genericTypeParams;
+  BuiltList<MoveFunctionGenericTypeParamsInner> get genericTypeParams;
 
   @BuiltValueField(wireName: r'params')
   BuiltList<String> get params;
@@ -70,7 +70,7 @@ class _$MoveFunctionSerializer implements StructuredSerializer<MoveFunction> {
       ..add(r'generic_type_params')
       ..add(serializers.serialize(object.genericTypeParams,
           specifiedType: const FullType(
-              BuiltList, [FullType(MoveFunctionGenericTypeParams)])));
+              BuiltList, [FullType(MoveFunctionGenericTypeParamsInner)])));
     result
       ..add(r'params')
       ..add(serializers.serialize(object.params,
@@ -108,9 +108,9 @@ class _$MoveFunctionSerializer implements StructuredSerializer<MoveFunction> {
           break;
         case r'generic_type_params':
           final valueDes = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, [FullType(MoveFunctionGenericTypeParams)]))
-              as BuiltList<MoveFunctionGenericTypeParams>;
+              specifiedType: const FullType(BuiltList, [
+                FullType(MoveFunctionGenericTypeParamsInner)
+              ])) as BuiltList<MoveFunctionGenericTypeParamsInner>;
           result.genericTypeParams.replace(valueDes);
           break;
         case r'params':

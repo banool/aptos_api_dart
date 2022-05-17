@@ -18,6 +18,7 @@ import 'package:aptos_api_dart/src/model/account_signature.dart';
 import 'package:aptos_api_dart/src/model/aptos_error.dart';
 import 'package:aptos_api_dart/src/model/block_metadata_transaction.dart';
 import 'package:aptos_api_dart/src/model/block_metadata_transaction_all_of.dart';
+import 'package:aptos_api_dart/src/model/create_signing_message200_response.dart';
 import 'package:aptos_api_dart/src/model/delete_module.dart';
 import 'package:aptos_api_dart/src/model/delete_resource.dart';
 import 'package:aptos_api_dart/src/model/delete_table_item.dart';
@@ -26,18 +27,20 @@ import 'package:aptos_api_dart/src/model/ed25519_signature.dart';
 import 'package:aptos_api_dart/src/model/event.dart';
 import 'package:aptos_api_dart/src/model/genesis_transaction.dart';
 import 'package:aptos_api_dart/src/model/genesis_transaction_all_of.dart';
-import 'package:aptos_api_dart/src/model/inline_response200.dart';
+import 'package:aptos_api_dart/src/model/get_account404_response.dart';
+import 'package:aptos_api_dart/src/model/get_ledger_info400_response.dart';
+import 'package:aptos_api_dart/src/model/get_ledger_info500_response.dart';
 import 'package:aptos_api_dart/src/model/ledger_info.dart';
 import 'package:aptos_api_dart/src/model/module_bundle_payload.dart';
 import 'package:aptos_api_dart/src/model/move_ability.dart';
 import 'package:aptos_api_dart/src/model/move_function.dart';
-import 'package:aptos_api_dart/src/model/move_function_generic_type_params.dart';
+import 'package:aptos_api_dart/src/model/move_function_generic_type_params_inner.dart';
 import 'package:aptos_api_dart/src/model/move_module.dart';
 import 'package:aptos_api_dart/src/model/move_module_abi.dart';
 import 'package:aptos_api_dart/src/model/move_script.dart';
 import 'package:aptos_api_dart/src/model/move_struct.dart';
 import 'package:aptos_api_dart/src/model/move_struct_field.dart';
-import 'package:aptos_api_dart/src/model/move_struct_generic_type_params.dart';
+import 'package:aptos_api_dart/src/model/move_struct_generic_type_params_inner.dart';
 import 'package:aptos_api_dart/src/model/multi_agent_signature.dart';
 import 'package:aptos_api_dart/src/model/multi_ed25519_signature.dart';
 import 'package:aptos_api_dart/src/model/on_chain_transaction.dart';
@@ -48,6 +51,8 @@ import 'package:aptos_api_dart/src/model/script.dart';
 import 'package:aptos_api_dart/src/model/script_function_payload.dart';
 import 'package:aptos_api_dart/src/model/script_payload.dart';
 import 'package:aptos_api_dart/src/model/script_write_set.dart';
+import 'package:aptos_api_dart/src/model/submit_transaction413_response.dart';
+import 'package:aptos_api_dart/src/model/submit_transaction415_response.dart';
 import 'package:aptos_api_dart/src/model/submit_transaction_request.dart';
 import 'package:aptos_api_dart/src/model/table_item_deletion.dart';
 import 'package:aptos_api_dart/src/model/table_item_request.dart';
@@ -75,6 +80,7 @@ part 'serializers.g.dart';
   AptosError,
   BlockMetadataTransaction,
   BlockMetadataTransactionAllOf,
+  CreateSigningMessage200Response,
   DeleteModule,
   DeleteResource,
   DeleteTableItem,
@@ -83,18 +89,20 @@ part 'serializers.g.dart';
   Event,
   GenesisTransaction,
   GenesisTransactionAllOf,
-  InlineResponse200,
+  GetAccount404Response,
+  GetLedgerInfo400Response,
+  GetLedgerInfo500Response,
   LedgerInfo,
   ModuleBundlePayload,
   MoveAbility,
   MoveFunction,
-  MoveFunctionGenericTypeParams,
+  MoveFunctionGenericTypeParamsInner,
   MoveModule,
   MoveModuleABI,
   MoveScript,
   MoveStruct,
   MoveStructField,
-  MoveStructGenericTypeParams,
+  MoveStructGenericTypeParamsInner,
   MultiAgentSignature,
   MultiEd25519Signature,
   OnChainTransaction,
@@ -105,6 +113,8 @@ part 'serializers.g.dart';
   ScriptFunctionPayload,
   ScriptPayload,
   ScriptWriteSet,
+  SubmitTransaction413Response,
+  SubmitTransaction415Response,
   SubmitTransactionRequest,
   TableItemDeletion,
   TableItemRequest,

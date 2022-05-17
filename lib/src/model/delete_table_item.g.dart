@@ -15,7 +15,7 @@ class _$DeleteTableItem extends DeleteTableItem {
   final TableItemDeletion data;
 
   factory _$DeleteTableItem([void Function(DeleteTableItemBuilder)? updates]) =>
-      (new DeleteTableItemBuilder()..update(updates)).build();
+      (DeleteTableItemBuilder()..update(updates)).build();
 
   _$DeleteTableItem._(
       {required this.type, required this.stateKeyHash, required this.data})
@@ -31,8 +31,7 @@ class _$DeleteTableItem extends DeleteTableItem {
       (toBuilder()..update(updates)).build();
 
   @override
-  DeleteTableItemBuilder toBuilder() =>
-      new DeleteTableItemBuilder()..replace(this);
+  DeleteTableItemBuilder toBuilder() => DeleteTableItemBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -73,7 +72,7 @@ class DeleteTableItemBuilder
 
   TableItemDeletionBuilder? _data;
   TableItemDeletionBuilder get data =>
-      _$this._data ??= new TableItemDeletionBuilder();
+      _$this._data ??= TableItemDeletionBuilder();
   set data(TableItemDeletionBuilder? data) => _$this._data = data;
 
   DeleteTableItemBuilder() {
@@ -107,7 +106,7 @@ class DeleteTableItemBuilder
     _$DeleteTableItem _$result;
     try {
       _$result = _$v ??
-          new _$DeleteTableItem._(
+          _$DeleteTableItem._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'DeleteTableItem', 'type'),
               stateKeyHash: BuiltValueNullFieldError.checkNotNull(
@@ -119,7 +118,7 @@ class DeleteTableItemBuilder
         _$failedField = 'data';
         data.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'DeleteTableItem', _$failedField, e.toString());
       }
       rethrow;

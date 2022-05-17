@@ -16,7 +16,7 @@ class _$GenesisTransactionAllOf extends GenesisTransactionAllOf {
 
   factory _$GenesisTransactionAllOf(
           [void Function(GenesisTransactionAllOfBuilder)? updates]) =>
-      (new GenesisTransactionAllOfBuilder()..update(updates)).build();
+      (GenesisTransactionAllOfBuilder()..update(updates)).build();
 
   _$GenesisTransactionAllOf._(
       {required this.type, required this.events, required this.payload})
@@ -36,7 +36,7 @@ class _$GenesisTransactionAllOf extends GenesisTransactionAllOf {
 
   @override
   GenesisTransactionAllOfBuilder toBuilder() =>
-      new GenesisTransactionAllOfBuilder()..replace(this);
+      GenesisTransactionAllOfBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -73,12 +73,12 @@ class GenesisTransactionAllOfBuilder
   set type(String? type) => _$this._type = type;
 
   ListBuilder<Event>? _events;
-  ListBuilder<Event> get events => _$this._events ??= new ListBuilder<Event>();
+  ListBuilder<Event> get events => _$this._events ??= ListBuilder<Event>();
   set events(ListBuilder<Event>? events) => _$this._events = events;
 
   WriteSetPayloadBuilder? _payload;
   WriteSetPayloadBuilder get payload =>
-      _$this._payload ??= new WriteSetPayloadBuilder();
+      _$this._payload ??= WriteSetPayloadBuilder();
   set payload(WriteSetPayloadBuilder? payload) => _$this._payload = payload;
 
   GenesisTransactionAllOfBuilder() {
@@ -112,7 +112,7 @@ class GenesisTransactionAllOfBuilder
     _$GenesisTransactionAllOf _$result;
     try {
       _$result = _$v ??
-          new _$GenesisTransactionAllOf._(
+          _$GenesisTransactionAllOf._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'GenesisTransactionAllOf', 'type'),
               events: events.build(),
@@ -125,7 +125,7 @@ class GenesisTransactionAllOfBuilder
         _$failedField = 'payload';
         payload.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'GenesisTransactionAllOf', _$failedField, e.toString());
       }
       rethrow;

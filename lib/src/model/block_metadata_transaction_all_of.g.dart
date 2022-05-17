@@ -22,7 +22,7 @@ class _$BlockMetadataTransactionAllOf extends BlockMetadataTransactionAllOf {
 
   factory _$BlockMetadataTransactionAllOf(
           [void Function(BlockMetadataTransactionAllOfBuilder)? updates]) =>
-      (new BlockMetadataTransactionAllOfBuilder()..update(updates)).build();
+      (BlockMetadataTransactionAllOfBuilder()..update(updates)).build();
 
   _$BlockMetadataTransactionAllOf._(
       {required this.type,
@@ -53,7 +53,7 @@ class _$BlockMetadataTransactionAllOf extends BlockMetadataTransactionAllOf {
 
   @override
   BlockMetadataTransactionAllOfBuilder toBuilder() =>
-      new BlockMetadataTransactionAllOfBuilder()..replace(this);
+      BlockMetadataTransactionAllOfBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -110,7 +110,7 @@ class BlockMetadataTransactionAllOfBuilder
 
   ListBuilder<String>? _previousBlockVotes;
   ListBuilder<String> get previousBlockVotes =>
-      _$this._previousBlockVotes ??= new ListBuilder<String>();
+      _$this._previousBlockVotes ??= ListBuilder<String>();
   set previousBlockVotes(ListBuilder<String>? previousBlockVotes) =>
       _$this._previousBlockVotes = previousBlockVotes;
 
@@ -156,7 +156,7 @@ class BlockMetadataTransactionAllOfBuilder
     _$BlockMetadataTransactionAllOf _$result;
     try {
       _$result = _$v ??
-          new _$BlockMetadataTransactionAllOf._(
+          _$BlockMetadataTransactionAllOf._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'BlockMetadataTransactionAllOf', 'type'),
               id: BuiltValueNullFieldError.checkNotNull(
@@ -174,7 +174,7 @@ class BlockMetadataTransactionAllOfBuilder
         _$failedField = 'previousBlockVotes';
         previousBlockVotes.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'BlockMetadataTransactionAllOf', _$failedField, e.toString());
       }
       rethrow;

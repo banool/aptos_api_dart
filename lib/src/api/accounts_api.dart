@@ -10,7 +10,9 @@ import 'package:dio/dio.dart';
 import 'package:aptos_api_dart/src/api_util.dart';
 import 'package:aptos_api_dart/src/model/account.dart';
 import 'package:aptos_api_dart/src/model/account_resource.dart';
-import 'package:aptos_api_dart/src/model/aptos_error.dart';
+import 'package:aptos_api_dart/src/model/get_account404_response.dart';
+import 'package:aptos_api_dart/src/model/get_ledger_info400_response.dart';
+import 'package:aptos_api_dart/src/model/get_ledger_info500_response.dart';
 import 'package:aptos_api_dart/src/model/move_module.dart';
 import 'package:built_collection/built_collection.dart';
 

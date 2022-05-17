@@ -13,7 +13,7 @@ class _$WriteSetPayload extends WriteSetPayload {
   final WriteSet writeSet;
 
   factory _$WriteSetPayload([void Function(WriteSetPayloadBuilder)? updates]) =>
-      (new WriteSetPayloadBuilder()..update(updates)).build();
+      (WriteSetPayloadBuilder()..update(updates)).build();
 
   _$WriteSetPayload._({required this.type, required this.writeSet})
       : super._() {
@@ -27,8 +27,7 @@ class _$WriteSetPayload extends WriteSetPayload {
       (toBuilder()..update(updates)).build();
 
   @override
-  WriteSetPayloadBuilder toBuilder() =>
-      new WriteSetPayloadBuilder()..replace(this);
+  WriteSetPayloadBuilder toBuilder() => WriteSetPayloadBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -61,7 +60,7 @@ class WriteSetPayloadBuilder
   set type(String? type) => _$this._type = type;
 
   WriteSetBuilder? _writeSet;
-  WriteSetBuilder get writeSet => _$this._writeSet ??= new WriteSetBuilder();
+  WriteSetBuilder get writeSet => _$this._writeSet ??= WriteSetBuilder();
   set writeSet(WriteSetBuilder? writeSet) => _$this._writeSet = writeSet;
 
   WriteSetPayloadBuilder() {
@@ -94,7 +93,7 @@ class WriteSetPayloadBuilder
     _$WriteSetPayload _$result;
     try {
       _$result = _$v ??
-          new _$WriteSetPayload._(
+          _$WriteSetPayload._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'WriteSetPayload', 'type'),
               writeSet: writeSet.build());
@@ -104,7 +103,7 @@ class WriteSetPayloadBuilder
         _$failedField = 'writeSet';
         writeSet.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'WriteSetPayload', _$failedField, e.toString());
       }
       rethrow;

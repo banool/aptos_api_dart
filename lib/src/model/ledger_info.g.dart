@@ -15,7 +15,7 @@ class _$LedgerInfo extends LedgerInfo {
   final String ledgerTimestamp;
 
   factory _$LedgerInfo([void Function(LedgerInfoBuilder)? updates]) =>
-      (new LedgerInfoBuilder()..update(updates)).build();
+      (LedgerInfoBuilder()..update(updates)).build();
 
   _$LedgerInfo._(
       {required this.chainId,
@@ -34,7 +34,7 @@ class _$LedgerInfo extends LedgerInfo {
       (toBuilder()..update(updates)).build();
 
   @override
-  LedgerInfoBuilder toBuilder() => new LedgerInfoBuilder()..replace(this);
+  LedgerInfoBuilder toBuilder() => LedgerInfoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -107,7 +107,7 @@ class LedgerInfoBuilder implements Builder<LedgerInfo, LedgerInfoBuilder> {
   @override
   _$LedgerInfo build() {
     final _$result = _$v ??
-        new _$LedgerInfo._(
+        _$LedgerInfo._(
             chainId: BuiltValueNullFieldError.checkNotNull(
                 chainId, 'LedgerInfo', 'chainId'),
             ledgerVersion: BuiltValueNullFieldError.checkNotNull(

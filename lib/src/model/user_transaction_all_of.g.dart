@@ -16,7 +16,7 @@ class _$UserTransactionAllOf extends UserTransactionAllOf {
 
   factory _$UserTransactionAllOf(
           [void Function(UserTransactionAllOfBuilder)? updates]) =>
-      (new UserTransactionAllOfBuilder()..update(updates)).build();
+      (UserTransactionAllOfBuilder()..update(updates)).build();
 
   _$UserTransactionAllOf._(
       {required this.type, required this.events, required this.timestamp})
@@ -35,7 +35,7 @@ class _$UserTransactionAllOf extends UserTransactionAllOf {
 
   @override
   UserTransactionAllOfBuilder toBuilder() =>
-      new UserTransactionAllOfBuilder()..replace(this);
+      UserTransactionAllOfBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -71,7 +71,7 @@ class UserTransactionAllOfBuilder
   set type(String? type) => _$this._type = type;
 
   ListBuilder<Event>? _events;
-  ListBuilder<Event> get events => _$this._events ??= new ListBuilder<Event>();
+  ListBuilder<Event> get events => _$this._events ??= ListBuilder<Event>();
   set events(ListBuilder<Event>? events) => _$this._events = events;
 
   String? _timestamp;
@@ -109,7 +109,7 @@ class UserTransactionAllOfBuilder
     _$UserTransactionAllOf _$result;
     try {
       _$result = _$v ??
-          new _$UserTransactionAllOf._(
+          _$UserTransactionAllOf._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'UserTransactionAllOf', 'type'),
               events: events.build(),
@@ -121,7 +121,7 @@ class UserTransactionAllOfBuilder
         _$failedField = 'events';
         events.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'UserTransactionAllOf', _$failedField, e.toString());
       }
       rethrow;

@@ -13,7 +13,7 @@ class _$MoveStructField extends MoveStructField {
   final String type;
 
   factory _$MoveStructField([void Function(MoveStructFieldBuilder)? updates]) =>
-      (new MoveStructFieldBuilder()..update(updates)).build();
+      (MoveStructFieldBuilder()..update(updates)).build();
 
   _$MoveStructField._({required this.name, required this.type}) : super._() {
     BuiltValueNullFieldError.checkNotNull(name, 'MoveStructField', 'name');
@@ -25,8 +25,7 @@ class _$MoveStructField extends MoveStructField {
       (toBuilder()..update(updates)).build();
 
   @override
-  MoveStructFieldBuilder toBuilder() =>
-      new MoveStructFieldBuilder()..replace(this);
+  MoveStructFieldBuilder toBuilder() => MoveStructFieldBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -88,7 +87,7 @@ class MoveStructFieldBuilder
   @override
   _$MoveStructField build() {
     final _$result = _$v ??
-        new _$MoveStructField._(
+        _$MoveStructField._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, 'MoveStructField', 'name'),
             type: BuiltValueNullFieldError.checkNotNull(

@@ -7,61 +7,69 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'move_function_generic_type_params.g.dart';
+part 'move_struct_generic_type_params_inner.g.dart';
 
-/// MoveFunctionGenericTypeParams
+/// MoveStructGenericTypeParamsInner
 ///
 /// Properties:
 /// * [constraints]
-abstract class MoveFunctionGenericTypeParams
+/// * [isPhantom]
+abstract class MoveStructGenericTypeParamsInner
     implements
-        Built<MoveFunctionGenericTypeParams,
-            MoveFunctionGenericTypeParamsBuilder> {
+        Built<MoveStructGenericTypeParamsInner,
+            MoveStructGenericTypeParamsInnerBuilder> {
   @BuiltValueField(wireName: r'constraints')
   BuiltList<MoveAbility> get constraints;
 
-  MoveFunctionGenericTypeParams._();
+  @BuiltValueField(wireName: r'is_phantom')
+  bool get isPhantom;
+
+  MoveStructGenericTypeParamsInner._();
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(MoveFunctionGenericTypeParamsBuilder b) => b;
+  static void _defaults(MoveStructGenericTypeParamsInnerBuilder b) => b;
 
-  factory MoveFunctionGenericTypeParams(
-          [void updates(MoveFunctionGenericTypeParamsBuilder b)]) =
-      _$MoveFunctionGenericTypeParams;
+  factory MoveStructGenericTypeParamsInner(
+          [void updates(MoveStructGenericTypeParamsInnerBuilder b)]) =
+      _$MoveStructGenericTypeParamsInner;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MoveFunctionGenericTypeParams> get serializer =>
-      _$MoveFunctionGenericTypeParamsSerializer();
+  static Serializer<MoveStructGenericTypeParamsInner> get serializer =>
+      _$MoveStructGenericTypeParamsInnerSerializer();
 }
 
-class _$MoveFunctionGenericTypeParamsSerializer
-    implements StructuredSerializer<MoveFunctionGenericTypeParams> {
+class _$MoveStructGenericTypeParamsInnerSerializer
+    implements StructuredSerializer<MoveStructGenericTypeParamsInner> {
   @override
   final Iterable<Type> types = const [
-    MoveFunctionGenericTypeParams,
-    _$MoveFunctionGenericTypeParams
+    MoveStructGenericTypeParamsInner,
+    _$MoveStructGenericTypeParamsInner
   ];
 
   @override
-  final String wireName = r'MoveFunctionGenericTypeParams';
+  final String wireName = r'MoveStructGenericTypeParamsInner';
 
   @override
   Iterable<Object?> serialize(
-      Serializers serializers, MoveFunctionGenericTypeParams object,
+      Serializers serializers, MoveStructGenericTypeParamsInner object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[];
     result
       ..add(r'constraints')
       ..add(serializers.serialize(object.constraints,
           specifiedType: const FullType(BuiltList, [FullType(MoveAbility)])));
+    result
+      ..add(r'is_phantom')
+      ..add(serializers.serialize(object.isPhantom,
+          specifiedType: const FullType(bool)));
     return result;
   }
 
   @override
-  MoveFunctionGenericTypeParams deserialize(
+  MoveStructGenericTypeParamsInner deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = MoveFunctionGenericTypeParamsBuilder();
+    final result = MoveStructGenericTypeParamsInnerBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -76,6 +84,11 @@ class _$MoveFunctionGenericTypeParamsSerializer
                       const FullType(BuiltList, [FullType(MoveAbility)]))
               as BuiltList<MoveAbility>;
           result.constraints.replace(valueDes);
+          break;
+        case r'is_phantom':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool;
+          result.isPhantom = valueDes;
           break;
       }
     }

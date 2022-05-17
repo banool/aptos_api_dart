@@ -1,12 +1,12 @@
 import 'package:test/test.dart';
 import 'package:aptos_api_dart/aptos_api_dart.dart';
 
-// tests for MoveStructGenericTypeParams
+// tests for MoveStructGenericTypeParamsInner
 void main() {
-  final instance = MoveStructGenericTypeParamsBuilder();
+  final instance = MoveStructGenericTypeParamsInnerBuilder();
   // TODO add properties to the builder and call build()
 
-  group(MoveStructGenericTypeParams, () {
+  group(MoveStructGenericTypeParamsInner, () {
     // BuiltList<MoveAbility> constraints
     test('to test the property `constraints`', () async {
       // TODO

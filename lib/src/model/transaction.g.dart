@@ -57,7 +57,7 @@ class _$Transaction extends Transaction {
   final String proposer;
 
   factory _$Transaction([void Function(TransactionBuilder)? updates]) =>
-      (new TransactionBuilder()..update(updates)).build();
+      (TransactionBuilder()..update(updates)).build();
 
   _$Transaction._(
       {required this.type,
@@ -127,7 +127,7 @@ class _$Transaction extends Transaction {
       (toBuilder()..update(updates)).build();
 
   @override
-  TransactionBuilder toBuilder() => new TransactionBuilder()..replace(this);
+  TransactionBuilder toBuilder() => TransactionBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -272,17 +272,17 @@ class TransactionBuilder implements Builder<Transaction, TransactionBuilder> {
 
   TransactionPayloadBuilder? _payload;
   TransactionPayloadBuilder get payload =>
-      _$this._payload ??= new TransactionPayloadBuilder();
+      _$this._payload ??= TransactionPayloadBuilder();
   set payload(TransactionPayloadBuilder? payload) => _$this._payload = payload;
 
   TransactionSignatureBuilder? _signature;
   TransactionSignatureBuilder get signature =>
-      _$this._signature ??= new TransactionSignatureBuilder();
+      _$this._signature ??= TransactionSignatureBuilder();
   set signature(TransactionSignatureBuilder? signature) =>
       _$this._signature = signature;
 
   ListBuilder<Event>? _events;
-  ListBuilder<Event> get events => _$this._events ??= new ListBuilder<Event>();
+  ListBuilder<Event> get events => _$this._events ??= ListBuilder<Event>();
   set events(ListBuilder<Event>? events) => _$this._events = events;
 
   String? _version;
@@ -318,7 +318,7 @@ class TransactionBuilder implements Builder<Transaction, TransactionBuilder> {
 
   ListBuilder<WriteSetChange>? _changes;
   ListBuilder<WriteSetChange> get changes =>
-      _$this._changes ??= new ListBuilder<WriteSetChange>();
+      _$this._changes ??= ListBuilder<WriteSetChange>();
   set changes(ListBuilder<WriteSetChange>? changes) =>
       _$this._changes = changes;
 
@@ -336,7 +336,7 @@ class TransactionBuilder implements Builder<Transaction, TransactionBuilder> {
 
   ListBuilder<String>? _previousBlockVotes;
   ListBuilder<String> get previousBlockVotes =>
-      _$this._previousBlockVotes ??= new ListBuilder<String>();
+      _$this._previousBlockVotes ??= ListBuilder<String>();
   set previousBlockVotes(ListBuilder<String>? previousBlockVotes) =>
       _$this._previousBlockVotes = previousBlockVotes;
 
@@ -396,7 +396,7 @@ class TransactionBuilder implements Builder<Transaction, TransactionBuilder> {
     _$Transaction _$result;
     try {
       _$result = _$v ??
-          new _$Transaction._(
+          _$Transaction._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'Transaction', 'type'),
               hash: BuiltValueNullFieldError.checkNotNull(
@@ -446,7 +446,7 @@ class TransactionBuilder implements Builder<Transaction, TransactionBuilder> {
         _$failedField = 'previousBlockVotes';
         previousBlockVotes.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'Transaction', _$failedField, e.toString());
       }
       rethrow;

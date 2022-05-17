@@ -13,7 +13,7 @@ class _$MoveScript extends MoveScript {
   final MoveFunction? abi;
 
   factory _$MoveScript([void Function(MoveScriptBuilder)? updates]) =>
-      (new MoveScriptBuilder()..update(updates)).build();
+      (MoveScriptBuilder()..update(updates)).build();
 
   _$MoveScript._({required this.bytecode, this.abi}) : super._() {
     BuiltValueNullFieldError.checkNotNull(bytecode, 'MoveScript', 'bytecode');
@@ -24,7 +24,7 @@ class _$MoveScript extends MoveScript {
       (toBuilder()..update(updates)).build();
 
   @override
-  MoveScriptBuilder toBuilder() => new MoveScriptBuilder()..replace(this);
+  MoveScriptBuilder toBuilder() => MoveScriptBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -56,7 +56,7 @@ class MoveScriptBuilder implements Builder<MoveScript, MoveScriptBuilder> {
   set bytecode(String? bytecode) => _$this._bytecode = bytecode;
 
   MoveFunctionBuilder? _abi;
-  MoveFunctionBuilder get abi => _$this._abi ??= new MoveFunctionBuilder();
+  MoveFunctionBuilder get abi => _$this._abi ??= MoveFunctionBuilder();
   set abi(MoveFunctionBuilder? abi) => _$this._abi = abi;
 
   MoveScriptBuilder() {
@@ -89,7 +89,7 @@ class MoveScriptBuilder implements Builder<MoveScript, MoveScriptBuilder> {
     _$MoveScript _$result;
     try {
       _$result = _$v ??
-          new _$MoveScript._(
+          _$MoveScript._(
               bytecode: BuiltValueNullFieldError.checkNotNull(
                   bytecode, 'MoveScript', 'bytecode'),
               abi: _abi?.build());
@@ -99,7 +99,7 @@ class MoveScriptBuilder implements Builder<MoveScript, MoveScriptBuilder> {
         _$failedField = 'abi';
         _abi?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'MoveScript', _$failedField, e.toString());
       }
       rethrow;

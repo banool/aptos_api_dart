@@ -16,7 +16,7 @@ class _$TableItemRequest extends TableItemRequest {
 
   factory _$TableItemRequest(
           [void Function(TableItemRequestBuilder)? updates]) =>
-      (new TableItemRequestBuilder()..update(updates)).build();
+      (TableItemRequestBuilder()..update(updates)).build();
 
   _$TableItemRequest._(
       {required this.keyType, required this.valueType, this.key})
@@ -33,7 +33,7 @@ class _$TableItemRequest extends TableItemRequest {
 
   @override
   TableItemRequestBuilder toBuilder() =>
-      new TableItemRequestBuilder()..replace(this);
+      TableItemRequestBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -105,7 +105,7 @@ class TableItemRequestBuilder
   @override
   _$TableItemRequest build() {
     final _$result = _$v ??
-        new _$TableItemRequest._(
+        _$TableItemRequest._(
             keyType: BuiltValueNullFieldError.checkNotNull(
                 keyType, 'TableItemRequest', 'keyType'),
             valueType: BuiltValueNullFieldError.checkNotNull(

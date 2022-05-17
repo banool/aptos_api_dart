@@ -6,10 +6,10 @@ part of 'move_ability.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-const MoveAbility _$copy = const MoveAbility._('copy');
-const MoveAbility _$drop = const MoveAbility._('drop');
-const MoveAbility _$store = const MoveAbility._('store');
-const MoveAbility _$key = const MoveAbility._('key');
+const MoveAbility _$copy = MoveAbility._('copy');
+const MoveAbility _$drop = MoveAbility._('drop');
+const MoveAbility _$store = MoveAbility._('store');
+const MoveAbility _$key = MoveAbility._('key');
 
 MoveAbility _$valueOf(String name) {
   switch (name) {
@@ -22,12 +22,12 @@ MoveAbility _$valueOf(String name) {
     case 'key':
       return _$key;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<MoveAbility> _$values =
-    new BuiltSet<MoveAbility>(const <MoveAbility>[
+    BuiltSet<MoveAbility>(const <MoveAbility>[
   _$copy,
   _$drop,
   _$store,
@@ -49,16 +49,16 @@ abstract class _$MoveAbilityMixin {
   _$MoveAbilityMeta get MoveAbility => const _$MoveAbilityMeta();
 }
 
-Serializer<MoveAbility> _$moveAbilitySerializer = new _$MoveAbilitySerializer();
+Serializer<MoveAbility> _$moveAbilitySerializer = _$MoveAbilitySerializer();
 
 class _$MoveAbilitySerializer implements PrimitiveSerializer<MoveAbility> {
-  static const Map<String, Object> _toWire = const <String, Object>{
+  static const Map<String, Object> _toWire = <String, Object>{
     'copy': 'copy',
     'drop': 'drop',
     'store': 'store',
     'key': 'key',
   };
-  static const Map<Object, String> _fromWire = const <Object, String>{
+  static const Map<Object, String> _fromWire = <Object, String>{
     'copy': 'copy',
     'drop': 'drop',
     'store': 'store',

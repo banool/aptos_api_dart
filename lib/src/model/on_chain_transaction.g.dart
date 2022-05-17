@@ -58,7 +58,7 @@ class _$OnChainTransaction extends OnChainTransaction {
 
   factory _$OnChainTransaction(
           [void Function(OnChainTransactionBuilder)? updates]) =>
-      (new OnChainTransactionBuilder()..update(updates)).build();
+      (OnChainTransactionBuilder()..update(updates)).build();
 
   _$OnChainTransaction._(
       {required this.type,
@@ -139,7 +139,7 @@ class _$OnChainTransaction extends OnChainTransaction {
 
   @override
   OnChainTransactionBuilder toBuilder() =>
-      new OnChainTransactionBuilder()..replace(this);
+      OnChainTransactionBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -253,12 +253,12 @@ class OnChainTransactionBuilder
   set type(String? type) => _$this._type = type;
 
   ListBuilder<Event>? _events;
-  ListBuilder<Event> get events => _$this._events ??= new ListBuilder<Event>();
+  ListBuilder<Event> get events => _$this._events ??= ListBuilder<Event>();
   set events(ListBuilder<Event>? events) => _$this._events = events;
 
   TransactionPayloadBuilder? _payload;
   TransactionPayloadBuilder get payload =>
-      _$this._payload ??= new TransactionPayloadBuilder();
+      _$this._payload ??= TransactionPayloadBuilder();
   set payload(TransactionPayloadBuilder? payload) => _$this._payload = payload;
 
   String? _version;
@@ -298,7 +298,7 @@ class OnChainTransactionBuilder
 
   ListBuilder<WriteSetChange>? _changes;
   ListBuilder<WriteSetChange> get changes =>
-      _$this._changes ??= new ListBuilder<WriteSetChange>();
+      _$this._changes ??= ListBuilder<WriteSetChange>();
   set changes(ListBuilder<WriteSetChange>? changes) =>
       _$this._changes = changes;
 
@@ -335,7 +335,7 @@ class OnChainTransactionBuilder
 
   TransactionSignatureBuilder? _signature;
   TransactionSignatureBuilder get signature =>
-      _$this._signature ??= new TransactionSignatureBuilder();
+      _$this._signature ??= TransactionSignatureBuilder();
   set signature(TransactionSignatureBuilder? signature) =>
       _$this._signature = signature;
 
@@ -349,7 +349,7 @@ class OnChainTransactionBuilder
 
   ListBuilder<String>? _previousBlockVotes;
   ListBuilder<String> get previousBlockVotes =>
-      _$this._previousBlockVotes ??= new ListBuilder<String>();
+      _$this._previousBlockVotes ??= ListBuilder<String>();
   set previousBlockVotes(ListBuilder<String>? previousBlockVotes) =>
       _$this._previousBlockVotes = previousBlockVotes;
 
@@ -409,7 +409,7 @@ class OnChainTransactionBuilder
     _$OnChainTransaction _$result;
     try {
       _$result = _$v ??
-          new _$OnChainTransaction._(
+          _$OnChainTransaction._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'OnChainTransaction', 'type'),
               events: events.build(),
@@ -459,7 +459,7 @@ class OnChainTransactionBuilder
         _$failedField = 'previousBlockVotes';
         previousBlockVotes.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'OnChainTransaction', _$failedField, e.toString());
       }
       rethrow;

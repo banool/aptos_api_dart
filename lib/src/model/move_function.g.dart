@@ -7,11 +7,11 @@ part of 'move_function.dart';
 // **************************************************************************
 
 const MoveFunctionVisibilityEnum _$moveFunctionVisibilityEnum_public =
-    const MoveFunctionVisibilityEnum._('public');
+    MoveFunctionVisibilityEnum._('public');
 const MoveFunctionVisibilityEnum _$moveFunctionVisibilityEnum_script =
-    const MoveFunctionVisibilityEnum._('script');
+    MoveFunctionVisibilityEnum._('script');
 const MoveFunctionVisibilityEnum _$moveFunctionVisibilityEnum_friend =
-    const MoveFunctionVisibilityEnum._('friend');
+    MoveFunctionVisibilityEnum._('friend');
 
 MoveFunctionVisibilityEnum _$moveFunctionVisibilityEnumValueOf(String name) {
   switch (name) {
@@ -22,28 +22,28 @@ MoveFunctionVisibilityEnum _$moveFunctionVisibilityEnumValueOf(String name) {
     case 'friend':
       return _$moveFunctionVisibilityEnum_friend;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<MoveFunctionVisibilityEnum> _$moveFunctionVisibilityEnumValues =
-    new BuiltSet<MoveFunctionVisibilityEnum>(const <MoveFunctionVisibilityEnum>[
+    BuiltSet<MoveFunctionVisibilityEnum>(const <MoveFunctionVisibilityEnum>[
   _$moveFunctionVisibilityEnum_public,
   _$moveFunctionVisibilityEnum_script,
   _$moveFunctionVisibilityEnum_friend,
 ]);
 
 Serializer<MoveFunctionVisibilityEnum> _$moveFunctionVisibilityEnumSerializer =
-    new _$MoveFunctionVisibilityEnumSerializer();
+    _$MoveFunctionVisibilityEnumSerializer();
 
 class _$MoveFunctionVisibilityEnumSerializer
     implements PrimitiveSerializer<MoveFunctionVisibilityEnum> {
-  static const Map<String, Object> _toWire = const <String, Object>{
+  static const Map<String, Object> _toWire = <String, Object>{
     'public': 'public',
     'script': 'script',
     'friend': 'friend',
   };
-  static const Map<Object, String> _fromWire = const <Object, String>{
+  static const Map<Object, String> _fromWire = <Object, String>{
     'public': 'public',
     'script': 'script',
     'friend': 'friend',
@@ -73,14 +73,14 @@ class _$MoveFunction extends MoveFunction {
   @override
   final MoveFunctionVisibilityEnum visibility;
   @override
-  final BuiltList<MoveFunctionGenericTypeParams> genericTypeParams;
+  final BuiltList<MoveFunctionGenericTypeParamsInner> genericTypeParams;
   @override
   final BuiltList<String> params;
   @override
   final BuiltList<String> return_;
 
   factory _$MoveFunction([void Function(MoveFunctionBuilder)? updates]) =>
-      (new MoveFunctionBuilder()..update(updates)).build();
+      (MoveFunctionBuilder()..update(updates)).build();
 
   _$MoveFunction._(
       {required this.name,
@@ -103,7 +103,7 @@ class _$MoveFunction extends MoveFunction {
       (toBuilder()..update(updates)).build();
 
   @override
-  MoveFunctionBuilder toBuilder() => new MoveFunctionBuilder()..replace(this);
+  MoveFunctionBuilder toBuilder() => MoveFunctionBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -151,22 +151,20 @@ class MoveFunctionBuilder
   set visibility(MoveFunctionVisibilityEnum? visibility) =>
       _$this._visibility = visibility;
 
-  ListBuilder<MoveFunctionGenericTypeParams>? _genericTypeParams;
-  ListBuilder<MoveFunctionGenericTypeParams> get genericTypeParams =>
+  ListBuilder<MoveFunctionGenericTypeParamsInner>? _genericTypeParams;
+  ListBuilder<MoveFunctionGenericTypeParamsInner> get genericTypeParams =>
       _$this._genericTypeParams ??=
-          new ListBuilder<MoveFunctionGenericTypeParams>();
+          ListBuilder<MoveFunctionGenericTypeParamsInner>();
   set genericTypeParams(
-          ListBuilder<MoveFunctionGenericTypeParams>? genericTypeParams) =>
+          ListBuilder<MoveFunctionGenericTypeParamsInner>? genericTypeParams) =>
       _$this._genericTypeParams = genericTypeParams;
 
   ListBuilder<String>? _params;
-  ListBuilder<String> get params =>
-      _$this._params ??= new ListBuilder<String>();
+  ListBuilder<String> get params => _$this._params ??= ListBuilder<String>();
   set params(ListBuilder<String>? params) => _$this._params = params;
 
   ListBuilder<String>? _return_;
-  ListBuilder<String> get return_ =>
-      _$this._return_ ??= new ListBuilder<String>();
+  ListBuilder<String> get return_ => _$this._return_ ??= ListBuilder<String>();
   set return_(ListBuilder<String>? return_) => _$this._return_ = return_;
 
   MoveFunctionBuilder() {
@@ -202,7 +200,7 @@ class MoveFunctionBuilder
     _$MoveFunction _$result;
     try {
       _$result = _$v ??
-          new _$MoveFunction._(
+          _$MoveFunction._(
               name: BuiltValueNullFieldError.checkNotNull(
                   name, 'MoveFunction', 'name'),
               visibility: BuiltValueNullFieldError.checkNotNull(
@@ -220,7 +218,7 @@ class MoveFunctionBuilder
         _$failedField = 'return_';
         return_.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'MoveFunction', _$failedField, e.toString());
       }
       rethrow;

@@ -13,7 +13,7 @@ class _$MoveModule extends MoveModule {
   final MoveModuleABI? abi;
 
   factory _$MoveModule([void Function(MoveModuleBuilder)? updates]) =>
-      (new MoveModuleBuilder()..update(updates)).build();
+      (MoveModuleBuilder()..update(updates)).build();
 
   _$MoveModule._({required this.bytecode, this.abi}) : super._() {
     BuiltValueNullFieldError.checkNotNull(bytecode, 'MoveModule', 'bytecode');
@@ -24,7 +24,7 @@ class _$MoveModule extends MoveModule {
       (toBuilder()..update(updates)).build();
 
   @override
-  MoveModuleBuilder toBuilder() => new MoveModuleBuilder()..replace(this);
+  MoveModuleBuilder toBuilder() => MoveModuleBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -56,7 +56,7 @@ class MoveModuleBuilder implements Builder<MoveModule, MoveModuleBuilder> {
   set bytecode(String? bytecode) => _$this._bytecode = bytecode;
 
   MoveModuleABIBuilder? _abi;
-  MoveModuleABIBuilder get abi => _$this._abi ??= new MoveModuleABIBuilder();
+  MoveModuleABIBuilder get abi => _$this._abi ??= MoveModuleABIBuilder();
   set abi(MoveModuleABIBuilder? abi) => _$this._abi = abi;
 
   MoveModuleBuilder() {
@@ -89,7 +89,7 @@ class MoveModuleBuilder implements Builder<MoveModule, MoveModuleBuilder> {
     _$MoveModule _$result;
     try {
       _$result = _$v ??
-          new _$MoveModule._(
+          _$MoveModule._(
               bytecode: BuiltValueNullFieldError.checkNotNull(
                   bytecode, 'MoveModule', 'bytecode'),
               abi: _abi?.build());
@@ -99,7 +99,7 @@ class MoveModuleBuilder implements Builder<MoveModule, MoveModuleBuilder> {
         _$failedField = 'abi';
         _abi?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'MoveModule', _$failedField, e.toString());
       }
       rethrow;

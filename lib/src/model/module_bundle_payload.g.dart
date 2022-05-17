@@ -14,7 +14,7 @@ class _$ModuleBundlePayload extends ModuleBundlePayload {
 
   factory _$ModuleBundlePayload(
           [void Function(ModuleBundlePayloadBuilder)? updates]) =>
-      (new ModuleBundlePayloadBuilder()..update(updates)).build();
+      (ModuleBundlePayloadBuilder()..update(updates)).build();
 
   _$ModuleBundlePayload._({required this.type, required this.modules})
       : super._() {
@@ -30,7 +30,7 @@ class _$ModuleBundlePayload extends ModuleBundlePayload {
 
   @override
   ModuleBundlePayloadBuilder toBuilder() =>
-      new ModuleBundlePayloadBuilder()..replace(this);
+      ModuleBundlePayloadBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -64,7 +64,7 @@ class ModuleBundlePayloadBuilder
 
   ListBuilder<MoveModule>? _modules;
   ListBuilder<MoveModule> get modules =>
-      _$this._modules ??= new ListBuilder<MoveModule>();
+      _$this._modules ??= ListBuilder<MoveModule>();
   set modules(ListBuilder<MoveModule>? modules) => _$this._modules = modules;
 
   ModuleBundlePayloadBuilder() {
@@ -97,7 +97,7 @@ class ModuleBundlePayloadBuilder
     _$ModuleBundlePayload _$result;
     try {
       _$result = _$v ??
-          new _$ModuleBundlePayload._(
+          _$ModuleBundlePayload._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'ModuleBundlePayload', 'type'),
               modules: modules.build());
@@ -107,7 +107,7 @@ class ModuleBundlePayloadBuilder
         _$failedField = 'modules';
         modules.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'ModuleBundlePayload', _$failedField, e.toString());
       }
       rethrow;

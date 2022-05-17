@@ -13,7 +13,7 @@ class _$Account extends Account {
   final String authenticationKey;
 
   factory _$Account([void Function(AccountBuilder)? updates]) =>
-      (new AccountBuilder()..update(updates)).build();
+      (AccountBuilder()..update(updates)).build();
 
   _$Account._({required this.sequenceNumber, required this.authenticationKey})
       : super._() {
@@ -28,7 +28,7 @@ class _$Account extends Account {
       (toBuilder()..update(updates)).build();
 
   @override
-  AccountBuilder toBuilder() => new AccountBuilder()..replace(this);
+  AccountBuilder toBuilder() => AccountBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -94,7 +94,7 @@ class AccountBuilder implements Builder<Account, AccountBuilder> {
   @override
   _$Account build() {
     final _$result = _$v ??
-        new _$Account._(
+        _$Account._(
             sequenceNumber: BuiltValueNullFieldError.checkNotNull(
                 sequenceNumber, 'Account', 'sequenceNumber'),
             authenticationKey: BuiltValueNullFieldError.checkNotNull(

@@ -40,7 +40,7 @@ class _$BlockMetadataTransaction extends BlockMetadataTransaction {
 
   factory _$BlockMetadataTransaction(
           [void Function(BlockMetadataTransactionBuilder)? updates]) =>
-      (new BlockMetadataTransactionBuilder()..update(updates)).build();
+      (BlockMetadataTransactionBuilder()..update(updates)).build();
 
   _$BlockMetadataTransaction._(
       {required this.type,
@@ -97,7 +97,7 @@ class _$BlockMetadataTransaction extends BlockMetadataTransaction {
 
   @override
   BlockMetadataTransactionBuilder toBuilder() =>
-      new BlockMetadataTransactionBuilder()..replace(this);
+      BlockMetadataTransactionBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -196,7 +196,7 @@ class BlockMetadataTransactionBuilder
 
   ListBuilder<String>? _previousBlockVotes;
   ListBuilder<String> get previousBlockVotes =>
-      _$this._previousBlockVotes ??= new ListBuilder<String>();
+      _$this._previousBlockVotes ??= ListBuilder<String>();
   set previousBlockVotes(ListBuilder<String>? previousBlockVotes) =>
       _$this._previousBlockVotes = previousBlockVotes;
 
@@ -245,7 +245,7 @@ class BlockMetadataTransactionBuilder
 
   ListBuilder<WriteSetChange>? _changes;
   ListBuilder<WriteSetChange> get changes =>
-      _$this._changes ??= new ListBuilder<WriteSetChange>();
+      _$this._changes ??= ListBuilder<WriteSetChange>();
   set changes(ListBuilder<WriteSetChange>? changes) =>
       _$this._changes = changes;
 
@@ -292,7 +292,7 @@ class BlockMetadataTransactionBuilder
     _$BlockMetadataTransaction _$result;
     try {
       _$result = _$v ??
-          new _$BlockMetadataTransaction._(
+          _$BlockMetadataTransaction._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'BlockMetadataTransaction', 'type'),
               id: BuiltValueNullFieldError.checkNotNull(
@@ -326,7 +326,7 @@ class BlockMetadataTransactionBuilder
         _$failedField = 'changes';
         changes.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'BlockMetadataTransaction', _$failedField, e.toString());
       }
       rethrow;

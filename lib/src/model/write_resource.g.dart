@@ -17,7 +17,7 @@ class _$WriteResource extends WriteResource {
   final AccountResource data;
 
   factory _$WriteResource([void Function(WriteResourceBuilder)? updates]) =>
-      (new WriteResourceBuilder()..update(updates)).build();
+      (WriteResourceBuilder()..update(updates)).build();
 
   _$WriteResource._(
       {required this.type,
@@ -37,7 +37,7 @@ class _$WriteResource extends WriteResource {
       (toBuilder()..update(updates)).build();
 
   @override
-  WriteResourceBuilder toBuilder() => new WriteResourceBuilder()..replace(this);
+  WriteResourceBuilder toBuilder() => WriteResourceBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -85,8 +85,7 @@ class WriteResourceBuilder
   set address(String? address) => _$this._address = address;
 
   AccountResourceBuilder? _data;
-  AccountResourceBuilder get data =>
-      _$this._data ??= new AccountResourceBuilder();
+  AccountResourceBuilder get data => _$this._data ??= AccountResourceBuilder();
   set data(AccountResourceBuilder? data) => _$this._data = data;
 
   WriteResourceBuilder() {
@@ -121,7 +120,7 @@ class WriteResourceBuilder
     _$WriteResource _$result;
     try {
       _$result = _$v ??
-          new _$WriteResource._(
+          _$WriteResource._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'WriteResource', 'type'),
               stateKeyHash: BuiltValueNullFieldError.checkNotNull(
@@ -135,7 +134,7 @@ class WriteResourceBuilder
         _$failedField = 'data';
         data.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'WriteResource', _$failedField, e.toString());
       }
       rethrow;

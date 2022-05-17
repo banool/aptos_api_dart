@@ -17,7 +17,7 @@ class _$WriteModule extends WriteModule {
   final MoveModule data;
 
   factory _$WriteModule([void Function(WriteModuleBuilder)? updates]) =>
-      (new WriteModuleBuilder()..update(updates)).build();
+      (WriteModuleBuilder()..update(updates)).build();
 
   _$WriteModule._(
       {required this.type,
@@ -37,7 +37,7 @@ class _$WriteModule extends WriteModule {
       (toBuilder()..update(updates)).build();
 
   @override
-  WriteModuleBuilder toBuilder() => new WriteModuleBuilder()..replace(this);
+  WriteModuleBuilder toBuilder() => WriteModuleBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -84,7 +84,7 @@ class WriteModuleBuilder implements Builder<WriteModule, WriteModuleBuilder> {
   set address(String? address) => _$this._address = address;
 
   MoveModuleBuilder? _data;
-  MoveModuleBuilder get data => _$this._data ??= new MoveModuleBuilder();
+  MoveModuleBuilder get data => _$this._data ??= MoveModuleBuilder();
   set data(MoveModuleBuilder? data) => _$this._data = data;
 
   WriteModuleBuilder() {
@@ -119,7 +119,7 @@ class WriteModuleBuilder implements Builder<WriteModule, WriteModuleBuilder> {
     _$WriteModule _$result;
     try {
       _$result = _$v ??
-          new _$WriteModule._(
+          _$WriteModule._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'WriteModule', 'type'),
               stateKeyHash: BuiltValueNullFieldError.checkNotNull(
@@ -133,7 +133,7 @@ class WriteModuleBuilder implements Builder<WriteModule, WriteModuleBuilder> {
         _$failedField = 'data';
         data.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'WriteModule', _$failedField, e.toString());
       }
       rethrow;

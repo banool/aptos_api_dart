@@ -17,7 +17,7 @@ class _$ScriptPayload extends ScriptPayload {
   final BuiltList<JsonObject?> arguments;
 
   factory _$ScriptPayload([void Function(ScriptPayloadBuilder)? updates]) =>
-      (new ScriptPayloadBuilder()..update(updates)).build();
+      (ScriptPayloadBuilder()..update(updates)).build();
 
   _$ScriptPayload._(
       {required this.type,
@@ -38,7 +38,7 @@ class _$ScriptPayload extends ScriptPayload {
       (toBuilder()..update(updates)).build();
 
   @override
-  ScriptPayloadBuilder toBuilder() => new ScriptPayloadBuilder()..replace(this);
+  ScriptPayloadBuilder toBuilder() => ScriptPayloadBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -77,18 +77,18 @@ class ScriptPayloadBuilder
   set type(String? type) => _$this._type = type;
 
   MoveScriptBuilder? _code;
-  MoveScriptBuilder get code => _$this._code ??= new MoveScriptBuilder();
+  MoveScriptBuilder get code => _$this._code ??= MoveScriptBuilder();
   set code(MoveScriptBuilder? code) => _$this._code = code;
 
   ListBuilder<String>? _typeArguments;
   ListBuilder<String> get typeArguments =>
-      _$this._typeArguments ??= new ListBuilder<String>();
+      _$this._typeArguments ??= ListBuilder<String>();
   set typeArguments(ListBuilder<String>? typeArguments) =>
       _$this._typeArguments = typeArguments;
 
   ListBuilder<JsonObject?>? _arguments;
   ListBuilder<JsonObject?> get arguments =>
-      _$this._arguments ??= new ListBuilder<JsonObject?>();
+      _$this._arguments ??= ListBuilder<JsonObject?>();
   set arguments(ListBuilder<JsonObject?>? arguments) =>
       _$this._arguments = arguments;
 
@@ -124,7 +124,7 @@ class ScriptPayloadBuilder
     _$ScriptPayload _$result;
     try {
       _$result = _$v ??
-          new _$ScriptPayload._(
+          _$ScriptPayload._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'ScriptPayload', 'type'),
               code: code.build(),
@@ -140,7 +140,7 @@ class ScriptPayloadBuilder
         _$failedField = 'arguments';
         arguments.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'ScriptPayload', _$failedField, e.toString());
       }
       rethrow;

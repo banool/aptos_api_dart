@@ -15,7 +15,7 @@ class _$AptosError extends AptosError {
   final String? aptosLedgerVersion;
 
   factory _$AptosError([void Function(AptosErrorBuilder)? updates]) =>
-      (new AptosErrorBuilder()..update(updates)).build();
+      (AptosErrorBuilder()..update(updates)).build();
 
   _$AptosError._(
       {required this.code, required this.message, this.aptosLedgerVersion})
@@ -29,7 +29,7 @@ class _$AptosError extends AptosError {
       (toBuilder()..update(updates)).build();
 
   @override
-  AptosErrorBuilder toBuilder() => new AptosErrorBuilder()..replace(this);
+  AptosErrorBuilder toBuilder() => AptosErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -101,7 +101,7 @@ class AptosErrorBuilder implements Builder<AptosError, AptosErrorBuilder> {
   @override
   _$AptosError build() {
     final _$result = _$v ??
-        new _$AptosError._(
+        _$AptosError._(
             code: BuiltValueNullFieldError.checkNotNull(
                 code, 'AptosError', 'code'),
             message: BuiltValueNullFieldError.checkNotNull(

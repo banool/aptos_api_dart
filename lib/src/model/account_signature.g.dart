@@ -24,7 +24,7 @@ class _$AccountSignature extends AccountSignature {
 
   factory _$AccountSignature(
           [void Function(AccountSignatureBuilder)? updates]) =>
-      (new AccountSignatureBuilder()..update(updates)).build();
+      (AccountSignatureBuilder()..update(updates)).build();
 
   _$AccountSignature._(
       {required this.type,
@@ -55,7 +55,7 @@ class _$AccountSignature extends AccountSignature {
 
   @override
   AccountSignatureBuilder toBuilder() =>
-      new AccountSignatureBuilder()..replace(this);
+      AccountSignatureBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -116,13 +116,13 @@ class AccountSignatureBuilder
 
   ListBuilder<String>? _publicKeys;
   ListBuilder<String> get publicKeys =>
-      _$this._publicKeys ??= new ListBuilder<String>();
+      _$this._publicKeys ??= ListBuilder<String>();
   set publicKeys(ListBuilder<String>? publicKeys) =>
       _$this._publicKeys = publicKeys;
 
   ListBuilder<String>? _signatures;
   ListBuilder<String> get signatures =>
-      _$this._signatures ??= new ListBuilder<String>();
+      _$this._signatures ??= ListBuilder<String>();
   set signatures(ListBuilder<String>? signatures) =>
       _$this._signatures = signatures;
 
@@ -169,7 +169,7 @@ class AccountSignatureBuilder
     _$AccountSignature _$result;
     try {
       _$result = _$v ??
-          new _$AccountSignature._(
+          _$AccountSignature._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'AccountSignature', 'type'),
               publicKey: BuiltValueNullFieldError.checkNotNull(
@@ -190,7 +190,7 @@ class AccountSignatureBuilder
         _$failedField = 'signatures';
         signatures.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'AccountSignature', _$failedField, e.toString());
       }
       rethrow;

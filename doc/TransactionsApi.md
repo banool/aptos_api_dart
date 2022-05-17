@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **createSigningMessage**
-> InlineResponse200 createSigningMessage(userTransactionRequest)
+> CreateSigningMessage200Response createSigningMessage(userTransactionRequest)
 
 Create transaction signing message
 
@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**CreateSigningMessage200Response**](CreateSigningMessage200Response.md)
 
 ### Authorization
 

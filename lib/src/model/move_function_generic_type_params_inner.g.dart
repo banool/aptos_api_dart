@@ -1,37 +1,40 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'move_function_generic_type_params.dart';
+part of 'move_function_generic_type_params_inner.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$MoveFunctionGenericTypeParams extends MoveFunctionGenericTypeParams {
+class _$MoveFunctionGenericTypeParamsInner
+    extends MoveFunctionGenericTypeParamsInner {
   @override
   final BuiltList<MoveAbility> constraints;
 
-  factory _$MoveFunctionGenericTypeParams(
-          [void Function(MoveFunctionGenericTypeParamsBuilder)? updates]) =>
-      (new MoveFunctionGenericTypeParamsBuilder()..update(updates)).build();
+  factory _$MoveFunctionGenericTypeParamsInner(
+          [void Function(MoveFunctionGenericTypeParamsInnerBuilder)?
+              updates]) =>
+      (MoveFunctionGenericTypeParamsInnerBuilder()..update(updates)).build();
 
-  _$MoveFunctionGenericTypeParams._({required this.constraints}) : super._() {
+  _$MoveFunctionGenericTypeParamsInner._({required this.constraints})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        constraints, 'MoveFunctionGenericTypeParams', 'constraints');
+        constraints, 'MoveFunctionGenericTypeParamsInner', 'constraints');
   }
 
   @override
-  MoveFunctionGenericTypeParams rebuild(
-          void Function(MoveFunctionGenericTypeParamsBuilder) updates) =>
+  MoveFunctionGenericTypeParamsInner rebuild(
+          void Function(MoveFunctionGenericTypeParamsInnerBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  MoveFunctionGenericTypeParamsBuilder toBuilder() =>
-      new MoveFunctionGenericTypeParamsBuilder()..replace(this);
+  MoveFunctionGenericTypeParamsInnerBuilder toBuilder() =>
+      MoveFunctionGenericTypeParamsInnerBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is MoveFunctionGenericTypeParams &&
+    return other is MoveFunctionGenericTypeParamsInner &&
         constraints == other.constraints;
   }
 
@@ -42,29 +45,29 @@ class _$MoveFunctionGenericTypeParams extends MoveFunctionGenericTypeParams {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('MoveFunctionGenericTypeParams')
+    return (newBuiltValueToStringHelper('MoveFunctionGenericTypeParamsInner')
           ..add('constraints', constraints))
         .toString();
   }
 }
 
-class MoveFunctionGenericTypeParamsBuilder
+class MoveFunctionGenericTypeParamsInnerBuilder
     implements
-        Builder<MoveFunctionGenericTypeParams,
-            MoveFunctionGenericTypeParamsBuilder> {
-  _$MoveFunctionGenericTypeParams? _$v;
+        Builder<MoveFunctionGenericTypeParamsInner,
+            MoveFunctionGenericTypeParamsInnerBuilder> {
+  _$MoveFunctionGenericTypeParamsInner? _$v;
 
   ListBuilder<MoveAbility>? _constraints;
   ListBuilder<MoveAbility> get constraints =>
-      _$this._constraints ??= new ListBuilder<MoveAbility>();
+      _$this._constraints ??= ListBuilder<MoveAbility>();
   set constraints(ListBuilder<MoveAbility>? constraints) =>
       _$this._constraints = constraints;
 
-  MoveFunctionGenericTypeParamsBuilder() {
-    MoveFunctionGenericTypeParams._defaults(this);
+  MoveFunctionGenericTypeParamsInnerBuilder() {
+    MoveFunctionGenericTypeParamsInner._defaults(this);
   }
 
-  MoveFunctionGenericTypeParamsBuilder get _$this {
+  MoveFunctionGenericTypeParamsInnerBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _constraints = $v.constraints.toBuilder();
@@ -74,22 +77,23 @@ class MoveFunctionGenericTypeParamsBuilder
   }
 
   @override
-  void replace(MoveFunctionGenericTypeParams other) {
+  void replace(MoveFunctionGenericTypeParamsInner other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$MoveFunctionGenericTypeParams;
+    _$v = other as _$MoveFunctionGenericTypeParamsInner;
   }
 
   @override
-  void update(void Function(MoveFunctionGenericTypeParamsBuilder)? updates) {
+  void update(
+      void Function(MoveFunctionGenericTypeParamsInnerBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$MoveFunctionGenericTypeParams build() {
-    _$MoveFunctionGenericTypeParams _$result;
+  _$MoveFunctionGenericTypeParamsInner build() {
+    _$MoveFunctionGenericTypeParamsInner _$result;
     try {
       _$result = _$v ??
-          new _$MoveFunctionGenericTypeParams._(
+          _$MoveFunctionGenericTypeParamsInner._(
               constraints: constraints.build());
     } catch (_) {
       late String _$failedField;
@@ -97,8 +101,8 @@ class MoveFunctionGenericTypeParamsBuilder
         _$failedField = 'constraints';
         constraints.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            'MoveFunctionGenericTypeParams', _$failedField, e.toString());
+        throw BuiltValueNestedFieldError(
+            'MoveFunctionGenericTypeParamsInner', _$failedField, e.toString());
       }
       rethrow;
     }

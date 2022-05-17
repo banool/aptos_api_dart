@@ -17,7 +17,7 @@ class _$DeleteResource extends DeleteResource {
   final String resource;
 
   factory _$DeleteResource([void Function(DeleteResourceBuilder)? updates]) =>
-      (new DeleteResourceBuilder()..update(updates)).build();
+      (DeleteResourceBuilder()..update(updates)).build();
 
   _$DeleteResource._(
       {required this.type,
@@ -38,8 +38,7 @@ class _$DeleteResource extends DeleteResource {
       (toBuilder()..update(updates)).build();
 
   @override
-  DeleteResourceBuilder toBuilder() =>
-      new DeleteResourceBuilder()..replace(this);
+  DeleteResourceBuilder toBuilder() => DeleteResourceBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -120,7 +119,7 @@ class DeleteResourceBuilder
   @override
   _$DeleteResource build() {
     final _$result = _$v ??
-        new _$DeleteResource._(
+        _$DeleteResource._(
             type: BuiltValueNullFieldError.checkNotNull(
                 type, 'DeleteResource', 'type'),
             stateKeyHash: BuiltValueNullFieldError.checkNotNull(

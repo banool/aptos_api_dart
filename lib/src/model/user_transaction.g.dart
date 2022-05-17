@@ -49,7 +49,7 @@ class _$UserTransaction extends UserTransaction {
   final BuiltList<WriteSetChange> changes;
 
   factory _$UserTransaction([void Function(UserTransactionBuilder)? updates]) =>
-      (new UserTransactionBuilder()..update(updates)).build();
+      (UserTransactionBuilder()..update(updates)).build();
 
   _$UserTransaction._(
       {required this.type,
@@ -116,8 +116,7 @@ class _$UserTransaction extends UserTransaction {
       (toBuilder()..update(updates)).build();
 
   @override
-  UserTransactionBuilder toBuilder() =>
-      new UserTransactionBuilder()..replace(this);
+  UserTransactionBuilder toBuilder() => UserTransactionBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -235,7 +234,7 @@ class UserTransactionBuilder
   set type(String? type) => _$this._type = type;
 
   ListBuilder<Event>? _events;
-  ListBuilder<Event> get events => _$this._events ??= new ListBuilder<Event>();
+  ListBuilder<Event> get events => _$this._events ??= ListBuilder<Event>();
   set events(ListBuilder<Event>? events) => _$this._events = events;
 
   String? _timestamp;
@@ -271,12 +270,12 @@ class UserTransactionBuilder
 
   TransactionPayloadBuilder? _payload;
   TransactionPayloadBuilder get payload =>
-      _$this._payload ??= new TransactionPayloadBuilder();
+      _$this._payload ??= TransactionPayloadBuilder();
   set payload(TransactionPayloadBuilder? payload) => _$this._payload = payload;
 
   TransactionSignatureBuilder? _signature;
   TransactionSignatureBuilder get signature =>
-      _$this._signature ??= new TransactionSignatureBuilder();
+      _$this._signature ??= TransactionSignatureBuilder();
   set signature(TransactionSignatureBuilder? signature) =>
       _$this._signature = signature;
 
@@ -317,7 +316,7 @@ class UserTransactionBuilder
 
   ListBuilder<WriteSetChange>? _changes;
   ListBuilder<WriteSetChange> get changes =>
-      _$this._changes ??= new ListBuilder<WriteSetChange>();
+      _$this._changes ??= ListBuilder<WriteSetChange>();
   set changes(ListBuilder<WriteSetChange>? changes) =>
       _$this._changes = changes;
 
@@ -369,7 +368,7 @@ class UserTransactionBuilder
     _$UserTransaction _$result;
     try {
       _$result = _$v ??
-          new _$UserTransaction._(
+          _$UserTransaction._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'UserTransaction', 'type'),
               events: events.build(),
@@ -412,7 +411,7 @@ class UserTransactionBuilder
         _$failedField = 'changes';
         changes.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'UserTransaction', _$failedField, e.toString());
       }
       rethrow;

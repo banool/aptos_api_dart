@@ -20,7 +20,7 @@ class _$MultiEd25519Signature extends MultiEd25519Signature {
 
   factory _$MultiEd25519Signature(
           [void Function(MultiEd25519SignatureBuilder)? updates]) =>
-      (new MultiEd25519SignatureBuilder()..update(updates)).build();
+      (MultiEd25519SignatureBuilder()..update(updates)).build();
 
   _$MultiEd25519Signature._(
       {required this.type,
@@ -48,7 +48,7 @@ class _$MultiEd25519Signature extends MultiEd25519Signature {
 
   @override
   MultiEd25519SignatureBuilder toBuilder() =>
-      new MultiEd25519SignatureBuilder()..replace(this);
+      MultiEd25519SignatureBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -93,13 +93,13 @@ class MultiEd25519SignatureBuilder
 
   ListBuilder<String>? _publicKeys;
   ListBuilder<String> get publicKeys =>
-      _$this._publicKeys ??= new ListBuilder<String>();
+      _$this._publicKeys ??= ListBuilder<String>();
   set publicKeys(ListBuilder<String>? publicKeys) =>
       _$this._publicKeys = publicKeys;
 
   ListBuilder<String>? _signatures;
   ListBuilder<String> get signatures =>
-      _$this._signatures ??= new ListBuilder<String>();
+      _$this._signatures ??= ListBuilder<String>();
   set signatures(ListBuilder<String>? signatures) =>
       _$this._signatures = signatures;
 
@@ -144,7 +144,7 @@ class MultiEd25519SignatureBuilder
     _$MultiEd25519Signature _$result;
     try {
       _$result = _$v ??
-          new _$MultiEd25519Signature._(
+          _$MultiEd25519Signature._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'MultiEd25519Signature', 'type'),
               publicKeys: publicKeys.build(),
@@ -161,7 +161,7 @@ class MultiEd25519SignatureBuilder
         _$failedField = 'signatures';
         signatures.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'MultiEd25519Signature', _$failedField, e.toString());
       }
       rethrow;

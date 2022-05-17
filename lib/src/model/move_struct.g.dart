@@ -14,12 +14,12 @@ class _$MoveStruct extends MoveStruct {
   @override
   final BuiltList<MoveAbility> abilities;
   @override
-  final BuiltList<MoveStructGenericTypeParams> genericTypeParams;
+  final BuiltList<MoveStructGenericTypeParamsInner> genericTypeParams;
   @override
   final BuiltList<MoveStructField> fields;
 
   factory _$MoveStruct([void Function(MoveStructBuilder)? updates]) =>
-      (new MoveStructBuilder()..update(updates)).build();
+      (MoveStructBuilder()..update(updates)).build();
 
   _$MoveStruct._(
       {required this.name,
@@ -41,7 +41,7 @@ class _$MoveStruct extends MoveStruct {
       (toBuilder()..update(updates)).build();
 
   @override
-  MoveStructBuilder toBuilder() => new MoveStructBuilder()..replace(this);
+  MoveStructBuilder toBuilder() => MoveStructBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -89,21 +89,21 @@ class MoveStructBuilder implements Builder<MoveStruct, MoveStructBuilder> {
 
   ListBuilder<MoveAbility>? _abilities;
   ListBuilder<MoveAbility> get abilities =>
-      _$this._abilities ??= new ListBuilder<MoveAbility>();
+      _$this._abilities ??= ListBuilder<MoveAbility>();
   set abilities(ListBuilder<MoveAbility>? abilities) =>
       _$this._abilities = abilities;
 
-  ListBuilder<MoveStructGenericTypeParams>? _genericTypeParams;
-  ListBuilder<MoveStructGenericTypeParams> get genericTypeParams =>
+  ListBuilder<MoveStructGenericTypeParamsInner>? _genericTypeParams;
+  ListBuilder<MoveStructGenericTypeParamsInner> get genericTypeParams =>
       _$this._genericTypeParams ??=
-          new ListBuilder<MoveStructGenericTypeParams>();
+          ListBuilder<MoveStructGenericTypeParamsInner>();
   set genericTypeParams(
-          ListBuilder<MoveStructGenericTypeParams>? genericTypeParams) =>
+          ListBuilder<MoveStructGenericTypeParamsInner>? genericTypeParams) =>
       _$this._genericTypeParams = genericTypeParams;
 
   ListBuilder<MoveStructField>? _fields;
   ListBuilder<MoveStructField> get fields =>
-      _$this._fields ??= new ListBuilder<MoveStructField>();
+      _$this._fields ??= ListBuilder<MoveStructField>();
   set fields(ListBuilder<MoveStructField>? fields) => _$this._fields = fields;
 
   MoveStructBuilder() {
@@ -139,7 +139,7 @@ class MoveStructBuilder implements Builder<MoveStruct, MoveStructBuilder> {
     _$MoveStruct _$result;
     try {
       _$result = _$v ??
-          new _$MoveStruct._(
+          _$MoveStruct._(
               name: BuiltValueNullFieldError.checkNotNull(
                   name, 'MoveStruct', 'name'),
               isNative: BuiltValueNullFieldError.checkNotNull(
@@ -157,7 +157,7 @@ class MoveStructBuilder implements Builder<MoveStruct, MoveStructBuilder> {
         _$failedField = 'fields';
         fields.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'MoveStruct', _$failedField, e.toString());
       }
       rethrow;

@@ -24,7 +24,7 @@ class _$UserTransactionRequest extends UserTransactionRequest {
 
   factory _$UserTransactionRequest(
           [void Function(UserTransactionRequestBuilder)? updates]) =>
-      (new UserTransactionRequestBuilder()..update(updates)).build();
+      (UserTransactionRequestBuilder()..update(updates)).build();
 
   _$UserTransactionRequest._(
       {required this.sender,
@@ -58,7 +58,7 @@ class _$UserTransactionRequest extends UserTransactionRequest {
 
   @override
   UserTransactionRequestBuilder toBuilder() =>
-      new UserTransactionRequestBuilder()..replace(this);
+      UserTransactionRequestBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -134,7 +134,7 @@ class UserTransactionRequestBuilder
 
   TransactionPayloadBuilder? _payload;
   TransactionPayloadBuilder get payload =>
-      _$this._payload ??= new TransactionPayloadBuilder();
+      _$this._payload ??= TransactionPayloadBuilder();
   set payload(TransactionPayloadBuilder? payload) => _$this._payload = payload;
 
   UserTransactionRequestBuilder() {
@@ -172,7 +172,7 @@ class UserTransactionRequestBuilder
     _$UserTransactionRequest _$result;
     try {
       _$result = _$v ??
-          new _$UserTransactionRequest._(
+          _$UserTransactionRequest._(
               sender: BuiltValueNullFieldError.checkNotNull(
                   sender, 'UserTransactionRequest', 'sender'),
               sequenceNumber: BuiltValueNullFieldError.checkNotNull(
@@ -194,7 +194,7 @@ class UserTransactionRequestBuilder
         _$failedField = 'payload';
         payload.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'UserTransactionRequest', _$failedField, e.toString());
       }
       rethrow;

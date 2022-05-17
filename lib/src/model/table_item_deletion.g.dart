@@ -14,7 +14,7 @@ class _$TableItemDeletion extends TableItemDeletion {
 
   factory _$TableItemDeletion(
           [void Function(TableItemDeletionBuilder)? updates]) =>
-      (new TableItemDeletionBuilder()..update(updates)).build();
+      (TableItemDeletionBuilder()..update(updates)).build();
 
   _$TableItemDeletion._({required this.handle, required this.key}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
@@ -28,7 +28,7 @@ class _$TableItemDeletion extends TableItemDeletion {
 
   @override
   TableItemDeletionBuilder toBuilder() =>
-      new TableItemDeletionBuilder()..replace(this);
+      TableItemDeletionBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -92,7 +92,7 @@ class TableItemDeletionBuilder
   @override
   _$TableItemDeletion build() {
     final _$result = _$v ??
-        new _$TableItemDeletion._(
+        _$TableItemDeletion._(
             handle: BuiltValueNullFieldError.checkNotNull(
                 handle, 'TableItemDeletion', 'handle'),
             key: BuiltValueNullFieldError.checkNotNull(

@@ -17,7 +17,7 @@ class _$DeleteModule extends DeleteModule {
   final String module;
 
   factory _$DeleteModule([void Function(DeleteModuleBuilder)? updates]) =>
-      (new DeleteModuleBuilder()..update(updates)).build();
+      (DeleteModuleBuilder()..update(updates)).build();
 
   _$DeleteModule._(
       {required this.type,
@@ -37,7 +37,7 @@ class _$DeleteModule extends DeleteModule {
       (toBuilder()..update(updates)).build();
 
   @override
-  DeleteModuleBuilder toBuilder() => new DeleteModuleBuilder()..replace(this);
+  DeleteModuleBuilder toBuilder() => DeleteModuleBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -118,7 +118,7 @@ class DeleteModuleBuilder
   @override
   _$DeleteModule build() {
     final _$result = _$v ??
-        new _$DeleteModule._(
+        _$DeleteModule._(
             type: BuiltValueNullFieldError.checkNotNull(
                 type, 'DeleteModule', 'type'),
             stateKeyHash: BuiltValueNullFieldError.checkNotNull(

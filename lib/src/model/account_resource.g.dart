@@ -13,7 +13,7 @@ class _$AccountResource extends AccountResource {
   final JsonObject data;
 
   factory _$AccountResource([void Function(AccountResourceBuilder)? updates]) =>
-      (new AccountResourceBuilder()..update(updates)).build();
+      (AccountResourceBuilder()..update(updates)).build();
 
   _$AccountResource._({required this.type, required this.data}) : super._() {
     BuiltValueNullFieldError.checkNotNull(type, 'AccountResource', 'type');
@@ -25,8 +25,7 @@ class _$AccountResource extends AccountResource {
       (toBuilder()..update(updates)).build();
 
   @override
-  AccountResourceBuilder toBuilder() =>
-      new AccountResourceBuilder()..replace(this);
+  AccountResourceBuilder toBuilder() => AccountResourceBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -88,7 +87,7 @@ class AccountResourceBuilder
   @override
   _$AccountResource build() {
     final _$result = _$v ??
-        new _$AccountResource._(
+        _$AccountResource._(
             type: BuiltValueNullFieldError.checkNotNull(
                 type, 'AccountResource', 'type'),
             data: BuiltValueNullFieldError.checkNotNull(

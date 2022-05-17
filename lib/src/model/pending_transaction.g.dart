@@ -30,7 +30,7 @@ class _$PendingTransaction extends PendingTransaction {
 
   factory _$PendingTransaction(
           [void Function(PendingTransactionBuilder)? updates]) =>
-      (new PendingTransactionBuilder()..update(updates)).build();
+      (PendingTransactionBuilder()..update(updates)).build();
 
   _$PendingTransaction._(
       {required this.type,
@@ -71,7 +71,7 @@ class _$PendingTransaction extends PendingTransaction {
 
   @override
   PendingTransactionBuilder toBuilder() =>
-      new PendingTransactionBuilder()..replace(this);
+      PendingTransactionBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -167,12 +167,12 @@ class PendingTransactionBuilder
 
   TransactionPayloadBuilder? _payload;
   TransactionPayloadBuilder get payload =>
-      _$this._payload ??= new TransactionPayloadBuilder();
+      _$this._payload ??= TransactionPayloadBuilder();
   set payload(TransactionPayloadBuilder? payload) => _$this._payload = payload;
 
   TransactionSignatureBuilder? _signature;
   TransactionSignatureBuilder get signature =>
-      _$this._signature ??= new TransactionSignatureBuilder();
+      _$this._signature ??= TransactionSignatureBuilder();
   set signature(TransactionSignatureBuilder? signature) =>
       _$this._signature = signature;
 
@@ -214,7 +214,7 @@ class PendingTransactionBuilder
     _$PendingTransaction _$result;
     try {
       _$result = _$v ??
-          new _$PendingTransaction._(
+          _$PendingTransaction._(
               type: BuiltValueNullFieldError.checkNotNull(
                   type, 'PendingTransaction', 'type'),
               hash: BuiltValueNullFieldError.checkNotNull(
@@ -243,7 +243,7 @@ class PendingTransactionBuilder
         _$failedField = 'signature';
         signature.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             'PendingTransaction', _$failedField, e.toString());
       }
       rethrow;
