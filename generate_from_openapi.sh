@@ -19,29 +19,15 @@ rm -rf .openapi-generator
 # Get latest generator
 docker pull openapitools/openapi-generator-cli
 
-# Make tempdir for building in to
-rm -rf $BUILD_DIR
-mkdir -p $BUILD_DIR
-
-# Copy in config file
-cp openapi-generator.yaml $BUILD_DIR
-
 # Generate code
 docker run \
   --rm \
-  --mount type=bind,source=$BUILD_DIR,target=/hostdir \
+  --mount type=bind,source=$PWD,target=/hostdir \
   openapitools/openapi-generator-cli:latest generate \
   -i https://raw.githubusercontent.com/aptos-labs/aptos-core/main/api/doc/openapi.yaml \
   -g dart-dio \
   -c /hostdir/openapi-generator.yaml \
   -o /hostdir
-
-# Move generated code into place
-mv $BUILD_DIR/* .
-mv $BUILD_DIR/.* || true
-
-# Clean up temp dir
-rm -rf $BUILD_DIR
 
 sleep 1
 
