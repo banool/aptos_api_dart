@@ -40,6 +40,8 @@ sleep 1
 # Get deps if necessary
 flutter pub get
 
+sleep 1
+
 # Complete the build
 flutter pub run build_runner build
 

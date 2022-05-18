@@ -11,7 +11,7 @@ class _$WriteSet extends WriteSet {
   final OneOf oneOf;
 
   factory _$WriteSet([void Function(WriteSetBuilder)? updates]) =>
-      (WriteSetBuilder()..update(updates)).build();
+      (WriteSetBuilder()..update(updates))._build();
 
   _$WriteSet._({required this.oneOf}) : super._() {
     BuiltValueNullFieldError.checkNotNull(oneOf, 'WriteSet', 'oneOf');
@@ -74,7 +74,9 @@ class WriteSetBuilder implements Builder<WriteSet, WriteSetBuilder> {
   }
 
   @override
-  _$WriteSet build() {
+  WriteSet build() => _build();
+
+  _$WriteSet _build() {
     final _$result = _$v ??
         _$WriteSet._(
             oneOf: BuiltValueNullFieldError.checkNotNull(
@@ -84,4 +86,4 @@ class WriteSetBuilder implements Builder<WriteSet, WriteSetBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
