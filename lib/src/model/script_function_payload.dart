@@ -6,6 +6,9 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:one_of/one_of.dart';
+import 'package:one_of/any_of.dart';
+// ignore_for_file: unused_element, unused_import
 
 part 'script_function_payload.g.dart';
 
@@ -16,6 +19,7 @@ part 'script_function_payload.g.dart';
 /// * [function_] - Script function id is string representation of a script function defined on-chain.  Format: `{address}::{module name}::{function name}`  Both `module name` and `function name` are case-sensitive.
 /// * [typeArguments] - Generic type arguments required by the script function.
 /// * [arguments] - The script function arguments.
+@BuiltValue()
 abstract class ScriptFunctionPayload
     implements Built<ScriptFunctionPayload, ScriptFunctionPayloadBuilder> {
   @BuiltValueField(wireName: r'type')
@@ -35,11 +39,11 @@ abstract class ScriptFunctionPayload
 
   ScriptFunctionPayload._();
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(ScriptFunctionPayloadBuilder b) => b;
-
   factory ScriptFunctionPayload(
       [void updates(ScriptFunctionPayloadBuilder b)]) = _$ScriptFunctionPayload;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(ScriptFunctionPayloadBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<ScriptFunctionPayload> get serializer =>
@@ -47,7 +51,7 @@ abstract class ScriptFunctionPayload
 }
 
 class _$ScriptFunctionPayloadSerializer
-    implements StructuredSerializer<ScriptFunctionPayload> {
+    implements PrimitiveSerializer<ScriptFunctionPayload> {
   @override
   final Iterable<Type> types = const [
     ScriptFunctionPayload,
@@ -57,43 +61,40 @@ class _$ScriptFunctionPayloadSerializer
   @override
   final String wireName = r'ScriptFunctionPayload';
 
-  @override
-  Iterable<Object?> serialize(
+  Iterable<Object?> _serializeProperties(
       Serializers serializers, ScriptFunctionPayload object,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[];
-    result
-      ..add(r'type')
-      ..add(serializers.serialize(object.type,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'function')
-      ..add(serializers.serialize(object.function_,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'type_arguments')
-      ..add(serializers.serialize(object.typeArguments,
-          specifiedType: const FullType(BuiltList, [FullType(String)])));
-    result
-      ..add(r'arguments')
-      ..add(serializers.serialize(object.arguments,
-          specifiedType:
-              const FullType(BuiltList, [FullType.nullable(JsonObject)])));
-    return result;
+      {FullType specifiedType = FullType.unspecified}) sync* {
+    yield r'type';
+    yield serializers.serialize(object.type,
+        specifiedType: const FullType(String));
+    yield r'function';
+    yield serializers.serialize(object.function_,
+        specifiedType: const FullType(String));
+    yield r'type_arguments';
+    yield serializers.serialize(object.typeArguments,
+        specifiedType: const FullType(BuiltList, [FullType(String)]));
+    yield r'arguments';
+    yield serializers.serialize(object.arguments,
+        specifiedType:
+            const FullType(BuiltList, [FullType.nullable(JsonObject)]));
   }
 
   @override
-  ScriptFunctionPayload deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
+  Object serialize(Serializers serializers, ScriptFunctionPayload object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = ScriptFunctionPayloadBuilder();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
+  }
 
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-
+  void _deserializeProperties(Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified,
+      required List<Object?> serializedList,
+      required ScriptFunctionPayloadBuilder result,
+      required List<Object?> unhandled}) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
       switch (key) {
         case r'type':
           final valueDes = serializers.deserialize(value,
@@ -118,8 +119,25 @@ class _$ScriptFunctionPayloadSerializer
               as BuiltList<JsonObject?>;
           result.arguments.replace(valueDes);
           break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
       }
     }
+  }
+
+  @override
+  ScriptFunctionPayload deserialize(Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = ScriptFunctionPayloadBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(serializers, serialized,
+        specifiedType: specifiedType,
+        serializedList: serializedList,
+        unhandled: unhandled,
+        result: result);
     return result.build();
   }
 }

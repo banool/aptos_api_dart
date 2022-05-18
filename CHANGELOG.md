@@ -1,3 +1,6 @@
+## 0.2.0
+- Use [this branch](https://github.com/Bdaya-Dev/openapi-generator/tree/dart-dio-handle-discriminator) of openapi-generator to get oneOf support.
+
 ## 0.1.1
 - Simplify generator script.
 

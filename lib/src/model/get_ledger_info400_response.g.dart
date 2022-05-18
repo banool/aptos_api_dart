@@ -63,20 +63,21 @@ class _$GetLedgerInfo400Response extends GetLedgerInfo400Response {
 
 class GetLedgerInfo400ResponseBuilder
     implements
-        Builder<GetLedgerInfo400Response, GetLedgerInfo400ResponseBuilder> {
+        Builder<GetLedgerInfo400Response, GetLedgerInfo400ResponseBuilder>,
+        AptosErrorBuilder {
   _$GetLedgerInfo400Response? _$v;
 
   int? _code;
   int? get code => _$this._code;
-  set code(int? code) => _$this._code = code;
+  set code(covariant int? code) => _$this._code = code;
 
   String? _message;
   String? get message => _$this._message;
-  set message(String? message) => _$this._message = message;
+  set message(covariant String? message) => _$this._message = message;
 
   String? _aptosLedgerVersion;
   String? get aptosLedgerVersion => _$this._aptosLedgerVersion;
-  set aptosLedgerVersion(String? aptosLedgerVersion) =>
+  set aptosLedgerVersion(covariant String? aptosLedgerVersion) =>
       _$this._aptosLedgerVersion = aptosLedgerVersion;
 
   GetLedgerInfo400ResponseBuilder() {
@@ -95,7 +96,7 @@ class GetLedgerInfo400ResponseBuilder
   }
 
   @override
-  void replace(GetLedgerInfo400Response other) {
+  void replace(covariant GetLedgerInfo400Response other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GetLedgerInfo400Response;
   }

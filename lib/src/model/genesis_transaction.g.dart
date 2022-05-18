@@ -147,61 +147,65 @@ class _$GenesisTransaction extends GenesisTransaction {
 }
 
 class GenesisTransactionBuilder
-    implements Builder<GenesisTransaction, GenesisTransactionBuilder> {
+    implements
+        Builder<GenesisTransaction, GenesisTransactionBuilder>,
+        GenesisTransactionAllOfBuilder,
+        OnChainTransactionInfoBuilder {
   _$GenesisTransaction? _$v;
 
   String? _type;
   String? get type => _$this._type;
-  set type(String? type) => _$this._type = type;
+  set type(covariant String? type) => _$this._type = type;
 
   ListBuilder<Event>? _events;
   ListBuilder<Event> get events => _$this._events ??= ListBuilder<Event>();
-  set events(ListBuilder<Event>? events) => _$this._events = events;
+  set events(covariant ListBuilder<Event>? events) => _$this._events = events;
 
   WriteSetPayloadBuilder? _payload;
   WriteSetPayloadBuilder get payload =>
       _$this._payload ??= WriteSetPayloadBuilder();
-  set payload(WriteSetPayloadBuilder? payload) => _$this._payload = payload;
+  set payload(covariant WriteSetPayloadBuilder? payload) =>
+      _$this._payload = payload;
 
   String? _version;
   String? get version => _$this._version;
-  set version(String? version) => _$this._version = version;
+  set version(covariant String? version) => _$this._version = version;
 
   String? _hash;
   String? get hash => _$this._hash;
-  set hash(String? hash) => _$this._hash = hash;
+  set hash(covariant String? hash) => _$this._hash = hash;
 
   String? _stateRootHash;
   String? get stateRootHash => _$this._stateRootHash;
-  set stateRootHash(String? stateRootHash) =>
+  set stateRootHash(covariant String? stateRootHash) =>
       _$this._stateRootHash = stateRootHash;
 
   String? _eventRootHash;
   String? get eventRootHash => _$this._eventRootHash;
-  set eventRootHash(String? eventRootHash) =>
+  set eventRootHash(covariant String? eventRootHash) =>
       _$this._eventRootHash = eventRootHash;
 
   String? _gasUsed;
   String? get gasUsed => _$this._gasUsed;
-  set gasUsed(String? gasUsed) => _$this._gasUsed = gasUsed;
+  set gasUsed(covariant String? gasUsed) => _$this._gasUsed = gasUsed;
 
   bool? _success;
   bool? get success => _$this._success;
-  set success(bool? success) => _$this._success = success;
+  set success(covariant bool? success) => _$this._success = success;
 
   String? _vmStatus;
   String? get vmStatus => _$this._vmStatus;
-  set vmStatus(String? vmStatus) => _$this._vmStatus = vmStatus;
+  set vmStatus(covariant String? vmStatus) => _$this._vmStatus = vmStatus;
 
   String? _accumulatorRootHash;
   String? get accumulatorRootHash => _$this._accumulatorRootHash;
-  set accumulatorRootHash(String? accumulatorRootHash) =>
+  set accumulatorRootHash(covariant String? accumulatorRootHash) =>
       _$this._accumulatorRootHash = accumulatorRootHash;
 
   ListBuilder<WriteSetChange>? _changes;
   ListBuilder<WriteSetChange> get changes =>
       _$this._changes ??= ListBuilder<WriteSetChange>();
-  set changes(ListBuilder<WriteSetChange>? changes) =>
+  set changes(covariant ListBuilder<WriteSetChange>? changes) =>
       _$this._changes = changes;
 
   GenesisTransactionBuilder() {
@@ -229,7 +233,8 @@ class GenesisTransactionBuilder
   }
 
   @override
-  void replace(GenesisTransaction other) {
+// ignore: override_on_non_overriding_method
+  void replace(covariant GenesisTransaction other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GenesisTransaction;
   }

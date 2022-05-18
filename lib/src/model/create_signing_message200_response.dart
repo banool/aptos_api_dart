@@ -4,6 +4,9 @@
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:one_of/one_of.dart';
+import 'package:one_of/any_of.dart';
+// ignore_for_file: unused_element, unused_import
 
 part 'create_signing_message200_response.g.dart';
 
@@ -11,6 +14,7 @@ part 'create_signing_message200_response.g.dart';
 ///
 /// Properties:
 /// * [message] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
+@BuiltValue()
 abstract class CreateSigningMessage200Response
     implements
         Built<CreateSigningMessage200Response,
@@ -21,12 +25,12 @@ abstract class CreateSigningMessage200Response
 
   CreateSigningMessage200Response._();
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(CreateSigningMessage200ResponseBuilder b) => b;
-
   factory CreateSigningMessage200Response(
           [void updates(CreateSigningMessage200ResponseBuilder b)]) =
       _$CreateSigningMessage200Response;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(CreateSigningMessage200ResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<CreateSigningMessage200Response> get serializer =>
@@ -34,7 +38,7 @@ abstract class CreateSigningMessage200Response
 }
 
 class _$CreateSigningMessage200ResponseSerializer
-    implements StructuredSerializer<CreateSigningMessage200Response> {
+    implements PrimitiveSerializer<CreateSigningMessage200Response> {
   @override
   final Iterable<Type> types = const [
     CreateSigningMessage200Response,
@@ -44,38 +48,57 @@ class _$CreateSigningMessage200ResponseSerializer
   @override
   final String wireName = r'CreateSigningMessage200Response';
 
-  @override
-  Iterable<Object?> serialize(
+  Iterable<Object?> _serializeProperties(
       Serializers serializers, CreateSigningMessage200Response object,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[];
-    result
-      ..add(r'message')
-      ..add(serializers.serialize(object.message,
-          specifiedType: const FullType(String)));
-    return result;
+      {FullType specifiedType = FullType.unspecified}) sync* {
+    yield r'message';
+    yield serializers.serialize(object.message,
+        specifiedType: const FullType(String));
   }
 
   @override
-  CreateSigningMessage200Response deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
+  Object serialize(
+      Serializers serializers, CreateSigningMessage200Response object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = CreateSigningMessage200ResponseBuilder();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
+  }
 
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-
+  void _deserializeProperties(Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified,
+      required List<Object?> serializedList,
+      required CreateSigningMessage200ResponseBuilder result,
+      required List<Object?> unhandled}) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
       switch (key) {
         case r'message':
           final valueDes = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           result.message = valueDes;
           break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
       }
     }
+  }
+
+  @override
+  CreateSigningMessage200Response deserialize(
+      Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = CreateSigningMessage200ResponseBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(serializers, serialized,
+        specifiedType: specifiedType,
+        serializedList: serializedList,
+        unhandled: unhandled,
+        result: result);
     return result.build();
   }
 }

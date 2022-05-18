@@ -6,7 +6,20 @@ part of 'genesis_transaction_all_of.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$GenesisTransactionAllOf extends GenesisTransactionAllOf {
+abstract class GenesisTransactionAllOfBuilder {
+  void replace(GenesisTransactionAllOf other);
+  void update(void Function(GenesisTransactionAllOfBuilder) updates);
+  String? get type;
+  set type(String? type);
+
+  ListBuilder<Event> get events;
+  set events(ListBuilder<Event>? events);
+
+  WriteSetPayloadBuilder get payload;
+  set payload(WriteSetPayloadBuilder? payload);
+}
+
+class _$$GenesisTransactionAllOf extends $GenesisTransactionAllOf {
   @override
   final String type;
   @override
@@ -14,34 +27,34 @@ class _$GenesisTransactionAllOf extends GenesisTransactionAllOf {
   @override
   final WriteSetPayload payload;
 
-  factory _$GenesisTransactionAllOf(
-          [void Function(GenesisTransactionAllOfBuilder)? updates]) =>
-      (GenesisTransactionAllOfBuilder()..update(updates)).build();
+  factory _$$GenesisTransactionAllOf(
+          [void Function($GenesisTransactionAllOfBuilder)? updates]) =>
+      ($GenesisTransactionAllOfBuilder()..update(updates)).build();
 
-  _$GenesisTransactionAllOf._(
+  _$$GenesisTransactionAllOf._(
       {required this.type, required this.events, required this.payload})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        type, 'GenesisTransactionAllOf', 'type');
+        type, '$GenesisTransactionAllOf', 'type');
     BuiltValueNullFieldError.checkNotNull(
-        events, 'GenesisTransactionAllOf', 'events');
+        events, '$GenesisTransactionAllOf', 'events');
     BuiltValueNullFieldError.checkNotNull(
-        payload, 'GenesisTransactionAllOf', 'payload');
+        payload, '$GenesisTransactionAllOf', 'payload');
   }
 
   @override
-  GenesisTransactionAllOf rebuild(
-          void Function(GenesisTransactionAllOfBuilder) updates) =>
+  $GenesisTransactionAllOf rebuild(
+          void Function($GenesisTransactionAllOfBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GenesisTransactionAllOfBuilder toBuilder() =>
-      GenesisTransactionAllOfBuilder()..replace(this);
+  $GenesisTransactionAllOfBuilder toBuilder() =>
+      $GenesisTransactionAllOfBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GenesisTransactionAllOf &&
+    return other is $GenesisTransactionAllOf &&
         type == other.type &&
         events == other.events &&
         payload == other.payload;
@@ -55,7 +68,7 @@ class _$GenesisTransactionAllOf extends GenesisTransactionAllOf {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GenesisTransactionAllOf')
+    return (newBuiltValueToStringHelper('$GenesisTransactionAllOf')
           ..add('type', type)
           ..add('events', events)
           ..add('payload', payload))
@@ -63,29 +76,31 @@ class _$GenesisTransactionAllOf extends GenesisTransactionAllOf {
   }
 }
 
-class GenesisTransactionAllOfBuilder
+class $GenesisTransactionAllOfBuilder
     implements
-        Builder<GenesisTransactionAllOf, GenesisTransactionAllOfBuilder> {
-  _$GenesisTransactionAllOf? _$v;
+        Builder<$GenesisTransactionAllOf, $GenesisTransactionAllOfBuilder>,
+        GenesisTransactionAllOfBuilder {
+  _$$GenesisTransactionAllOf? _$v;
 
   String? _type;
   String? get type => _$this._type;
-  set type(String? type) => _$this._type = type;
+  set type(covariant String? type) => _$this._type = type;
 
   ListBuilder<Event>? _events;
   ListBuilder<Event> get events => _$this._events ??= ListBuilder<Event>();
-  set events(ListBuilder<Event>? events) => _$this._events = events;
+  set events(covariant ListBuilder<Event>? events) => _$this._events = events;
 
   WriteSetPayloadBuilder? _payload;
   WriteSetPayloadBuilder get payload =>
       _$this._payload ??= WriteSetPayloadBuilder();
-  set payload(WriteSetPayloadBuilder? payload) => _$this._payload = payload;
+  set payload(covariant WriteSetPayloadBuilder? payload) =>
+      _$this._payload = payload;
 
-  GenesisTransactionAllOfBuilder() {
-    GenesisTransactionAllOf._defaults(this);
+  $GenesisTransactionAllOfBuilder() {
+    $GenesisTransactionAllOf._defaults(this);
   }
 
-  GenesisTransactionAllOfBuilder get _$this {
+  $GenesisTransactionAllOfBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _type = $v.type;
@@ -97,24 +112,24 @@ class GenesisTransactionAllOfBuilder
   }
 
   @override
-  void replace(GenesisTransactionAllOf other) {
+  void replace(covariant $GenesisTransactionAllOf other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$GenesisTransactionAllOf;
+    _$v = other as _$$GenesisTransactionAllOf;
   }
 
   @override
-  void update(void Function(GenesisTransactionAllOfBuilder)? updates) {
+  void update(void Function($GenesisTransactionAllOfBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$GenesisTransactionAllOf build() {
-    _$GenesisTransactionAllOf _$result;
+  _$$GenesisTransactionAllOf build() {
+    _$$GenesisTransactionAllOf _$result;
     try {
       _$result = _$v ??
-          _$GenesisTransactionAllOf._(
+          _$$GenesisTransactionAllOf._(
               type: BuiltValueNullFieldError.checkNotNull(
-                  type, 'GenesisTransactionAllOf', 'type'),
+                  type, '$GenesisTransactionAllOf', 'type'),
               events: events.build(),
               payload: payload.build());
     } catch (_) {
@@ -126,7 +141,7 @@ class GenesisTransactionAllOfBuilder
         payload.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            'GenesisTransactionAllOf', _$failedField, e.toString());
+            '$GenesisTransactionAllOf', _$failedField, e.toString());
       }
       rethrow;
     }

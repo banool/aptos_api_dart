@@ -3,7 +3,7 @@ import 'package:aptos_api_dart/aptos_api_dart.dart';
 
 // tests for UserTransactionRequest
 void main() {
-  final instance = UserTransactionRequestBuilder();
+  //final instance = UserTransactionRequestBuilder();
   // TODO add properties to the builder and call build()
 
   group(UserTransactionRequest, () {

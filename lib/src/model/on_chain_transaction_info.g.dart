@@ -6,7 +6,38 @@ part of 'on_chain_transaction_info.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$OnChainTransactionInfo extends OnChainTransactionInfo {
+abstract class OnChainTransactionInfoBuilder {
+  void replace(OnChainTransactionInfo other);
+  void update(void Function(OnChainTransactionInfoBuilder) updates);
+  String? get version;
+  set version(String? version);
+
+  String? get hash;
+  set hash(String? hash);
+
+  String? get stateRootHash;
+  set stateRootHash(String? stateRootHash);
+
+  String? get eventRootHash;
+  set eventRootHash(String? eventRootHash);
+
+  String? get gasUsed;
+  set gasUsed(String? gasUsed);
+
+  bool? get success;
+  set success(bool? success);
+
+  String? get vmStatus;
+  set vmStatus(String? vmStatus);
+
+  String? get accumulatorRootHash;
+  set accumulatorRootHash(String? accumulatorRootHash);
+
+  ListBuilder<WriteSetChange> get changes;
+  set changes(ListBuilder<WriteSetChange>? changes);
+}
+
+class _$$OnChainTransactionInfo extends $OnChainTransactionInfo {
   @override
   final String version;
   @override
@@ -26,11 +57,11 @@ class _$OnChainTransactionInfo extends OnChainTransactionInfo {
   @override
   final BuiltList<WriteSetChange> changes;
 
-  factory _$OnChainTransactionInfo(
-          [void Function(OnChainTransactionInfoBuilder)? updates]) =>
-      (OnChainTransactionInfoBuilder()..update(updates)).build();
+  factory _$$OnChainTransactionInfo(
+          [void Function($OnChainTransactionInfoBuilder)? updates]) =>
+      ($OnChainTransactionInfoBuilder()..update(updates)).build();
 
-  _$OnChainTransactionInfo._(
+  _$$OnChainTransactionInfo._(
       {required this.version,
       required this.hash,
       required this.stateRootHash,
@@ -42,38 +73,38 @@ class _$OnChainTransactionInfo extends OnChainTransactionInfo {
       required this.changes})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        version, 'OnChainTransactionInfo', 'version');
+        version, '$OnChainTransactionInfo', 'version');
     BuiltValueNullFieldError.checkNotNull(
-        hash, 'OnChainTransactionInfo', 'hash');
+        hash, '$OnChainTransactionInfo', 'hash');
     BuiltValueNullFieldError.checkNotNull(
-        stateRootHash, 'OnChainTransactionInfo', 'stateRootHash');
+        stateRootHash, '$OnChainTransactionInfo', 'stateRootHash');
     BuiltValueNullFieldError.checkNotNull(
-        eventRootHash, 'OnChainTransactionInfo', 'eventRootHash');
+        eventRootHash, '$OnChainTransactionInfo', 'eventRootHash');
     BuiltValueNullFieldError.checkNotNull(
-        gasUsed, 'OnChainTransactionInfo', 'gasUsed');
+        gasUsed, '$OnChainTransactionInfo', 'gasUsed');
     BuiltValueNullFieldError.checkNotNull(
-        success, 'OnChainTransactionInfo', 'success');
+        success, '$OnChainTransactionInfo', 'success');
     BuiltValueNullFieldError.checkNotNull(
-        vmStatus, 'OnChainTransactionInfo', 'vmStatus');
+        vmStatus, '$OnChainTransactionInfo', 'vmStatus');
     BuiltValueNullFieldError.checkNotNull(
-        accumulatorRootHash, 'OnChainTransactionInfo', 'accumulatorRootHash');
+        accumulatorRootHash, '$OnChainTransactionInfo', 'accumulatorRootHash');
     BuiltValueNullFieldError.checkNotNull(
-        changes, 'OnChainTransactionInfo', 'changes');
+        changes, '$OnChainTransactionInfo', 'changes');
   }
 
   @override
-  OnChainTransactionInfo rebuild(
-          void Function(OnChainTransactionInfoBuilder) updates) =>
+  $OnChainTransactionInfo rebuild(
+          void Function($OnChainTransactionInfoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  OnChainTransactionInfoBuilder toBuilder() =>
-      OnChainTransactionInfoBuilder()..replace(this);
+  $OnChainTransactionInfoBuilder toBuilder() =>
+      $OnChainTransactionInfoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is OnChainTransactionInfo &&
+    return other is $OnChainTransactionInfo &&
         version == other.version &&
         hash == other.hash &&
         stateRootHash == other.stateRootHash &&
@@ -105,7 +136,7 @@ class _$OnChainTransactionInfo extends OnChainTransactionInfo {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('OnChainTransactionInfo')
+    return (newBuiltValueToStringHelper('$OnChainTransactionInfo')
           ..add('version', version)
           ..add('hash', hash)
           ..add('stateRootHash', stateRootHash)
@@ -119,56 +150,58 @@ class _$OnChainTransactionInfo extends OnChainTransactionInfo {
   }
 }
 
-class OnChainTransactionInfoBuilder
-    implements Builder<OnChainTransactionInfo, OnChainTransactionInfoBuilder> {
-  _$OnChainTransactionInfo? _$v;
+class $OnChainTransactionInfoBuilder
+    implements
+        Builder<$OnChainTransactionInfo, $OnChainTransactionInfoBuilder>,
+        OnChainTransactionInfoBuilder {
+  _$$OnChainTransactionInfo? _$v;
 
   String? _version;
   String? get version => _$this._version;
-  set version(String? version) => _$this._version = version;
+  set version(covariant String? version) => _$this._version = version;
 
   String? _hash;
   String? get hash => _$this._hash;
-  set hash(String? hash) => _$this._hash = hash;
+  set hash(covariant String? hash) => _$this._hash = hash;
 
   String? _stateRootHash;
   String? get stateRootHash => _$this._stateRootHash;
-  set stateRootHash(String? stateRootHash) =>
+  set stateRootHash(covariant String? stateRootHash) =>
       _$this._stateRootHash = stateRootHash;
 
   String? _eventRootHash;
   String? get eventRootHash => _$this._eventRootHash;
-  set eventRootHash(String? eventRootHash) =>
+  set eventRootHash(covariant String? eventRootHash) =>
       _$this._eventRootHash = eventRootHash;
 
   String? _gasUsed;
   String? get gasUsed => _$this._gasUsed;
-  set gasUsed(String? gasUsed) => _$this._gasUsed = gasUsed;
+  set gasUsed(covariant String? gasUsed) => _$this._gasUsed = gasUsed;
 
   bool? _success;
   bool? get success => _$this._success;
-  set success(bool? success) => _$this._success = success;
+  set success(covariant bool? success) => _$this._success = success;
 
   String? _vmStatus;
   String? get vmStatus => _$this._vmStatus;
-  set vmStatus(String? vmStatus) => _$this._vmStatus = vmStatus;
+  set vmStatus(covariant String? vmStatus) => _$this._vmStatus = vmStatus;
 
   String? _accumulatorRootHash;
   String? get accumulatorRootHash => _$this._accumulatorRootHash;
-  set accumulatorRootHash(String? accumulatorRootHash) =>
+  set accumulatorRootHash(covariant String? accumulatorRootHash) =>
       _$this._accumulatorRootHash = accumulatorRootHash;
 
   ListBuilder<WriteSetChange>? _changes;
   ListBuilder<WriteSetChange> get changes =>
       _$this._changes ??= ListBuilder<WriteSetChange>();
-  set changes(ListBuilder<WriteSetChange>? changes) =>
+  set changes(covariant ListBuilder<WriteSetChange>? changes) =>
       _$this._changes = changes;
 
-  OnChainTransactionInfoBuilder() {
-    OnChainTransactionInfo._defaults(this);
+  $OnChainTransactionInfoBuilder() {
+    $OnChainTransactionInfo._defaults(this);
   }
 
-  OnChainTransactionInfoBuilder get _$this {
+  $OnChainTransactionInfoBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _version = $v.version;
@@ -186,38 +219,38 @@ class OnChainTransactionInfoBuilder
   }
 
   @override
-  void replace(OnChainTransactionInfo other) {
+  void replace(covariant $OnChainTransactionInfo other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$OnChainTransactionInfo;
+    _$v = other as _$$OnChainTransactionInfo;
   }
 
   @override
-  void update(void Function(OnChainTransactionInfoBuilder)? updates) {
+  void update(void Function($OnChainTransactionInfoBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$OnChainTransactionInfo build() {
-    _$OnChainTransactionInfo _$result;
+  _$$OnChainTransactionInfo build() {
+    _$$OnChainTransactionInfo _$result;
     try {
       _$result = _$v ??
-          _$OnChainTransactionInfo._(
+          _$$OnChainTransactionInfo._(
               version: BuiltValueNullFieldError.checkNotNull(
-                  version, 'OnChainTransactionInfo', 'version'),
+                  version, '$OnChainTransactionInfo', 'version'),
               hash: BuiltValueNullFieldError.checkNotNull(
-                  hash, 'OnChainTransactionInfo', 'hash'),
+                  hash, '$OnChainTransactionInfo', 'hash'),
               stateRootHash: BuiltValueNullFieldError.checkNotNull(
-                  stateRootHash, 'OnChainTransactionInfo', 'stateRootHash'),
+                  stateRootHash, '$OnChainTransactionInfo', 'stateRootHash'),
               eventRootHash: BuiltValueNullFieldError.checkNotNull(
-                  eventRootHash, 'OnChainTransactionInfo', 'eventRootHash'),
+                  eventRootHash, '$OnChainTransactionInfo', 'eventRootHash'),
               gasUsed: BuiltValueNullFieldError.checkNotNull(
-                  gasUsed, 'OnChainTransactionInfo', 'gasUsed'),
+                  gasUsed, '$OnChainTransactionInfo', 'gasUsed'),
               success: BuiltValueNullFieldError.checkNotNull(
-                  success, 'OnChainTransactionInfo', 'success'),
+                  success, '$OnChainTransactionInfo', 'success'),
               vmStatus: BuiltValueNullFieldError.checkNotNull(
-                  vmStatus, 'OnChainTransactionInfo', 'vmStatus'),
+                  vmStatus, '$OnChainTransactionInfo', 'vmStatus'),
               accumulatorRootHash: BuiltValueNullFieldError.checkNotNull(
-                  accumulatorRootHash, 'OnChainTransactionInfo', 'accumulatorRootHash'),
+                  accumulatorRootHash, '$OnChainTransactionInfo', 'accumulatorRootHash'),
               changes: changes.build());
     } catch (_) {
       late String _$failedField;
@@ -226,7 +259,7 @@ class OnChainTransactionInfoBuilder
         changes.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            'OnChainTransactionInfo', _$failedField, e.toString());
+            '$OnChainTransactionInfo', _$failedField, e.toString());
       }
       rethrow;
     }

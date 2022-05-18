@@ -4,6 +4,9 @@
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:one_of/one_of.dart';
+import 'package:one_of/any_of.dart';
+// ignore_for_file: unused_element, unused_import
 
 part 'table_item_write.g.dart';
 
@@ -13,6 +16,7 @@ part 'table_item_write.g.dart';
 /// * [handle] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
 /// * [key] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
 /// * [value] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
+@BuiltValue()
 abstract class TableItemWrite
     implements Built<TableItemWrite, TableItemWriteBuilder> {
   /// All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
@@ -29,11 +33,11 @@ abstract class TableItemWrite
 
   TableItemWrite._();
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(TableItemWriteBuilder b) => b;
-
   factory TableItemWrite([void updates(TableItemWriteBuilder b)]) =
       _$TableItemWrite;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(TableItemWriteBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<TableItemWrite> get serializer =>
@@ -41,44 +45,43 @@ abstract class TableItemWrite
 }
 
 class _$TableItemWriteSerializer
-    implements StructuredSerializer<TableItemWrite> {
+    implements PrimitiveSerializer<TableItemWrite> {
   @override
   final Iterable<Type> types = const [TableItemWrite, _$TableItemWrite];
 
   @override
   final String wireName = r'TableItemWrite';
 
-  @override
-  Iterable<Object?> serialize(Serializers serializers, TableItemWrite object,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[];
-    result
-      ..add(r'handle')
-      ..add(serializers.serialize(object.handle,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'key')
-      ..add(serializers.serialize(object.key,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'value')
-      ..add(serializers.serialize(object.value,
-          specifiedType: const FullType(String)));
-    return result;
+  Iterable<Object?> _serializeProperties(
+      Serializers serializers, TableItemWrite object,
+      {FullType specifiedType = FullType.unspecified}) sync* {
+    yield r'handle';
+    yield serializers.serialize(object.handle,
+        specifiedType: const FullType(String));
+    yield r'key';
+    yield serializers.serialize(object.key,
+        specifiedType: const FullType(String));
+    yield r'value';
+    yield serializers.serialize(object.value,
+        specifiedType: const FullType(String));
   }
 
   @override
-  TableItemWrite deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
+  Object serialize(Serializers serializers, TableItemWrite object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = TableItemWriteBuilder();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
+  }
 
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-
+  void _deserializeProperties(Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified,
+      required List<Object?> serializedList,
+      required TableItemWriteBuilder result,
+      required List<Object?> unhandled}) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
       switch (key) {
         case r'handle':
           final valueDes = serializers.deserialize(value,
@@ -95,8 +98,25 @@ class _$TableItemWriteSerializer
               specifiedType: const FullType(String)) as String;
           result.value = valueDes;
           break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
       }
     }
+  }
+
+  @override
+  TableItemWrite deserialize(Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = TableItemWriteBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(serializers, serialized,
+        specifiedType: specifiedType,
+        serializedList: serializedList,
+        unhandled: unhandled,
+        result: result);
     return result.build();
   }
 }

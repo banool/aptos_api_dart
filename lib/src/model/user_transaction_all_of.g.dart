@@ -6,7 +6,20 @@ part of 'user_transaction_all_of.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$UserTransactionAllOf extends UserTransactionAllOf {
+abstract class UserTransactionAllOfBuilder {
+  void replace(UserTransactionAllOf other);
+  void update(void Function(UserTransactionAllOfBuilder) updates);
+  String? get type;
+  set type(String? type);
+
+  ListBuilder<Event> get events;
+  set events(ListBuilder<Event>? events);
+
+  String? get timestamp;
+  set timestamp(String? timestamp);
+}
+
+class _$$UserTransactionAllOf extends $UserTransactionAllOf {
   @override
   final String type;
   @override
@@ -14,33 +27,34 @@ class _$UserTransactionAllOf extends UserTransactionAllOf {
   @override
   final String timestamp;
 
-  factory _$UserTransactionAllOf(
-          [void Function(UserTransactionAllOfBuilder)? updates]) =>
-      (UserTransactionAllOfBuilder()..update(updates)).build();
+  factory _$$UserTransactionAllOf(
+          [void Function($UserTransactionAllOfBuilder)? updates]) =>
+      ($UserTransactionAllOfBuilder()..update(updates)).build();
 
-  _$UserTransactionAllOf._(
+  _$$UserTransactionAllOf._(
       {required this.type, required this.events, required this.timestamp})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(type, 'UserTransactionAllOf', 'type');
     BuiltValueNullFieldError.checkNotNull(
-        events, 'UserTransactionAllOf', 'events');
+        type, '$UserTransactionAllOf', 'type');
     BuiltValueNullFieldError.checkNotNull(
-        timestamp, 'UserTransactionAllOf', 'timestamp');
+        events, '$UserTransactionAllOf', 'events');
+    BuiltValueNullFieldError.checkNotNull(
+        timestamp, '$UserTransactionAllOf', 'timestamp');
   }
 
   @override
-  UserTransactionAllOf rebuild(
-          void Function(UserTransactionAllOfBuilder) updates) =>
+  $UserTransactionAllOf rebuild(
+          void Function($UserTransactionAllOfBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  UserTransactionAllOfBuilder toBuilder() =>
-      UserTransactionAllOfBuilder()..replace(this);
+  $UserTransactionAllOfBuilder toBuilder() =>
+      $UserTransactionAllOfBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is UserTransactionAllOf &&
+    return other is $UserTransactionAllOf &&
         type == other.type &&
         events == other.events &&
         timestamp == other.timestamp;
@@ -54,7 +68,7 @@ class _$UserTransactionAllOf extends UserTransactionAllOf {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('UserTransactionAllOf')
+    return (newBuiltValueToStringHelper('$UserTransactionAllOf')
           ..add('type', type)
           ..add('events', events)
           ..add('timestamp', timestamp))
@@ -62,27 +76,29 @@ class _$UserTransactionAllOf extends UserTransactionAllOf {
   }
 }
 
-class UserTransactionAllOfBuilder
-    implements Builder<UserTransactionAllOf, UserTransactionAllOfBuilder> {
-  _$UserTransactionAllOf? _$v;
+class $UserTransactionAllOfBuilder
+    implements
+        Builder<$UserTransactionAllOf, $UserTransactionAllOfBuilder>,
+        UserTransactionAllOfBuilder {
+  _$$UserTransactionAllOf? _$v;
 
   String? _type;
   String? get type => _$this._type;
-  set type(String? type) => _$this._type = type;
+  set type(covariant String? type) => _$this._type = type;
 
   ListBuilder<Event>? _events;
   ListBuilder<Event> get events => _$this._events ??= ListBuilder<Event>();
-  set events(ListBuilder<Event>? events) => _$this._events = events;
+  set events(covariant ListBuilder<Event>? events) => _$this._events = events;
 
   String? _timestamp;
   String? get timestamp => _$this._timestamp;
-  set timestamp(String? timestamp) => _$this._timestamp = timestamp;
+  set timestamp(covariant String? timestamp) => _$this._timestamp = timestamp;
 
-  UserTransactionAllOfBuilder() {
-    UserTransactionAllOf._defaults(this);
+  $UserTransactionAllOfBuilder() {
+    $UserTransactionAllOf._defaults(this);
   }
 
-  UserTransactionAllOfBuilder get _$this {
+  $UserTransactionAllOfBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _type = $v.type;
@@ -94,27 +110,27 @@ class UserTransactionAllOfBuilder
   }
 
   @override
-  void replace(UserTransactionAllOf other) {
+  void replace(covariant $UserTransactionAllOf other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$UserTransactionAllOf;
+    _$v = other as _$$UserTransactionAllOf;
   }
 
   @override
-  void update(void Function(UserTransactionAllOfBuilder)? updates) {
+  void update(void Function($UserTransactionAllOfBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$UserTransactionAllOf build() {
-    _$UserTransactionAllOf _$result;
+  _$$UserTransactionAllOf build() {
+    _$$UserTransactionAllOf _$result;
     try {
       _$result = _$v ??
-          _$UserTransactionAllOf._(
+          _$$UserTransactionAllOf._(
               type: BuiltValueNullFieldError.checkNotNull(
-                  type, 'UserTransactionAllOf', 'type'),
+                  type, '$UserTransactionAllOf', 'type'),
               events: events.build(),
               timestamp: BuiltValueNullFieldError.checkNotNull(
-                  timestamp, 'UserTransactionAllOf', 'timestamp'));
+                  timestamp, '$UserTransactionAllOf', 'timestamp'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -122,7 +138,7 @@ class UserTransactionAllOfBuilder
         events.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            'UserTransactionAllOf', _$failedField, e.toString());
+            '$UserTransactionAllOf', _$failedField, e.toString());
       }
       rethrow;
     }

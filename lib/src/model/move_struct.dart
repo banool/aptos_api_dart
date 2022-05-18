@@ -8,6 +8,9 @@ import 'package:aptos_api_dart/src/model/move_struct_generic_type_params_inner.d
 import 'package:aptos_api_dart/src/model/move_struct_field.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:one_of/one_of.dart';
+import 'package:one_of/any_of.dart';
+// ignore_for_file: unused_element, unused_import
 
 part 'move_struct.g.dart';
 
@@ -19,80 +22,74 @@ part 'move_struct.g.dart';
 /// * [abilities]
 /// * [genericTypeParams]
 /// * [fields]
+@BuiltValue()
 abstract class MoveStruct implements Built<MoveStruct, MoveStructBuilder> {
   @BuiltValueField(wireName: r'name')
   String get name;
-
   @BuiltValueField(wireName: r'is_native')
   bool get isNative;
-
   @BuiltValueField(wireName: r'abilities')
   BuiltList<MoveAbility> get abilities;
-
   @BuiltValueField(wireName: r'generic_type_params')
   BuiltList<MoveStructGenericTypeParamsInner> get genericTypeParams;
-
   @BuiltValueField(wireName: r'fields')
   BuiltList<MoveStructField> get fields;
 
   MoveStruct._();
 
+  factory MoveStruct([void updates(MoveStructBuilder b)]) = _$MoveStruct;
+
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MoveStructBuilder b) => b;
-
-  factory MoveStruct([void updates(MoveStructBuilder b)]) = _$MoveStruct;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<MoveStruct> get serializer => _$MoveStructSerializer();
 }
 
-class _$MoveStructSerializer implements StructuredSerializer<MoveStruct> {
+class _$MoveStructSerializer implements PrimitiveSerializer<MoveStruct> {
   @override
   final Iterable<Type> types = const [MoveStruct, _$MoveStruct];
 
   @override
   final String wireName = r'MoveStruct';
 
-  @override
-  Iterable<Object?> serialize(Serializers serializers, MoveStruct object,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[];
-    result
-      ..add(r'name')
-      ..add(serializers.serialize(object.name,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'is_native')
-      ..add(serializers.serialize(object.isNative,
-          specifiedType: const FullType(bool)));
-    result
-      ..add(r'abilities')
-      ..add(serializers.serialize(object.abilities,
-          specifiedType: const FullType(BuiltList, [FullType(MoveAbility)])));
-    result
-      ..add(r'generic_type_params')
-      ..add(serializers.serialize(object.genericTypeParams,
-          specifiedType: const FullType(
-              BuiltList, [FullType(MoveStructGenericTypeParamsInner)])));
-    result
-      ..add(r'fields')
-      ..add(serializers.serialize(object.fields,
-          specifiedType:
-              const FullType(BuiltList, [FullType(MoveStructField)])));
-    return result;
+  Iterable<Object?> _serializeProperties(
+      Serializers serializers, MoveStruct object,
+      {FullType specifiedType = FullType.unspecified}) sync* {
+    yield r'name';
+    yield serializers.serialize(object.name,
+        specifiedType: const FullType(String));
+    yield r'is_native';
+    yield serializers.serialize(object.isNative,
+        specifiedType: const FullType(bool));
+    yield r'abilities';
+    yield serializers.serialize(object.abilities,
+        specifiedType: const FullType(BuiltList, [FullType(MoveAbility)]));
+    yield r'generic_type_params';
+    yield serializers.serialize(object.genericTypeParams,
+        specifiedType: const FullType(
+            BuiltList, [FullType(MoveStructGenericTypeParamsInner)]));
+    yield r'fields';
+    yield serializers.serialize(object.fields,
+        specifiedType: const FullType(BuiltList, [FullType(MoveStructField)]));
   }
 
   @override
-  MoveStruct deserialize(Serializers serializers, Iterable<Object?> serialized,
+  Object serialize(Serializers serializers, MoveStruct object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = MoveStructBuilder();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
+  }
 
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-
+  void _deserializeProperties(Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified,
+      required List<Object?> serializedList,
+      required MoveStructBuilder result,
+      required List<Object?> unhandled}) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
       switch (key) {
         case r'name':
           final valueDes = serializers.deserialize(value,
@@ -125,8 +122,25 @@ class _$MoveStructSerializer implements StructuredSerializer<MoveStruct> {
               as BuiltList<MoveStructField>;
           result.fields.replace(valueDes);
           break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
       }
     }
+  }
+
+  @override
+  MoveStruct deserialize(Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = MoveStructBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(serializers, serialized,
+        specifiedType: specifiedType,
+        serializedList: serializedList,
+        unhandled: unhandled,
+        result: result);
     return result.build();
   }
 }

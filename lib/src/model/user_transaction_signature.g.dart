@@ -6,32 +6,39 @@ part of 'user_transaction_signature.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$UserTransactionSignature extends UserTransactionSignature {
+abstract class UserTransactionSignatureBuilder {
+  void replace(UserTransactionSignature other);
+  void update(void Function(UserTransactionSignatureBuilder) updates);
+  TransactionSignatureBuilder get signature;
+  set signature(TransactionSignatureBuilder? signature);
+}
+
+class _$$UserTransactionSignature extends $UserTransactionSignature {
   @override
   final TransactionSignature signature;
 
-  factory _$UserTransactionSignature(
-          [void Function(UserTransactionSignatureBuilder)? updates]) =>
-      (UserTransactionSignatureBuilder()..update(updates)).build();
+  factory _$$UserTransactionSignature(
+          [void Function($UserTransactionSignatureBuilder)? updates]) =>
+      ($UserTransactionSignatureBuilder()..update(updates)).build();
 
-  _$UserTransactionSignature._({required this.signature}) : super._() {
+  _$$UserTransactionSignature._({required this.signature}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        signature, 'UserTransactionSignature', 'signature');
+        signature, '$UserTransactionSignature', 'signature');
   }
 
   @override
-  UserTransactionSignature rebuild(
-          void Function(UserTransactionSignatureBuilder) updates) =>
+  $UserTransactionSignature rebuild(
+          void Function($UserTransactionSignatureBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  UserTransactionSignatureBuilder toBuilder() =>
-      UserTransactionSignatureBuilder()..replace(this);
+  $UserTransactionSignatureBuilder toBuilder() =>
+      $UserTransactionSignatureBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is UserTransactionSignature && signature == other.signature;
+    return other is $UserTransactionSignature && signature == other.signature;
   }
 
   @override
@@ -41,28 +48,29 @@ class _$UserTransactionSignature extends UserTransactionSignature {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('UserTransactionSignature')
+    return (newBuiltValueToStringHelper('$UserTransactionSignature')
           ..add('signature', signature))
         .toString();
   }
 }
 
-class UserTransactionSignatureBuilder
+class $UserTransactionSignatureBuilder
     implements
-        Builder<UserTransactionSignature, UserTransactionSignatureBuilder> {
-  _$UserTransactionSignature? _$v;
+        Builder<$UserTransactionSignature, $UserTransactionSignatureBuilder>,
+        UserTransactionSignatureBuilder {
+  _$$UserTransactionSignature? _$v;
 
   TransactionSignatureBuilder? _signature;
   TransactionSignatureBuilder get signature =>
       _$this._signature ??= TransactionSignatureBuilder();
-  set signature(TransactionSignatureBuilder? signature) =>
+  set signature(covariant TransactionSignatureBuilder? signature) =>
       _$this._signature = signature;
 
-  UserTransactionSignatureBuilder() {
-    UserTransactionSignature._defaults(this);
+  $UserTransactionSignatureBuilder() {
+    $UserTransactionSignature._defaults(this);
   }
 
-  UserTransactionSignatureBuilder get _$this {
+  $UserTransactionSignatureBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _signature = $v.signature.toBuilder();
@@ -72,22 +80,22 @@ class UserTransactionSignatureBuilder
   }
 
   @override
-  void replace(UserTransactionSignature other) {
+  void replace(covariant $UserTransactionSignature other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$UserTransactionSignature;
+    _$v = other as _$$UserTransactionSignature;
   }
 
   @override
-  void update(void Function(UserTransactionSignatureBuilder)? updates) {
+  void update(void Function($UserTransactionSignatureBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$UserTransactionSignature build() {
-    _$UserTransactionSignature _$result;
+  _$$UserTransactionSignature build() {
+    _$$UserTransactionSignature _$result;
     try {
       _$result =
-          _$v ?? _$UserTransactionSignature._(signature: signature.build());
+          _$v ?? _$$UserTransactionSignature._(signature: signature.build());
     } catch (_) {
       late String _$failedField;
       try {
@@ -95,7 +103,7 @@ class UserTransactionSignatureBuilder
         signature.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            'UserTransactionSignature', _$failedField, e.toString());
+            '$UserTransactionSignature', _$failedField, e.toString());
       }
       rethrow;
     }

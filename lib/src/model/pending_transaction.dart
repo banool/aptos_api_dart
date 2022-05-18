@@ -9,6 +9,9 @@ import 'package:aptos_api_dart/src/model/user_transaction_signature.dart';
 import 'package:aptos_api_dart/src/model/transaction_payload.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:one_of/one_of.dart';
+import 'package:one_of/any_of.dart';
+// ignore_for_file: unused_element, unused_import
 
 part 'pending_transaction.g.dart';
 
@@ -25,51 +28,20 @@ part 'pending_transaction.g.dart';
 /// * [expirationTimestampSecs] - Timestamp in seconds, e.g. transaction expiration timestamp.
 /// * [payload]
 /// * [signature]
+@BuiltValue()
 abstract class PendingTransaction
-    implements Built<PendingTransaction, PendingTransactionBuilder> {
-  @BuiltValueField(wireName: r'type')
-  String get type;
-
-  /// All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
-  @BuiltValueField(wireName: r'hash')
-  String get hash;
-
-  /// Hex-encoded 16 bytes Aptos account address.  Prefixed with `0x` and leading zeros are trimmed.  See [doc](https://diem.github.io/move/address.html) for more details.
-  @BuiltValueField(wireName: r'sender')
-  String get sender;
-
-  /// Unsigned int64 type value
-  @BuiltValueField(wireName: r'sequence_number')
-  String get sequenceNumber;
-
-  /// Unsigned int64 type value
-  @BuiltValueField(wireName: r'max_gas_amount')
-  String get maxGasAmount;
-
-  /// Unsigned int64 type value
-  @BuiltValueField(wireName: r'gas_unit_price')
-  String get gasUnitPrice;
-
-  @BuiltValueField(wireName: r'gas_currency_code')
-  String get gasCurrencyCode;
-
-  /// Timestamp in seconds, e.g. transaction expiration timestamp.
-  @BuiltValueField(wireName: r'expiration_timestamp_secs')
-  String get expirationTimestampSecs;
-
-  @BuiltValueField(wireName: r'payload')
-  TransactionPayload get payload;
-
-  @BuiltValueField(wireName: r'signature')
-  TransactionSignature get signature;
-
+    implements
+        PendingTransactionAllOf,
+        UserTransactionRequest,
+        UserTransactionSignature,
+        Built<PendingTransaction, PendingTransactionBuilder> {
   PendingTransaction._();
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(PendingTransactionBuilder b) => b;
 
   factory PendingTransaction([void updates(PendingTransactionBuilder b)]) =
       _$PendingTransaction;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(PendingTransactionBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<PendingTransaction> get serializer =>
@@ -77,113 +49,79 @@ abstract class PendingTransaction
 }
 
 class _$PendingTransactionSerializer
-    implements StructuredSerializer<PendingTransaction> {
+    implements PrimitiveSerializer<PendingTransaction> {
   @override
   final Iterable<Type> types = const [PendingTransaction, _$PendingTransaction];
 
   @override
   final String wireName = r'PendingTransaction';
 
-  @override
-  Iterable<Object?> serialize(
+  Iterable<Object?> _serializeProperties(
       Serializers serializers, PendingTransaction object,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[];
-    result
-      ..add(r'type')
-      ..add(serializers.serialize(object.type,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'hash')
-      ..add(serializers.serialize(object.hash,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'sender')
-      ..add(serializers.serialize(object.sender,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'sequence_number')
-      ..add(serializers.serialize(object.sequenceNumber,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'max_gas_amount')
-      ..add(serializers.serialize(object.maxGasAmount,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'gas_unit_price')
-      ..add(serializers.serialize(object.gasUnitPrice,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'gas_currency_code')
-      ..add(serializers.serialize(object.gasCurrencyCode,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'expiration_timestamp_secs')
-      ..add(serializers.serialize(object.expirationTimestampSecs,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'payload')
-      ..add(serializers.serialize(object.payload,
-          specifiedType: const FullType(TransactionPayload)));
-    result
-      ..add(r'signature')
-      ..add(serializers.serialize(object.signature,
-          specifiedType: const FullType(TransactionSignature)));
-    return result;
+      {FullType specifiedType = FullType.unspecified}) sync* {
+    yield r'sequence_number';
+    yield serializers.serialize(object.sequenceNumber,
+        specifiedType: const FullType(String));
+    yield r'expiration_timestamp_secs';
+    yield serializers.serialize(object.expirationTimestampSecs,
+        specifiedType: const FullType(String));
+    yield r'sender';
+    yield serializers.serialize(object.sender,
+        specifiedType: const FullType(String));
+    yield r'payload';
+    yield serializers.serialize(object.payload,
+        specifiedType: const FullType(TransactionPayload));
+    yield r'signature';
+    yield serializers.serialize(object.signature,
+        specifiedType: const FullType(TransactionSignature));
+    yield r'gas_unit_price';
+    yield serializers.serialize(object.gasUnitPrice,
+        specifiedType: const FullType(String));
+    yield r'gas_currency_code';
+    yield serializers.serialize(object.gasCurrencyCode,
+        specifiedType: const FullType(String));
+    yield r'type';
+    yield serializers.serialize(object.type,
+        specifiedType: const FullType(String));
+    yield r'max_gas_amount';
+    yield serializers.serialize(object.maxGasAmount,
+        specifiedType: const FullType(String));
+    yield r'hash';
+    yield serializers.serialize(object.hash,
+        specifiedType: const FullType(String));
   }
 
   @override
-  PendingTransaction deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
+  Object serialize(Serializers serializers, PendingTransaction object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = PendingTransactionBuilder();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
+  }
 
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-
+  void _deserializeProperties(Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified,
+      required List<Object?> serializedList,
+      required PendingTransactionBuilder result,
+      required List<Object?> unhandled}) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
       switch (key) {
-        case r'type':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.type = valueDes;
-          break;
-        case r'hash':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.hash = valueDes;
-          break;
-        case r'sender':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.sender = valueDes;
-          break;
         case r'sequence_number':
           final valueDes = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           result.sequenceNumber = valueDes;
           break;
-        case r'max_gas_amount':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.maxGasAmount = valueDes;
-          break;
-        case r'gas_unit_price':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.gasUnitPrice = valueDes;
-          break;
-        case r'gas_currency_code':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.gasCurrencyCode = valueDes;
-          break;
         case r'expiration_timestamp_secs':
           final valueDes = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           result.expirationTimestampSecs = valueDes;
+          break;
+        case r'sender':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.sender = valueDes;
           break;
         case r'payload':
           final valueDes = serializers.deserialize(value,
@@ -197,8 +135,50 @@ class _$PendingTransactionSerializer
               as TransactionSignature;
           result.signature.replace(valueDes);
           break;
+        case r'gas_unit_price':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.gasUnitPrice = valueDes;
+          break;
+        case r'gas_currency_code':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.gasCurrencyCode = valueDes;
+          break;
+        case r'type':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.type = valueDes;
+          break;
+        case r'max_gas_amount':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.maxGasAmount = valueDes;
+          break;
+        case r'hash':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.hash = valueDes;
+          break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
       }
     }
+  }
+
+  @override
+  PendingTransaction deserialize(Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = PendingTransactionBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(serializers, serialized,
+        specifiedType: specifiedType,
+        serializedList: serializedList,
+        unhandled: unhandled,
+        result: result);
     return result.build();
   }
 }

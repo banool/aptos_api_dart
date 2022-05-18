@@ -3,7 +3,7 @@ import 'package:aptos_api_dart/aptos_api_dart.dart';
 
 // tests for OnChainTransactionInfo
 void main() {
-  final instance = OnChainTransactionInfoBuilder();
+  //final instance = OnChainTransactionInfoBuilder();
   // TODO add properties to the builder and call build()
 
   group(OnChainTransactionInfo, () {

@@ -7,6 +7,9 @@ import 'package:built_collection/built_collection.dart';
 import 'package:aptos_api_dart/src/model/move_struct.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:one_of/one_of.dart';
+import 'package:one_of/any_of.dart';
+// ignore_for_file: unused_element, unused_import
 
 part 'move_module_abi.g.dart';
 
@@ -18,83 +21,77 @@ part 'move_module_abi.g.dart';
 /// * [friends]
 /// * [exposedFunctions]
 /// * [structs]
+@BuiltValue()
 abstract class MoveModuleABI
     implements Built<MoveModuleABI, MoveModuleABIBuilder> {
   /// Hex-encoded 16 bytes Aptos account address.  Prefixed with `0x` and leading zeros are trimmed.  See [doc](https://diem.github.io/move/address.html) for more details.
   @BuiltValueField(wireName: r'address')
   String get address;
-
   @BuiltValueField(wireName: r'name')
   String get name;
-
   @BuiltValueField(wireName: r'friends')
   BuiltList<String> get friends;
-
   @BuiltValueField(wireName: r'exposed_functions')
   BuiltList<MoveFunction> get exposedFunctions;
-
   @BuiltValueField(wireName: r'structs')
   BuiltList<MoveStruct> get structs;
 
   MoveModuleABI._();
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(MoveModuleABIBuilder b) => b;
-
   factory MoveModuleABI([void updates(MoveModuleABIBuilder b)]) =
       _$MoveModuleABI;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(MoveModuleABIBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<MoveModuleABI> get serializer =>
       _$MoveModuleABISerializer();
 }
 
-class _$MoveModuleABISerializer implements StructuredSerializer<MoveModuleABI> {
+class _$MoveModuleABISerializer implements PrimitiveSerializer<MoveModuleABI> {
   @override
   final Iterable<Type> types = const [MoveModuleABI, _$MoveModuleABI];
 
   @override
   final String wireName = r'MoveModuleABI';
 
-  @override
-  Iterable<Object?> serialize(Serializers serializers, MoveModuleABI object,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[];
-    result
-      ..add(r'address')
-      ..add(serializers.serialize(object.address,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'name')
-      ..add(serializers.serialize(object.name,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'friends')
-      ..add(serializers.serialize(object.friends,
-          specifiedType: const FullType(BuiltList, [FullType(String)])));
-    result
-      ..add(r'exposed_functions')
-      ..add(serializers.serialize(object.exposedFunctions,
-          specifiedType: const FullType(BuiltList, [FullType(MoveFunction)])));
-    result
-      ..add(r'structs')
-      ..add(serializers.serialize(object.structs,
-          specifiedType: const FullType(BuiltList, [FullType(MoveStruct)])));
-    return result;
+  Iterable<Object?> _serializeProperties(
+      Serializers serializers, MoveModuleABI object,
+      {FullType specifiedType = FullType.unspecified}) sync* {
+    yield r'address';
+    yield serializers.serialize(object.address,
+        specifiedType: const FullType(String));
+    yield r'name';
+    yield serializers.serialize(object.name,
+        specifiedType: const FullType(String));
+    yield r'friends';
+    yield serializers.serialize(object.friends,
+        specifiedType: const FullType(BuiltList, [FullType(String)]));
+    yield r'exposed_functions';
+    yield serializers.serialize(object.exposedFunctions,
+        specifiedType: const FullType(BuiltList, [FullType(MoveFunction)]));
+    yield r'structs';
+    yield serializers.serialize(object.structs,
+        specifiedType: const FullType(BuiltList, [FullType(MoveStruct)]));
   }
 
   @override
-  MoveModuleABI deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
+  Object serialize(Serializers serializers, MoveModuleABI object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = MoveModuleABIBuilder();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
+  }
 
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-
+  void _deserializeProperties(Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified,
+      required List<Object?> serializedList,
+      required MoveModuleABIBuilder result,
+      required List<Object?> unhandled}) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
       switch (key) {
         case r'address':
           final valueDes = serializers.deserialize(value,
@@ -126,8 +123,25 @@ class _$MoveModuleABISerializer implements StructuredSerializer<MoveModuleABI> {
               as BuiltList<MoveStruct>;
           result.structs.replace(valueDes);
           break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
       }
     }
+  }
+
+  @override
+  MoveModuleABI deserialize(Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = MoveModuleABIBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(serializers, serialized,
+        specifiedType: specifiedType,
+        serializedList: serializedList,
+        unhandled: unhandled,
+        result: result);
     return result.build();
   }
 }

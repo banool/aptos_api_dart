@@ -64,20 +64,21 @@ class _$SubmitTransaction415Response extends SubmitTransaction415Response {
 class SubmitTransaction415ResponseBuilder
     implements
         Builder<SubmitTransaction415Response,
-            SubmitTransaction415ResponseBuilder> {
+            SubmitTransaction415ResponseBuilder>,
+        AptosErrorBuilder {
   _$SubmitTransaction415Response? _$v;
 
   int? _code;
   int? get code => _$this._code;
-  set code(int? code) => _$this._code = code;
+  set code(covariant int? code) => _$this._code = code;
 
   String? _message;
   String? get message => _$this._message;
-  set message(String? message) => _$this._message = message;
+  set message(covariant String? message) => _$this._message = message;
 
   String? _aptosLedgerVersion;
   String? get aptosLedgerVersion => _$this._aptosLedgerVersion;
-  set aptosLedgerVersion(String? aptosLedgerVersion) =>
+  set aptosLedgerVersion(covariant String? aptosLedgerVersion) =>
       _$this._aptosLedgerVersion = aptosLedgerVersion;
 
   SubmitTransaction415ResponseBuilder() {
@@ -96,7 +97,7 @@ class SubmitTransaction415ResponseBuilder
   }
 
   @override
-  void replace(SubmitTransaction415Response other) {
+  void replace(covariant SubmitTransaction415Response other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SubmitTransaction415Response;
   }

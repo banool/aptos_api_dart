@@ -6,37 +6,47 @@ part of 'pending_transaction_all_of.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$PendingTransactionAllOf extends PendingTransactionAllOf {
+abstract class PendingTransactionAllOfBuilder {
+  void replace(PendingTransactionAllOf other);
+  void update(void Function(PendingTransactionAllOfBuilder) updates);
+  String? get type;
+  set type(String? type);
+
+  String? get hash;
+  set hash(String? hash);
+}
+
+class _$$PendingTransactionAllOf extends $PendingTransactionAllOf {
   @override
   final String type;
   @override
   final String hash;
 
-  factory _$PendingTransactionAllOf(
-          [void Function(PendingTransactionAllOfBuilder)? updates]) =>
-      (PendingTransactionAllOfBuilder()..update(updates)).build();
+  factory _$$PendingTransactionAllOf(
+          [void Function($PendingTransactionAllOfBuilder)? updates]) =>
+      ($PendingTransactionAllOfBuilder()..update(updates)).build();
 
-  _$PendingTransactionAllOf._({required this.type, required this.hash})
+  _$$PendingTransactionAllOf._({required this.type, required this.hash})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        type, 'PendingTransactionAllOf', 'type');
+        type, '$PendingTransactionAllOf', 'type');
     BuiltValueNullFieldError.checkNotNull(
-        hash, 'PendingTransactionAllOf', 'hash');
+        hash, '$PendingTransactionAllOf', 'hash');
   }
 
   @override
-  PendingTransactionAllOf rebuild(
-          void Function(PendingTransactionAllOfBuilder) updates) =>
+  $PendingTransactionAllOf rebuild(
+          void Function($PendingTransactionAllOfBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  PendingTransactionAllOfBuilder toBuilder() =>
-      PendingTransactionAllOfBuilder()..replace(this);
+  $PendingTransactionAllOfBuilder toBuilder() =>
+      $PendingTransactionAllOfBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is PendingTransactionAllOf &&
+    return other is $PendingTransactionAllOf &&
         type == other.type &&
         hash == other.hash;
   }
@@ -48,31 +58,32 @@ class _$PendingTransactionAllOf extends PendingTransactionAllOf {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('PendingTransactionAllOf')
+    return (newBuiltValueToStringHelper('$PendingTransactionAllOf')
           ..add('type', type)
           ..add('hash', hash))
         .toString();
   }
 }
 
-class PendingTransactionAllOfBuilder
+class $PendingTransactionAllOfBuilder
     implements
-        Builder<PendingTransactionAllOf, PendingTransactionAllOfBuilder> {
-  _$PendingTransactionAllOf? _$v;
+        Builder<$PendingTransactionAllOf, $PendingTransactionAllOfBuilder>,
+        PendingTransactionAllOfBuilder {
+  _$$PendingTransactionAllOf? _$v;
 
   String? _type;
   String? get type => _$this._type;
-  set type(String? type) => _$this._type = type;
+  set type(covariant String? type) => _$this._type = type;
 
   String? _hash;
   String? get hash => _$this._hash;
-  set hash(String? hash) => _$this._hash = hash;
+  set hash(covariant String? hash) => _$this._hash = hash;
 
-  PendingTransactionAllOfBuilder() {
-    PendingTransactionAllOf._defaults(this);
+  $PendingTransactionAllOfBuilder() {
+    $PendingTransactionAllOf._defaults(this);
   }
 
-  PendingTransactionAllOfBuilder get _$this {
+  $PendingTransactionAllOfBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _type = $v.type;
@@ -83,24 +94,24 @@ class PendingTransactionAllOfBuilder
   }
 
   @override
-  void replace(PendingTransactionAllOf other) {
+  void replace(covariant $PendingTransactionAllOf other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$PendingTransactionAllOf;
+    _$v = other as _$$PendingTransactionAllOf;
   }
 
   @override
-  void update(void Function(PendingTransactionAllOfBuilder)? updates) {
+  void update(void Function($PendingTransactionAllOfBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$PendingTransactionAllOf build() {
+  _$$PendingTransactionAllOf build() {
     final _$result = _$v ??
-        _$PendingTransactionAllOf._(
+        _$$PendingTransactionAllOf._(
             type: BuiltValueNullFieldError.checkNotNull(
-                type, 'PendingTransactionAllOf', 'type'),
+                type, '$PendingTransactionAllOf', 'type'),
             hash: BuiltValueNullFieldError.checkNotNull(
-                hash, 'PendingTransactionAllOf', 'hash'));
+                hash, '$PendingTransactionAllOf', 'hash'));
     replace(_$result);
     return _$result;
   }

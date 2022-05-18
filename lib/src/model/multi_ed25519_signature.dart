@@ -5,6 +5,9 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:one_of/one_of.dart';
+import 'package:one_of/any_of.dart';
+// ignore_for_file: unused_element, unused_import
 
 part 'multi_ed25519_signature.g.dart';
 
@@ -16,6 +19,7 @@ part 'multi_ed25519_signature.g.dart';
 /// * [signatures] - signatures created based on the `threshold`
 /// * [threshold] - The threshold of the multi ed25519 account key.
 /// * [bitmap] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
+@BuiltValue()
 abstract class MultiEd25519Signature
     implements Built<MultiEd25519Signature, MultiEd25519SignatureBuilder> {
   @BuiltValueField(wireName: r'type')
@@ -39,11 +43,11 @@ abstract class MultiEd25519Signature
 
   MultiEd25519Signature._();
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(MultiEd25519SignatureBuilder b) => b;
-
   factory MultiEd25519Signature(
       [void updates(MultiEd25519SignatureBuilder b)]) = _$MultiEd25519Signature;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(MultiEd25519SignatureBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<MultiEd25519Signature> get serializer =>
@@ -51,7 +55,7 @@ abstract class MultiEd25519Signature
 }
 
 class _$MultiEd25519SignatureSerializer
-    implements StructuredSerializer<MultiEd25519Signature> {
+    implements PrimitiveSerializer<MultiEd25519Signature> {
   @override
   final Iterable<Type> types = const [
     MultiEd25519Signature,
@@ -61,46 +65,42 @@ class _$MultiEd25519SignatureSerializer
   @override
   final String wireName = r'MultiEd25519Signature';
 
-  @override
-  Iterable<Object?> serialize(
+  Iterable<Object?> _serializeProperties(
       Serializers serializers, MultiEd25519Signature object,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[];
-    result
-      ..add(r'type')
-      ..add(serializers.serialize(object.type,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'public_keys')
-      ..add(serializers.serialize(object.publicKeys,
-          specifiedType: const FullType(BuiltList, [FullType(String)])));
-    result
-      ..add(r'signatures')
-      ..add(serializers.serialize(object.signatures,
-          specifiedType: const FullType(BuiltList, [FullType(String)])));
-    result
-      ..add(r'threshold')
-      ..add(serializers.serialize(object.threshold,
-          specifiedType: const FullType(int)));
-    result
-      ..add(r'bitmap')
-      ..add(serializers.serialize(object.bitmap,
-          specifiedType: const FullType(String)));
-    return result;
+      {FullType specifiedType = FullType.unspecified}) sync* {
+    yield r'type';
+    yield serializers.serialize(object.type,
+        specifiedType: const FullType(String));
+    yield r'public_keys';
+    yield serializers.serialize(object.publicKeys,
+        specifiedType: const FullType(BuiltList, [FullType(String)]));
+    yield r'signatures';
+    yield serializers.serialize(object.signatures,
+        specifiedType: const FullType(BuiltList, [FullType(String)]));
+    yield r'threshold';
+    yield serializers.serialize(object.threshold,
+        specifiedType: const FullType(int));
+    yield r'bitmap';
+    yield serializers.serialize(object.bitmap,
+        specifiedType: const FullType(String));
   }
 
   @override
-  MultiEd25519Signature deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
+  Object serialize(Serializers serializers, MultiEd25519Signature object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = MultiEd25519SignatureBuilder();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
+  }
 
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-
+  void _deserializeProperties(Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified,
+      required List<Object?> serializedList,
+      required MultiEd25519SignatureBuilder result,
+      required List<Object?> unhandled}) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
       switch (key) {
         case r'type':
           final valueDes = serializers.deserialize(value,
@@ -129,8 +129,25 @@ class _$MultiEd25519SignatureSerializer
               specifiedType: const FullType(String)) as String;
           result.bitmap = valueDes;
           break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
       }
     }
+  }
+
+  @override
+  MultiEd25519Signature deserialize(Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = MultiEd25519SignatureBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(serializers, serialized,
+        specifiedType: specifiedType,
+        serializedList: serializedList,
+        unhandled: unhandled,
+        result: result);
     return result.build();
   }
 }

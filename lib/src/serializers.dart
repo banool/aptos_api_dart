@@ -4,6 +4,8 @@
 
 // ignore_for_file: unused_import
 
+import 'package:one_of_serializer/any_of_serializer.dart';
+import 'package:one_of_serializer/one_of_serializer.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
@@ -78,8 +80,10 @@ part 'serializers.g.dart';
   AccountResource,
   AccountSignature,
   AptosError,
+  $AptosError,
   BlockMetadataTransaction,
   BlockMetadataTransactionAllOf,
+  $BlockMetadataTransactionAllOf,
   CreateSigningMessage200Response,
   DeleteModule,
   DeleteResource,
@@ -89,6 +93,7 @@ part 'serializers.g.dart';
   Event,
   GenesisTransaction,
   GenesisTransactionAllOf,
+  $GenesisTransactionAllOf,
   GetAccount404Response,
   GetLedgerInfo400Response,
   GetLedgerInfo500Response,
@@ -107,8 +112,10 @@ part 'serializers.g.dart';
   MultiEd25519Signature,
   OnChainTransaction,
   OnChainTransactionInfo,
+  $OnChainTransactionInfo,
   PendingTransaction,
   PendingTransactionAllOf,
+  $PendingTransactionAllOf,
   Script,
   ScriptFunctionPayload,
   ScriptPayload,
@@ -124,8 +131,11 @@ part 'serializers.g.dart';
   TransactionSignature,
   UserTransaction,
   UserTransactionAllOf,
+  $UserTransactionAllOf,
   UserTransactionRequest,
+  $UserTransactionRequest,
   UserTransactionSignature,
+  $UserTransactionSignature,
   WriteModule,
   WriteResource,
   WriteSet,

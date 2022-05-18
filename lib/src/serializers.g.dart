@@ -7,12 +7,18 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (Serializers().toBuilder()
+      ..add($AptosError.serializer)
+      ..add($BlockMetadataTransactionAllOf.serializer)
+      ..add($GenesisTransactionAllOf.serializer)
+      ..add($OnChainTransactionInfo.serializer)
+      ..add($PendingTransactionAllOf.serializer)
+      ..add($UserTransactionAllOf.serializer)
+      ..add($UserTransactionRequest.serializer)
+      ..add($UserTransactionSignature.serializer)
       ..add(Account.serializer)
       ..add(AccountResource.serializer)
       ..add(AccountSignature.serializer)
-      ..add(AptosError.serializer)
       ..add(BlockMetadataTransaction.serializer)
-      ..add(BlockMetadataTransactionAllOf.serializer)
       ..add(CreateSigningMessage200Response.serializer)
       ..add(DeleteModule.serializer)
       ..add(DeleteResource.serializer)
@@ -21,7 +27,6 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(Ed25519Signature.serializer)
       ..add(Event.serializer)
       ..add(GenesisTransaction.serializer)
-      ..add(GenesisTransactionAllOf.serializer)
       ..add(GetAccount404Response.serializer)
       ..add(GetLedgerInfo400Response.serializer)
       ..add(GetLedgerInfo500Response.serializer)
@@ -40,9 +45,7 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(MultiAgentSignature.serializer)
       ..add(MultiEd25519Signature.serializer)
       ..add(OnChainTransaction.serializer)
-      ..add(OnChainTransactionInfo.serializer)
       ..add(PendingTransaction.serializer)
-      ..add(PendingTransactionAllOf.serializer)
       ..add(Script.serializer)
       ..add(ScriptFunctionPayload.serializer)
       ..add(ScriptPayload.serializer)
@@ -57,9 +60,6 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(TransactionPayload.serializer)
       ..add(TransactionSignature.serializer)
       ..add(UserTransaction.serializer)
-      ..add(UserTransactionAllOf.serializer)
-      ..add(UserTransactionRequest.serializer)
-      ..add(UserTransactionSignature.serializer)
       ..add(WriteModule.serializer)
       ..add(WriteResource.serializer)
       ..add(WriteSet.serializer)
@@ -74,22 +74,6 @@ Serializers _$serializers = (Serializers().toBuilder()
           () => ListBuilder<Event>())
       ..addBuilderFactory(const FullType(BuiltList, [FullType(WriteSetChange)]),
           () => ListBuilder<WriteSetChange>())
-      ..addBuilderFactory(const FullType(BuiltList, [FullType(Event)]),
-          () => ListBuilder<Event>())
-      ..addBuilderFactory(const FullType(BuiltList, [FullType(WriteSetChange)]),
-          () => ListBuilder<WriteSetChange>())
-      ..addBuilderFactory(const FullType(BuiltList, [FullType(Event)]),
-          () => ListBuilder<Event>())
-      ..addBuilderFactory(const FullType(BuiltList, [FullType(WriteSetChange)]),
-          () => ListBuilder<WriteSetChange>())
-      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
-          () => ListBuilder<String>())
-      ..addBuilderFactory(const FullType(BuiltList, [FullType(Event)]),
-          () => ListBuilder<Event>())
-      ..addBuilderFactory(const FullType(BuiltList, [FullType(WriteSetChange)]),
-          () => ListBuilder<WriteSetChange>())
-      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
-          () => ListBuilder<String>())
       ..addBuilderFactory(const FullType(BuiltList, [FullType(MoveAbility)]),
           () => ListBuilder<MoveAbility>())
       ..addBuilderFactory(const FullType(BuiltList, [FullType(MoveAbility)]),
@@ -132,19 +116,6 @@ Serializers _$serializers = (Serializers().toBuilder()
           () => ListBuilder<String>())
       ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
           () => ListBuilder<String>())
-      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
-          () => ListBuilder<String>())
-      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
-          () => ListBuilder<String>())
-      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
-          () => ListBuilder<String>())
-      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
-          () => ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, [FullType(AccountSignature)]),
-          () => ListBuilder<AccountSignature>())
-      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
-          () => ListBuilder<String>())
       ..addBuilderFactory(const FullType(BuiltList, [FullType(WriteSetChange)]),
           () => ListBuilder<WriteSetChange>())
       ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
@@ -162,13 +133,6 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, [FullType.nullable(JsonObject)]),
           () => ListBuilder<JsonObject?>())
-      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
-          () => ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, [FullType.nullable(JsonObject)]),
-          () => ListBuilder<JsonObject?>())
-      ..addBuilderFactory(const FullType(BuiltList, [FullType(MoveModule)]),
-          () => ListBuilder<MoveModule>())
       ..addBuilderFactory(const FullType(BuiltList, [FullType(WriteSetChange)]),
           () => ListBuilder<WriteSetChange>())
       ..addBuilderFactory(const FullType(BuiltList, [FullType(WriteSetChange)]),

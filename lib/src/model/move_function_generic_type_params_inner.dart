@@ -6,6 +6,9 @@ import 'package:aptos_api_dart/src/model/move_ability.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:one_of/one_of.dart';
+import 'package:one_of/any_of.dart';
+// ignore_for_file: unused_element, unused_import
 
 part 'move_function_generic_type_params_inner.g.dart';
 
@@ -13,6 +16,7 @@ part 'move_function_generic_type_params_inner.g.dart';
 ///
 /// Properties:
 /// * [constraints]
+@BuiltValue()
 abstract class MoveFunctionGenericTypeParamsInner
     implements
         Built<MoveFunctionGenericTypeParamsInner,
@@ -22,12 +26,12 @@ abstract class MoveFunctionGenericTypeParamsInner
 
   MoveFunctionGenericTypeParamsInner._();
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(MoveFunctionGenericTypeParamsInnerBuilder b) => b;
-
   factory MoveFunctionGenericTypeParamsInner(
           [void updates(MoveFunctionGenericTypeParamsInnerBuilder b)]) =
       _$MoveFunctionGenericTypeParamsInner;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(MoveFunctionGenericTypeParamsInnerBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<MoveFunctionGenericTypeParamsInner> get serializer =>
@@ -35,7 +39,7 @@ abstract class MoveFunctionGenericTypeParamsInner
 }
 
 class _$MoveFunctionGenericTypeParamsInnerSerializer
-    implements StructuredSerializer<MoveFunctionGenericTypeParamsInner> {
+    implements PrimitiveSerializer<MoveFunctionGenericTypeParamsInner> {
   @override
   final Iterable<Type> types = const [
     MoveFunctionGenericTypeParamsInner,
@@ -45,30 +49,31 @@ class _$MoveFunctionGenericTypeParamsInnerSerializer
   @override
   final String wireName = r'MoveFunctionGenericTypeParamsInner';
 
-  @override
-  Iterable<Object?> serialize(
+  Iterable<Object?> _serializeProperties(
       Serializers serializers, MoveFunctionGenericTypeParamsInner object,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[];
-    result
-      ..add(r'constraints')
-      ..add(serializers.serialize(object.constraints,
-          specifiedType: const FullType(BuiltList, [FullType(MoveAbility)])));
-    return result;
+      {FullType specifiedType = FullType.unspecified}) sync* {
+    yield r'constraints';
+    yield serializers.serialize(object.constraints,
+        specifiedType: const FullType(BuiltList, [FullType(MoveAbility)]));
   }
 
   @override
-  MoveFunctionGenericTypeParamsInner deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
+  Object serialize(
+      Serializers serializers, MoveFunctionGenericTypeParamsInner object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = MoveFunctionGenericTypeParamsInnerBuilder();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
+  }
 
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-
+  void _deserializeProperties(Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified,
+      required List<Object?> serializedList,
+      required MoveFunctionGenericTypeParamsInnerBuilder result,
+      required List<Object?> unhandled}) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
       switch (key) {
         case r'constraints':
           final valueDes = serializers.deserialize(value,
@@ -77,8 +82,26 @@ class _$MoveFunctionGenericTypeParamsInnerSerializer
               as BuiltList<MoveAbility>;
           result.constraints.replace(valueDes);
           break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
       }
     }
+  }
+
+  @override
+  MoveFunctionGenericTypeParamsInner deserialize(
+      Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = MoveFunctionGenericTypeParamsInnerBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(serializers, serialized,
+        specifiedType: specifiedType,
+        serializedList: serializedList,
+        unhandled: unhandled,
+        result: result);
     return result.build();
   }
 }

@@ -5,6 +5,9 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:one_of/one_of.dart';
+import 'package:one_of/any_of.dart';
+// ignore_for_file: unused_element, unused_import
 
 part 'block_metadata_transaction_all_of.g.dart';
 
@@ -17,10 +20,8 @@ part 'block_metadata_transaction_all_of.g.dart';
 /// * [previousBlockVotes]
 /// * [proposer] - Hex-encoded 16 bytes Aptos account address.  Prefixed with `0x` and leading zeros are trimmed.  See [doc](https://diem.github.io/move/address.html) for more details.
 /// * [timestamp] - Timestamp in microseconds, e.g. ledger / block creation timestamp.
-abstract class BlockMetadataTransactionAllOf
-    implements
-        Built<BlockMetadataTransactionAllOf,
-            BlockMetadataTransactionAllOfBuilder> {
+@BuiltValue(instantiable: false)
+abstract class BlockMetadataTransactionAllOf {
   @BuiltValueField(wireName: r'type')
   String get type;
 
@@ -31,7 +32,6 @@ abstract class BlockMetadataTransactionAllOf
   /// Unsigned int64 type value
   @BuiltValueField(wireName: r'round')
   String get round;
-
   @BuiltValueField(wireName: r'previous_block_votes')
   BuiltList<String> get previousBlockVotes;
 
@@ -43,14 +43,8 @@ abstract class BlockMetadataTransactionAllOf
   @BuiltValueField(wireName: r'timestamp')
   String get timestamp;
 
-  BlockMetadataTransactionAllOf._();
-
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(BlockMetadataTransactionAllOfBuilder b) => b;
-
-  factory BlockMetadataTransactionAllOf(
-          [void updates(BlockMetadataTransactionAllOfBuilder b)]) =
-      _$BlockMetadataTransactionAllOf;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<BlockMetadataTransactionAllOf> get serializer =>
@@ -58,60 +52,53 @@ abstract class BlockMetadataTransactionAllOf
 }
 
 class _$BlockMetadataTransactionAllOfSerializer
-    implements StructuredSerializer<BlockMetadataTransactionAllOf> {
+    implements PrimitiveSerializer<BlockMetadataTransactionAllOf> {
   @override
-  final Iterable<Type> types = const [
-    BlockMetadataTransactionAllOf,
-    _$BlockMetadataTransactionAllOf
-  ];
+  final Iterable<Type> types = const [BlockMetadataTransactionAllOf];
 
   @override
   final String wireName = r'BlockMetadataTransactionAllOf';
 
-  @override
-  Iterable<Object?> serialize(
+  Iterable<Object?> _serializeProperties(
       Serializers serializers, BlockMetadataTransactionAllOf object,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[];
-    result
-      ..add(r'type')
-      ..add(serializers.serialize(object.type,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'id')
-      ..add(serializers.serialize(object.id,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'round')
-      ..add(serializers.serialize(object.round,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'previous_block_votes')
-      ..add(serializers.serialize(object.previousBlockVotes,
-          specifiedType: const FullType(BuiltList, [FullType(String)])));
-    result
-      ..add(r'proposer')
-      ..add(serializers.serialize(object.proposer,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'timestamp')
-      ..add(serializers.serialize(object.timestamp,
-          specifiedType: const FullType(String)));
-    return result;
+      {FullType specifiedType = FullType.unspecified}) sync* {
+    yield r'type';
+    yield serializers.serialize(object.type,
+        specifiedType: const FullType(String));
+    yield r'id';
+    yield serializers.serialize(object.id,
+        specifiedType: const FullType(String));
+    yield r'round';
+    yield serializers.serialize(object.round,
+        specifiedType: const FullType(String));
+    yield r'previous_block_votes';
+    yield serializers.serialize(object.previousBlockVotes,
+        specifiedType: const FullType(BuiltList, [FullType(String)]));
+    yield r'proposer';
+    yield serializers.serialize(object.proposer,
+        specifiedType: const FullType(String));
+    yield r'timestamp';
+    yield serializers.serialize(object.timestamp,
+        specifiedType: const FullType(String));
   }
 
   @override
-  BlockMetadataTransactionAllOf deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
+  Object serialize(
+      Serializers serializers, BlockMetadataTransactionAllOf object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = BlockMetadataTransactionAllOfBuilder();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
+  }
 
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-
+  void _deserializeProperties(Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified,
+      required List<Object?> serializedList,
+      required BlockMetadataTransactionAllOfBuilder result,
+      required List<Object?> unhandled}) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
       switch (key) {
         case r'type':
           final valueDes = serializers.deserialize(value,
@@ -144,8 +131,123 @@ class _$BlockMetadataTransactionAllOfSerializer
               specifiedType: const FullType(String)) as String;
           result.timestamp = valueDes;
           break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
       }
     }
+  }
+
+  @override
+  BlockMetadataTransactionAllOf deserialize(
+      Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    return serializers.deserialize(serialized,
+            specifiedType: FullType($BlockMetadataTransactionAllOf))
+        as $BlockMetadataTransactionAllOf;
+  }
+}
+
+/// a concrete implmentation of [BlockMetadataTransactionAllOf], since [BlockMetadataTransactionAllOf] is not instantiable
+@BuiltValue(instantiable: true)
+abstract class $BlockMetadataTransactionAllOf
+    implements
+        BlockMetadataTransactionAllOf,
+        Built<$BlockMetadataTransactionAllOf,
+            $BlockMetadataTransactionAllOfBuilder> {
+  $BlockMetadataTransactionAllOf._();
+
+  factory $BlockMetadataTransactionAllOf(
+          [void Function($BlockMetadataTransactionAllOfBuilder)? updates]) =
+      _$$BlockMetadataTransactionAllOf;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults($BlockMetadataTransactionAllOfBuilder b) => b;
+  @BuiltValueSerializer(custom: true)
+  static Serializer<$BlockMetadataTransactionAllOf> get serializer =>
+      _$$BlockMetadataTransactionAllOfSerializer();
+}
+
+class _$$BlockMetadataTransactionAllOfSerializer
+    implements PrimitiveSerializer<$BlockMetadataTransactionAllOf> {
+  @override
+  final Iterable<Type> types = const [
+    $BlockMetadataTransactionAllOf,
+    _$$BlockMetadataTransactionAllOf
+  ];
+
+  @override
+  final String wireName = r'$BlockMetadataTransactionAllOf';
+
+  @override
+  Object serialize(
+      Serializers serializers, $BlockMetadataTransactionAllOf object,
+      {FullType specifiedType = FullType.unspecified}) {
+    return serializers.serialize(object,
+        specifiedType: FullType(BlockMetadataTransactionAllOf))!;
+  }
+
+  void _deserializeProperties(Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified,
+      required List<Object?> serializedList,
+      required $BlockMetadataTransactionAllOfBuilder result,
+      required List<Object?> unhandled}) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
+      switch (key) {
+        case r'type':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.type = valueDes;
+          break;
+        case r'id':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.id = valueDes;
+          break;
+        case r'round':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.round = valueDes;
+          break;
+        case r'previous_block_votes':
+          final valueDes = serializers.deserialize(value,
+                  specifiedType: const FullType(BuiltList, [FullType(String)]))
+              as BuiltList<String>;
+          result.previousBlockVotes.replace(valueDes);
+          break;
+        case r'proposer':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.proposer = valueDes;
+          break;
+        case r'timestamp':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.timestamp = valueDes;
+          break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
+      }
+    }
+  }
+
+  @override
+  $BlockMetadataTransactionAllOf deserialize(
+      Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = $BlockMetadataTransactionAllOfBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(serializers, serialized,
+        specifiedType: specifiedType,
+        serializedList: serializedList,
+        unhandled: unhandled,
+        result: result);
     return result.build();
   }
 }

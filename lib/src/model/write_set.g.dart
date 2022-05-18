@@ -8,31 +8,13 @@ part of 'write_set.dart';
 
 class _$WriteSet extends WriteSet {
   @override
-  final String type;
-  @override
-  final String executeAs;
-  @override
-  final Script script;
-  @override
-  final BuiltList<WriteSetChange> changes;
-  @override
-  final BuiltList<Event> events;
+  final OneOf oneOf;
 
   factory _$WriteSet([void Function(WriteSetBuilder)? updates]) =>
       (WriteSetBuilder()..update(updates)).build();
 
-  _$WriteSet._(
-      {required this.type,
-      required this.executeAs,
-      required this.script,
-      required this.changes,
-      required this.events})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(type, 'WriteSet', 'type');
-    BuiltValueNullFieldError.checkNotNull(executeAs, 'WriteSet', 'executeAs');
-    BuiltValueNullFieldError.checkNotNull(script, 'WriteSet', 'script');
-    BuiltValueNullFieldError.checkNotNull(changes, 'WriteSet', 'changes');
-    BuiltValueNullFieldError.checkNotNull(events, 'WriteSet', 'events');
+  _$WriteSet._({required this.oneOf}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(oneOf, 'WriteSet', 'oneOf');
   }
 
   @override
@@ -45,32 +27,17 @@ class _$WriteSet extends WriteSet {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is WriteSet &&
-        type == other.type &&
-        executeAs == other.executeAs &&
-        script == other.script &&
-        changes == other.changes &&
-        events == other.events;
+    return other is WriteSet && oneOf == other.oneOf;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc($jc($jc(0, type.hashCode), executeAs.hashCode),
-                script.hashCode),
-            changes.hashCode),
-        events.hashCode));
+    return $jf($jc(0, oneOf.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('WriteSet')
-          ..add('type', type)
-          ..add('executeAs', executeAs)
-          ..add('script', script)
-          ..add('changes', changes)
-          ..add('events', events))
+    return (newBuiltValueToStringHelper('WriteSet')..add('oneOf', oneOf))
         .toString();
   }
 }
@@ -78,27 +45,9 @@ class _$WriteSet extends WriteSet {
 class WriteSetBuilder implements Builder<WriteSet, WriteSetBuilder> {
   _$WriteSet? _$v;
 
-  String? _type;
-  String? get type => _$this._type;
-  set type(String? type) => _$this._type = type;
-
-  String? _executeAs;
-  String? get executeAs => _$this._executeAs;
-  set executeAs(String? executeAs) => _$this._executeAs = executeAs;
-
-  ScriptBuilder? _script;
-  ScriptBuilder get script => _$this._script ??= ScriptBuilder();
-  set script(ScriptBuilder? script) => _$this._script = script;
-
-  ListBuilder<WriteSetChange>? _changes;
-  ListBuilder<WriteSetChange> get changes =>
-      _$this._changes ??= ListBuilder<WriteSetChange>();
-  set changes(ListBuilder<WriteSetChange>? changes) =>
-      _$this._changes = changes;
-
-  ListBuilder<Event>? _events;
-  ListBuilder<Event> get events => _$this._events ??= ListBuilder<Event>();
-  set events(ListBuilder<Event>? events) => _$this._events = events;
+  OneOf? _oneOf;
+  OneOf? get oneOf => _$this._oneOf;
+  set oneOf(OneOf? oneOf) => _$this._oneOf = oneOf;
 
   WriteSetBuilder() {
     WriteSet._defaults(this);
@@ -107,11 +56,7 @@ class WriteSetBuilder implements Builder<WriteSet, WriteSetBuilder> {
   WriteSetBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _type = $v.type;
-      _executeAs = $v.executeAs;
-      _script = $v.script.toBuilder();
-      _changes = $v.changes.toBuilder();
-      _events = $v.events.toBuilder();
+      _oneOf = $v.oneOf;
       _$v = null;
     }
     return this;
@@ -130,32 +75,10 @@ class WriteSetBuilder implements Builder<WriteSet, WriteSetBuilder> {
 
   @override
   _$WriteSet build() {
-    _$WriteSet _$result;
-    try {
-      _$result = _$v ??
-          _$WriteSet._(
-              type: BuiltValueNullFieldError.checkNotNull(
-                  type, 'WriteSet', 'type'),
-              executeAs: BuiltValueNullFieldError.checkNotNull(
-                  executeAs, 'WriteSet', 'executeAs'),
-              script: script.build(),
-              changes: changes.build(),
-              events: events.build());
-    } catch (_) {
-      late String _$failedField;
-      try {
-        _$failedField = 'script';
-        script.build();
-        _$failedField = 'changes';
-        changes.build();
-        _$failedField = 'events';
-        events.build();
-      } catch (e) {
-        throw BuiltValueNestedFieldError(
-            'WriteSet', _$failedField, e.toString());
-      }
-      rethrow;
-    }
+    final _$result = _$v ??
+        _$WriteSet._(
+            oneOf: BuiltValueNullFieldError.checkNotNull(
+                oneOf, 'WriteSet', 'oneOf'));
     replace(_$result);
     return _$result;
   }

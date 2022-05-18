@@ -4,6 +4,9 @@
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:one_of/one_of.dart';
+import 'package:one_of/any_of.dart';
+// ignore_for_file: unused_element, unused_import
 
 part 'ed25519_signature.g.dart';
 
@@ -13,6 +16,7 @@ part 'ed25519_signature.g.dart';
 /// * [type]
 /// * [publicKey] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
 /// * [signature] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
+@BuiltValue()
 abstract class Ed25519Signature
     implements Built<Ed25519Signature, Ed25519SignatureBuilder> {
   @BuiltValueField(wireName: r'type')
@@ -28,11 +32,11 @@ abstract class Ed25519Signature
 
   Ed25519Signature._();
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(Ed25519SignatureBuilder b) => b;
-
   factory Ed25519Signature([void updates(Ed25519SignatureBuilder b)]) =
       _$Ed25519Signature;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(Ed25519SignatureBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<Ed25519Signature> get serializer =>
@@ -40,44 +44,43 @@ abstract class Ed25519Signature
 }
 
 class _$Ed25519SignatureSerializer
-    implements StructuredSerializer<Ed25519Signature> {
+    implements PrimitiveSerializer<Ed25519Signature> {
   @override
   final Iterable<Type> types = const [Ed25519Signature, _$Ed25519Signature];
 
   @override
   final String wireName = r'Ed25519Signature';
 
-  @override
-  Iterable<Object?> serialize(Serializers serializers, Ed25519Signature object,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[];
-    result
-      ..add(r'type')
-      ..add(serializers.serialize(object.type,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'public_key')
-      ..add(serializers.serialize(object.publicKey,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'signature')
-      ..add(serializers.serialize(object.signature,
-          specifiedType: const FullType(String)));
-    return result;
+  Iterable<Object?> _serializeProperties(
+      Serializers serializers, Ed25519Signature object,
+      {FullType specifiedType = FullType.unspecified}) sync* {
+    yield r'type';
+    yield serializers.serialize(object.type,
+        specifiedType: const FullType(String));
+    yield r'public_key';
+    yield serializers.serialize(object.publicKey,
+        specifiedType: const FullType(String));
+    yield r'signature';
+    yield serializers.serialize(object.signature,
+        specifiedType: const FullType(String));
   }
 
   @override
-  Ed25519Signature deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
+  Object serialize(Serializers serializers, Ed25519Signature object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = Ed25519SignatureBuilder();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
+  }
 
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-
+  void _deserializeProperties(Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified,
+      required List<Object?> serializedList,
+      required Ed25519SignatureBuilder result,
+      required List<Object?> unhandled}) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
       switch (key) {
         case r'type':
           final valueDes = serializers.deserialize(value,
@@ -94,8 +97,25 @@ class _$Ed25519SignatureSerializer
               specifiedType: const FullType(String)) as String;
           result.signature = valueDes;
           break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
       }
     }
+  }
+
+  @override
+  Ed25519Signature deserialize(Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = Ed25519SignatureBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(serializers, serialized,
+        specifiedType: specifiedType,
+        serializedList: serializedList,
+        unhandled: unhandled,
+        result: result);
     return result.build();
   }
 }

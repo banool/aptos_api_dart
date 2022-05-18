@@ -3,7 +3,7 @@ import 'package:aptos_api_dart/aptos_api_dart.dart';
 
 // tests for AptosError
 void main() {
-  final instance = AptosErrorBuilder();
+  //final instance = AptosErrorBuilder();
   // TODO add properties to the builder and call build()
 
   group(AptosError, () {

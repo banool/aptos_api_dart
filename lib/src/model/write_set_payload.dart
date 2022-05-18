@@ -5,6 +5,9 @@
 import 'package:aptos_api_dart/src/model/write_set.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:one_of/one_of.dart';
+import 'package:one_of/any_of.dart';
+// ignore_for_file: unused_element, unused_import
 
 part 'write_set_payload.g.dart';
 
@@ -13,21 +16,21 @@ part 'write_set_payload.g.dart';
 /// Properties:
 /// * [type]
 /// * [writeSet]
+@BuiltValue()
 abstract class WriteSetPayload
     implements Built<WriteSetPayload, WriteSetPayloadBuilder> {
   @BuiltValueField(wireName: r'type')
   String get type;
-
   @BuiltValueField(wireName: r'write_set')
   WriteSet get writeSet;
 
   WriteSetPayload._();
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(WriteSetPayloadBuilder b) => b;
-
   factory WriteSetPayload([void updates(WriteSetPayloadBuilder b)]) =
       _$WriteSetPayload;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(WriteSetPayloadBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<WriteSetPayload> get serializer =>
@@ -35,40 +38,40 @@ abstract class WriteSetPayload
 }
 
 class _$WriteSetPayloadSerializer
-    implements StructuredSerializer<WriteSetPayload> {
+    implements PrimitiveSerializer<WriteSetPayload> {
   @override
   final Iterable<Type> types = const [WriteSetPayload, _$WriteSetPayload];
 
   @override
   final String wireName = r'WriteSetPayload';
 
-  @override
-  Iterable<Object?> serialize(Serializers serializers, WriteSetPayload object,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[];
-    result
-      ..add(r'type')
-      ..add(serializers.serialize(object.type,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'write_set')
-      ..add(serializers.serialize(object.writeSet,
-          specifiedType: const FullType(WriteSet)));
-    return result;
+  Iterable<Object?> _serializeProperties(
+      Serializers serializers, WriteSetPayload object,
+      {FullType specifiedType = FullType.unspecified}) sync* {
+    yield r'type';
+    yield serializers.serialize(object.type,
+        specifiedType: const FullType(String));
+    yield r'write_set';
+    yield serializers.serialize(object.writeSet,
+        specifiedType: const FullType(WriteSet));
   }
 
   @override
-  WriteSetPayload deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
+  Object serialize(Serializers serializers, WriteSetPayload object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = WriteSetPayloadBuilder();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
+  }
 
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-
+  void _deserializeProperties(Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified,
+      required List<Object?> serializedList,
+      required WriteSetPayloadBuilder result,
+      required List<Object?> unhandled}) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
       switch (key) {
         case r'type':
           final valueDes = serializers.deserialize(value,
@@ -80,8 +83,25 @@ class _$WriteSetPayloadSerializer
               specifiedType: const FullType(WriteSet)) as WriteSet;
           result.writeSet.replace(valueDes);
           break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
       }
     }
+  }
+
+  @override
+  WriteSetPayload deserialize(Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = WriteSetPayloadBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(serializers, serialized,
+        specifiedType: specifiedType,
+        serializedList: serializedList,
+        unhandled: unhandled,
+        result: result);
     return result.build();
   }
 }

@@ -13,6 +13,9 @@ import 'package:aptos_api_dart/src/model/user_transaction_signature.dart';
 import 'package:aptos_api_dart/src/model/transaction_payload.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:one_of/one_of.dart';
+import 'package:one_of/any_of.dart';
+// ignore_for_file: unused_element, unused_import
 
 part 'user_transaction.g.dart';
 
@@ -39,89 +42,21 @@ part 'user_transaction.g.dart';
 /// * [vmStatus] - Human readable transaction execution result message from Aptos VM.
 /// * [accumulatorRootHash] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
 /// * [changes]
+@BuiltValue()
 abstract class UserTransaction
-    implements Built<UserTransaction, UserTransactionBuilder> {
-  @BuiltValueField(wireName: r'type')
-  String get type;
-
-  @BuiltValueField(wireName: r'events')
-  BuiltList<Event> get events;
-
-  /// Timestamp in microseconds, e.g. ledger / block creation timestamp.
-  @BuiltValueField(wireName: r'timestamp')
-  String get timestamp;
-
-  /// Hex-encoded 16 bytes Aptos account address.  Prefixed with `0x` and leading zeros are trimmed.  See [doc](https://diem.github.io/move/address.html) for more details.
-  @BuiltValueField(wireName: r'sender')
-  String get sender;
-
-  /// Unsigned int64 type value
-  @BuiltValueField(wireName: r'sequence_number')
-  String get sequenceNumber;
-
-  /// Unsigned int64 type value
-  @BuiltValueField(wireName: r'max_gas_amount')
-  String get maxGasAmount;
-
-  /// Unsigned int64 type value
-  @BuiltValueField(wireName: r'gas_unit_price')
-  String get gasUnitPrice;
-
-  @BuiltValueField(wireName: r'gas_currency_code')
-  String get gasCurrencyCode;
-
-  /// Timestamp in seconds, e.g. transaction expiration timestamp.
-  @BuiltValueField(wireName: r'expiration_timestamp_secs')
-  String get expirationTimestampSecs;
-
-  @BuiltValueField(wireName: r'payload')
-  TransactionPayload get payload;
-
-  @BuiltValueField(wireName: r'signature')
-  TransactionSignature get signature;
-
-  /// Unsigned int64 type value
-  @BuiltValueField(wireName: r'version')
-  String get version;
-
-  /// All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
-  @BuiltValueField(wireName: r'hash')
-  String get hash;
-
-  /// All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
-  @BuiltValueField(wireName: r'state_root_hash')
-  String get stateRootHash;
-
-  /// All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
-  @BuiltValueField(wireName: r'event_root_hash')
-  String get eventRootHash;
-
-  /// Unsigned int64 type value
-  @BuiltValueField(wireName: r'gas_used')
-  String get gasUsed;
-
-  /// Transaction execution result (success: true, failure: false). See `vm_status` for human readable error message from Aptos VM.
-  @BuiltValueField(wireName: r'success')
-  bool get success;
-
-  /// Human readable transaction execution result message from Aptos VM.
-  @BuiltValueField(wireName: r'vm_status')
-  String get vmStatus;
-
-  /// All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
-  @BuiltValueField(wireName: r'accumulator_root_hash')
-  String get accumulatorRootHash;
-
-  @BuiltValueField(wireName: r'changes')
-  BuiltList<WriteSetChange> get changes;
-
+    implements
+        OnChainTransactionInfo,
+        UserTransactionAllOf,
+        UserTransactionRequest,
+        UserTransactionSignature,
+        Built<UserTransaction, UserTransactionBuilder> {
   UserTransaction._();
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(UserTransactionBuilder b) => b;
 
   factory UserTransaction([void updates(UserTransactionBuilder b)]) =
       _$UserTransaction;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(UserTransactionBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<UserTransaction> get serializer =>
@@ -129,165 +64,99 @@ abstract class UserTransaction
 }
 
 class _$UserTransactionSerializer
-    implements StructuredSerializer<UserTransaction> {
+    implements PrimitiveSerializer<UserTransaction> {
   @override
   final Iterable<Type> types = const [UserTransaction, _$UserTransaction];
 
   @override
   final String wireName = r'UserTransaction';
 
-  @override
-  Iterable<Object?> serialize(Serializers serializers, UserTransaction object,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[];
-    result
-      ..add(r'type')
-      ..add(serializers.serialize(object.type,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'events')
-      ..add(serializers.serialize(object.events,
-          specifiedType: const FullType(BuiltList, [FullType(Event)])));
-    result
-      ..add(r'timestamp')
-      ..add(serializers.serialize(object.timestamp,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'sender')
-      ..add(serializers.serialize(object.sender,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'sequence_number')
-      ..add(serializers.serialize(object.sequenceNumber,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'max_gas_amount')
-      ..add(serializers.serialize(object.maxGasAmount,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'gas_unit_price')
-      ..add(serializers.serialize(object.gasUnitPrice,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'gas_currency_code')
-      ..add(serializers.serialize(object.gasCurrencyCode,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'expiration_timestamp_secs')
-      ..add(serializers.serialize(object.expirationTimestampSecs,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'payload')
-      ..add(serializers.serialize(object.payload,
-          specifiedType: const FullType(TransactionPayload)));
-    result
-      ..add(r'signature')
-      ..add(serializers.serialize(object.signature,
-          specifiedType: const FullType(TransactionSignature)));
-    result
-      ..add(r'version')
-      ..add(serializers.serialize(object.version,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'hash')
-      ..add(serializers.serialize(object.hash,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'state_root_hash')
-      ..add(serializers.serialize(object.stateRootHash,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'event_root_hash')
-      ..add(serializers.serialize(object.eventRootHash,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'gas_used')
-      ..add(serializers.serialize(object.gasUsed,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'success')
-      ..add(serializers.serialize(object.success,
-          specifiedType: const FullType(bool)));
-    result
-      ..add(r'vm_status')
-      ..add(serializers.serialize(object.vmStatus,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'accumulator_root_hash')
-      ..add(serializers.serialize(object.accumulatorRootHash,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'changes')
-      ..add(serializers.serialize(object.changes,
-          specifiedType:
-              const FullType(BuiltList, [FullType(WriteSetChange)])));
-    return result;
+  Iterable<Object?> _serializeProperties(
+      Serializers serializers, UserTransaction object,
+      {FullType specifiedType = FullType.unspecified}) sync* {
+    yield r'sequence_number';
+    yield serializers.serialize(object.sequenceNumber,
+        specifiedType: const FullType(String));
+    yield r'signature';
+    yield serializers.serialize(object.signature,
+        specifiedType: const FullType(TransactionSignature));
+    yield r'event_root_hash';
+    yield serializers.serialize(object.eventRootHash,
+        specifiedType: const FullType(String));
+    yield r'changes';
+    yield serializers.serialize(object.changes,
+        specifiedType: const FullType(BuiltList, [FullType(WriteSetChange)]));
+    yield r'gas_currency_code';
+    yield serializers.serialize(object.gasCurrencyCode,
+        specifiedType: const FullType(String));
+    yield r'type';
+    yield serializers.serialize(object.type,
+        specifiedType: const FullType(String));
+    yield r'version';
+    yield serializers.serialize(object.version,
+        specifiedType: const FullType(String));
+    yield r'state_root_hash';
+    yield serializers.serialize(object.stateRootHash,
+        specifiedType: const FullType(String));
+    yield r'vm_status';
+    yield serializers.serialize(object.vmStatus,
+        specifiedType: const FullType(String));
+    yield r'expiration_timestamp_secs';
+    yield serializers.serialize(object.expirationTimestampSecs,
+        specifiedType: const FullType(String));
+    yield r'gas_used';
+    yield serializers.serialize(object.gasUsed,
+        specifiedType: const FullType(String));
+    yield r'sender';
+    yield serializers.serialize(object.sender,
+        specifiedType: const FullType(String));
+    yield r'payload';
+    yield serializers.serialize(object.payload,
+        specifiedType: const FullType(TransactionPayload));
+    yield r'success';
+    yield serializers.serialize(object.success,
+        specifiedType: const FullType(bool));
+    yield r'gas_unit_price';
+    yield serializers.serialize(object.gasUnitPrice,
+        specifiedType: const FullType(String));
+    yield r'max_gas_amount';
+    yield serializers.serialize(object.maxGasAmount,
+        specifiedType: const FullType(String));
+    yield r'hash';
+    yield serializers.serialize(object.hash,
+        specifiedType: const FullType(String));
+    yield r'events';
+    yield serializers.serialize(object.events,
+        specifiedType: const FullType(BuiltList, [FullType(Event)]));
+    yield r'accumulator_root_hash';
+    yield serializers.serialize(object.accumulatorRootHash,
+        specifiedType: const FullType(String));
+    yield r'timestamp';
+    yield serializers.serialize(object.timestamp,
+        specifiedType: const FullType(String));
   }
 
   @override
-  UserTransaction deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
+  Object serialize(Serializers serializers, UserTransaction object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = UserTransactionBuilder();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
+  }
 
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-
+  void _deserializeProperties(Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified,
+      required List<Object?> serializedList,
+      required UserTransactionBuilder result,
+      required List<Object?> unhandled}) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
       switch (key) {
-        case r'type':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.type = valueDes;
-          break;
-        case r'events':
-          final valueDes = serializers.deserialize(value,
-                  specifiedType: const FullType(BuiltList, [FullType(Event)]))
-              as BuiltList<Event>;
-          result.events.replace(valueDes);
-          break;
-        case r'timestamp':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.timestamp = valueDes;
-          break;
-        case r'sender':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.sender = valueDes;
-          break;
         case r'sequence_number':
           final valueDes = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           result.sequenceNumber = valueDes;
-          break;
-        case r'max_gas_amount':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.maxGasAmount = valueDes;
-          break;
-        case r'gas_unit_price':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.gasUnitPrice = valueDes;
-          break;
-        case r'gas_currency_code':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.gasCurrencyCode = valueDes;
-          break;
-        case r'expiration_timestamp_secs':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.expirationTimestampSecs = valueDes;
-          break;
-        case r'payload':
-          final valueDes = serializers.deserialize(value,
-                  specifiedType: const FullType(TransactionPayload))
-              as TransactionPayload;
-          result.payload.replace(valueDes);
           break;
         case r'signature':
           final valueDes = serializers.deserialize(value,
@@ -295,45 +164,10 @@ class _$UserTransactionSerializer
               as TransactionSignature;
           result.signature.replace(valueDes);
           break;
-        case r'version':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.version = valueDes;
-          break;
-        case r'hash':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.hash = valueDes;
-          break;
-        case r'state_root_hash':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.stateRootHash = valueDes;
-          break;
         case r'event_root_hash':
           final valueDes = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           result.eventRootHash = valueDes;
-          break;
-        case r'gas_used':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.gasUsed = valueDes;
-          break;
-        case r'success':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
-          result.success = valueDes;
-          break;
-        case r'vm_status':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.vmStatus = valueDes;
-          break;
-        case r'accumulator_root_hash':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.accumulatorRootHash = valueDes;
           break;
         case r'changes':
           final valueDes = serializers.deserialize(value,
@@ -342,8 +176,107 @@ class _$UserTransactionSerializer
               as BuiltList<WriteSetChange>;
           result.changes.replace(valueDes);
           break;
+        case r'gas_currency_code':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.gasCurrencyCode = valueDes;
+          break;
+        case r'type':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.type = valueDes;
+          break;
+        case r'version':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.version = valueDes;
+          break;
+        case r'state_root_hash':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.stateRootHash = valueDes;
+          break;
+        case r'vm_status':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.vmStatus = valueDes;
+          break;
+        case r'expiration_timestamp_secs':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.expirationTimestampSecs = valueDes;
+          break;
+        case r'gas_used':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.gasUsed = valueDes;
+          break;
+        case r'sender':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.sender = valueDes;
+          break;
+        case r'payload':
+          final valueDes = serializers.deserialize(value,
+                  specifiedType: const FullType(TransactionPayload))
+              as TransactionPayload;
+          result.payload.replace(valueDes);
+          break;
+        case r'success':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool;
+          result.success = valueDes;
+          break;
+        case r'gas_unit_price':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.gasUnitPrice = valueDes;
+          break;
+        case r'max_gas_amount':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.maxGasAmount = valueDes;
+          break;
+        case r'hash':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.hash = valueDes;
+          break;
+        case r'events':
+          final valueDes = serializers.deserialize(value,
+                  specifiedType: const FullType(BuiltList, [FullType(Event)]))
+              as BuiltList<Event>;
+          result.events.replace(valueDes);
+          break;
+        case r'accumulator_root_hash':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.accumulatorRootHash = valueDes;
+          break;
+        case r'timestamp':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.timestamp = valueDes;
+          break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
       }
     }
+  }
+
+  @override
+  UserTransaction deserialize(Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = UserTransactionBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(serializers, serialized,
+        specifiedType: specifiedType,
+        serializedList: serializedList,
+        unhandled: unhandled,
+        result: result);
     return result.build();
   }
 }

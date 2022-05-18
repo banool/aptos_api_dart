@@ -1,5 +1,5 @@
 name: aptos_api_dart
-version: 0.1.1
+version: 0.2.0
 description: Aptos API generated with OpenAPI Generator
 homepage: https://github.com/banool/aptos_api_dart
 
@@ -8,6 +8,8 @@ environment:
 
 dependencies:
   dio: '>=4.0.1 <5.0.0'
+  one_of: '>=1.5.0 <2.0.0'
+  one_of_serializer: '>=1.5.0 <2.0.0'
   built_value: '>=8.1.0 <9.0.0'
   built_collection: '>=5.1.0 <6.0.0'
 

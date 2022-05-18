@@ -62,20 +62,22 @@ class _$GetAccount404Response extends GetAccount404Response {
 }
 
 class GetAccount404ResponseBuilder
-    implements Builder<GetAccount404Response, GetAccount404ResponseBuilder> {
+    implements
+        Builder<GetAccount404Response, GetAccount404ResponseBuilder>,
+        AptosErrorBuilder {
   _$GetAccount404Response? _$v;
 
   int? _code;
   int? get code => _$this._code;
-  set code(int? code) => _$this._code = code;
+  set code(covariant int? code) => _$this._code = code;
 
   String? _message;
   String? get message => _$this._message;
-  set message(String? message) => _$this._message = message;
+  set message(covariant String? message) => _$this._message = message;
 
   String? _aptosLedgerVersion;
   String? get aptosLedgerVersion => _$this._aptosLedgerVersion;
-  set aptosLedgerVersion(String? aptosLedgerVersion) =>
+  set aptosLedgerVersion(covariant String? aptosLedgerVersion) =>
       _$this._aptosLedgerVersion = aptosLedgerVersion;
 
   GetAccount404ResponseBuilder() {
@@ -94,7 +96,7 @@ class GetAccount404ResponseBuilder
   }
 
   @override
-  void replace(GetAccount404Response other) {
+  void replace(covariant GetAccount404Response other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GetAccount404Response;
   }

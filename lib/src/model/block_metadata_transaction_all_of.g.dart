@@ -6,7 +6,29 @@ part of 'block_metadata_transaction_all_of.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$BlockMetadataTransactionAllOf extends BlockMetadataTransactionAllOf {
+abstract class BlockMetadataTransactionAllOfBuilder {
+  void replace(BlockMetadataTransactionAllOf other);
+  void update(void Function(BlockMetadataTransactionAllOfBuilder) updates);
+  String? get type;
+  set type(String? type);
+
+  String? get id;
+  set id(String? id);
+
+  String? get round;
+  set round(String? round);
+
+  ListBuilder<String> get previousBlockVotes;
+  set previousBlockVotes(ListBuilder<String>? previousBlockVotes);
+
+  String? get proposer;
+  set proposer(String? proposer);
+
+  String? get timestamp;
+  set timestamp(String? timestamp);
+}
+
+class _$$BlockMetadataTransactionAllOf extends $BlockMetadataTransactionAllOf {
   @override
   final String type;
   @override
@@ -20,11 +42,11 @@ class _$BlockMetadataTransactionAllOf extends BlockMetadataTransactionAllOf {
   @override
   final String timestamp;
 
-  factory _$BlockMetadataTransactionAllOf(
-          [void Function(BlockMetadataTransactionAllOfBuilder)? updates]) =>
-      (BlockMetadataTransactionAllOfBuilder()..update(updates)).build();
+  factory _$$BlockMetadataTransactionAllOf(
+          [void Function($BlockMetadataTransactionAllOfBuilder)? updates]) =>
+      ($BlockMetadataTransactionAllOfBuilder()..update(updates)).build();
 
-  _$BlockMetadataTransactionAllOf._(
+  _$$BlockMetadataTransactionAllOf._(
       {required this.type,
       required this.id,
       required this.round,
@@ -33,32 +55,32 @@ class _$BlockMetadataTransactionAllOf extends BlockMetadataTransactionAllOf {
       required this.timestamp})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        type, 'BlockMetadataTransactionAllOf', 'type');
+        type, '$BlockMetadataTransactionAllOf', 'type');
     BuiltValueNullFieldError.checkNotNull(
-        id, 'BlockMetadataTransactionAllOf', 'id');
+        id, '$BlockMetadataTransactionAllOf', 'id');
     BuiltValueNullFieldError.checkNotNull(
-        round, 'BlockMetadataTransactionAllOf', 'round');
+        round, '$BlockMetadataTransactionAllOf', 'round');
     BuiltValueNullFieldError.checkNotNull(previousBlockVotes,
-        'BlockMetadataTransactionAllOf', 'previousBlockVotes');
+        '$BlockMetadataTransactionAllOf', 'previousBlockVotes');
     BuiltValueNullFieldError.checkNotNull(
-        proposer, 'BlockMetadataTransactionAllOf', 'proposer');
+        proposer, '$BlockMetadataTransactionAllOf', 'proposer');
     BuiltValueNullFieldError.checkNotNull(
-        timestamp, 'BlockMetadataTransactionAllOf', 'timestamp');
+        timestamp, '$BlockMetadataTransactionAllOf', 'timestamp');
   }
 
   @override
-  BlockMetadataTransactionAllOf rebuild(
-          void Function(BlockMetadataTransactionAllOfBuilder) updates) =>
+  $BlockMetadataTransactionAllOf rebuild(
+          void Function($BlockMetadataTransactionAllOfBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  BlockMetadataTransactionAllOfBuilder toBuilder() =>
-      BlockMetadataTransactionAllOfBuilder()..replace(this);
+  $BlockMetadataTransactionAllOfBuilder toBuilder() =>
+      $BlockMetadataTransactionAllOfBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is BlockMetadataTransactionAllOf &&
+    return other is $BlockMetadataTransactionAllOf &&
         type == other.type &&
         id == other.id &&
         round == other.round &&
@@ -79,7 +101,7 @@ class _$BlockMetadataTransactionAllOf extends BlockMetadataTransactionAllOf {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('BlockMetadataTransactionAllOf')
+    return (newBuiltValueToStringHelper('$BlockMetadataTransactionAllOf')
           ..add('type', type)
           ..add('id', id)
           ..add('round', round)
@@ -90,43 +112,44 @@ class _$BlockMetadataTransactionAllOf extends BlockMetadataTransactionAllOf {
   }
 }
 
-class BlockMetadataTransactionAllOfBuilder
+class $BlockMetadataTransactionAllOfBuilder
     implements
-        Builder<BlockMetadataTransactionAllOf,
-            BlockMetadataTransactionAllOfBuilder> {
-  _$BlockMetadataTransactionAllOf? _$v;
+        Builder<$BlockMetadataTransactionAllOf,
+            $BlockMetadataTransactionAllOfBuilder>,
+        BlockMetadataTransactionAllOfBuilder {
+  _$$BlockMetadataTransactionAllOf? _$v;
 
   String? _type;
   String? get type => _$this._type;
-  set type(String? type) => _$this._type = type;
+  set type(covariant String? type) => _$this._type = type;
 
   String? _id;
   String? get id => _$this._id;
-  set id(String? id) => _$this._id = id;
+  set id(covariant String? id) => _$this._id = id;
 
   String? _round;
   String? get round => _$this._round;
-  set round(String? round) => _$this._round = round;
+  set round(covariant String? round) => _$this._round = round;
 
   ListBuilder<String>? _previousBlockVotes;
   ListBuilder<String> get previousBlockVotes =>
       _$this._previousBlockVotes ??= ListBuilder<String>();
-  set previousBlockVotes(ListBuilder<String>? previousBlockVotes) =>
+  set previousBlockVotes(covariant ListBuilder<String>? previousBlockVotes) =>
       _$this._previousBlockVotes = previousBlockVotes;
 
   String? _proposer;
   String? get proposer => _$this._proposer;
-  set proposer(String? proposer) => _$this._proposer = proposer;
+  set proposer(covariant String? proposer) => _$this._proposer = proposer;
 
   String? _timestamp;
   String? get timestamp => _$this._timestamp;
-  set timestamp(String? timestamp) => _$this._timestamp = timestamp;
+  set timestamp(covariant String? timestamp) => _$this._timestamp = timestamp;
 
-  BlockMetadataTransactionAllOfBuilder() {
-    BlockMetadataTransactionAllOf._defaults(this);
+  $BlockMetadataTransactionAllOfBuilder() {
+    $BlockMetadataTransactionAllOf._defaults(this);
   }
 
-  BlockMetadataTransactionAllOfBuilder get _$this {
+  $BlockMetadataTransactionAllOfBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _type = $v.type;
@@ -141,33 +164,33 @@ class BlockMetadataTransactionAllOfBuilder
   }
 
   @override
-  void replace(BlockMetadataTransactionAllOf other) {
+  void replace(covariant $BlockMetadataTransactionAllOf other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$BlockMetadataTransactionAllOf;
+    _$v = other as _$$BlockMetadataTransactionAllOf;
   }
 
   @override
-  void update(void Function(BlockMetadataTransactionAllOfBuilder)? updates) {
+  void update(void Function($BlockMetadataTransactionAllOfBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$BlockMetadataTransactionAllOf build() {
-    _$BlockMetadataTransactionAllOf _$result;
+  _$$BlockMetadataTransactionAllOf build() {
+    _$$BlockMetadataTransactionAllOf _$result;
     try {
       _$result = _$v ??
-          _$BlockMetadataTransactionAllOf._(
+          _$$BlockMetadataTransactionAllOf._(
               type: BuiltValueNullFieldError.checkNotNull(
-                  type, 'BlockMetadataTransactionAllOf', 'type'),
+                  type, '$BlockMetadataTransactionAllOf', 'type'),
               id: BuiltValueNullFieldError.checkNotNull(
-                  id, 'BlockMetadataTransactionAllOf', 'id'),
+                  id, '$BlockMetadataTransactionAllOf', 'id'),
               round: BuiltValueNullFieldError.checkNotNull(
-                  round, 'BlockMetadataTransactionAllOf', 'round'),
+                  round, '$BlockMetadataTransactionAllOf', 'round'),
               previousBlockVotes: previousBlockVotes.build(),
               proposer: BuiltValueNullFieldError.checkNotNull(
-                  proposer, 'BlockMetadataTransactionAllOf', 'proposer'),
+                  proposer, '$BlockMetadataTransactionAllOf', 'proposer'),
               timestamp: BuiltValueNullFieldError.checkNotNull(
-                  timestamp, 'BlockMetadataTransactionAllOf', 'timestamp'));
+                  timestamp, '$BlockMetadataTransactionAllOf', 'timestamp'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -175,7 +198,7 @@ class BlockMetadataTransactionAllOfBuilder
         previousBlockVotes.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            'BlockMetadataTransactionAllOf', _$failedField, e.toString());
+            '$BlockMetadataTransactionAllOf', _$failedField, e.toString());
       }
       rethrow;
     }

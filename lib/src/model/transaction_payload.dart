@@ -13,6 +13,9 @@ import 'package:aptos_api_dart/src/model/move_module.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:one_of/one_of.dart';
+import 'package:one_of/any_of.dart';
+// ignore_for_file: unused_element, unused_import
 
 part 'transaction_payload.g.dart';
 
@@ -26,37 +29,27 @@ part 'transaction_payload.g.dart';
 /// * [code]
 /// * [modules]
 /// * [writeSet]
+@BuiltValue()
 abstract class TransactionPayload
     implements Built<TransactionPayload, TransactionPayloadBuilder> {
-  @BuiltValueField(wireName: r'type')
-  String get type;
+  /// One Of [ModuleBundlePayload], [ScriptFunctionPayload], [ScriptPayload], [WriteSetPayload]
+  OneOf get oneOf;
 
-  /// Script function id is string representation of a script function defined on-chain.  Format: `{address}::{module name}::{function name}`  Both `module name` and `function name` are case-sensitive.
-  @BuiltValueField(wireName: r'function')
-  String get function_;
-
-  @BuiltValueField(wireName: r'type_arguments')
-  BuiltList<String> get typeArguments;
-
-  @BuiltValueField(wireName: r'arguments')
-  BuiltList<JsonObject?> get arguments;
-
-  @BuiltValueField(wireName: r'code')
-  MoveScript get code;
-
-  @BuiltValueField(wireName: r'modules')
-  BuiltList<MoveModule> get modules;
-
-  @BuiltValueField(wireName: r'write_set')
-  WriteSet get writeSet;
+  static const String discriminatorFieldName = r'type';
+  static const Map<String, Type> discriminatorMapping = {
+    r'ModuleBundlePayload': ModuleBundlePayload,
+    r'ScriptFunctionPayload': ScriptFunctionPayload,
+    r'ScriptPayload': ScriptPayload,
+    r'WriteSetPayload': WriteSetPayload,
+  };
 
   TransactionPayload._();
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(TransactionPayloadBuilder b) => b;
-
   factory TransactionPayload([void updates(TransactionPayloadBuilder b)]) =
       _$TransactionPayload;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(TransactionPayloadBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<TransactionPayload> get serializer =>
@@ -64,105 +57,75 @@ abstract class TransactionPayload
 }
 
 class _$TransactionPayloadSerializer
-    implements StructuredSerializer<TransactionPayload> {
+    implements PrimitiveSerializer<TransactionPayload> {
   @override
   final Iterable<Type> types = const [TransactionPayload, _$TransactionPayload];
 
   @override
   final String wireName = r'TransactionPayload';
 
-  @override
-  Iterable<Object?> serialize(
+  Iterable<Object?> _serializeProperties(
       Serializers serializers, TransactionPayload object,
+      {FullType specifiedType = FullType.unspecified}) sync* {}
+
+  @override
+  Object serialize(Serializers serializers, TransactionPayload object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[];
-    result
-      ..add(r'type')
-      ..add(serializers.serialize(object.type,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'function')
-      ..add(serializers.serialize(object.function_,
-          specifiedType: const FullType(String)));
-    result
-      ..add(r'type_arguments')
-      ..add(serializers.serialize(object.typeArguments,
-          specifiedType: const FullType(BuiltList, [FullType(String)])));
-    result
-      ..add(r'arguments')
-      ..add(serializers.serialize(object.arguments,
-          specifiedType:
-              const FullType(BuiltList, [FullType.nullable(JsonObject)])));
-    result
-      ..add(r'code')
-      ..add(serializers.serialize(object.code,
-          specifiedType: const FullType(MoveScript)));
-    result
-      ..add(r'modules')
-      ..add(serializers.serialize(object.modules,
-          specifiedType: const FullType(BuiltList, [FullType(MoveModule)])));
-    result
-      ..add(r'write_set')
-      ..add(serializers.serialize(object.writeSet,
-          specifiedType: const FullType(WriteSet)));
-    return result;
+    final oneOf = object.oneOf;
+    return serializers.serialize(oneOf.value,
+        specifiedType: FullType(oneOf.valueType))!;
   }
 
   @override
-  TransactionPayload deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
+  TransactionPayload deserialize(Serializers serializers, Object serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = TransactionPayloadBuilder();
-
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-
-      switch (key) {
-        case r'type':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.type = valueDes;
-          break;
-        case r'function':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.function_ = valueDes;
-          break;
-        case r'type_arguments':
-          final valueDes = serializers.deserialize(value,
-                  specifiedType: const FullType(BuiltList, [FullType(String)]))
-              as BuiltList<String>;
-          result.typeArguments.replace(valueDes);
-          break;
-        case r'arguments':
-          final valueDes = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, [FullType.nullable(JsonObject)]))
-              as BuiltList<JsonObject?>;
-          result.arguments.replace(valueDes);
-          break;
-        case r'code':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(MoveScript)) as MoveScript;
-          result.code.replace(valueDes);
-          break;
-        case r'modules':
-          final valueDes = serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, [FullType(MoveModule)]))
-              as BuiltList<MoveModule>;
-          result.modules.replace(valueDes);
-          break;
-        case r'write_set':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(WriteSet)) as WriteSet;
-          result.writeSet.replace(valueDes);
-          break;
-      }
+    Object? oneOfDataSrc;
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final discIndex =
+        serializedList.indexOf(TransactionPayload.discriminatorFieldName) + 1;
+    final discValue = serializers.deserialize(serializedList[discIndex],
+        specifiedType: FullType(String)) as String;
+    oneOfDataSrc = serialized;
+    final oneOfTypes = [
+      ModuleBundlePayload,
+      ScriptFunctionPayload,
+      ScriptPayload,
+      WriteSetPayload,
+    ];
+    Object oneOfResult;
+    Type oneOfType;
+    switch (discValue) {
+      case 'ModuleBundlePayload':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+                specifiedType: FullType(ModuleBundlePayload))
+            as ModuleBundlePayload;
+        oneOfType = ModuleBundlePayload;
+        break;
+      case 'ScriptFunctionPayload':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+                specifiedType: FullType(ScriptFunctionPayload))
+            as ScriptFunctionPayload;
+        oneOfType = ScriptFunctionPayload;
+        break;
+      case 'ScriptPayload':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+            specifiedType: FullType(ScriptPayload)) as ScriptPayload;
+        oneOfType = ScriptPayload;
+        break;
+      case 'WriteSetPayload':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+            specifiedType: FullType(WriteSetPayload)) as WriteSetPayload;
+        oneOfType = WriteSetPayload;
+        break;
+      default:
+        throw UnsupportedError(
+            "Couldn't deserialize oneOf for the discriminator value: ${discValue}");
     }
+    result.oneOf = OneOfDynamic(
+        typeIndex: oneOfTypes.indexOf(oneOfType),
+        types: oneOfTypes,
+        value: oneOfResult);
     return result.build();
   }
 }

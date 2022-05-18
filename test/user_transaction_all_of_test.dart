@@ -3,7 +3,7 @@ import 'package:aptos_api_dart/aptos_api_dart.dart';
 
 // tests for UserTransactionAllOf
 void main() {
-  final instance = UserTransactionAllOfBuilder();
+  //final instance = UserTransactionAllOfBuilder();
   // TODO add properties to the builder and call build()
 
   group(UserTransactionAllOf, () {

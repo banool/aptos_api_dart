@@ -3,7 +3,7 @@ import 'package:aptos_api_dart/aptos_api_dart.dart';
 
 // tests for PendingTransactionAllOf
 void main() {
-  final instance = PendingTransactionAllOfBuilder();
+  //final instance = PendingTransactionAllOfBuilder();
   // TODO add properties to the builder and call build()
 
   group(PendingTransactionAllOf, () {

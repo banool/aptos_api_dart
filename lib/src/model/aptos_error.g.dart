@@ -6,7 +6,20 @@ part of 'aptos_error.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$AptosError extends AptosError {
+abstract class AptosErrorBuilder {
+  void replace(AptosError other);
+  void update(void Function(AptosErrorBuilder) updates);
+  int? get code;
+  set code(int? code);
+
+  String? get message;
+  set message(String? message);
+
+  String? get aptosLedgerVersion;
+  set aptosLedgerVersion(String? aptosLedgerVersion);
+}
+
+class _$$AptosError extends $AptosError {
   @override
   final int code;
   @override
@@ -14,27 +27,27 @@ class _$AptosError extends AptosError {
   @override
   final String? aptosLedgerVersion;
 
-  factory _$AptosError([void Function(AptosErrorBuilder)? updates]) =>
-      (AptosErrorBuilder()..update(updates)).build();
+  factory _$$AptosError([void Function($AptosErrorBuilder)? updates]) =>
+      ($AptosErrorBuilder()..update(updates)).build();
 
-  _$AptosError._(
+  _$$AptosError._(
       {required this.code, required this.message, this.aptosLedgerVersion})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(code, 'AptosError', 'code');
-    BuiltValueNullFieldError.checkNotNull(message, 'AptosError', 'message');
+    BuiltValueNullFieldError.checkNotNull(code, '$AptosError', 'code');
+    BuiltValueNullFieldError.checkNotNull(message, '$AptosError', 'message');
   }
 
   @override
-  AptosError rebuild(void Function(AptosErrorBuilder) updates) =>
+  $AptosError rebuild(void Function($AptosErrorBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  AptosErrorBuilder toBuilder() => AptosErrorBuilder()..replace(this);
+  $AptosErrorBuilder toBuilder() => $AptosErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is AptosError &&
+    return other is $AptosError &&
         code == other.code &&
         message == other.message &&
         aptosLedgerVersion == other.aptosLedgerVersion;
@@ -48,7 +61,7 @@ class _$AptosError extends AptosError {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('AptosError')
+    return (newBuiltValueToStringHelper('$AptosError')
           ..add('code', code)
           ..add('message', message)
           ..add('aptosLedgerVersion', aptosLedgerVersion))
@@ -56,27 +69,28 @@ class _$AptosError extends AptosError {
   }
 }
 
-class AptosErrorBuilder implements Builder<AptosError, AptosErrorBuilder> {
-  _$AptosError? _$v;
+class $AptosErrorBuilder
+    implements Builder<$AptosError, $AptosErrorBuilder>, AptosErrorBuilder {
+  _$$AptosError? _$v;
 
   int? _code;
   int? get code => _$this._code;
-  set code(int? code) => _$this._code = code;
+  set code(covariant int? code) => _$this._code = code;
 
   String? _message;
   String? get message => _$this._message;
-  set message(String? message) => _$this._message = message;
+  set message(covariant String? message) => _$this._message = message;
 
   String? _aptosLedgerVersion;
   String? get aptosLedgerVersion => _$this._aptosLedgerVersion;
-  set aptosLedgerVersion(String? aptosLedgerVersion) =>
+  set aptosLedgerVersion(covariant String? aptosLedgerVersion) =>
       _$this._aptosLedgerVersion = aptosLedgerVersion;
 
-  AptosErrorBuilder() {
-    AptosError._defaults(this);
+  $AptosErrorBuilder() {
+    $AptosError._defaults(this);
   }
 
-  AptosErrorBuilder get _$this {
+  $AptosErrorBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _code = $v.code;
@@ -88,24 +102,24 @@ class AptosErrorBuilder implements Builder<AptosError, AptosErrorBuilder> {
   }
 
   @override
-  void replace(AptosError other) {
+  void replace(covariant $AptosError other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$AptosError;
+    _$v = other as _$$AptosError;
   }
 
   @override
-  void update(void Function(AptosErrorBuilder)? updates) {
+  void update(void Function($AptosErrorBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$AptosError build() {
+  _$$AptosError build() {
     final _$result = _$v ??
-        _$AptosError._(
+        _$$AptosError._(
             code: BuiltValueNullFieldError.checkNotNull(
-                code, 'AptosError', 'code'),
+                code, '$AptosError', 'code'),
             message: BuiltValueNullFieldError.checkNotNull(
-                message, 'AptosError', 'message'),
+                message, '$AptosError', 'message'),
             aptosLedgerVersion: aptosLedgerVersion);
     replace(_$result);
     return _$result;

@@ -5,6 +5,9 @@
 import 'package:aptos_api_dart/src/model/aptos_error.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:one_of/one_of.dart';
+import 'package:one_of/any_of.dart';
+// ignore_for_file: unused_element, unused_import
 
 part 'submit_transaction415_response.g.dart';
 
@@ -14,28 +17,20 @@ part 'submit_transaction415_response.g.dart';
 /// * [code]
 /// * [message]
 /// * [aptosLedgerVersion] - The version of the latest transaction in the ledger.
+@BuiltValue()
 abstract class SubmitTransaction415Response
     implements
+        AptosError,
         Built<SubmitTransaction415Response,
             SubmitTransaction415ResponseBuilder> {
-  @BuiltValueField(wireName: r'code')
-  int get code;
-
-  @BuiltValueField(wireName: r'message')
-  String get message;
-
-  /// The version of the latest transaction in the ledger.
-  @BuiltValueField(wireName: r'aptos_ledger_version')
-  String? get aptosLedgerVersion;
-
   SubmitTransaction415Response._();
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(SubmitTransaction415ResponseBuilder b) => b;
 
   factory SubmitTransaction415Response(
           [void updates(SubmitTransaction415ResponseBuilder b)]) =
       _$SubmitTransaction415Response;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults(SubmitTransaction415ResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<SubmitTransaction415Response> get serializer =>
@@ -43,7 +38,7 @@ abstract class SubmitTransaction415Response
 }
 
 class _$SubmitTransaction415ResponseSerializer
-    implements StructuredSerializer<SubmitTransaction415Response> {
+    implements PrimitiveSerializer<SubmitTransaction415Response> {
   @override
   final Iterable<Type> types = const [
     SubmitTransaction415Response,
@@ -53,41 +48,44 @@ class _$SubmitTransaction415ResponseSerializer
   @override
   final String wireName = r'SubmitTransaction415Response';
 
-  @override
-  Iterable<Object?> serialize(
+  Iterable<Object?> _serializeProperties(
       Serializers serializers, SubmitTransaction415Response object,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[];
-    result
-      ..add(r'code')
-      ..add(serializers.serialize(object.code,
-          specifiedType: const FullType(int)));
-    result
-      ..add(r'message')
-      ..add(serializers.serialize(object.message,
-          specifiedType: const FullType(String)));
+      {FullType specifiedType = FullType.unspecified}) sync* {
     if (object.aptosLedgerVersion != null) {
-      result
-        ..add(r'aptos_ledger_version')
-        ..add(serializers.serialize(object.aptosLedgerVersion,
-            specifiedType: const FullType(String)));
+      yield r'aptos_ledger_version';
+      yield serializers.serialize(object.aptosLedgerVersion,
+          specifiedType: const FullType(String));
     }
-    return result;
+    yield r'code';
+    yield serializers.serialize(object.code,
+        specifiedType: const FullType(int));
+    yield r'message';
+    yield serializers.serialize(object.message,
+        specifiedType: const FullType(String));
   }
 
   @override
-  SubmitTransaction415Response deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
+  Object serialize(Serializers serializers, SubmitTransaction415Response object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = SubmitTransaction415ResponseBuilder();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
+  }
 
-    final iterator = serialized.iterator;
-    while (iterator.moveNext()) {
-      final key = iterator.current as String;
-      iterator.moveNext();
-      final Object? value = iterator.current;
-
+  void _deserializeProperties(Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified,
+      required List<Object?> serializedList,
+      required SubmitTransaction415ResponseBuilder result,
+      required List<Object?> unhandled}) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
       switch (key) {
+        case r'aptos_ledger_version':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.aptosLedgerVersion = valueDes;
+          break;
         case r'code':
           final valueDes = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
@@ -98,13 +96,26 @@ class _$SubmitTransaction415ResponseSerializer
               specifiedType: const FullType(String)) as String;
           result.message = valueDes;
           break;
-        case r'aptos_ledger_version':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.aptosLedgerVersion = valueDes;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
           break;
       }
     }
+  }
+
+  @override
+  SubmitTransaction415Response deserialize(
+      Serializers serializers, Object serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = SubmitTransaction415ResponseBuilder();
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final unhandled = <Object?>[];
+    _deserializeProperties(serializers, serialized,
+        specifiedType: specifiedType,
+        serializedList: serializedList,
+        unhandled: unhandled,
+        result: result);
     return result.build();
   }
 }

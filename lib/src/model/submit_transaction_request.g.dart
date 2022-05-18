@@ -114,45 +114,50 @@ class _$SubmitTransactionRequest extends SubmitTransactionRequest {
 
 class SubmitTransactionRequestBuilder
     implements
-        Builder<SubmitTransactionRequest, SubmitTransactionRequestBuilder> {
+        Builder<SubmitTransactionRequest, SubmitTransactionRequestBuilder>,
+        UserTransactionRequestBuilder,
+        UserTransactionSignatureBuilder {
   _$SubmitTransactionRequest? _$v;
 
   String? _sender;
   String? get sender => _$this._sender;
-  set sender(String? sender) => _$this._sender = sender;
+  set sender(covariant String? sender) => _$this._sender = sender;
 
   String? _sequenceNumber;
   String? get sequenceNumber => _$this._sequenceNumber;
-  set sequenceNumber(String? sequenceNumber) =>
+  set sequenceNumber(covariant String? sequenceNumber) =>
       _$this._sequenceNumber = sequenceNumber;
 
   String? _maxGasAmount;
   String? get maxGasAmount => _$this._maxGasAmount;
-  set maxGasAmount(String? maxGasAmount) => _$this._maxGasAmount = maxGasAmount;
+  set maxGasAmount(covariant String? maxGasAmount) =>
+      _$this._maxGasAmount = maxGasAmount;
 
   String? _gasUnitPrice;
   String? get gasUnitPrice => _$this._gasUnitPrice;
-  set gasUnitPrice(String? gasUnitPrice) => _$this._gasUnitPrice = gasUnitPrice;
+  set gasUnitPrice(covariant String? gasUnitPrice) =>
+      _$this._gasUnitPrice = gasUnitPrice;
 
   String? _gasCurrencyCode;
   String? get gasCurrencyCode => _$this._gasCurrencyCode;
-  set gasCurrencyCode(String? gasCurrencyCode) =>
+  set gasCurrencyCode(covariant String? gasCurrencyCode) =>
       _$this._gasCurrencyCode = gasCurrencyCode;
 
   String? _expirationTimestampSecs;
   String? get expirationTimestampSecs => _$this._expirationTimestampSecs;
-  set expirationTimestampSecs(String? expirationTimestampSecs) =>
+  set expirationTimestampSecs(covariant String? expirationTimestampSecs) =>
       _$this._expirationTimestampSecs = expirationTimestampSecs;
 
   TransactionPayloadBuilder? _payload;
   TransactionPayloadBuilder get payload =>
       _$this._payload ??= TransactionPayloadBuilder();
-  set payload(TransactionPayloadBuilder? payload) => _$this._payload = payload;
+  set payload(covariant TransactionPayloadBuilder? payload) =>
+      _$this._payload = payload;
 
   TransactionSignatureBuilder? _signature;
   TransactionSignatureBuilder get signature =>
       _$this._signature ??= TransactionSignatureBuilder();
-  set signature(TransactionSignatureBuilder? signature) =>
+  set signature(covariant TransactionSignatureBuilder? signature) =>
       _$this._signature = signature;
 
   SubmitTransactionRequestBuilder() {
@@ -176,7 +181,8 @@ class SubmitTransactionRequestBuilder
   }
 
   @override
-  void replace(SubmitTransactionRequest other) {
+// ignore: override_on_non_overriding_method
+  void replace(covariant SubmitTransactionRequest other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SubmitTransactionRequest;
   }
