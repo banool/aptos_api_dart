@@ -1,3 +1,6 @@
+## 0.2.2
+- Add necessary serializers for oneOf.
+
 ## 0.2.1
 - Generate again with upgrade dependencies.
 

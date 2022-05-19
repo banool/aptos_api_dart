@@ -54,3 +54,8 @@ sed -i '' -E 's@ \(EXPERIMENTAL\)@@' README.md
 
 # Make sure the user fixes up the version and bumps it
 echo "WARNING: This script resets the version, make sure to bump it yourself manually from what it was"
+
+echo
+
+# Make sure the user adds the necessary serializers
+echo "WARNING: Make sure to make the following changes manually for now: https://github.com/banool/aptos_api_dart/pull/2/files"
