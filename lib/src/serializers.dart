@@ -160,6 +160,8 @@ Serializers serializers = (_$serializers.toBuilder()
         const FullType(BuiltList, [FullType(MoveModule)]),
         () => ListBuilder<MoveModule>(),
       )
+      ..add(const OneOfSerializer())
+      ..add(const AnyOfSerializer())
       ..add(const DateSerializer())
       ..add(Iso8601DateTimeSerializer()))
     .build();
