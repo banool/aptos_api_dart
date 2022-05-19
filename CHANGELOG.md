@@ -1,3 +1,6 @@
+## 0.2.3
+- Add additional necessary serializers.
+
 ## 0.2.2
 - Add necessary serializers for oneOf.
 
