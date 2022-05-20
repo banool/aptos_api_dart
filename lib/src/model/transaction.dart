@@ -57,6 +57,10 @@ abstract class Transaction implements Built<Transaction, TransactionBuilder> {
     r'GenesisTransaction': GenesisTransaction,
     r'PendingTransaction': PendingTransaction,
     r'UserTransaction': UserTransaction,
+    r'block_metadata_transaction': BlockMetadataTransaction,
+    r'genesis_transaction': GenesisTransaction,
+    r'pending_transaction': PendingTransaction,
+    r'user_transaction': UserTransaction,
   };
 
   Transaction._();
@@ -105,6 +109,10 @@ class _$TransactionSerializer implements PrimitiveSerializer<Transaction> {
       GenesisTransaction,
       PendingTransaction,
       UserTransaction,
+      BlockMetadataTransaction,
+      GenesisTransaction,
+      PendingTransaction,
+      UserTransaction,
     ];
     Object oneOfResult;
     Type oneOfType;
@@ -126,6 +134,27 @@ class _$TransactionSerializer implements PrimitiveSerializer<Transaction> {
         oneOfType = PendingTransaction;
         break;
       case 'UserTransaction':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+            specifiedType: FullType(UserTransaction)) as UserTransaction;
+        oneOfType = UserTransaction;
+        break;
+      case 'block_metadata_transaction':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+                specifiedType: FullType(BlockMetadataTransaction))
+            as BlockMetadataTransaction;
+        oneOfType = BlockMetadataTransaction;
+        break;
+      case 'genesis_transaction':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+            specifiedType: FullType(GenesisTransaction)) as GenesisTransaction;
+        oneOfType = GenesisTransaction;
+        break;
+      case 'pending_transaction':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+            specifiedType: FullType(PendingTransaction)) as PendingTransaction;
+        oneOfType = PendingTransaction;
+        break;
+      case 'user_transaction':
         oneOfResult = serializers.deserialize(oneOfDataSrc,
             specifiedType: FullType(UserTransaction)) as UserTransaction;
         oneOfType = UserTransaction;

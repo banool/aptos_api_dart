@@ -40,6 +40,12 @@ abstract class WriteSetChange
     r'WriteModule': WriteModule,
     r'WriteResource': WriteResource,
     r'WriteTableItem': WriteTableItem,
+    r'delete_module': DeleteModule,
+    r'delete_resource': DeleteResource,
+    r'delete_table_item': DeleteTableItem,
+    r'write_module': WriteModule,
+    r'write_resource': WriteResource,
+    r'write_table_item': WriteTableItem,
   };
 
   WriteSetChange._();
@@ -93,6 +99,12 @@ class _$WriteSetChangeSerializer
       WriteModule,
       WriteResource,
       WriteTableItem,
+      DeleteModule,
+      DeleteResource,
+      DeleteTableItem,
+      WriteModule,
+      WriteResource,
+      WriteTableItem,
     ];
     Object oneOfResult;
     Type oneOfType;
@@ -123,6 +135,36 @@ class _$WriteSetChangeSerializer
         oneOfType = WriteResource;
         break;
       case 'WriteTableItem':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+            specifiedType: FullType(WriteTableItem)) as WriteTableItem;
+        oneOfType = WriteTableItem;
+        break;
+      case 'delete_module':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+            specifiedType: FullType(DeleteModule)) as DeleteModule;
+        oneOfType = DeleteModule;
+        break;
+      case 'delete_resource':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+            specifiedType: FullType(DeleteResource)) as DeleteResource;
+        oneOfType = DeleteResource;
+        break;
+      case 'delete_table_item':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+            specifiedType: FullType(DeleteTableItem)) as DeleteTableItem;
+        oneOfType = DeleteTableItem;
+        break;
+      case 'write_module':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+            specifiedType: FullType(WriteModule)) as WriteModule;
+        oneOfType = WriteModule;
+        break;
+      case 'write_resource':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+            specifiedType: FullType(WriteResource)) as WriteResource;
+        oneOfType = WriteResource;
+        break;
+      case 'write_table_item':
         oneOfResult = serializers.deserialize(oneOfDataSrc,
             specifiedType: FullType(WriteTableItem)) as WriteTableItem;
         oneOfType = WriteTableItem;

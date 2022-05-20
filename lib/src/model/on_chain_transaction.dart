@@ -56,6 +56,9 @@ abstract class OnChainTransaction
     r'BlockMetadataTransaction': BlockMetadataTransaction,
     r'GenesisTransaction': GenesisTransaction,
     r'UserTransaction': UserTransaction,
+    r'block_metadata_transaction': BlockMetadataTransaction,
+    r'genesis_transaction': GenesisTransaction,
+    r'user_transaction': UserTransaction,
   };
 
   OnChainTransaction._();
@@ -106,6 +109,9 @@ class _$OnChainTransactionSerializer
       BlockMetadataTransaction,
       GenesisTransaction,
       UserTransaction,
+      BlockMetadataTransaction,
+      GenesisTransaction,
+      UserTransaction,
     ];
     Object oneOfResult;
     Type oneOfType;
@@ -122,6 +128,22 @@ class _$OnChainTransactionSerializer
         oneOfType = GenesisTransaction;
         break;
       case 'UserTransaction':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+            specifiedType: FullType(UserTransaction)) as UserTransaction;
+        oneOfType = UserTransaction;
+        break;
+      case 'block_metadata_transaction':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+                specifiedType: FullType(BlockMetadataTransaction))
+            as BlockMetadataTransaction;
+        oneOfType = BlockMetadataTransaction;
+        break;
+      case 'genesis_transaction':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+            specifiedType: FullType(GenesisTransaction)) as GenesisTransaction;
+        oneOfType = GenesisTransaction;
+        break;
+      case 'user_transaction':
         oneOfResult = serializers.deserialize(oneOfDataSrc,
             specifiedType: FullType(UserTransaction)) as UserTransaction;
         oneOfType = UserTransaction;

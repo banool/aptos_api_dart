@@ -41,6 +41,10 @@ abstract class TransactionPayload
     r'ScriptFunctionPayload': ScriptFunctionPayload,
     r'ScriptPayload': ScriptPayload,
     r'WriteSetPayload': WriteSetPayload,
+    r'module_bundle_payload': ModuleBundlePayload,
+    r'script_function_payload': ScriptFunctionPayload,
+    r'script_payload': ScriptPayload,
+    r'write_set_payload': WriteSetPayload,
   };
 
   TransactionPayload._();
@@ -92,6 +96,10 @@ class _$TransactionPayloadSerializer
       ScriptFunctionPayload,
       ScriptPayload,
       WriteSetPayload,
+      ModuleBundlePayload,
+      ScriptFunctionPayload,
+      ScriptPayload,
+      WriteSetPayload,
     ];
     Object oneOfResult;
     Type oneOfType;
@@ -114,6 +122,28 @@ class _$TransactionPayloadSerializer
         oneOfType = ScriptPayload;
         break;
       case 'WriteSetPayload':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+            specifiedType: FullType(WriteSetPayload)) as WriteSetPayload;
+        oneOfType = WriteSetPayload;
+        break;
+      case 'module_bundle_payload':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+                specifiedType: FullType(ModuleBundlePayload))
+            as ModuleBundlePayload;
+        oneOfType = ModuleBundlePayload;
+        break;
+      case 'script_function_payload':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+                specifiedType: FullType(ScriptFunctionPayload))
+            as ScriptFunctionPayload;
+        oneOfType = ScriptFunctionPayload;
+        break;
+      case 'script_payload':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+            specifiedType: FullType(ScriptPayload)) as ScriptPayload;
+        oneOfType = ScriptPayload;
+        break;
+      case 'write_set_payload':
         oneOfResult = serializers.deserialize(oneOfDataSrc,
             specifiedType: FullType(WriteSetPayload)) as WriteSetPayload;
         oneOfType = WriteSetPayload;

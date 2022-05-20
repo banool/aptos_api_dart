@@ -33,6 +33,8 @@ abstract class WriteSet implements Built<WriteSet, WriteSetBuilder> {
   static const Map<String, Type> discriminatorMapping = {
     r'DirectWriteSet': DirectWriteSet,
     r'ScriptWriteSet': ScriptWriteSet,
+    r'direct_write_set': DirectWriteSet,
+    r'script_write_set': ScriptWriteSet,
   };
 
   WriteSet._();
@@ -79,6 +81,8 @@ class _$WriteSetSerializer implements PrimitiveSerializer<WriteSet> {
     final oneOfTypes = [
       DirectWriteSet,
       ScriptWriteSet,
+      DirectWriteSet,
+      ScriptWriteSet,
     ];
     Object oneOfResult;
     Type oneOfType;
@@ -89,6 +93,16 @@ class _$WriteSetSerializer implements PrimitiveSerializer<WriteSet> {
         oneOfType = DirectWriteSet;
         break;
       case 'ScriptWriteSet':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+            specifiedType: FullType(ScriptWriteSet)) as ScriptWriteSet;
+        oneOfType = ScriptWriteSet;
+        break;
+      case 'direct_write_set':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+            specifiedType: FullType(DirectWriteSet)) as DirectWriteSet;
+        oneOfType = DirectWriteSet;
+        break;
+      case 'script_write_set':
         oneOfResult = serializers.deserialize(oneOfDataSrc,
             specifiedType: FullType(ScriptWriteSet)) as ScriptWriteSet;
         oneOfType = ScriptWriteSet;
