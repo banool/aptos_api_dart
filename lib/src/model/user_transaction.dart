@@ -86,9 +86,11 @@ class _$UserTransactionSerializer
     yield r'changes';
     yield serializers.serialize(object.changes,
         specifiedType: const FullType(BuiltList, [FullType(WriteSetChange)]));
-    yield r'gas_currency_code';
-    yield serializers.serialize(object.gasCurrencyCode,
-        specifiedType: const FullType(String));
+    if (object.gasCurrencyCode != null) {
+      yield r'gas_currency_code';
+      yield serializers.serialize(object.gasCurrencyCode,
+          specifiedType: const FullType(String));
+    }
     yield r'type';
     yield serializers.serialize(object.type,
         specifiedType: const FullType(String));

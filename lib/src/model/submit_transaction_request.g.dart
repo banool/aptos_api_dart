@@ -16,7 +16,7 @@ class _$SubmitTransactionRequest extends SubmitTransactionRequest {
   @override
   final String gasUnitPrice;
   @override
-  final String gasCurrencyCode;
+  final String? gasCurrencyCode;
   @override
   final String expirationTimestampSecs;
   @override
@@ -33,7 +33,7 @@ class _$SubmitTransactionRequest extends SubmitTransactionRequest {
       required this.sequenceNumber,
       required this.maxGasAmount,
       required this.gasUnitPrice,
-      required this.gasCurrencyCode,
+      this.gasCurrencyCode,
       required this.expirationTimestampSecs,
       required this.payload,
       required this.signature})
@@ -46,8 +46,6 @@ class _$SubmitTransactionRequest extends SubmitTransactionRequest {
         maxGasAmount, 'SubmitTransactionRequest', 'maxGasAmount');
     BuiltValueNullFieldError.checkNotNull(
         gasUnitPrice, 'SubmitTransactionRequest', 'gasUnitPrice');
-    BuiltValueNullFieldError.checkNotNull(
-        gasCurrencyCode, 'SubmitTransactionRequest', 'gasCurrencyCode');
     BuiltValueNullFieldError.checkNotNull(expirationTimestampSecs,
         'SubmitTransactionRequest', 'expirationTimestampSecs');
     BuiltValueNullFieldError.checkNotNull(
@@ -208,10 +206,7 @@ class SubmitTransactionRequestBuilder
                   maxGasAmount, 'SubmitTransactionRequest', 'maxGasAmount'),
               gasUnitPrice: BuiltValueNullFieldError.checkNotNull(
                   gasUnitPrice, 'SubmitTransactionRequest', 'gasUnitPrice'),
-              gasCurrencyCode: BuiltValueNullFieldError.checkNotNull(
-                  gasCurrencyCode,
-                  'SubmitTransactionRequest',
-                  'gasCurrencyCode'),
+              gasCurrencyCode: gasCurrencyCode,
               expirationTimestampSecs: BuiltValueNullFieldError.checkNotNull(
                   expirationTimestampSecs,
                   'SubmitTransactionRequest',

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **sequenceNumber** | **String** | Unsigned int64 type value | 
 **maxGasAmount** | **String** | Unsigned int64 type value | 
 **gasUnitPrice** | **String** | Unsigned int64 type value | 
-**gasCurrencyCode** | **String** |  | 
+**gasCurrencyCode** | **String** |  | [optional] 
 **expirationTimestampSecs** | **String** | Timestamp in seconds, e.g. transaction expiration timestamp.  | 
 **payload** | [**TransactionPayload**](TransactionPayload.md) |  | 
 **signature** | [**TransactionSignature**](TransactionSignature.md) |  | 

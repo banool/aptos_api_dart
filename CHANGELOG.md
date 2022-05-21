@@ -1,3 +1,6 @@
+## 0.3.3
+- Make `gas_currency_code` optional.
+
 ## 0.3.2
 - Fix discriminator mapping for signature types in TransactionSignature.
 

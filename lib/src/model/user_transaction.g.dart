@@ -40,7 +40,7 @@ class _$UserTransaction extends UserTransaction {
   @override
   final String gasUnitPrice;
   @override
-  final String gasCurrencyCode;
+  final String? gasCurrencyCode;
   @override
   final String expirationTimestampSecs;
   @override
@@ -68,7 +68,7 @@ class _$UserTransaction extends UserTransaction {
       required this.sequenceNumber,
       required this.maxGasAmount,
       required this.gasUnitPrice,
-      required this.gasCurrencyCode,
+      this.gasCurrencyCode,
       required this.expirationTimestampSecs,
       required this.payload,
       required this.signature})
@@ -101,8 +101,6 @@ class _$UserTransaction extends UserTransaction {
         maxGasAmount, 'UserTransaction', 'maxGasAmount');
     BuiltValueNullFieldError.checkNotNull(
         gasUnitPrice, 'UserTransaction', 'gasUnitPrice');
-    BuiltValueNullFieldError.checkNotNull(
-        gasCurrencyCode, 'UserTransaction', 'gasCurrencyCode');
     BuiltValueNullFieldError.checkNotNull(
         expirationTimestampSecs, 'UserTransaction', 'expirationTimestampSecs');
     BuiltValueNullFieldError.checkNotNull(
@@ -393,7 +391,7 @@ class UserTransactionBuilder
               sequenceNumber: BuiltValueNullFieldError.checkNotNull(sequenceNumber, 'UserTransaction', 'sequenceNumber'),
               maxGasAmount: BuiltValueNullFieldError.checkNotNull(maxGasAmount, 'UserTransaction', 'maxGasAmount'),
               gasUnitPrice: BuiltValueNullFieldError.checkNotNull(gasUnitPrice, 'UserTransaction', 'gasUnitPrice'),
-              gasCurrencyCode: BuiltValueNullFieldError.checkNotNull(gasCurrencyCode, 'UserTransaction', 'gasCurrencyCode'),
+              gasCurrencyCode: gasCurrencyCode,
               expirationTimestampSecs: BuiltValueNullFieldError.checkNotNull(expirationTimestampSecs, 'UserTransaction', 'expirationTimestampSecs'),
               payload: payload.build(),
               signature: signature.build());

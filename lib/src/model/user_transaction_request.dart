@@ -39,7 +39,7 @@ abstract class UserTransactionRequest {
   @BuiltValueField(wireName: r'gas_unit_price')
   String get gasUnitPrice;
   @BuiltValueField(wireName: r'gas_currency_code')
-  String get gasCurrencyCode;
+  String? get gasCurrencyCode;
 
   /// Timestamp in seconds, e.g. transaction expiration timestamp.
   @BuiltValueField(wireName: r'expiration_timestamp_secs')
@@ -78,9 +78,11 @@ class _$UserTransactionRequestSerializer
     yield r'gas_unit_price';
     yield serializers.serialize(object.gasUnitPrice,
         specifiedType: const FullType(String));
-    yield r'gas_currency_code';
-    yield serializers.serialize(object.gasCurrencyCode,
-        specifiedType: const FullType(String));
+    if (object.gasCurrencyCode != null) {
+      yield r'gas_currency_code';
+      yield serializers.serialize(object.gasCurrencyCode,
+          specifiedType: const FullType(String));
+    }
     yield r'expiration_timestamp_secs';
     yield serializers.serialize(object.expirationTimestampSecs,
         specifiedType: const FullType(String));

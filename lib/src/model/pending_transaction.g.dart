@@ -20,7 +20,7 @@ class _$PendingTransaction extends PendingTransaction {
   @override
   final String gasUnitPrice;
   @override
-  final String gasCurrencyCode;
+  final String? gasCurrencyCode;
   @override
   final String expirationTimestampSecs;
   @override
@@ -39,7 +39,7 @@ class _$PendingTransaction extends PendingTransaction {
       required this.sequenceNumber,
       required this.maxGasAmount,
       required this.gasUnitPrice,
-      required this.gasCurrencyCode,
+      this.gasCurrencyCode,
       required this.expirationTimestampSecs,
       required this.payload,
       required this.signature})
@@ -54,8 +54,6 @@ class _$PendingTransaction extends PendingTransaction {
         maxGasAmount, 'PendingTransaction', 'maxGasAmount');
     BuiltValueNullFieldError.checkNotNull(
         gasUnitPrice, 'PendingTransaction', 'gasUnitPrice');
-    BuiltValueNullFieldError.checkNotNull(
-        gasCurrencyCode, 'PendingTransaction', 'gasCurrencyCode');
     BuiltValueNullFieldError.checkNotNull(expirationTimestampSecs,
         'PendingTransaction', 'expirationTimestampSecs');
     BuiltValueNullFieldError.checkNotNull(
@@ -237,8 +235,7 @@ class PendingTransactionBuilder
                   maxGasAmount, 'PendingTransaction', 'maxGasAmount'),
               gasUnitPrice: BuiltValueNullFieldError.checkNotNull(
                   gasUnitPrice, 'PendingTransaction', 'gasUnitPrice'),
-              gasCurrencyCode: BuiltValueNullFieldError.checkNotNull(
-                  gasCurrencyCode, 'PendingTransaction', 'gasCurrencyCode'),
+              gasCurrencyCode: gasCurrencyCode,
               expirationTimestampSecs: BuiltValueNullFieldError.checkNotNull(
                   expirationTimestampSecs,
                   'PendingTransaction',

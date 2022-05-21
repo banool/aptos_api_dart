@@ -77,9 +77,11 @@ class _$SubmitTransactionRequestSerializer
     yield r'gas_unit_price';
     yield serializers.serialize(object.gasUnitPrice,
         specifiedType: const FullType(String));
-    yield r'gas_currency_code';
-    yield serializers.serialize(object.gasCurrencyCode,
-        specifiedType: const FullType(String));
+    if (object.gasCurrencyCode != null) {
+      yield r'gas_currency_code';
+      yield serializers.serialize(object.gasCurrencyCode,
+          specifiedType: const FullType(String));
+    }
     yield r'max_gas_amount';
     yield serializers.serialize(object.maxGasAmount,
         specifiedType: const FullType(String));
