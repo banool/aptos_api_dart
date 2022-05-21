@@ -39,9 +39,9 @@ abstract class TransactionSignature
     r'Ed25519Signature': Ed25519Signature,
     r'MultiAgentSignature': MultiAgentSignature,
     r'MultiEd25519Signature': MultiEd25519Signature,
-    r'ed_25519_signature': Ed25519Signature,
+    r'ed25519_signature': Ed25519Signature,
     r'multi_agent_signature': MultiAgentSignature,
-    r'multi_ed_25519_signature': MultiEd25519Signature,
+    r'multi_ed25519_signature': MultiEd25519Signature,
   };
 
   TransactionSignature._();
@@ -119,7 +119,7 @@ class _$TransactionSignatureSerializer
             as MultiEd25519Signature;
         oneOfType = MultiEd25519Signature;
         break;
-      case 'ed_25519_signature':
+      case 'ed25519_signature':
         oneOfResult = serializers.deserialize(oneOfDataSrc,
             specifiedType: FullType(Ed25519Signature)) as Ed25519Signature;
         oneOfType = Ed25519Signature;
@@ -130,7 +130,7 @@ class _$TransactionSignatureSerializer
             as MultiAgentSignature;
         oneOfType = MultiAgentSignature;
         break;
-      case 'multi_ed_25519_signature':
+      case 'multi_ed25519_signature':
         oneOfResult = serializers.deserialize(oneOfDataSrc,
                 specifiedType: FullType(MultiEd25519Signature))
             as MultiEd25519Signature;

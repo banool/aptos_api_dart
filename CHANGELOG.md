@@ -1,3 +1,9 @@
+## 0.3.2
+- Fix discriminator mapping for signature types in TransactionSignature.
+
+## 0.3.1
+- Fix discriminator mapping for signature types.
+
 ## 0.3.0
 - Use API spec from [this commit](https://github.com/banool/aptos-core/commit/2b49296ca28c3f5387896d1acb1cbf397bc28454) to add explicit discriminator mapping.
 

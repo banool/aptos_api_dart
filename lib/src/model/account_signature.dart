@@ -33,8 +33,8 @@ abstract class AccountSignature
   static const Map<String, Type> discriminatorMapping = {
     r'Ed25519Signature': Ed25519Signature,
     r'MultiEd25519Signature': MultiEd25519Signature,
-    r'ed_25519_signature': Ed25519Signature,
-    r'multi_ed_25519_signature': MultiEd25519Signature,
+    r'ed25519_signature': Ed25519Signature,
+    r'multi_ed25519_signature': MultiEd25519Signature,
   };
 
   AccountSignature._();
@@ -101,12 +101,12 @@ class _$AccountSignatureSerializer
             as MultiEd25519Signature;
         oneOfType = MultiEd25519Signature;
         break;
-      case 'ed_25519_signature':
+      case 'ed25519_signature':
         oneOfResult = serializers.deserialize(oneOfDataSrc,
             specifiedType: FullType(Ed25519Signature)) as Ed25519Signature;
         oneOfType = Ed25519Signature;
         break;
-      case 'multi_ed_25519_signature':
+      case 'multi_ed25519_signature':
         oneOfResult = serializers.deserialize(oneOfDataSrc,
                 specifiedType: FullType(MultiEd25519Signature))
             as MultiEd25519Signature;
