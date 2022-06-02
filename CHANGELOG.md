@@ -1,3 +1,6 @@
+## 0.3.4
+- Build against newer version of API spec.
+
 ## 0.3.3
 - Make `gas_currency_code` optional.
 

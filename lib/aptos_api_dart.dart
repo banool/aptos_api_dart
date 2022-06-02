@@ -64,6 +64,8 @@ export 'package:aptos_api_dart/src/model/table_item_write.dart';
 export 'package:aptos_api_dart/src/model/transaction.dart';
 export 'package:aptos_api_dart/src/model/transaction_payload.dart';
 export 'package:aptos_api_dart/src/model/transaction_signature.dart';
+export 'package:aptos_api_dart/src/model/user_create_signing_message_request.dart';
+export 'package:aptos_api_dart/src/model/user_create_signing_message_request_all_of.dart';
 export 'package:aptos_api_dart/src/model/user_transaction.dart';
 export 'package:aptos_api_dart/src/model/user_transaction_all_of.dart';
 export 'package:aptos_api_dart/src/model/user_transaction_request.dart';

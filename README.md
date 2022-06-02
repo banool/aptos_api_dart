@@ -140,6 +140,8 @@ Class | Method | HTTP request | Description
  - [Transaction](doc/Transaction.md)
  - [TransactionPayload](doc/TransactionPayload.md)
  - [TransactionSignature](doc/TransactionSignature.md)
+ - [UserCreateSigningMessageRequest](doc/UserCreateSigningMessageRequest.md)
+ - [UserCreateSigningMessageRequestAllOf](doc/UserCreateSigningMessageRequestAllOf.md)
  - [UserTransaction](doc/UserTransaction.md)
  - [UserTransactionAllOf](doc/UserTransactionAllOf.md)
  - [UserTransactionRequest](doc/UserTransactionRequest.md)

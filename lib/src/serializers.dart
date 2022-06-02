@@ -62,6 +62,8 @@ import 'package:aptos_api_dart/src/model/table_item_write.dart';
 import 'package:aptos_api_dart/src/model/transaction.dart';
 import 'package:aptos_api_dart/src/model/transaction_payload.dart';
 import 'package:aptos_api_dart/src/model/transaction_signature.dart';
+import 'package:aptos_api_dart/src/model/user_create_signing_message_request.dart';
+import 'package:aptos_api_dart/src/model/user_create_signing_message_request_all_of.dart';
 import 'package:aptos_api_dart/src/model/user_transaction.dart';
 import 'package:aptos_api_dart/src/model/user_transaction_all_of.dart';
 import 'package:aptos_api_dart/src/model/user_transaction_request.dart';
@@ -129,6 +131,9 @@ part 'serializers.g.dart';
   Transaction,
   TransactionPayload,
   TransactionSignature,
+  UserCreateSigningMessageRequest,
+  UserCreateSigningMessageRequestAllOf,
+  $UserCreateSigningMessageRequestAllOf,
   UserTransaction,
   UserTransactionAllOf,
   $UserTransactionAllOf,
@@ -165,6 +170,7 @@ Serializers serializers = (_$serializers.toBuilder()
       ..add(GenesisTransactionAllOf.serializer)
       ..add(OnChainTransactionInfo.serializer)
       ..add(PendingTransactionAllOf.serializer)
+      ..add(UserCreateSigningMessageRequestAllOf.serializer)
       ..add(UserTransactionAllOf.serializer)
       ..add(UserTransactionRequest.serializer)
       ..add(UserTransactionSignature.serializer)

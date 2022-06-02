@@ -10,7 +10,7 @@ void main() {
     //
     // This API creates transaction signing message for client to create transaction signature.  The success response contains hex-encoded signing message bytes.  **To sign the message**    1. Client first needs to HEX decode the `message` into bytes.   2. Then sign the bytes to create signature.
     //
-    //Future<CreateSigningMessage200Response> createSigningMessage(UserTransactionRequest userTransactionRequest) async
+    //Future<CreateSigningMessage200Response> createSigningMessage(UserCreateSigningMessageRequest userCreateSigningMessageRequest) async
     test('test createSigningMessage', () async {
       // TODO
     });

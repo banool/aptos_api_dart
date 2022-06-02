@@ -12,6 +12,7 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add($GenesisTransactionAllOf.serializer)
       ..add($OnChainTransactionInfo.serializer)
       ..add($PendingTransactionAllOf.serializer)
+      ..add($UserCreateSigningMessageRequestAllOf.serializer)
       ..add($UserTransactionAllOf.serializer)
       ..add($UserTransactionRequest.serializer)
       ..add($UserTransactionSignature.serializer)
@@ -59,6 +60,7 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(Transaction.serializer)
       ..add(TransactionPayload.serializer)
       ..add(TransactionSignature.serializer)
+      ..add(UserCreateSigningMessageRequest.serializer)
       ..add(UserTransaction.serializer)
       ..add(WriteModule.serializer)
       ..add(WriteResource.serializer)
@@ -97,6 +99,10 @@ Serializers _$serializers = (Serializers().toBuilder()
           () => ListBuilder<String>())
       ..addBuilderFactory(const FullType(BuiltList, [FullType(MoveModule)]),
           () => ListBuilder<MoveModule>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
+          () => ListBuilder<String>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
+          () => ListBuilder<String>())
       ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
           () => ListBuilder<String>())
       ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),

@@ -55,6 +55,8 @@ doc/Transaction.md
 doc/TransactionPayload.md
 doc/TransactionSignature.md
 doc/TransactionsApi.md
+doc/UserCreateSigningMessageRequest.md
+doc/UserCreateSigningMessageRequestAllOf.md
 doc/UserTransaction.md
 doc/UserTransactionAllOf.md
 doc/UserTransactionRequest.md
@@ -129,6 +131,8 @@ lib/src/model/table_item_write.dart
 lib/src/model/transaction.dart
 lib/src/model/transaction_payload.dart
 lib/src/model/transaction_signature.dart
+lib/src/model/user_create_signing_message_request.dart
+lib/src/model/user_create_signing_message_request_all_of.dart
 lib/src/model/user_transaction.dart
 lib/src/model/user_transaction_all_of.dart
 lib/src/model/user_transaction_request.dart
@@ -195,6 +199,8 @@ test/transaction_payload_test.dart
 test/transaction_signature_test.dart
 test/transaction_test.dart
 test/transactions_api_test.dart
+test/user_create_signing_message_request_all_of_test.dart
+test/user_create_signing_message_request_test.dart
 test/user_transaction_all_of_test.dart
 test/user_transaction_request_test.dart
 test/user_transaction_signature_test.dart

@@ -18,7 +18,7 @@ import 'package:aptos_api_dart/src/model/submit_transaction413_response.dart';
 import 'package:aptos_api_dart/src/model/submit_transaction415_response.dart';
 import 'package:aptos_api_dart/src/model/submit_transaction_request.dart';
 import 'package:aptos_api_dart/src/model/transaction.dart';
-import 'package:aptos_api_dart/src/model/user_transaction_request.dart';
+import 'package:aptos_api_dart/src/model/user_create_signing_message_request.dart';
 import 'package:built_collection/built_collection.dart';
 
 class TransactionsApi {
@@ -32,7 +32,7 @@ class TransactionsApi {
   /// This API creates transaction signing message for client to create transaction signature.  The success response contains hex-encoded signing message bytes.  **To sign the message**    1. Client first needs to HEX decode the &#x60;message&#x60; into bytes.   2. Then sign the bytes to create signature.
   ///
   /// Parameters:
-  /// * [userTransactionRequest] - User transaction request
+  /// * [userCreateSigningMessageRequest] - User create signing message request
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -43,7 +43,7 @@ class TransactionsApi {
   /// Returns a [Future] containing a [Response] with a [CreateSigningMessage200Response] as data
   /// Throws [DioError] if API call or serialization fails
   Future<Response<CreateSigningMessage200Response>> createSigningMessage({
-    required UserTransactionRequest userTransactionRequest,
+    required UserCreateSigningMessageRequest userCreateSigningMessageRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -68,9 +68,9 @@ class TransactionsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(UserTransactionRequest);
-      _bodyData =
-          _serializers.serialize(userTransactionRequest, specifiedType: _type);
+      const _type = FullType(UserCreateSigningMessageRequest);
+      _bodyData = _serializers.serialize(userCreateSigningMessageRequest,
+          specifiedType: _type);
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _options.compose(

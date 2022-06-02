@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **createSigningMessage**
-> CreateSigningMessage200Response createSigningMessage(userTransactionRequest)
+> CreateSigningMessage200Response createSigningMessage(userCreateSigningMessageRequest)
 
 Create transaction signing message
 
@@ -28,10 +28,10 @@ This API creates transaction signing message for client to create transaction si
 import 'package:aptos_api_dart/api.dart';
 
 final api = AptosApiDart().getTransactionsApi();
-final UserTransactionRequest userTransactionRequest = ; // UserTransactionRequest | User transaction request
+final UserCreateSigningMessageRequest userCreateSigningMessageRequest = ; // UserCreateSigningMessageRequest | User create signing message request
 
 try {
-    final response = api.createSigningMessage(userTransactionRequest);
+    final response = api.createSigningMessage(userCreateSigningMessageRequest);
     print(response);
 } catch on DioError (e) {
     print('Exception when calling TransactionsApi->createSigningMessage: $e\n');
@@ -42,7 +42,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userTransactionRequest** | [**UserTransactionRequest**](UserTransactionRequest.md)| User transaction request | 
+ **userCreateSigningMessageRequest** | [**UserCreateSigningMessageRequest**](UserCreateSigningMessageRequest.md)| User create signing message request | 
 
 ### Return type
 
