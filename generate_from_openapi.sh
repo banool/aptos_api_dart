@@ -30,7 +30,7 @@ docker run \
   --rm \
   --mount type=bind,source=$PWD,target=/hostdir \
   $OPENAPI_GENERATOR_CLI generate \
-  -i https://raw.githubusercontent.com/banool/aptos-core/main/api/doc/openapi.yaml \
+  -i https://raw.githubusercontent.com/aptos-labs/aptos-core/main/api/doc/openapi.yaml \
   -g dart-dio \
   -c /hostdir/openapi-generator.yaml \
   -o /hostdir

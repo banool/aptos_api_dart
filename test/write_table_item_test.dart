@@ -18,8 +18,21 @@ void main() {
       // TODO
     });
 
-    // TableItemWrite data
-    test('to test the property `data`', () async {
+    // All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
+    // String handle
+    test('to test the property `handle`', () async {
+      // TODO
+    });
+
+    // All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
+    // String key
+    test('to test the property `key`', () async {
+      // TODO
+    });
+
+    // All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
+    // String value
+    test('to test the property `value`', () async {
       // TODO
     });
   });

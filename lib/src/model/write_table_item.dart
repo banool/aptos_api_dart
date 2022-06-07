@@ -2,7 +2,6 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
-import 'package:aptos_api_dart/src/model/table_item_write.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:one_of/one_of.dart';
@@ -16,7 +15,9 @@ part 'write_table_item.g.dart';
 /// Properties:
 /// * [type]
 /// * [stateKeyHash] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
-/// * [data]
+/// * [handle] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
+/// * [key] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
+/// * [value] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
 @BuiltValue()
 abstract class WriteTableItem
     implements Built<WriteTableItem, WriteTableItemBuilder> {
@@ -26,8 +27,18 @@ abstract class WriteTableItem
   /// All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
   @BuiltValueField(wireName: r'state_key_hash')
   String get stateKeyHash;
-  @BuiltValueField(wireName: r'data')
-  TableItemWrite get data;
+
+  /// All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
+  @BuiltValueField(wireName: r'handle')
+  String get handle;
+
+  /// All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
+  @BuiltValueField(wireName: r'key')
+  String get key;
+
+  /// All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
+  @BuiltValueField(wireName: r'value')
+  String get value;
 
   WriteTableItem._();
 
@@ -59,9 +70,15 @@ class _$WriteTableItemSerializer
     yield r'state_key_hash';
     yield serializers.serialize(object.stateKeyHash,
         specifiedType: const FullType(String));
-    yield r'data';
-    yield serializers.serialize(object.data,
-        specifiedType: const FullType(TableItemWrite));
+    yield r'handle';
+    yield serializers.serialize(object.handle,
+        specifiedType: const FullType(String));
+    yield r'key';
+    yield serializers.serialize(object.key,
+        specifiedType: const FullType(String));
+    yield r'value';
+    yield serializers.serialize(object.value,
+        specifiedType: const FullType(String));
   }
 
   @override
@@ -91,10 +108,20 @@ class _$WriteTableItemSerializer
               specifiedType: const FullType(String)) as String;
           result.stateKeyHash = valueDes;
           break;
-        case r'data':
+        case r'handle':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(TableItemWrite)) as TableItemWrite;
-          result.data.replace(valueDes);
+              specifiedType: const FullType(String)) as String;
+          result.handle = valueDes;
+          break;
+        case r'key':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.key = valueDes;
+          break;
+        case r'value':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.value = valueDes;
           break;
         default:
           unhandled.add(key);

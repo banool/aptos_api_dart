@@ -10,6 +10,7 @@ import 'package:built_collection/built_collection.dart';
 import 'package:aptos_api_dart/src/model/event.dart';
 import 'package:aptos_api_dart/src/model/user_transaction.dart';
 import 'package:aptos_api_dart/src/model/transaction_payload.dart';
+import 'package:aptos_api_dart/src/model/state_checkpoint_transaction.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:one_of/one_of.dart';
@@ -48,16 +49,18 @@ part 'on_chain_transaction.g.dart';
 @BuiltValue()
 abstract class OnChainTransaction
     implements Built<OnChainTransaction, OnChainTransactionBuilder> {
-  /// One Of [BlockMetadataTransaction], [GenesisTransaction], [UserTransaction]
+  /// One Of [BlockMetadataTransaction], [GenesisTransaction], [StateCheckpointTransaction], [UserTransaction]
   OneOf get oneOf;
 
   static const String discriminatorFieldName = r'type';
   static const Map<String, Type> discriminatorMapping = {
     r'BlockMetadataTransaction': BlockMetadataTransaction,
     r'GenesisTransaction': GenesisTransaction,
+    r'StateCheckpointTransaction': StateCheckpointTransaction,
     r'UserTransaction': UserTransaction,
     r'block_metadata_transaction': BlockMetadataTransaction,
     r'genesis_transaction': GenesisTransaction,
+    r'state_checkpoint_transaction': StateCheckpointTransaction,
     r'user_transaction': UserTransaction,
   };
 
@@ -108,9 +111,11 @@ class _$OnChainTransactionSerializer
     final oneOfTypes = [
       BlockMetadataTransaction,
       GenesisTransaction,
+      StateCheckpointTransaction,
       UserTransaction,
       BlockMetadataTransaction,
       GenesisTransaction,
+      StateCheckpointTransaction,
       UserTransaction,
     ];
     Object oneOfResult;
@@ -127,6 +132,12 @@ class _$OnChainTransactionSerializer
             specifiedType: FullType(GenesisTransaction)) as GenesisTransaction;
         oneOfType = GenesisTransaction;
         break;
+      case 'StateCheckpointTransaction':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+                specifiedType: FullType(StateCheckpointTransaction))
+            as StateCheckpointTransaction;
+        oneOfType = StateCheckpointTransaction;
+        break;
       case 'UserTransaction':
         oneOfResult = serializers.deserialize(oneOfDataSrc,
             specifiedType: FullType(UserTransaction)) as UserTransaction;
@@ -142,6 +153,12 @@ class _$OnChainTransactionSerializer
         oneOfResult = serializers.deserialize(oneOfDataSrc,
             specifiedType: FullType(GenesisTransaction)) as GenesisTransaction;
         oneOfType = GenesisTransaction;
+        break;
+      case 'state_checkpoint_transaction':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+                specifiedType: FullType(StateCheckpointTransaction))
+            as StateCheckpointTransaction;
+        oneOfType = StateCheckpointTransaction;
         break;
       case 'user_transaction':
         oneOfResult = serializers.deserialize(oneOfDataSrc,

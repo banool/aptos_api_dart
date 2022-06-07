@@ -11,6 +11,7 @@ import 'package:aptos_api_dart/src/model/pending_transaction.dart';
 import 'package:aptos_api_dart/src/model/event.dart';
 import 'package:aptos_api_dart/src/model/user_transaction.dart';
 import 'package:aptos_api_dart/src/model/transaction_payload.dart';
+import 'package:aptos_api_dart/src/model/state_checkpoint_transaction.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:one_of/one_of.dart';
@@ -48,7 +49,7 @@ part 'transaction.g.dart';
 /// * [proposer] - Hex-encoded 16 bytes Aptos account address.  Prefixed with `0x` and leading zeros are trimmed.  See [doc](https://diem.github.io/move/address.html) for more details.
 @BuiltValue()
 abstract class Transaction implements Built<Transaction, TransactionBuilder> {
-  /// One Of [BlockMetadataTransaction], [GenesisTransaction], [PendingTransaction], [UserTransaction]
+  /// One Of [BlockMetadataTransaction], [GenesisTransaction], [PendingTransaction], [StateCheckpointTransaction], [UserTransaction]
   OneOf get oneOf;
 
   static const String discriminatorFieldName = r'type';
@@ -56,10 +57,12 @@ abstract class Transaction implements Built<Transaction, TransactionBuilder> {
     r'BlockMetadataTransaction': BlockMetadataTransaction,
     r'GenesisTransaction': GenesisTransaction,
     r'PendingTransaction': PendingTransaction,
+    r'StateCheckpointTransaction': StateCheckpointTransaction,
     r'UserTransaction': UserTransaction,
     r'block_metadata_transaction': BlockMetadataTransaction,
     r'genesis_transaction': GenesisTransaction,
     r'pending_transaction': PendingTransaction,
+    r'state_checkpoint_transaction': StateCheckpointTransaction,
     r'user_transaction': UserTransaction,
   };
 
@@ -108,10 +111,12 @@ class _$TransactionSerializer implements PrimitiveSerializer<Transaction> {
       BlockMetadataTransaction,
       GenesisTransaction,
       PendingTransaction,
+      StateCheckpointTransaction,
       UserTransaction,
       BlockMetadataTransaction,
       GenesisTransaction,
       PendingTransaction,
+      StateCheckpointTransaction,
       UserTransaction,
     ];
     Object oneOfResult;
@@ -133,6 +138,12 @@ class _$TransactionSerializer implements PrimitiveSerializer<Transaction> {
             specifiedType: FullType(PendingTransaction)) as PendingTransaction;
         oneOfType = PendingTransaction;
         break;
+      case 'StateCheckpointTransaction':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+                specifiedType: FullType(StateCheckpointTransaction))
+            as StateCheckpointTransaction;
+        oneOfType = StateCheckpointTransaction;
+        break;
       case 'UserTransaction':
         oneOfResult = serializers.deserialize(oneOfDataSrc,
             specifiedType: FullType(UserTransaction)) as UserTransaction;
@@ -153,6 +164,12 @@ class _$TransactionSerializer implements PrimitiveSerializer<Transaction> {
         oneOfResult = serializers.deserialize(oneOfDataSrc,
             specifiedType: FullType(PendingTransaction)) as PendingTransaction;
         oneOfType = PendingTransaction;
+        break;
+      case 'state_checkpoint_transaction':
+        oneOfResult = serializers.deserialize(oneOfDataSrc,
+                specifiedType: FullType(StateCheckpointTransaction))
+            as StateCheckpointTransaction;
+        oneOfType = StateCheckpointTransaction;
         break;
       case 'user_transaction':
         oneOfResult = serializers.deserialize(oneOfDataSrc,

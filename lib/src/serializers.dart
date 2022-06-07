@@ -53,12 +53,13 @@ import 'package:aptos_api_dart/src/model/script.dart';
 import 'package:aptos_api_dart/src/model/script_function_payload.dart';
 import 'package:aptos_api_dart/src/model/script_payload.dart';
 import 'package:aptos_api_dart/src/model/script_write_set.dart';
+import 'package:aptos_api_dart/src/model/state_checkpoint_transaction.dart';
+import 'package:aptos_api_dart/src/model/state_checkpoint_transaction_all_of.dart';
 import 'package:aptos_api_dart/src/model/submit_transaction413_response.dart';
 import 'package:aptos_api_dart/src/model/submit_transaction415_response.dart';
 import 'package:aptos_api_dart/src/model/submit_transaction_request.dart';
 import 'package:aptos_api_dart/src/model/table_item_deletion.dart';
 import 'package:aptos_api_dart/src/model/table_item_request.dart';
-import 'package:aptos_api_dart/src/model/table_item_write.dart';
 import 'package:aptos_api_dart/src/model/transaction.dart';
 import 'package:aptos_api_dart/src/model/transaction_payload.dart';
 import 'package:aptos_api_dart/src/model/transaction_signature.dart';
@@ -122,12 +123,14 @@ part 'serializers.g.dart';
   ScriptFunctionPayload,
   ScriptPayload,
   ScriptWriteSet,
+  StateCheckpointTransaction,
+  StateCheckpointTransactionAllOf,
+  $StateCheckpointTransactionAllOf,
   SubmitTransaction413Response,
   SubmitTransaction415Response,
   SubmitTransactionRequest,
   TableItemDeletion,
   TableItemRequest,
-  TableItemWrite,
   Transaction,
   TransactionPayload,
   TransactionSignature,
@@ -170,6 +173,7 @@ Serializers serializers = (_$serializers.toBuilder()
       ..add(GenesisTransactionAllOf.serializer)
       ..add(OnChainTransactionInfo.serializer)
       ..add(PendingTransactionAllOf.serializer)
+      ..add(StateCheckpointTransactionAllOf.serializer)
       ..add(UserCreateSigningMessageRequestAllOf.serializer)
       ..add(UserTransactionAllOf.serializer)
       ..add(UserTransactionRequest.serializer)
