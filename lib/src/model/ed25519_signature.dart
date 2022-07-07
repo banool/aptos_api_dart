@@ -10,7 +10,7 @@ import 'package:one_of/any_of.dart';
 
 part 'ed25519_signature.g.dart';
 
-/// Please refer to https://github.com/aptos-labs/aptos-core/tree/main/specifications/crypto#signature-and-verification for more details.
+/// Please refer to https://github.com/aptos-labs/aptos-core/tree/main/documentation/specifications/crypto#signature-and-verification for more details.
 ///
 /// Properties:
 /// * [type]

@@ -87,6 +87,7 @@ Class | Method | HTTP request | Description
 [*TransactionsApi*](doc/TransactionsApi.md) | [**getAccountTransactions**](doc/TransactionsApi.md#getaccounttransactions) | **GET** /accounts/{address}/transactions | Get account transactions
 [*TransactionsApi*](doc/TransactionsApi.md) | [**getTransaction**](doc/TransactionsApi.md#gettransaction) | **GET** /transactions/{txn_hash_or_version} | Get transaction
 [*TransactionsApi*](doc/TransactionsApi.md) | [**getTransactions**](doc/TransactionsApi.md#gettransactions) | **GET** /transactions | Get transactions
+[*TransactionsApi*](doc/TransactionsApi.md) | [**simulateTransaction**](doc/TransactionsApi.md#simulatetransaction) | **POST** /transactions/simulate | Simulate transaction
 [*TransactionsApi*](doc/TransactionsApi.md) | [**submitTransaction**](doc/TransactionsApi.md#submittransaction) | **POST** /transactions | Submit transaction
 
 
@@ -138,6 +139,9 @@ Class | Method | HTTP request | Description
  - [SubmitTransactionRequest](doc/SubmitTransactionRequest.md)
  - [TableItemDeletion](doc/TableItemDeletion.md)
  - [TableItemRequest](doc/TableItemRequest.md)
+ - [Token](doc/Token.md)
+ - [TokenData](doc/TokenData.md)
+ - [TokenId](doc/TokenId.md)
  - [Transaction](doc/Transaction.md)
  - [TransactionPayload](doc/TransactionPayload.md)
  - [TransactionSignature](doc/TransactionSignature.md)

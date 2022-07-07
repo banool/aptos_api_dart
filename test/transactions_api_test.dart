@@ -38,6 +38,15 @@ void main() {
       // TODO
     });
 
+    // Simulate transaction
+    //
+    // **Submit transaction for simulation result using JSON **    * Create a SignedTransaction with zero-padded signature   * Submit the user transaction request with the zero-padded siganture.   * The request header \"Content-Type\" must set to \"application/json\".
+    //
+    //Future<BuiltList<OnChainTransaction>> simulateTransaction(SubmitTransactionRequest submitTransactionRequest) async
+    test('test simulateTransaction', () async {
+      // TODO
+    });
+
     // Submit transaction
     //
     // **Submit transaction using JSON without additional tools**    * Send [POST /transactions/signing_message](#operation/create-signing-message) to create transaction signing message.   * Sign the transaction signing message and create transaction signature.   * Submit the user transaction request with the transaction siganture. The request header \"Content-Type\" must set to \"application/json\".

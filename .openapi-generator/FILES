@@ -52,6 +52,9 @@ doc/SubmitTransactionRequest.md
 doc/TableApi.md
 doc/TableItemDeletion.md
 doc/TableItemRequest.md
+doc/Token.md
+doc/TokenData.md
+doc/TokenId.md
 doc/Transaction.md
 doc/TransactionPayload.md
 doc/TransactionSignature.md
@@ -130,6 +133,9 @@ lib/src/model/submit_transaction415_response.dart
 lib/src/model/submit_transaction_request.dart
 lib/src/model/table_item_deletion.dart
 lib/src/model/table_item_request.dart
+lib/src/model/token.dart
+lib/src/model/token_data.dart
+lib/src/model/token_id.dart
 lib/src/model/transaction.dart
 lib/src/model/transaction_payload.dart
 lib/src/model/transaction_signature.dart
@@ -198,6 +204,9 @@ test/submit_transaction_request_test.dart
 test/table_api_test.dart
 test/table_item_deletion_test.dart
 test/table_item_request_test.dart
+test/token_data_test.dart
+test/token_id_test.dart
+test/token_test.dart
 test/transaction_payload_test.dart
 test/transaction_signature_test.dart
 test/transaction_test.dart

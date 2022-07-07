@@ -60,6 +60,9 @@ import 'package:aptos_api_dart/src/model/submit_transaction415_response.dart';
 import 'package:aptos_api_dart/src/model/submit_transaction_request.dart';
 import 'package:aptos_api_dart/src/model/table_item_deletion.dart';
 import 'package:aptos_api_dart/src/model/table_item_request.dart';
+import 'package:aptos_api_dart/src/model/token.dart';
+import 'package:aptos_api_dart/src/model/token_data.dart';
+import 'package:aptos_api_dart/src/model/token_id.dart';
 import 'package:aptos_api_dart/src/model/transaction.dart';
 import 'package:aptos_api_dart/src/model/transaction_payload.dart';
 import 'package:aptos_api_dart/src/model/transaction_signature.dart';
@@ -131,6 +134,9 @@ part 'serializers.g.dart';
   SubmitTransactionRequest,
   TableItemDeletion,
   TableItemRequest,
+  Token,
+  TokenData,
+  TokenId,
   Transaction,
   TransactionPayload,
   TransactionSignature,

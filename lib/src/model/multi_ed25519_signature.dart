@@ -11,7 +11,7 @@ import 'package:one_of/any_of.dart';
 
 part 'multi_ed25519_signature.g.dart';
 
-/// Multi ed25519 signature, please refer to https://github.com/aptos-labs/aptos-core/tree/main/specifications/crypto#multi-signatures for more details.
+/// Multi ed25519 signature, please refer to https://github.com/aptos-labs/aptos-core/tree/main/documentation/specifications/crypto#multi-signatures for more details.
 ///
 /// Properties:
 /// * [type]

@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**getAccountTransactions**](TransactionsApi.md#getaccounttransactions) | **GET** /accounts/{address}/transactions | Get account transactions
 [**getTransaction**](TransactionsApi.md#gettransaction) | **GET** /transactions/{txn_hash_or_version} | Get transaction
 [**getTransactions**](TransactionsApi.md#gettransactions) | **GET** /transactions | Get transactions
+[**simulateTransaction**](TransactionsApi.md#simulatetransaction) | **POST** /transactions/simulate | Simulate transaction
 [**submitTransaction**](TransactionsApi.md#submittransaction) | **POST** /transactions | Submit transaction
 
 
@@ -186,6 +187,49 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **simulateTransaction**
+> BuiltList<OnChainTransaction> simulateTransaction(submitTransactionRequest)
+
+Simulate transaction
+
+**Submit transaction for simulation result using JSON **    * Create a SignedTransaction with zero-padded signature   * Submit the user transaction request with the zero-padded siganture.   * The request header \"Content-Type\" must set to \"application/json\". 
+
+### Example
+```dart
+import 'package:aptos_api_dart/api.dart';
+
+final api = AptosApiDart().getTransactionsApi();
+final SubmitTransactionRequest submitTransactionRequest = ; // SubmitTransactionRequest | User transaction request with transaction sender's signature. 
+
+try {
+    final response = api.simulateTransaction(submitTransactionRequest);
+    print(response);
+} catch on DioError (e) {
+    print('Exception when calling TransactionsApi->simulateTransaction: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **submitTransactionRequest** | [**SubmitTransactionRequest**](SubmitTransactionRequest.md)| User transaction request with transaction sender's signature.  | 
+
+### Return type
+
+[**BuiltList&lt;OnChainTransaction&gt;**](OnChainTransaction.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

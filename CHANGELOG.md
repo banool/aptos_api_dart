@@ -1,3 +1,6 @@
+## 0.4.1
+- Build against API spec from https://github.com/aptos-labs/aptos-core/commit/0f8d277d53d77ef7638b98efbdeb8dd8c419e78a.
+
 ## 0.4.0
 - Build against API spec from https://github.com/aptos-labs/aptos-core/commit/6ad9b415b0df1269e186282d5eed8364d50f68f0.
 
