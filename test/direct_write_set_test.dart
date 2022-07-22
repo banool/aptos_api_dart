@@ -7,11 +7,6 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(DirectWriteSet, () {
-    // String type
-    test('to test the property `type`', () async {
-      // TODO
-    });
-
     // BuiltList<WriteSetChange> changes
     test('to test the property `changes`', () async {
       // TODO

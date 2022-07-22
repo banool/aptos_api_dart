@@ -2,7 +2,7 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
-import 'package:aptos_api_dart/src/model/account_resource.dart';
+import 'package:aptos_api_dart/src/model/move_resource.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:one_of/one_of.dart';
@@ -11,28 +11,21 @@ import 'package:one_of/any_of.dart';
 
 part 'write_resource.g.dart';
 
-/// Write account resource
+/// WriteResource
 ///
 /// Properties:
-/// * [type]
-/// * [stateKeyHash] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
-/// * [address] - Hex-encoded 16 bytes Aptos account address.  Prefixed with `0x` and leading zeros are trimmed.  See [doc](https://diem.github.io/move/address.html) for more details.
+/// * [address]
+/// * [stateKeyHash]
 /// * [data]
 @BuiltValue()
 abstract class WriteResource
     implements Built<WriteResource, WriteResourceBuilder> {
-  @BuiltValueField(wireName: r'type')
-  String get type;
-
-  /// All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
-  @BuiltValueField(wireName: r'state_key_hash')
-  String get stateKeyHash;
-
-  /// Hex-encoded 16 bytes Aptos account address.  Prefixed with `0x` and leading zeros are trimmed.  See [doc](https://diem.github.io/move/address.html) for more details.
   @BuiltValueField(wireName: r'address')
   String get address;
+  @BuiltValueField(wireName: r'state_key_hash')
+  String get stateKeyHash;
   @BuiltValueField(wireName: r'data')
-  AccountResource get data;
+  MoveResource get data;
 
   WriteResource._();
 
@@ -57,18 +50,15 @@ class _$WriteResourceSerializer implements PrimitiveSerializer<WriteResource> {
   Iterable<Object?> _serializeProperties(
       Serializers serializers, WriteResource object,
       {FullType specifiedType = FullType.unspecified}) sync* {
-    yield r'type';
-    yield serializers.serialize(object.type,
+    yield r'address';
+    yield serializers.serialize(object.address,
         specifiedType: const FullType(String));
     yield r'state_key_hash';
     yield serializers.serialize(object.stateKeyHash,
         specifiedType: const FullType(String));
-    yield r'address';
-    yield serializers.serialize(object.address,
-        specifiedType: const FullType(String));
     yield r'data';
     yield serializers.serialize(object.data,
-        specifiedType: const FullType(AccountResource));
+        specifiedType: const FullType(MoveResource));
   }
 
   @override
@@ -88,25 +78,19 @@ class _$WriteResourceSerializer implements PrimitiveSerializer<WriteResource> {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'type':
+        case r'address':
           final valueDes = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
-          result.type = valueDes;
+          result.address = valueDes;
           break;
         case r'state_key_hash':
           final valueDes = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           result.stateKeyHash = valueDes;
           break;
-        case r'address':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.address = valueDes;
-          break;
         case r'data':
           final valueDes = serializers.deserialize(value,
-                  specifiedType: const FullType(AccountResource))
-              as AccountResource;
+              specifiedType: const FullType(MoveResource)) as MoveResource;
           result.data.replace(valueDes);
           break;
         default:

@@ -8,8 +8,6 @@ part of 'direct_write_set.dart';
 
 class _$DirectWriteSet extends DirectWriteSet {
   @override
-  final String type;
-  @override
   final BuiltList<WriteSetChange> changes;
   @override
   final BuiltList<Event> events;
@@ -17,12 +15,11 @@ class _$DirectWriteSet extends DirectWriteSet {
   factory _$DirectWriteSet([void Function(DirectWriteSetBuilder)? updates]) =>
       (DirectWriteSetBuilder()..update(updates))._build();
 
-  _$DirectWriteSet._(
-      {required this.type, required this.changes, required this.events})
+  _$DirectWriteSet._({required this.changes, required this.events})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(type, 'DirectWriteSet', 'type');
-    BuiltValueNullFieldError.checkNotNull(changes, 'DirectWriteSet', 'changes');
-    BuiltValueNullFieldError.checkNotNull(events, 'DirectWriteSet', 'events');
+    BuiltValueNullFieldError.checkNotNull(
+        changes, r'DirectWriteSet', 'changes');
+    BuiltValueNullFieldError.checkNotNull(events, r'DirectWriteSet', 'events');
   }
 
   @override
@@ -36,21 +33,18 @@ class _$DirectWriteSet extends DirectWriteSet {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is DirectWriteSet &&
-        type == other.type &&
         changes == other.changes &&
         events == other.events;
   }
 
   @override
   int get hashCode {
-    return $jf(
-        $jc($jc($jc(0, type.hashCode), changes.hashCode), events.hashCode));
+    return $jf($jc($jc(0, changes.hashCode), events.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('DirectWriteSet')
-          ..add('type', type)
+    return (newBuiltValueToStringHelper(r'DirectWriteSet')
           ..add('changes', changes)
           ..add('events', events))
         .toString();
@@ -60,10 +54,6 @@ class _$DirectWriteSet extends DirectWriteSet {
 class DirectWriteSetBuilder
     implements Builder<DirectWriteSet, DirectWriteSetBuilder> {
   _$DirectWriteSet? _$v;
-
-  String? _type;
-  String? get type => _$this._type;
-  set type(String? type) => _$this._type = type;
 
   ListBuilder<WriteSetChange>? _changes;
   ListBuilder<WriteSetChange> get changes =>
@@ -82,7 +72,6 @@ class DirectWriteSetBuilder
   DirectWriteSetBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _type = $v.type;
       _changes = $v.changes.toBuilder();
       _events = $v.events.toBuilder();
       _$v = null;
@@ -108,11 +97,7 @@ class DirectWriteSetBuilder
     _$DirectWriteSet _$result;
     try {
       _$result = _$v ??
-          _$DirectWriteSet._(
-              type: BuiltValueNullFieldError.checkNotNull(
-                  type, 'DirectWriteSet', 'type'),
-              changes: changes.build(),
-              events: events.build());
+          _$DirectWriteSet._(changes: changes.build(), events: events.build());
     } catch (_) {
       late String _$failedField;
       try {
@@ -122,7 +107,7 @@ class DirectWriteSetBuilder
         events.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            'DirectWriteSet', _$failedField, e.toString());
+            r'DirectWriteSet', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -131,4 +116,4 @@ class DirectWriteSetBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

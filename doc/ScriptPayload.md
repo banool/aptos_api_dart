@@ -8,8 +8,7 @@ import 'package:aptos_api_dart/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** |  | 
-**code** | [**MoveScript**](MoveScript.md) |  | 
+**code** | [**MoveScriptBytecode**](MoveScriptBytecode.md) |  | 
 **typeArguments** | **BuiltList&lt;String&gt;** |  | 
 **arguments** | [**BuiltList&lt;JsonObject&gt;**](JsonObject.md) |  | 
 

@@ -8,13 +8,7 @@ part of 'genesis_transaction.dart';
 
 class _$GenesisTransaction extends GenesisTransaction {
   @override
-  final String type;
-  @override
-  final BuiltList<Event> events;
-  @override
-  final WriteSetPayload payload;
-  @override
-  final String version;
+  final int version;
   @override
   final String hash;
   @override
@@ -22,7 +16,7 @@ class _$GenesisTransaction extends GenesisTransaction {
   @override
   final String eventRootHash;
   @override
-  final String gasUsed;
+  final int gasUsed;
   @override
   final bool success;
   @override
@@ -31,16 +25,17 @@ class _$GenesisTransaction extends GenesisTransaction {
   final String accumulatorRootHash;
   @override
   final BuiltList<WriteSetChange> changes;
+  @override
+  final GenesisPayload payload;
+  @override
+  final BuiltList<Event> events;
 
   factory _$GenesisTransaction(
           [void Function(GenesisTransactionBuilder)? updates]) =>
       (GenesisTransactionBuilder()..update(updates))._build();
 
   _$GenesisTransaction._(
-      {required this.type,
-      required this.events,
-      required this.payload,
-      required this.version,
+      {required this.version,
       required this.hash,
       required this.stateRootHash,
       required this.eventRootHash,
@@ -48,30 +43,31 @@ class _$GenesisTransaction extends GenesisTransaction {
       required this.success,
       required this.vmStatus,
       required this.accumulatorRootHash,
-      required this.changes})
+      required this.changes,
+      required this.payload,
+      required this.events})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(type, 'GenesisTransaction', 'type');
     BuiltValueNullFieldError.checkNotNull(
-        events, 'GenesisTransaction', 'events');
+        version, r'GenesisTransaction', 'version');
+    BuiltValueNullFieldError.checkNotNull(hash, r'GenesisTransaction', 'hash');
     BuiltValueNullFieldError.checkNotNull(
-        payload, 'GenesisTransaction', 'payload');
+        stateRootHash, r'GenesisTransaction', 'stateRootHash');
     BuiltValueNullFieldError.checkNotNull(
-        version, 'GenesisTransaction', 'version');
-    BuiltValueNullFieldError.checkNotNull(hash, 'GenesisTransaction', 'hash');
+        eventRootHash, r'GenesisTransaction', 'eventRootHash');
     BuiltValueNullFieldError.checkNotNull(
-        stateRootHash, 'GenesisTransaction', 'stateRootHash');
+        gasUsed, r'GenesisTransaction', 'gasUsed');
     BuiltValueNullFieldError.checkNotNull(
-        eventRootHash, 'GenesisTransaction', 'eventRootHash');
+        success, r'GenesisTransaction', 'success');
     BuiltValueNullFieldError.checkNotNull(
-        gasUsed, 'GenesisTransaction', 'gasUsed');
+        vmStatus, r'GenesisTransaction', 'vmStatus');
     BuiltValueNullFieldError.checkNotNull(
-        success, 'GenesisTransaction', 'success');
+        accumulatorRootHash, r'GenesisTransaction', 'accumulatorRootHash');
     BuiltValueNullFieldError.checkNotNull(
-        vmStatus, 'GenesisTransaction', 'vmStatus');
+        changes, r'GenesisTransaction', 'changes');
     BuiltValueNullFieldError.checkNotNull(
-        accumulatorRootHash, 'GenesisTransaction', 'accumulatorRootHash');
+        payload, r'GenesisTransaction', 'payload');
     BuiltValueNullFieldError.checkNotNull(
-        changes, 'GenesisTransaction', 'changes');
+        events, r'GenesisTransaction', 'events');
   }
 
   @override
@@ -87,9 +83,6 @@ class _$GenesisTransaction extends GenesisTransaction {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is GenesisTransaction &&
-        type == other.type &&
-        events == other.events &&
-        payload == other.payload &&
         version == other.version &&
         hash == other.hash &&
         stateRootHash == other.stateRootHash &&
@@ -98,7 +91,9 @@ class _$GenesisTransaction extends GenesisTransaction {
         success == other.success &&
         vmStatus == other.vmStatus &&
         accumulatorRootHash == other.accumulatorRootHash &&
-        changes == other.changes;
+        changes == other.changes &&
+        payload == other.payload &&
+        events == other.events;
   }
 
   @override
@@ -112,27 +107,22 @@ class _$GenesisTransaction extends GenesisTransaction {
                             $jc(
                                 $jc(
                                     $jc(
-                                        $jc(
-                                            $jc($jc(0, type.hashCode),
-                                                events.hashCode),
-                                            payload.hashCode),
-                                        version.hashCode),
-                                    hash.hashCode),
-                                stateRootHash.hashCode),
-                            eventRootHash.hashCode),
-                        gasUsed.hashCode),
-                    success.hashCode),
-                vmStatus.hashCode),
-            accumulatorRootHash.hashCode),
-        changes.hashCode));
+                                        $jc($jc(0, version.hashCode),
+                                            hash.hashCode),
+                                        stateRootHash.hashCode),
+                                    eventRootHash.hashCode),
+                                gasUsed.hashCode),
+                            success.hashCode),
+                        vmStatus.hashCode),
+                    accumulatorRootHash.hashCode),
+                changes.hashCode),
+            payload.hashCode),
+        events.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GenesisTransaction')
-          ..add('type', type)
-          ..add('events', events)
-          ..add('payload', payload)
+    return (newBuiltValueToStringHelper(r'GenesisTransaction')
           ..add('version', version)
           ..add('hash', hash)
           ..add('stateRootHash', stateRootHash)
@@ -141,72 +131,66 @@ class _$GenesisTransaction extends GenesisTransaction {
           ..add('success', success)
           ..add('vmStatus', vmStatus)
           ..add('accumulatorRootHash', accumulatorRootHash)
-          ..add('changes', changes))
+          ..add('changes', changes)
+          ..add('payload', payload)
+          ..add('events', events))
         .toString();
   }
 }
 
 class GenesisTransactionBuilder
-    implements
-        Builder<GenesisTransaction, GenesisTransactionBuilder>,
-        GenesisTransactionAllOfBuilder,
-        OnChainTransactionInfoBuilder {
+    implements Builder<GenesisTransaction, GenesisTransactionBuilder> {
   _$GenesisTransaction? _$v;
 
-  String? _type;
-  String? get type => _$this._type;
-  set type(covariant String? type) => _$this._type = type;
-
-  ListBuilder<Event>? _events;
-  ListBuilder<Event> get events => _$this._events ??= ListBuilder<Event>();
-  set events(covariant ListBuilder<Event>? events) => _$this._events = events;
-
-  WriteSetPayloadBuilder? _payload;
-  WriteSetPayloadBuilder get payload =>
-      _$this._payload ??= WriteSetPayloadBuilder();
-  set payload(covariant WriteSetPayloadBuilder? payload) =>
-      _$this._payload = payload;
-
-  String? _version;
-  String? get version => _$this._version;
-  set version(covariant String? version) => _$this._version = version;
+  int? _version;
+  int? get version => _$this._version;
+  set version(int? version) => _$this._version = version;
 
   String? _hash;
   String? get hash => _$this._hash;
-  set hash(covariant String? hash) => _$this._hash = hash;
+  set hash(String? hash) => _$this._hash = hash;
 
   String? _stateRootHash;
   String? get stateRootHash => _$this._stateRootHash;
-  set stateRootHash(covariant String? stateRootHash) =>
+  set stateRootHash(String? stateRootHash) =>
       _$this._stateRootHash = stateRootHash;
 
   String? _eventRootHash;
   String? get eventRootHash => _$this._eventRootHash;
-  set eventRootHash(covariant String? eventRootHash) =>
+  set eventRootHash(String? eventRootHash) =>
       _$this._eventRootHash = eventRootHash;
 
-  String? _gasUsed;
-  String? get gasUsed => _$this._gasUsed;
-  set gasUsed(covariant String? gasUsed) => _$this._gasUsed = gasUsed;
+  int? _gasUsed;
+  int? get gasUsed => _$this._gasUsed;
+  set gasUsed(int? gasUsed) => _$this._gasUsed = gasUsed;
 
   bool? _success;
   bool? get success => _$this._success;
-  set success(covariant bool? success) => _$this._success = success;
+  set success(bool? success) => _$this._success = success;
 
   String? _vmStatus;
   String? get vmStatus => _$this._vmStatus;
-  set vmStatus(covariant String? vmStatus) => _$this._vmStatus = vmStatus;
+  set vmStatus(String? vmStatus) => _$this._vmStatus = vmStatus;
 
   String? _accumulatorRootHash;
   String? get accumulatorRootHash => _$this._accumulatorRootHash;
-  set accumulatorRootHash(covariant String? accumulatorRootHash) =>
+  set accumulatorRootHash(String? accumulatorRootHash) =>
       _$this._accumulatorRootHash = accumulatorRootHash;
 
   ListBuilder<WriteSetChange>? _changes;
   ListBuilder<WriteSetChange> get changes =>
       _$this._changes ??= ListBuilder<WriteSetChange>();
-  set changes(covariant ListBuilder<WriteSetChange>? changes) =>
+  set changes(ListBuilder<WriteSetChange>? changes) =>
       _$this._changes = changes;
+
+  GenesisPayloadBuilder? _payload;
+  GenesisPayloadBuilder get payload =>
+      _$this._payload ??= GenesisPayloadBuilder();
+  set payload(GenesisPayloadBuilder? payload) => _$this._payload = payload;
+
+  ListBuilder<Event>? _events;
+  ListBuilder<Event> get events => _$this._events ??= ListBuilder<Event>();
+  set events(ListBuilder<Event>? events) => _$this._events = events;
 
   GenesisTransactionBuilder() {
     GenesisTransaction._defaults(this);
@@ -215,9 +199,6 @@ class GenesisTransactionBuilder
   GenesisTransactionBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _type = $v.type;
-      _events = $v.events.toBuilder();
-      _payload = $v.payload.toBuilder();
       _version = $v.version;
       _hash = $v.hash;
       _stateRootHash = $v.stateRootHash;
@@ -227,14 +208,15 @@ class GenesisTransactionBuilder
       _vmStatus = $v.vmStatus;
       _accumulatorRootHash = $v.accumulatorRootHash;
       _changes = $v.changes.toBuilder();
+      _payload = $v.payload.toBuilder();
+      _events = $v.events.toBuilder();
       _$v = null;
     }
     return this;
   }
 
   @override
-// ignore: override_on_non_overriding_method
-  void replace(covariant GenesisTransaction other) {
+  void replace(GenesisTransaction other) {
     ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GenesisTransaction;
   }
@@ -252,40 +234,39 @@ class GenesisTransactionBuilder
     try {
       _$result = _$v ??
           _$GenesisTransaction._(
-              type: BuiltValueNullFieldError.checkNotNull(
-                  type, 'GenesisTransaction', 'type'),
-              events: events.build(),
-              payload: payload.build(),
               version: BuiltValueNullFieldError.checkNotNull(
-                  version, 'GenesisTransaction', 'version'),
+                  version, r'GenesisTransaction', 'version'),
               hash: BuiltValueNullFieldError.checkNotNull(
-                  hash, 'GenesisTransaction', 'hash'),
+                  hash, r'GenesisTransaction', 'hash'),
               stateRootHash: BuiltValueNullFieldError.checkNotNull(
-                  stateRootHash, 'GenesisTransaction', 'stateRootHash'),
+                  stateRootHash, r'GenesisTransaction', 'stateRootHash'),
               eventRootHash: BuiltValueNullFieldError.checkNotNull(
-                  eventRootHash, 'GenesisTransaction', 'eventRootHash'),
+                  eventRootHash, r'GenesisTransaction', 'eventRootHash'),
               gasUsed: BuiltValueNullFieldError.checkNotNull(
-                  gasUsed, 'GenesisTransaction', 'gasUsed'),
+                  gasUsed, r'GenesisTransaction', 'gasUsed'),
               success: BuiltValueNullFieldError.checkNotNull(
-                  success, 'GenesisTransaction', 'success'),
+                  success, r'GenesisTransaction', 'success'),
               vmStatus: BuiltValueNullFieldError.checkNotNull(
-                  vmStatus, 'GenesisTransaction', 'vmStatus'),
-              accumulatorRootHash:
-                  BuiltValueNullFieldError.checkNotNull(accumulatorRootHash, 'GenesisTransaction', 'accumulatorRootHash'),
-              changes: changes.build());
+                  vmStatus, r'GenesisTransaction', 'vmStatus'),
+              accumulatorRootHash: BuiltValueNullFieldError.checkNotNull(
+                  accumulatorRootHash,
+                  r'GenesisTransaction',
+                  'accumulatorRootHash'),
+              changes: changes.build(),
+              payload: payload.build(),
+              events: events.build());
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'events';
-        events.build();
-        _$failedField = 'payload';
-        payload.build();
-
         _$failedField = 'changes';
         changes.build();
+        _$failedField = 'payload';
+        payload.build();
+        _$failedField = 'events';
+        events.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            'GenesisTransaction', _$failedField, e.toString());
+            r'GenesisTransaction', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -294,4 +275,4 @@ class GenesisTransactionBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

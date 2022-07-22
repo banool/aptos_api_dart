@@ -17,12 +17,12 @@ void main() {
       // TODO
     });
 
-    // BuiltList<MoveAbility> abilities
+    // BuiltList<String> abilities
     test('to test the property `abilities`', () async {
       // TODO
     });
 
-    // BuiltList<MoveStructGenericTypeParamsInner> genericTypeParams
+    // BuiltList<MoveStructGenericTypeParam> genericTypeParams
     test('to test the property `genericTypeParams`', () async {
       // TODO
     });

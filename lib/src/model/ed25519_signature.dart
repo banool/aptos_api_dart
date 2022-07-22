@@ -10,23 +10,16 @@ import 'package:one_of/any_of.dart';
 
 part 'ed25519_signature.g.dart';
 
-/// Please refer to https://github.com/aptos-labs/aptos-core/tree/main/documentation/specifications/crypto#signature-and-verification for more details.
+/// Ed25519Signature
 ///
 /// Properties:
-/// * [type]
-/// * [publicKey] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
-/// * [signature] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
+/// * [publicKey]
+/// * [signature]
 @BuiltValue()
 abstract class Ed25519Signature
     implements Built<Ed25519Signature, Ed25519SignatureBuilder> {
-  @BuiltValueField(wireName: r'type')
-  String get type;
-
-  /// All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
   @BuiltValueField(wireName: r'public_key')
   String get publicKey;
-
-  /// All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
   @BuiltValueField(wireName: r'signature')
   String get signature;
 
@@ -54,9 +47,6 @@ class _$Ed25519SignatureSerializer
   Iterable<Object?> _serializeProperties(
       Serializers serializers, Ed25519Signature object,
       {FullType specifiedType = FullType.unspecified}) sync* {
-    yield r'type';
-    yield serializers.serialize(object.type,
-        specifiedType: const FullType(String));
     yield r'public_key';
     yield serializers.serialize(object.publicKey,
         specifiedType: const FullType(String));
@@ -82,11 +72,6 @@ class _$Ed25519SignatureSerializer
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'type':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.type = valueDes;
-          break;
         case r'public_key':
           final valueDes = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;

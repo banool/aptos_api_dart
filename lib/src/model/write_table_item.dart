@@ -10,33 +10,22 @@ import 'package:one_of/any_of.dart';
 
 part 'write_table_item.g.dart';
 
-/// Write table item
+/// WriteTableItem
 ///
 /// Properties:
-/// * [type]
-/// * [stateKeyHash] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
-/// * [handle] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
-/// * [key] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
-/// * [value] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
+/// * [stateKeyHash]
+/// * [handle]
+/// * [key]
+/// * [value]
 @BuiltValue()
 abstract class WriteTableItem
     implements Built<WriteTableItem, WriteTableItemBuilder> {
-  @BuiltValueField(wireName: r'type')
-  String get type;
-
-  /// All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
   @BuiltValueField(wireName: r'state_key_hash')
   String get stateKeyHash;
-
-  /// All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
   @BuiltValueField(wireName: r'handle')
   String get handle;
-
-  /// All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
   @BuiltValueField(wireName: r'key')
   String get key;
-
-  /// All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
   @BuiltValueField(wireName: r'value')
   String get value;
 
@@ -64,9 +53,6 @@ class _$WriteTableItemSerializer
   Iterable<Object?> _serializeProperties(
       Serializers serializers, WriteTableItem object,
       {FullType specifiedType = FullType.unspecified}) sync* {
-    yield r'type';
-    yield serializers.serialize(object.type,
-        specifiedType: const FullType(String));
     yield r'state_key_hash';
     yield serializers.serialize(object.stateKeyHash,
         specifiedType: const FullType(String));
@@ -98,11 +84,6 @@ class _$WriteTableItemSerializer
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'type':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.type = valueDes;
-          break;
         case r'state_key_hash':
           final valueDes = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;

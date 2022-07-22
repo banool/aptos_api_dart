@@ -6,74 +6,15 @@ part of 'move_function.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-const MoveFunctionVisibilityEnum _$moveFunctionVisibilityEnum_public =
-    MoveFunctionVisibilityEnum._('public');
-const MoveFunctionVisibilityEnum _$moveFunctionVisibilityEnum_script =
-    MoveFunctionVisibilityEnum._('script');
-const MoveFunctionVisibilityEnum _$moveFunctionVisibilityEnum_friend =
-    MoveFunctionVisibilityEnum._('friend');
-
-MoveFunctionVisibilityEnum _$moveFunctionVisibilityEnumValueOf(String name) {
-  switch (name) {
-    case 'public':
-      return _$moveFunctionVisibilityEnum_public;
-    case 'script':
-      return _$moveFunctionVisibilityEnum_script;
-    case 'friend':
-      return _$moveFunctionVisibilityEnum_friend;
-    default:
-      throw ArgumentError(name);
-  }
-}
-
-final BuiltSet<MoveFunctionVisibilityEnum> _$moveFunctionVisibilityEnumValues =
-    BuiltSet<MoveFunctionVisibilityEnum>(const <MoveFunctionVisibilityEnum>[
-  _$moveFunctionVisibilityEnum_public,
-  _$moveFunctionVisibilityEnum_script,
-  _$moveFunctionVisibilityEnum_friend,
-]);
-
-Serializer<MoveFunctionVisibilityEnum> _$moveFunctionVisibilityEnumSerializer =
-    _$MoveFunctionVisibilityEnumSerializer();
-
-class _$MoveFunctionVisibilityEnumSerializer
-    implements PrimitiveSerializer<MoveFunctionVisibilityEnum> {
-  static const Map<String, Object> _toWire = <String, Object>{
-    'public': 'public',
-    'script': 'script',
-    'friend': 'friend',
-  };
-  static const Map<Object, String> _fromWire = <Object, String>{
-    'public': 'public',
-    'script': 'script',
-    'friend': 'friend',
-  };
-
-  @override
-  final Iterable<Type> types = const <Type>[MoveFunctionVisibilityEnum];
-  @override
-  final String wireName = 'MoveFunctionVisibilityEnum';
-
-  @override
-  Object serialize(Serializers serializers, MoveFunctionVisibilityEnum object,
-          {FullType specifiedType = FullType.unspecified}) =>
-      _toWire[object.name] ?? object.name;
-
-  @override
-  MoveFunctionVisibilityEnum deserialize(
-          Serializers serializers, Object serialized,
-          {FullType specifiedType = FullType.unspecified}) =>
-      MoveFunctionVisibilityEnum.valueOf(
-          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
-}
-
 class _$MoveFunction extends MoveFunction {
   @override
   final String name;
   @override
-  final MoveFunctionVisibilityEnum visibility;
+  final MoveFunctionVisibility visibility;
   @override
-  final BuiltList<MoveFunctionGenericTypeParamsInner> genericTypeParams;
+  final bool isEntry;
+  @override
+  final BuiltList<MoveFunctionGenericTypeParam> genericTypeParams;
   @override
   final BuiltList<String> params;
   @override
@@ -85,17 +26,19 @@ class _$MoveFunction extends MoveFunction {
   _$MoveFunction._(
       {required this.name,
       required this.visibility,
+      required this.isEntry,
       required this.genericTypeParams,
       required this.params,
       required this.return_})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, 'MoveFunction', 'name');
+    BuiltValueNullFieldError.checkNotNull(name, r'MoveFunction', 'name');
     BuiltValueNullFieldError.checkNotNull(
-        visibility, 'MoveFunction', 'visibility');
+        visibility, r'MoveFunction', 'visibility');
+    BuiltValueNullFieldError.checkNotNull(isEntry, r'MoveFunction', 'isEntry');
     BuiltValueNullFieldError.checkNotNull(
-        genericTypeParams, 'MoveFunction', 'genericTypeParams');
-    BuiltValueNullFieldError.checkNotNull(params, 'MoveFunction', 'params');
-    BuiltValueNullFieldError.checkNotNull(return_, 'MoveFunction', 'return_');
+        genericTypeParams, r'MoveFunction', 'genericTypeParams');
+    BuiltValueNullFieldError.checkNotNull(params, r'MoveFunction', 'params');
+    BuiltValueNullFieldError.checkNotNull(return_, r'MoveFunction', 'return_');
   }
 
   @override
@@ -111,6 +54,7 @@ class _$MoveFunction extends MoveFunction {
     return other is MoveFunction &&
         name == other.name &&
         visibility == other.visibility &&
+        isEntry == other.isEntry &&
         genericTypeParams == other.genericTypeParams &&
         params == other.params &&
         return_ == other.return_;
@@ -120,7 +64,9 @@ class _$MoveFunction extends MoveFunction {
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc($jc($jc(0, name.hashCode), visibility.hashCode),
+            $jc(
+                $jc($jc($jc(0, name.hashCode), visibility.hashCode),
+                    isEntry.hashCode),
                 genericTypeParams.hashCode),
             params.hashCode),
         return_.hashCode));
@@ -128,9 +74,10 @@ class _$MoveFunction extends MoveFunction {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('MoveFunction')
+    return (newBuiltValueToStringHelper(r'MoveFunction')
           ..add('name', name)
           ..add('visibility', visibility)
+          ..add('isEntry', isEntry)
           ..add('genericTypeParams', genericTypeParams)
           ..add('params', params)
           ..add('return_', return_))
@@ -146,17 +93,20 @@ class MoveFunctionBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  MoveFunctionVisibilityEnum? _visibility;
-  MoveFunctionVisibilityEnum? get visibility => _$this._visibility;
-  set visibility(MoveFunctionVisibilityEnum? visibility) =>
+  MoveFunctionVisibility? _visibility;
+  MoveFunctionVisibility? get visibility => _$this._visibility;
+  set visibility(MoveFunctionVisibility? visibility) =>
       _$this._visibility = visibility;
 
-  ListBuilder<MoveFunctionGenericTypeParamsInner>? _genericTypeParams;
-  ListBuilder<MoveFunctionGenericTypeParamsInner> get genericTypeParams =>
-      _$this._genericTypeParams ??=
-          ListBuilder<MoveFunctionGenericTypeParamsInner>();
+  bool? _isEntry;
+  bool? get isEntry => _$this._isEntry;
+  set isEntry(bool? isEntry) => _$this._isEntry = isEntry;
+
+  ListBuilder<MoveFunctionGenericTypeParam>? _genericTypeParams;
+  ListBuilder<MoveFunctionGenericTypeParam> get genericTypeParams =>
+      _$this._genericTypeParams ??= ListBuilder<MoveFunctionGenericTypeParam>();
   set genericTypeParams(
-          ListBuilder<MoveFunctionGenericTypeParamsInner>? genericTypeParams) =>
+          ListBuilder<MoveFunctionGenericTypeParam>? genericTypeParams) =>
       _$this._genericTypeParams = genericTypeParams;
 
   ListBuilder<String>? _params;
@@ -176,6 +126,7 @@ class MoveFunctionBuilder
     if ($v != null) {
       _name = $v.name;
       _visibility = $v.visibility;
+      _isEntry = $v.isEntry;
       _genericTypeParams = $v.genericTypeParams.toBuilder();
       _params = $v.params.toBuilder();
       _return_ = $v.return_.toBuilder();
@@ -204,9 +155,11 @@ class MoveFunctionBuilder
       _$result = _$v ??
           _$MoveFunction._(
               name: BuiltValueNullFieldError.checkNotNull(
-                  name, 'MoveFunction', 'name'),
+                  name, r'MoveFunction', 'name'),
               visibility: BuiltValueNullFieldError.checkNotNull(
-                  visibility, 'MoveFunction', 'visibility'),
+                  visibility, r'MoveFunction', 'visibility'),
+              isEntry: BuiltValueNullFieldError.checkNotNull(
+                  isEntry, r'MoveFunction', 'isEntry'),
               genericTypeParams: genericTypeParams.build(),
               params: params.build(),
               return_: return_.build());
@@ -221,7 +174,7 @@ class MoveFunctionBuilder
         return_.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            'MoveFunction', _$failedField, e.toString());
+            r'MoveFunction', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -230,4 +183,4 @@ class MoveFunctionBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

@@ -7,11 +7,6 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(MultiAgentSignature, () {
-    // String type
-    test('to test the property `type`', () async {
-      // TODO
-    });
-
     // AccountSignature sender
     test('to test the property `sender`', () async {
       // TODO

@@ -11,33 +11,22 @@ import 'package:one_of/any_of.dart';
 
 part 'multi_ed25519_signature.g.dart';
 
-/// Multi ed25519 signature, please refer to https://github.com/aptos-labs/aptos-core/tree/main/documentation/specifications/crypto#multi-signatures for more details.
+/// MultiEd25519Signature
 ///
 /// Properties:
-/// * [type]
-/// * [publicKeys] - all public keys of the sender account
-/// * [signatures] - signatures created based on the `threshold`
-/// * [threshold] - The threshold of the multi ed25519 account key.
-/// * [bitmap] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
+/// * [publicKeys]
+/// * [signatures]
+/// * [threshold]
+/// * [bitmap]
 @BuiltValue()
 abstract class MultiEd25519Signature
     implements Built<MultiEd25519Signature, MultiEd25519SignatureBuilder> {
-  @BuiltValueField(wireName: r'type')
-  String get type;
-
-  /// all public keys of the sender account
   @BuiltValueField(wireName: r'public_keys')
   BuiltList<String> get publicKeys;
-
-  /// signatures created based on the `threshold`
   @BuiltValueField(wireName: r'signatures')
   BuiltList<String> get signatures;
-
-  /// The threshold of the multi ed25519 account key.
   @BuiltValueField(wireName: r'threshold')
   int get threshold;
-
-  /// All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
   @BuiltValueField(wireName: r'bitmap')
   String get bitmap;
 
@@ -68,9 +57,6 @@ class _$MultiEd25519SignatureSerializer
   Iterable<Object?> _serializeProperties(
       Serializers serializers, MultiEd25519Signature object,
       {FullType specifiedType = FullType.unspecified}) sync* {
-    yield r'type';
-    yield serializers.serialize(object.type,
-        specifiedType: const FullType(String));
     yield r'public_keys';
     yield serializers.serialize(object.publicKeys,
         specifiedType: const FullType(BuiltList, [FullType(String)]));
@@ -102,11 +88,6 @@ class _$MultiEd25519SignatureSerializer
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'type':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.type = valueDes;
-          break;
         case r'public_keys':
           final valueDes = serializers.deserialize(value,
                   specifiedType: const FullType(BuiltList, [FullType(String)]))

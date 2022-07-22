@@ -18,13 +18,12 @@ part 'transaction_signature.g.dart';
 /// TransactionSignature
 ///
 /// Properties:
-/// * [type]
-/// * [publicKey] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
-/// * [signature] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
-/// * [publicKeys] - all public keys of the sender account
-/// * [signatures] - signatures created based on the `threshold`
-/// * [threshold] - The threshold of the multi ed25519 account key.
-/// * [bitmap] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
+/// * [publicKey]
+/// * [signature]
+/// * [publicKeys]
+/// * [signatures]
+/// * [threshold]
+/// * [bitmap]
 /// * [sender]
 /// * [secondarySignerAddresses]
 /// * [secondarySigners]
@@ -33,16 +32,6 @@ abstract class TransactionSignature
     implements Built<TransactionSignature, TransactionSignatureBuilder> {
   /// One Of [Ed25519Signature], [MultiAgentSignature], [MultiEd25519Signature]
   OneOf get oneOf;
-
-  static const String discriminatorFieldName = r'type';
-  static const Map<String, Type> discriminatorMapping = {
-    r'Ed25519Signature': Ed25519Signature,
-    r'MultiAgentSignature': MultiAgentSignature,
-    r'MultiEd25519Signature': MultiEd25519Signature,
-    r'ed25519_signature': Ed25519Signature,
-    r'multi_agent_signature': MultiAgentSignature,
-    r'multi_ed25519_signature': MultiEd25519Signature,
-  };
 
   TransactionSignature._();
 
@@ -85,65 +74,14 @@ class _$TransactionSignatureSerializer
       {FullType specifiedType = FullType.unspecified}) {
     final result = TransactionSignatureBuilder();
     Object? oneOfDataSrc;
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final discIndex =
-        serializedList.indexOf(TransactionSignature.discriminatorFieldName) + 1;
-    final discValue = serializers.deserialize(serializedList[discIndex],
-        specifiedType: FullType(String)) as String;
+    final targetType = const FullType(OneOf, [
+      FullType(Ed25519Signature),
+      FullType(MultiEd25519Signature),
+      FullType(MultiAgentSignature),
+    ]);
     oneOfDataSrc = serialized;
-    final oneOfTypes = [
-      Ed25519Signature,
-      MultiAgentSignature,
-      MultiEd25519Signature,
-      Ed25519Signature,
-      MultiAgentSignature,
-      MultiEd25519Signature,
-    ];
-    Object oneOfResult;
-    Type oneOfType;
-    switch (discValue) {
-      case 'Ed25519Signature':
-        oneOfResult = serializers.deserialize(oneOfDataSrc,
-            specifiedType: FullType(Ed25519Signature)) as Ed25519Signature;
-        oneOfType = Ed25519Signature;
-        break;
-      case 'MultiAgentSignature':
-        oneOfResult = serializers.deserialize(oneOfDataSrc,
-                specifiedType: FullType(MultiAgentSignature))
-            as MultiAgentSignature;
-        oneOfType = MultiAgentSignature;
-        break;
-      case 'MultiEd25519Signature':
-        oneOfResult = serializers.deserialize(oneOfDataSrc,
-                specifiedType: FullType(MultiEd25519Signature))
-            as MultiEd25519Signature;
-        oneOfType = MultiEd25519Signature;
-        break;
-      case 'ed25519_signature':
-        oneOfResult = serializers.deserialize(oneOfDataSrc,
-            specifiedType: FullType(Ed25519Signature)) as Ed25519Signature;
-        oneOfType = Ed25519Signature;
-        break;
-      case 'multi_agent_signature':
-        oneOfResult = serializers.deserialize(oneOfDataSrc,
-                specifiedType: FullType(MultiAgentSignature))
-            as MultiAgentSignature;
-        oneOfType = MultiAgentSignature;
-        break;
-      case 'multi_ed25519_signature':
-        oneOfResult = serializers.deserialize(oneOfDataSrc,
-                specifiedType: FullType(MultiEd25519Signature))
-            as MultiEd25519Signature;
-        oneOfType = MultiEd25519Signature;
-        break;
-      default:
-        throw UnsupportedError(
-            "Couldn't deserialize oneOf for the discriminator value: ${discValue}");
-    }
-    result.oneOf = OneOfDynamic(
-        typeIndex: oneOfTypes.indexOf(oneOfType),
-        types: oneOfTypes,
-        value: oneOfResult);
+    result.oneOf = serializers.deserialize(oneOfDataSrc,
+        specifiedType: targetType) as OneOf;
     return result.build();
   }
 }

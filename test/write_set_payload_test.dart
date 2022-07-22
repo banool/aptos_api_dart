@@ -7,11 +7,6 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(WriteSetPayload, () {
-    // String type
-    test('to test the property `type`', () async {
-      // TODO
-    });
-
     // WriteSet writeSet
     test('to test the property `writeSet`', () async {
       // TODO

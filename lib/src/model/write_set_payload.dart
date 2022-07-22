@@ -14,13 +14,10 @@ part 'write_set_payload.g.dart';
 /// WriteSetPayload
 ///
 /// Properties:
-/// * [type]
 /// * [writeSet]
 @BuiltValue()
 abstract class WriteSetPayload
     implements Built<WriteSetPayload, WriteSetPayloadBuilder> {
-  @BuiltValueField(wireName: r'type')
-  String get type;
   @BuiltValueField(wireName: r'write_set')
   WriteSet get writeSet;
 
@@ -48,9 +45,6 @@ class _$WriteSetPayloadSerializer
   Iterable<Object?> _serializeProperties(
       Serializers serializers, WriteSetPayload object,
       {FullType specifiedType = FullType.unspecified}) sync* {
-    yield r'type';
-    yield serializers.serialize(object.type,
-        specifiedType: const FullType(String));
     yield r'write_set';
     yield serializers.serialize(object.writeSet,
         specifiedType: const FullType(WriteSet));
@@ -73,11 +67,6 @@ class _$WriteSetPayloadSerializer
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'type':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.type = valueDes;
-          break;
         case r'write_set':
           final valueDes = serializers.deserialize(value,
               specifiedType: const FullType(WriteSet)) as WriteSet;

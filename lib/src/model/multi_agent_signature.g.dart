@@ -8,8 +8,6 @@ part of 'multi_agent_signature.dart';
 
 class _$MultiAgentSignature extends MultiAgentSignature {
   @override
-  final String type;
-  @override
   final AccountSignature sender;
   @override
   final BuiltList<String> secondarySignerAddresses;
@@ -21,18 +19,16 @@ class _$MultiAgentSignature extends MultiAgentSignature {
       (MultiAgentSignatureBuilder()..update(updates))._build();
 
   _$MultiAgentSignature._(
-      {required this.type,
-      required this.sender,
+      {required this.sender,
       required this.secondarySignerAddresses,
       required this.secondarySigners})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(type, 'MultiAgentSignature', 'type');
     BuiltValueNullFieldError.checkNotNull(
-        sender, 'MultiAgentSignature', 'sender');
+        sender, r'MultiAgentSignature', 'sender');
     BuiltValueNullFieldError.checkNotNull(secondarySignerAddresses,
-        'MultiAgentSignature', 'secondarySignerAddresses');
+        r'MultiAgentSignature', 'secondarySignerAddresses');
     BuiltValueNullFieldError.checkNotNull(
-        secondarySigners, 'MultiAgentSignature', 'secondarySigners');
+        secondarySigners, r'MultiAgentSignature', 'secondarySigners');
   }
 
   @override
@@ -48,7 +44,6 @@ class _$MultiAgentSignature extends MultiAgentSignature {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is MultiAgentSignature &&
-        type == other.type &&
         sender == other.sender &&
         secondarySignerAddresses == other.secondarySignerAddresses &&
         secondarySigners == other.secondarySigners;
@@ -57,15 +52,13 @@ class _$MultiAgentSignature extends MultiAgentSignature {
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, type.hashCode), sender.hashCode),
-            secondarySignerAddresses.hashCode),
+        $jc($jc(0, sender.hashCode), secondarySignerAddresses.hashCode),
         secondarySigners.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('MultiAgentSignature')
-          ..add('type', type)
+    return (newBuiltValueToStringHelper(r'MultiAgentSignature')
           ..add('sender', sender)
           ..add('secondarySignerAddresses', secondarySignerAddresses)
           ..add('secondarySigners', secondarySigners))
@@ -76,10 +69,6 @@ class _$MultiAgentSignature extends MultiAgentSignature {
 class MultiAgentSignatureBuilder
     implements Builder<MultiAgentSignature, MultiAgentSignatureBuilder> {
   _$MultiAgentSignature? _$v;
-
-  String? _type;
-  String? get type => _$this._type;
-  set type(String? type) => _$this._type = type;
 
   AccountSignatureBuilder? _sender;
   AccountSignatureBuilder get sender =>
@@ -105,7 +94,6 @@ class MultiAgentSignatureBuilder
   MultiAgentSignatureBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _type = $v.type;
       _sender = $v.sender.toBuilder();
       _secondarySignerAddresses = $v.secondarySignerAddresses.toBuilder();
       _secondarySigners = $v.secondarySigners.toBuilder();
@@ -133,8 +121,6 @@ class MultiAgentSignatureBuilder
     try {
       _$result = _$v ??
           _$MultiAgentSignature._(
-              type: BuiltValueNullFieldError.checkNotNull(
-                  type, 'MultiAgentSignature', 'type'),
               sender: sender.build(),
               secondarySignerAddresses: secondarySignerAddresses.build(),
               secondarySigners: secondarySigners.build());
@@ -149,7 +135,7 @@ class MultiAgentSignatureBuilder
         secondarySigners.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            'MultiAgentSignature', _$failedField, e.toString());
+            r'MultiAgentSignature', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -158,4 +144,4 @@ class MultiAgentSignatureBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

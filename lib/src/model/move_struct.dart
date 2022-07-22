@@ -2,9 +2,8 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
-import 'package:aptos_api_dart/src/model/move_ability.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:aptos_api_dart/src/model/move_struct_generic_type_params_inner.dart';
+import 'package:aptos_api_dart/src/model/move_struct_generic_type_param.dart';
 import 'package:aptos_api_dart/src/model/move_struct_field.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -29,9 +28,9 @@ abstract class MoveStruct implements Built<MoveStruct, MoveStructBuilder> {
   @BuiltValueField(wireName: r'is_native')
   bool get isNative;
   @BuiltValueField(wireName: r'abilities')
-  BuiltList<MoveAbility> get abilities;
+  BuiltList<String> get abilities;
   @BuiltValueField(wireName: r'generic_type_params')
-  BuiltList<MoveStructGenericTypeParamsInner> get genericTypeParams;
+  BuiltList<MoveStructGenericTypeParam> get genericTypeParams;
   @BuiltValueField(wireName: r'fields')
   BuiltList<MoveStructField> get fields;
 
@@ -64,11 +63,11 @@ class _$MoveStructSerializer implements PrimitiveSerializer<MoveStruct> {
         specifiedType: const FullType(bool));
     yield r'abilities';
     yield serializers.serialize(object.abilities,
-        specifiedType: const FullType(BuiltList, [FullType(MoveAbility)]));
+        specifiedType: const FullType(BuiltList, [FullType(String)]));
     yield r'generic_type_params';
     yield serializers.serialize(object.genericTypeParams,
-        specifiedType: const FullType(
-            BuiltList, [FullType(MoveStructGenericTypeParamsInner)]));
+        specifiedType:
+            const FullType(BuiltList, [FullType(MoveStructGenericTypeParam)]));
     yield r'fields';
     yield serializers.serialize(object.fields,
         specifiedType: const FullType(BuiltList, [FullType(MoveStructField)]));
@@ -103,16 +102,15 @@ class _$MoveStructSerializer implements PrimitiveSerializer<MoveStruct> {
           break;
         case r'abilities':
           final valueDes = serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, [FullType(MoveAbility)]))
-              as BuiltList<MoveAbility>;
+                  specifiedType: const FullType(BuiltList, [FullType(String)]))
+              as BuiltList<String>;
           result.abilities.replace(valueDes);
           break;
         case r'generic_type_params':
           final valueDes = serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, [FullType(MoveStructGenericTypeParamsInner)]))
-              as BuiltList<MoveStructGenericTypeParamsInner>;
+                      BuiltList, [FullType(MoveStructGenericTypeParam)]))
+              as BuiltList<MoveStructGenericTypeParam>;
           result.genericTypeParams.replace(valueDes);
           break;
         case r'fields':

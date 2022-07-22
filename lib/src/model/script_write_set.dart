@@ -2,7 +2,7 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
-import 'package:aptos_api_dart/src/model/script.dart';
+import 'package:aptos_api_dart/src/model/script_payload.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:one_of/one_of.dart';
@@ -14,20 +14,15 @@ part 'script_write_set.g.dart';
 /// ScriptWriteSet
 ///
 /// Properties:
-/// * [type]
-/// * [executeAs] - Hex-encoded 16 bytes Aptos account address.  Prefixed with `0x` and leading zeros are trimmed.  See [doc](https://diem.github.io/move/address.html) for more details.
+/// * [executeAs]
 /// * [script]
 @BuiltValue()
 abstract class ScriptWriteSet
     implements Built<ScriptWriteSet, ScriptWriteSetBuilder> {
-  @BuiltValueField(wireName: r'type')
-  String get type;
-
-  /// Hex-encoded 16 bytes Aptos account address.  Prefixed with `0x` and leading zeros are trimmed.  See [doc](https://diem.github.io/move/address.html) for more details.
   @BuiltValueField(wireName: r'execute_as')
   String get executeAs;
   @BuiltValueField(wireName: r'script')
-  Script get script;
+  ScriptPayload get script;
 
   ScriptWriteSet._();
 
@@ -53,15 +48,12 @@ class _$ScriptWriteSetSerializer
   Iterable<Object?> _serializeProperties(
       Serializers serializers, ScriptWriteSet object,
       {FullType specifiedType = FullType.unspecified}) sync* {
-    yield r'type';
-    yield serializers.serialize(object.type,
-        specifiedType: const FullType(String));
     yield r'execute_as';
     yield serializers.serialize(object.executeAs,
         specifiedType: const FullType(String));
     yield r'script';
     yield serializers.serialize(object.script,
-        specifiedType: const FullType(Script));
+        specifiedType: const FullType(ScriptPayload));
   }
 
   @override
@@ -81,11 +73,6 @@ class _$ScriptWriteSetSerializer
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'type':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.type = valueDes;
-          break;
         case r'execute_as':
           final valueDes = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -93,7 +80,7 @@ class _$ScriptWriteSetSerializer
           break;
         case r'script':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(Script)) as Script;
+              specifiedType: const FullType(ScriptPayload)) as ScriptPayload;
           result.script.replace(valueDes);
           break;
         default:

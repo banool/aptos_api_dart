@@ -16,14 +16,11 @@ part 'direct_write_set.g.dart';
 /// DirectWriteSet
 ///
 /// Properties:
-/// * [type]
 /// * [changes]
 /// * [events]
 @BuiltValue()
 abstract class DirectWriteSet
     implements Built<DirectWriteSet, DirectWriteSetBuilder> {
-  @BuiltValueField(wireName: r'type')
-  String get type;
   @BuiltValueField(wireName: r'changes')
   BuiltList<WriteSetChange> get changes;
   @BuiltValueField(wireName: r'events')
@@ -53,9 +50,6 @@ class _$DirectWriteSetSerializer
   Iterable<Object?> _serializeProperties(
       Serializers serializers, DirectWriteSet object,
       {FullType specifiedType = FullType.unspecified}) sync* {
-    yield r'type';
-    yield serializers.serialize(object.type,
-        specifiedType: const FullType(String));
     yield r'changes';
     yield serializers.serialize(object.changes,
         specifiedType: const FullType(BuiltList, [FullType(WriteSetChange)]));
@@ -81,11 +75,6 @@ class _$DirectWriteSetSerializer
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'type':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.type = valueDes;
-          break;
         case r'changes':
           final valueDes = serializers.deserialize(value,
                   specifiedType:

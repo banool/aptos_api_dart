@@ -10,8 +10,8 @@ import 'package:built_collection/built_collection.dart';
 import 'package:aptos_api_dart/src/model/pending_transaction.dart';
 import 'package:aptos_api_dart/src/model/event.dart';
 import 'package:aptos_api_dart/src/model/user_transaction.dart';
-import 'package:aptos_api_dart/src/model/transaction_payload.dart';
 import 'package:aptos_api_dart/src/model/state_checkpoint_transaction.dart';
+import 'package:aptos_api_dart/src/model/genesis_payload.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:one_of/one_of.dart';
@@ -23,48 +23,34 @@ part 'transaction.g.dart';
 /// Transaction
 ///
 /// Properties:
-/// * [type]
-/// * [hash] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
-/// * [sender] - Hex-encoded 16 bytes Aptos account address.  Prefixed with `0x` and leading zeros are trimmed.  See [doc](https://diem.github.io/move/address.html) for more details.
-/// * [sequenceNumber] - Unsigned int64 type value
-/// * [maxGasAmount] - Unsigned int64 type value
-/// * [gasUnitPrice] - Unsigned int64 type value
-/// * [gasCurrencyCode]
-/// * [expirationTimestampSecs] - Timestamp in seconds, e.g. transaction expiration timestamp.
+/// * [hash]
+/// * [sender]
+/// * [sequenceNumber]
+/// * [maxGasAmount]
+/// * [gasUnitPrice]
+/// * [expirationTimestampSecs]
 /// * [payload]
 /// * [signature]
-/// * [events]
-/// * [version] - Unsigned int64 type value
-/// * [stateRootHash] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
-/// * [eventRootHash] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
-/// * [gasUsed] - Unsigned int64 type value
-/// * [success] - Transaction execution result (success: true, failure: false). See `vm_status` for human readable error message from Aptos VM.
-/// * [vmStatus] - Human readable transaction execution result message from Aptos VM.
-/// * [accumulatorRootHash] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
+/// * [version]
+/// * [stateRootHash]
+/// * [eventRootHash]
+/// * [gasUsed]
+/// * [success]
+/// * [vmStatus]
+/// * [accumulatorRootHash]
 /// * [changes]
-/// * [timestamp] - Timestamp in microseconds, e.g. ledger / block creation timestamp.
-/// * [id] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
-/// * [round] - Unsigned int64 type value
+/// * [events]
+/// * [timestamp]
+/// * [id]
+/// * [epoch]
+/// * [round]
 /// * [previousBlockVotes]
-/// * [proposer] - Hex-encoded 16 bytes Aptos account address.  Prefixed with `0x` and leading zeros are trimmed.  See [doc](https://diem.github.io/move/address.html) for more details.
+/// * [proposer]
+/// * [failedProposerIndices]
 @BuiltValue()
 abstract class Transaction implements Built<Transaction, TransactionBuilder> {
   /// One Of [BlockMetadataTransaction], [GenesisTransaction], [PendingTransaction], [StateCheckpointTransaction], [UserTransaction]
   OneOf get oneOf;
-
-  static const String discriminatorFieldName = r'type';
-  static const Map<String, Type> discriminatorMapping = {
-    r'BlockMetadataTransaction': BlockMetadataTransaction,
-    r'GenesisTransaction': GenesisTransaction,
-    r'PendingTransaction': PendingTransaction,
-    r'StateCheckpointTransaction': StateCheckpointTransaction,
-    r'UserTransaction': UserTransaction,
-    r'block_metadata_transaction': BlockMetadataTransaction,
-    r'genesis_transaction': GenesisTransaction,
-    r'pending_transaction': PendingTransaction,
-    r'state_checkpoint_transaction': StateCheckpointTransaction,
-    r'user_transaction': UserTransaction,
-  };
 
   Transaction._();
 
@@ -101,89 +87,16 @@ class _$TransactionSerializer implements PrimitiveSerializer<Transaction> {
       {FullType specifiedType = FullType.unspecified}) {
     final result = TransactionBuilder();
     Object? oneOfDataSrc;
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final discIndex =
-        serializedList.indexOf(Transaction.discriminatorFieldName) + 1;
-    final discValue = serializers.deserialize(serializedList[discIndex],
-        specifiedType: FullType(String)) as String;
+    final targetType = const FullType(OneOf, [
+      FullType(PendingTransaction),
+      FullType(UserTransaction),
+      FullType(GenesisTransaction),
+      FullType(BlockMetadataTransaction),
+      FullType(StateCheckpointTransaction),
+    ]);
     oneOfDataSrc = serialized;
-    final oneOfTypes = [
-      BlockMetadataTransaction,
-      GenesisTransaction,
-      PendingTransaction,
-      StateCheckpointTransaction,
-      UserTransaction,
-      BlockMetadataTransaction,
-      GenesisTransaction,
-      PendingTransaction,
-      StateCheckpointTransaction,
-      UserTransaction,
-    ];
-    Object oneOfResult;
-    Type oneOfType;
-    switch (discValue) {
-      case 'BlockMetadataTransaction':
-        oneOfResult = serializers.deserialize(oneOfDataSrc,
-                specifiedType: FullType(BlockMetadataTransaction))
-            as BlockMetadataTransaction;
-        oneOfType = BlockMetadataTransaction;
-        break;
-      case 'GenesisTransaction':
-        oneOfResult = serializers.deserialize(oneOfDataSrc,
-            specifiedType: FullType(GenesisTransaction)) as GenesisTransaction;
-        oneOfType = GenesisTransaction;
-        break;
-      case 'PendingTransaction':
-        oneOfResult = serializers.deserialize(oneOfDataSrc,
-            specifiedType: FullType(PendingTransaction)) as PendingTransaction;
-        oneOfType = PendingTransaction;
-        break;
-      case 'StateCheckpointTransaction':
-        oneOfResult = serializers.deserialize(oneOfDataSrc,
-                specifiedType: FullType(StateCheckpointTransaction))
-            as StateCheckpointTransaction;
-        oneOfType = StateCheckpointTransaction;
-        break;
-      case 'UserTransaction':
-        oneOfResult = serializers.deserialize(oneOfDataSrc,
-            specifiedType: FullType(UserTransaction)) as UserTransaction;
-        oneOfType = UserTransaction;
-        break;
-      case 'block_metadata_transaction':
-        oneOfResult = serializers.deserialize(oneOfDataSrc,
-                specifiedType: FullType(BlockMetadataTransaction))
-            as BlockMetadataTransaction;
-        oneOfType = BlockMetadataTransaction;
-        break;
-      case 'genesis_transaction':
-        oneOfResult = serializers.deserialize(oneOfDataSrc,
-            specifiedType: FullType(GenesisTransaction)) as GenesisTransaction;
-        oneOfType = GenesisTransaction;
-        break;
-      case 'pending_transaction':
-        oneOfResult = serializers.deserialize(oneOfDataSrc,
-            specifiedType: FullType(PendingTransaction)) as PendingTransaction;
-        oneOfType = PendingTransaction;
-        break;
-      case 'state_checkpoint_transaction':
-        oneOfResult = serializers.deserialize(oneOfDataSrc,
-                specifiedType: FullType(StateCheckpointTransaction))
-            as StateCheckpointTransaction;
-        oneOfType = StateCheckpointTransaction;
-        break;
-      case 'user_transaction':
-        oneOfResult = serializers.deserialize(oneOfDataSrc,
-            specifiedType: FullType(UserTransaction)) as UserTransaction;
-        oneOfType = UserTransaction;
-        break;
-      default:
-        throw UnsupportedError(
-            "Couldn't deserialize oneOf for the discriminator value: ${discValue}");
-    }
-    result.oneOf = OneOfDynamic(
-        typeIndex: oneOfTypes.indexOf(oneOfType),
-        types: oneOfTypes,
-        value: oneOfResult);
+    result.oneOf = serializers.deserialize(oneOfDataSrc,
+        specifiedType: targetType) as OneOf;
     return result.build();
   }
 }

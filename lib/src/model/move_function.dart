@@ -2,8 +2,9 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
-import 'package:aptos_api_dart/src/model/move_function_generic_type_params_inner.dart';
 import 'package:built_collection/built_collection.dart';
+import 'package:aptos_api_dart/src/model/move_function_visibility.dart';
+import 'package:aptos_api_dart/src/model/move_function_generic_type_param.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:one_of/one_of.dart';
@@ -15,22 +16,24 @@ part 'move_function.g.dart';
 /// MoveFunction
 ///
 /// Properties:
-/// * [name] - Move function name
+/// * [name]
 /// * [visibility]
+/// * [isEntry]
 /// * [genericTypeParams]
 /// * [params]
 /// * [return_]
 @BuiltValue()
 abstract class MoveFunction
     implements Built<MoveFunction, MoveFunctionBuilder> {
-  /// Move function name
   @BuiltValueField(wireName: r'name')
   String get name;
   @BuiltValueField(wireName: r'visibility')
-  MoveFunctionVisibilityEnum get visibility;
-  // enum visibilityEnum {  public,  script,  friend,  };
+  MoveFunctionVisibility get visibility;
+  // enum visibilityEnum {  Private,  Public,  Friend,  };
+  @BuiltValueField(wireName: r'is_entry')
+  bool get isEntry;
   @BuiltValueField(wireName: r'generic_type_params')
-  BuiltList<MoveFunctionGenericTypeParamsInner> get genericTypeParams;
+  BuiltList<MoveFunctionGenericTypeParam> get genericTypeParams;
   @BuiltValueField(wireName: r'params')
   BuiltList<String> get params;
   @BuiltValueField(wireName: r'return')
@@ -62,11 +65,14 @@ class _$MoveFunctionSerializer implements PrimitiveSerializer<MoveFunction> {
         specifiedType: const FullType(String));
     yield r'visibility';
     yield serializers.serialize(object.visibility,
-        specifiedType: const FullType(MoveFunctionVisibilityEnum));
+        specifiedType: const FullType(MoveFunctionVisibility));
+    yield r'is_entry';
+    yield serializers.serialize(object.isEntry,
+        specifiedType: const FullType(bool));
     yield r'generic_type_params';
     yield serializers.serialize(object.genericTypeParams,
         specifiedType: const FullType(
-            BuiltList, [FullType(MoveFunctionGenericTypeParamsInner)]));
+            BuiltList, [FullType(MoveFunctionGenericTypeParam)]));
     yield r'params';
     yield serializers.serialize(object.params,
         specifiedType: const FullType(BuiltList, [FullType(String)]));
@@ -99,15 +105,20 @@ class _$MoveFunctionSerializer implements PrimitiveSerializer<MoveFunction> {
           break;
         case r'visibility':
           final valueDes = serializers.deserialize(value,
-                  specifiedType: const FullType(MoveFunctionVisibilityEnum))
-              as MoveFunctionVisibilityEnum;
+                  specifiedType: const FullType(MoveFunctionVisibility))
+              as MoveFunctionVisibility;
           result.visibility = valueDes;
+          break;
+        case r'is_entry':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool;
+          result.isEntry = valueDes;
           break;
         case r'generic_type_params':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(BuiltList, [
-                FullType(MoveFunctionGenericTypeParamsInner)
-              ])) as BuiltList<MoveFunctionGenericTypeParamsInner>;
+                  specifiedType: const FullType(
+                      BuiltList, [FullType(MoveFunctionGenericTypeParam)]))
+              as BuiltList<MoveFunctionGenericTypeParam>;
           result.genericTypeParams.replace(valueDes);
           break;
         case r'params':
@@ -143,26 +154,4 @@ class _$MoveFunctionSerializer implements PrimitiveSerializer<MoveFunction> {
         result: result);
     return result.build();
   }
-}
-
-class MoveFunctionVisibilityEnum extends EnumClass {
-  @BuiltValueEnumConst(wireName: r'public')
-  static const MoveFunctionVisibilityEnum public =
-      _$moveFunctionVisibilityEnum_public;
-  @BuiltValueEnumConst(wireName: r'script')
-  static const MoveFunctionVisibilityEnum script =
-      _$moveFunctionVisibilityEnum_script;
-  @BuiltValueEnumConst(wireName: r'friend')
-  static const MoveFunctionVisibilityEnum friend =
-      _$moveFunctionVisibilityEnum_friend;
-
-  static Serializer<MoveFunctionVisibilityEnum> get serializer =>
-      _$moveFunctionVisibilityEnumSerializer;
-
-  const MoveFunctionVisibilityEnum._(String name) : super(name);
-
-  static BuiltSet<MoveFunctionVisibilityEnum> get values =>
-      _$moveFunctionVisibilityEnumValues;
-  static MoveFunctionVisibilityEnum valueOf(String name) =>
-      _$moveFunctionVisibilityEnumValueOf(name);
 }

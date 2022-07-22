@@ -34,12 +34,17 @@ rm -rf .openapi-generator
 # Get latest generator
 # docker pull openapitools/openapi-generator-cli
 
+spec="$1"
+if [[ $spec == "" ]]; then
+    spec="https://raw.githubusercontent.com/aptos-labs/aptos-core/main/api/doc/openapi.yaml"
+fi
+
 # Generate code
 docker run \
   --rm \
   --mount type=bind,source=$PWD,target=/hostdir \
   $OPENAPI_GENERATOR_CLI generate \
-  -i https://raw.githubusercontent.com/aptos-labs/aptos-core/main/api/doc/openapi.yaml \
+  -i $spec \
   -g dart-dio \
   -c /hostdir/openapi-generator.yaml \
   -o /hostdir
@@ -68,3 +73,5 @@ echo
 
 # Make sure the user adds the necessary serializers
 echo "WARNING: Make sure to make the following changes manually for now: https://github.com/banool/aptos_api_dart/pull/2/files"
+
+echo "Generated spec from: $spec" > source.txt

@@ -6,94 +6,69 @@ part of 'user_transaction_request.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-abstract class UserTransactionRequestBuilder {
-  void replace(UserTransactionRequest other);
-  void update(void Function(UserTransactionRequestBuilder) updates);
-  String? get sender;
-  set sender(String? sender);
-
-  String? get sequenceNumber;
-  set sequenceNumber(String? sequenceNumber);
-
-  String? get maxGasAmount;
-  set maxGasAmount(String? maxGasAmount);
-
-  String? get gasUnitPrice;
-  set gasUnitPrice(String? gasUnitPrice);
-
-  String? get gasCurrencyCode;
-  set gasCurrencyCode(String? gasCurrencyCode);
-
-  String? get expirationTimestampSecs;
-  set expirationTimestampSecs(String? expirationTimestampSecs);
-
-  TransactionPayloadBuilder get payload;
-  set payload(TransactionPayloadBuilder? payload);
-}
-
-class _$$UserTransactionRequest extends $UserTransactionRequest {
+class _$UserTransactionRequest extends UserTransactionRequest {
   @override
   final String sender;
   @override
-  final String sequenceNumber;
+  final int sequenceNumber;
   @override
-  final String maxGasAmount;
+  final int maxGasAmount;
   @override
-  final String gasUnitPrice;
+  final int gasUnitPrice;
   @override
-  final String? gasCurrencyCode;
-  @override
-  final String expirationTimestampSecs;
+  final int expirationTimestampSecs;
   @override
   final TransactionPayload payload;
+  @override
+  final TransactionSignature? signature;
 
-  factory _$$UserTransactionRequest(
-          [void Function($UserTransactionRequestBuilder)? updates]) =>
-      ($UserTransactionRequestBuilder()..update(updates))._build();
+  factory _$UserTransactionRequest(
+          [void Function(UserTransactionRequestBuilder)? updates]) =>
+      (UserTransactionRequestBuilder()..update(updates))._build();
 
-  _$$UserTransactionRequest._(
+  _$UserTransactionRequest._(
       {required this.sender,
       required this.sequenceNumber,
       required this.maxGasAmount,
       required this.gasUnitPrice,
-      this.gasCurrencyCode,
       required this.expirationTimestampSecs,
-      required this.payload})
+      required this.payload,
+      this.signature})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        sender, '$UserTransactionRequest', 'sender');
+        sender, r'UserTransactionRequest', 'sender');
     BuiltValueNullFieldError.checkNotNull(
-        sequenceNumber, '$UserTransactionRequest', 'sequenceNumber');
+        sequenceNumber, r'UserTransactionRequest', 'sequenceNumber');
     BuiltValueNullFieldError.checkNotNull(
-        maxGasAmount, '$UserTransactionRequest', 'maxGasAmount');
+        maxGasAmount, r'UserTransactionRequest', 'maxGasAmount');
     BuiltValueNullFieldError.checkNotNull(
-        gasUnitPrice, '$UserTransactionRequest', 'gasUnitPrice');
+        gasUnitPrice, r'UserTransactionRequest', 'gasUnitPrice');
     BuiltValueNullFieldError.checkNotNull(expirationTimestampSecs,
-        '$UserTransactionRequest', 'expirationTimestampSecs');
+        r'UserTransactionRequest', 'expirationTimestampSecs');
     BuiltValueNullFieldError.checkNotNull(
-        payload, '$UserTransactionRequest', 'payload');
+        payload, r'UserTransactionRequest', 'payload');
   }
 
   @override
-  $UserTransactionRequest rebuild(
-          void Function($UserTransactionRequestBuilder) updates) =>
+  UserTransactionRequest rebuild(
+          void Function(UserTransactionRequestBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  $UserTransactionRequestBuilder toBuilder() =>
-      $UserTransactionRequestBuilder()..replace(this);
+  UserTransactionRequestBuilder toBuilder() =>
+      UserTransactionRequestBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is $UserTransactionRequest &&
+    return other is UserTransactionRequest &&
         sender == other.sender &&
         sequenceNumber == other.sequenceNumber &&
         maxGasAmount == other.maxGasAmount &&
         gasUnitPrice == other.gasUnitPrice &&
-        gasCurrencyCode == other.gasCurrencyCode &&
         expirationTimestampSecs == other.expirationTimestampSecs &&
-        payload == other.payload;
+        payload == other.payload &&
+        signature == other.signature;
   }
 
   @override
@@ -105,126 +80,124 @@ class _$$UserTransactionRequest extends $UserTransactionRequest {
                     $jc($jc($jc(0, sender.hashCode), sequenceNumber.hashCode),
                         maxGasAmount.hashCode),
                     gasUnitPrice.hashCode),
-                gasCurrencyCode.hashCode),
-            expirationTimestampSecs.hashCode),
-        payload.hashCode));
+                expirationTimestampSecs.hashCode),
+            payload.hashCode),
+        signature.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('$UserTransactionRequest')
+    return (newBuiltValueToStringHelper(r'UserTransactionRequest')
           ..add('sender', sender)
           ..add('sequenceNumber', sequenceNumber)
           ..add('maxGasAmount', maxGasAmount)
           ..add('gasUnitPrice', gasUnitPrice)
-          ..add('gasCurrencyCode', gasCurrencyCode)
           ..add('expirationTimestampSecs', expirationTimestampSecs)
-          ..add('payload', payload))
+          ..add('payload', payload)
+          ..add('signature', signature))
         .toString();
   }
 }
 
-class $UserTransactionRequestBuilder
-    implements
-        Builder<$UserTransactionRequest, $UserTransactionRequestBuilder>,
-        UserTransactionRequestBuilder {
-  _$$UserTransactionRequest? _$v;
+class UserTransactionRequestBuilder
+    implements Builder<UserTransactionRequest, UserTransactionRequestBuilder> {
+  _$UserTransactionRequest? _$v;
 
   String? _sender;
   String? get sender => _$this._sender;
-  set sender(covariant String? sender) => _$this._sender = sender;
+  set sender(String? sender) => _$this._sender = sender;
 
-  String? _sequenceNumber;
-  String? get sequenceNumber => _$this._sequenceNumber;
-  set sequenceNumber(covariant String? sequenceNumber) =>
+  int? _sequenceNumber;
+  int? get sequenceNumber => _$this._sequenceNumber;
+  set sequenceNumber(int? sequenceNumber) =>
       _$this._sequenceNumber = sequenceNumber;
 
-  String? _maxGasAmount;
-  String? get maxGasAmount => _$this._maxGasAmount;
-  set maxGasAmount(covariant String? maxGasAmount) =>
-      _$this._maxGasAmount = maxGasAmount;
+  int? _maxGasAmount;
+  int? get maxGasAmount => _$this._maxGasAmount;
+  set maxGasAmount(int? maxGasAmount) => _$this._maxGasAmount = maxGasAmount;
 
-  String? _gasUnitPrice;
-  String? get gasUnitPrice => _$this._gasUnitPrice;
-  set gasUnitPrice(covariant String? gasUnitPrice) =>
-      _$this._gasUnitPrice = gasUnitPrice;
+  int? _gasUnitPrice;
+  int? get gasUnitPrice => _$this._gasUnitPrice;
+  set gasUnitPrice(int? gasUnitPrice) => _$this._gasUnitPrice = gasUnitPrice;
 
-  String? _gasCurrencyCode;
-  String? get gasCurrencyCode => _$this._gasCurrencyCode;
-  set gasCurrencyCode(covariant String? gasCurrencyCode) =>
-      _$this._gasCurrencyCode = gasCurrencyCode;
-
-  String? _expirationTimestampSecs;
-  String? get expirationTimestampSecs => _$this._expirationTimestampSecs;
-  set expirationTimestampSecs(covariant String? expirationTimestampSecs) =>
+  int? _expirationTimestampSecs;
+  int? get expirationTimestampSecs => _$this._expirationTimestampSecs;
+  set expirationTimestampSecs(int? expirationTimestampSecs) =>
       _$this._expirationTimestampSecs = expirationTimestampSecs;
 
   TransactionPayloadBuilder? _payload;
   TransactionPayloadBuilder get payload =>
       _$this._payload ??= TransactionPayloadBuilder();
-  set payload(covariant TransactionPayloadBuilder? payload) =>
-      _$this._payload = payload;
+  set payload(TransactionPayloadBuilder? payload) => _$this._payload = payload;
 
-  $UserTransactionRequestBuilder() {
-    $UserTransactionRequest._defaults(this);
+  TransactionSignatureBuilder? _signature;
+  TransactionSignatureBuilder get signature =>
+      _$this._signature ??= TransactionSignatureBuilder();
+  set signature(TransactionSignatureBuilder? signature) =>
+      _$this._signature = signature;
+
+  UserTransactionRequestBuilder() {
+    UserTransactionRequest._defaults(this);
   }
 
-  $UserTransactionRequestBuilder get _$this {
+  UserTransactionRequestBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _sender = $v.sender;
       _sequenceNumber = $v.sequenceNumber;
       _maxGasAmount = $v.maxGasAmount;
       _gasUnitPrice = $v.gasUnitPrice;
-      _gasCurrencyCode = $v.gasCurrencyCode;
       _expirationTimestampSecs = $v.expirationTimestampSecs;
       _payload = $v.payload.toBuilder();
+      _signature = $v.signature?.toBuilder();
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(covariant $UserTransactionRequest other) {
+  void replace(UserTransactionRequest other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$$UserTransactionRequest;
+    _$v = other as _$UserTransactionRequest;
   }
 
   @override
-  void update(void Function($UserTransactionRequestBuilder)? updates) {
+  void update(void Function(UserTransactionRequestBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  $UserTransactionRequest build() => _build();
+  UserTransactionRequest build() => _build();
 
-  _$$UserTransactionRequest _build() {
-    _$$UserTransactionRequest _$result;
+  _$UserTransactionRequest _build() {
+    _$UserTransactionRequest _$result;
     try {
       _$result = _$v ??
-          _$$UserTransactionRequest._(
+          _$UserTransactionRequest._(
               sender: BuiltValueNullFieldError.checkNotNull(
-                  sender, '$UserTransactionRequest', 'sender'),
+                  sender, r'UserTransactionRequest', 'sender'),
               sequenceNumber: BuiltValueNullFieldError.checkNotNull(
-                  sequenceNumber, '$UserTransactionRequest', 'sequenceNumber'),
+                  sequenceNumber, r'UserTransactionRequest', 'sequenceNumber'),
               maxGasAmount: BuiltValueNullFieldError.checkNotNull(
-                  maxGasAmount, '$UserTransactionRequest', 'maxGasAmount'),
+                  maxGasAmount, r'UserTransactionRequest', 'maxGasAmount'),
               gasUnitPrice: BuiltValueNullFieldError.checkNotNull(
-                  gasUnitPrice, '$UserTransactionRequest', 'gasUnitPrice'),
-              gasCurrencyCode: gasCurrencyCode,
+                  gasUnitPrice, r'UserTransactionRequest', 'gasUnitPrice'),
               expirationTimestampSecs: BuiltValueNullFieldError.checkNotNull(
                   expirationTimestampSecs,
-                  '$UserTransactionRequest',
+                  r'UserTransactionRequest',
                   'expirationTimestampSecs'),
-              payload: payload.build());
+              payload: payload.build(),
+              signature: _signature?.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'payload';
         payload.build();
+        _$failedField = 'signature';
+        _signature?.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            '$UserTransactionRequest', _$failedField, e.toString());
+            r'UserTransactionRequest', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -233,4 +206,4 @@ class $UserTransactionRequestBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

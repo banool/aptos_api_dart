@@ -7,24 +7,16 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(ScriptFunctionPayload, () {
-    // String type
-    test('to test the property `type`', () async {
-      // TODO
-    });
-
-    // Script function id is string representation of a script function defined on-chain.  Format: `{address}::{module name}::{function name}`  Both `module name` and `function name` are case-sensitive.
-    // String function_
+    // ScriptFunctionId function_
     test('to test the property `function_`', () async {
       // TODO
     });
 
-    // Generic type arguments required by the script function.
     // BuiltList<String> typeArguments
     test('to test the property `typeArguments`', () async {
       // TODO
     });
 
-    // The script function arguments.
     // BuiltList<JsonObject> arguments
     test('to test the property `arguments`', () async {
       // TODO

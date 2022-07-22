@@ -8,28 +8,22 @@ part of 'write_resource.dart';
 
 class _$WriteResource extends WriteResource {
   @override
-  final String type;
+  final String address;
   @override
   final String stateKeyHash;
   @override
-  final String address;
-  @override
-  final AccountResource data;
+  final MoveResource data;
 
   factory _$WriteResource([void Function(WriteResourceBuilder)? updates]) =>
       (WriteResourceBuilder()..update(updates))._build();
 
   _$WriteResource._(
-      {required this.type,
-      required this.stateKeyHash,
-      required this.address,
-      required this.data})
+      {required this.address, required this.stateKeyHash, required this.data})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(type, 'WriteResource', 'type');
+    BuiltValueNullFieldError.checkNotNull(address, r'WriteResource', 'address');
     BuiltValueNullFieldError.checkNotNull(
-        stateKeyHash, 'WriteResource', 'stateKeyHash');
-    BuiltValueNullFieldError.checkNotNull(address, 'WriteResource', 'address');
-    BuiltValueNullFieldError.checkNotNull(data, 'WriteResource', 'data');
+        stateKeyHash, r'WriteResource', 'stateKeyHash');
+    BuiltValueNullFieldError.checkNotNull(data, r'WriteResource', 'data');
   }
 
   @override
@@ -43,26 +37,22 @@ class _$WriteResource extends WriteResource {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is WriteResource &&
-        type == other.type &&
-        stateKeyHash == other.stateKeyHash &&
         address == other.address &&
+        stateKeyHash == other.stateKeyHash &&
         data == other.data;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, type.hashCode), stateKeyHash.hashCode),
-            address.hashCode),
-        data.hashCode));
+        $jc($jc(0, address.hashCode), stateKeyHash.hashCode), data.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('WriteResource')
-          ..add('type', type)
-          ..add('stateKeyHash', stateKeyHash)
+    return (newBuiltValueToStringHelper(r'WriteResource')
           ..add('address', address)
+          ..add('stateKeyHash', stateKeyHash)
           ..add('data', data))
         .toString();
   }
@@ -72,21 +62,17 @@ class WriteResourceBuilder
     implements Builder<WriteResource, WriteResourceBuilder> {
   _$WriteResource? _$v;
 
-  String? _type;
-  String? get type => _$this._type;
-  set type(String? type) => _$this._type = type;
+  String? _address;
+  String? get address => _$this._address;
+  set address(String? address) => _$this._address = address;
 
   String? _stateKeyHash;
   String? get stateKeyHash => _$this._stateKeyHash;
   set stateKeyHash(String? stateKeyHash) => _$this._stateKeyHash = stateKeyHash;
 
-  String? _address;
-  String? get address => _$this._address;
-  set address(String? address) => _$this._address = address;
-
-  AccountResourceBuilder? _data;
-  AccountResourceBuilder get data => _$this._data ??= AccountResourceBuilder();
-  set data(AccountResourceBuilder? data) => _$this._data = data;
+  MoveResourceBuilder? _data;
+  MoveResourceBuilder get data => _$this._data ??= MoveResourceBuilder();
+  set data(MoveResourceBuilder? data) => _$this._data = data;
 
   WriteResourceBuilder() {
     WriteResource._defaults(this);
@@ -95,9 +81,8 @@ class WriteResourceBuilder
   WriteResourceBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _type = $v.type;
-      _stateKeyHash = $v.stateKeyHash;
       _address = $v.address;
+      _stateKeyHash = $v.stateKeyHash;
       _data = $v.data.toBuilder();
       _$v = null;
     }
@@ -123,12 +108,10 @@ class WriteResourceBuilder
     try {
       _$result = _$v ??
           _$WriteResource._(
-              type: BuiltValueNullFieldError.checkNotNull(
-                  type, 'WriteResource', 'type'),
-              stateKeyHash: BuiltValueNullFieldError.checkNotNull(
-                  stateKeyHash, 'WriteResource', 'stateKeyHash'),
               address: BuiltValueNullFieldError.checkNotNull(
-                  address, 'WriteResource', 'address'),
+                  address, r'WriteResource', 'address'),
+              stateKeyHash: BuiltValueNullFieldError.checkNotNull(
+                  stateKeyHash, r'WriteResource', 'stateKeyHash'),
               data: data.build());
     } catch (_) {
       late String _$failedField;
@@ -137,7 +120,7 @@ class WriteResourceBuilder
         data.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            'WriteResource', _$failedField, e.toString());
+            r'WriteResource', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -146,4 +129,4 @@ class WriteResourceBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

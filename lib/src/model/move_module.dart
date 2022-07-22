@@ -2,7 +2,10 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
-import 'package:aptos_api_dart/src/model/move_module_abi.dart';
+import 'package:aptos_api_dart/src/model/move_function.dart';
+import 'package:built_collection/built_collection.dart';
+import 'package:aptos_api_dart/src/model/move_module_id.dart';
+import 'package:aptos_api_dart/src/model/move_struct.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:one_of/one_of.dart';
@@ -14,15 +17,23 @@ part 'move_module.g.dart';
 /// MoveModule
 ///
 /// Properties:
-/// * [bytecode] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
-/// * [abi]
+/// * [address]
+/// * [name]
+/// * [friends]
+/// * [exposedFunctions]
+/// * [structs]
 @BuiltValue()
 abstract class MoveModule implements Built<MoveModule, MoveModuleBuilder> {
-  /// All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
-  @BuiltValueField(wireName: r'bytecode')
-  String get bytecode;
-  @BuiltValueField(wireName: r'abi')
-  MoveModuleABI? get abi;
+  @BuiltValueField(wireName: r'address')
+  String get address;
+  @BuiltValueField(wireName: r'name')
+  String get name;
+  @BuiltValueField(wireName: r'friends')
+  BuiltList<MoveModuleId> get friends;
+  @BuiltValueField(wireName: r'exposed_functions')
+  BuiltList<MoveFunction> get exposedFunctions;
+  @BuiltValueField(wireName: r'structs')
+  BuiltList<MoveStruct> get structs;
 
   MoveModule._();
 
@@ -45,14 +56,21 @@ class _$MoveModuleSerializer implements PrimitiveSerializer<MoveModule> {
   Iterable<Object?> _serializeProperties(
       Serializers serializers, MoveModule object,
       {FullType specifiedType = FullType.unspecified}) sync* {
-    yield r'bytecode';
-    yield serializers.serialize(object.bytecode,
+    yield r'address';
+    yield serializers.serialize(object.address,
         specifiedType: const FullType(String));
-    if (object.abi != null) {
-      yield r'abi';
-      yield serializers.serialize(object.abi,
-          specifiedType: const FullType(MoveModuleABI));
-    }
+    yield r'name';
+    yield serializers.serialize(object.name,
+        specifiedType: const FullType(String));
+    yield r'friends';
+    yield serializers.serialize(object.friends,
+        specifiedType: const FullType(BuiltList, [FullType(MoveModuleId)]));
+    yield r'exposed_functions';
+    yield serializers.serialize(object.exposedFunctions,
+        specifiedType: const FullType(BuiltList, [FullType(MoveFunction)]));
+    yield r'structs';
+    yield serializers.serialize(object.structs,
+        specifiedType: const FullType(BuiltList, [FullType(MoveStruct)]));
   }
 
   @override
@@ -72,15 +90,36 @@ class _$MoveModuleSerializer implements PrimitiveSerializer<MoveModule> {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'bytecode':
+        case r'address':
           final valueDes = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
-          result.bytecode = valueDes;
+          result.address = valueDes;
           break;
-        case r'abi':
+        case r'name':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(MoveModuleABI)) as MoveModuleABI;
-          result.abi.replace(valueDes);
+              specifiedType: const FullType(String)) as String;
+          result.name = valueDes;
+          break;
+        case r'friends':
+          final valueDes = serializers.deserialize(value,
+                  specifiedType:
+                      const FullType(BuiltList, [FullType(MoveModuleId)]))
+              as BuiltList<MoveModuleId>;
+          result.friends.replace(valueDes);
+          break;
+        case r'exposed_functions':
+          final valueDes = serializers.deserialize(value,
+                  specifiedType:
+                      const FullType(BuiltList, [FullType(MoveFunction)]))
+              as BuiltList<MoveFunction>;
+          result.exposedFunctions.replace(valueDes);
+          break;
+        case r'structs':
+          final valueDes = serializers.deserialize(value,
+                  specifiedType:
+                      const FullType(BuiltList, [FullType(MoveStruct)]))
+              as BuiltList<MoveStruct>;
+          result.structs.replace(valueDes);
           break;
         default:
           unhandled.add(key);

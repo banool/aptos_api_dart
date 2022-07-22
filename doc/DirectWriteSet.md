@@ -8,7 +8,6 @@ import 'package:aptos_api_dart/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** |  | 
 **changes** | [**BuiltList&lt;WriteSetChange&gt;**](WriteSetChange.md) |  | 
 **events** | [**BuiltList&lt;Event&gt;**](Event.md) |  | 
 

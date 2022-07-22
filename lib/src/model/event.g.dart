@@ -10,7 +10,7 @@ class _$Event extends Event {
   @override
   final String key;
   @override
-  final String sequenceNumber;
+  final int sequenceNumber;
   @override
   final String type;
   @override
@@ -25,10 +25,10 @@ class _$Event extends Event {
       required this.type,
       this.data})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(key, 'Event', 'key');
+    BuiltValueNullFieldError.checkNotNull(key, r'Event', 'key');
     BuiltValueNullFieldError.checkNotNull(
-        sequenceNumber, 'Event', 'sequenceNumber');
-    BuiltValueNullFieldError.checkNotNull(type, 'Event', 'type');
+        sequenceNumber, r'Event', 'sequenceNumber');
+    BuiltValueNullFieldError.checkNotNull(type, r'Event', 'type');
   }
 
   @override
@@ -57,7 +57,7 @@ class _$Event extends Event {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Event')
+    return (newBuiltValueToStringHelper(r'Event')
           ..add('key', key)
           ..add('sequenceNumber', sequenceNumber)
           ..add('type', type)
@@ -73,9 +73,9 @@ class EventBuilder implements Builder<Event, EventBuilder> {
   String? get key => _$this._key;
   set key(String? key) => _$this._key = key;
 
-  String? _sequenceNumber;
-  String? get sequenceNumber => _$this._sequenceNumber;
-  set sequenceNumber(String? sequenceNumber) =>
+  int? _sequenceNumber;
+  int? get sequenceNumber => _$this._sequenceNumber;
+  set sequenceNumber(int? sequenceNumber) =>
       _$this._sequenceNumber = sequenceNumber;
 
   String? _type;
@@ -119,14 +119,14 @@ class EventBuilder implements Builder<Event, EventBuilder> {
   _$Event _build() {
     final _$result = _$v ??
         _$Event._(
-            key: BuiltValueNullFieldError.checkNotNull(key, 'Event', 'key'),
+            key: BuiltValueNullFieldError.checkNotNull(key, r'Event', 'key'),
             sequenceNumber: BuiltValueNullFieldError.checkNotNull(
-                sequenceNumber, 'Event', 'sequenceNumber'),
-            type: BuiltValueNullFieldError.checkNotNull(type, 'Event', 'type'),
+                sequenceNumber, r'Event', 'sequenceNumber'),
+            type: BuiltValueNullFieldError.checkNotNull(type, r'Event', 'type'),
             data: data);
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

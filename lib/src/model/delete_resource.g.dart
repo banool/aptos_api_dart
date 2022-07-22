@@ -8,29 +8,26 @@ part of 'delete_resource.dart';
 
 class _$DeleteResource extends DeleteResource {
   @override
-  final String type;
+  final String address;
   @override
   final String stateKeyHash;
   @override
-  final String address;
-  @override
-  final String resource;
+  final MoveStructTag resource;
 
   factory _$DeleteResource([void Function(DeleteResourceBuilder)? updates]) =>
       (DeleteResourceBuilder()..update(updates))._build();
 
   _$DeleteResource._(
-      {required this.type,
+      {required this.address,
       required this.stateKeyHash,
-      required this.address,
       required this.resource})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(type, 'DeleteResource', 'type');
     BuiltValueNullFieldError.checkNotNull(
-        stateKeyHash, 'DeleteResource', 'stateKeyHash');
-    BuiltValueNullFieldError.checkNotNull(address, 'DeleteResource', 'address');
+        address, r'DeleteResource', 'address');
     BuiltValueNullFieldError.checkNotNull(
-        resource, 'DeleteResource', 'resource');
+        stateKeyHash, r'DeleteResource', 'stateKeyHash');
+    BuiltValueNullFieldError.checkNotNull(
+        resource, r'DeleteResource', 'resource');
   }
 
   @override
@@ -44,26 +41,22 @@ class _$DeleteResource extends DeleteResource {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is DeleteResource &&
-        type == other.type &&
-        stateKeyHash == other.stateKeyHash &&
         address == other.address &&
+        stateKeyHash == other.stateKeyHash &&
         resource == other.resource;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc($jc(0, type.hashCode), stateKeyHash.hashCode),
-            address.hashCode),
+    return $jf($jc($jc($jc(0, address.hashCode), stateKeyHash.hashCode),
         resource.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('DeleteResource')
-          ..add('type', type)
-          ..add('stateKeyHash', stateKeyHash)
+    return (newBuiltValueToStringHelper(r'DeleteResource')
           ..add('address', address)
+          ..add('stateKeyHash', stateKeyHash)
           ..add('resource', resource))
         .toString();
   }
@@ -73,21 +66,18 @@ class DeleteResourceBuilder
     implements Builder<DeleteResource, DeleteResourceBuilder> {
   _$DeleteResource? _$v;
 
-  String? _type;
-  String? get type => _$this._type;
-  set type(String? type) => _$this._type = type;
+  String? _address;
+  String? get address => _$this._address;
+  set address(String? address) => _$this._address = address;
 
   String? _stateKeyHash;
   String? get stateKeyHash => _$this._stateKeyHash;
   set stateKeyHash(String? stateKeyHash) => _$this._stateKeyHash = stateKeyHash;
 
-  String? _address;
-  String? get address => _$this._address;
-  set address(String? address) => _$this._address = address;
-
-  String? _resource;
-  String? get resource => _$this._resource;
-  set resource(String? resource) => _$this._resource = resource;
+  MoveStructTagBuilder? _resource;
+  MoveStructTagBuilder get resource =>
+      _$this._resource ??= MoveStructTagBuilder();
+  set resource(MoveStructTagBuilder? resource) => _$this._resource = resource;
 
   DeleteResourceBuilder() {
     DeleteResource._defaults(this);
@@ -96,10 +86,9 @@ class DeleteResourceBuilder
   DeleteResourceBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _type = $v.type;
-      _stateKeyHash = $v.stateKeyHash;
       _address = $v.address;
-      _resource = $v.resource;
+      _stateKeyHash = $v.stateKeyHash;
+      _resource = $v.resource.toBuilder();
       _$v = null;
     }
     return this;
@@ -120,19 +109,29 @@ class DeleteResourceBuilder
   DeleteResource build() => _build();
 
   _$DeleteResource _build() {
-    final _$result = _$v ??
-        _$DeleteResource._(
-            type: BuiltValueNullFieldError.checkNotNull(
-                type, 'DeleteResource', 'type'),
-            stateKeyHash: BuiltValueNullFieldError.checkNotNull(
-                stateKeyHash, 'DeleteResource', 'stateKeyHash'),
-            address: BuiltValueNullFieldError.checkNotNull(
-                address, 'DeleteResource', 'address'),
-            resource: BuiltValueNullFieldError.checkNotNull(
-                resource, 'DeleteResource', 'resource'));
+    _$DeleteResource _$result;
+    try {
+      _$result = _$v ??
+          _$DeleteResource._(
+              address: BuiltValueNullFieldError.checkNotNull(
+                  address, r'DeleteResource', 'address'),
+              stateKeyHash: BuiltValueNullFieldError.checkNotNull(
+                  stateKeyHash, r'DeleteResource', 'stateKeyHash'),
+              resource: resource.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'resource';
+        resource.build();
+      } catch (e) {
+        throw BuiltValueNestedFieldError(
+            r'DeleteResource', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

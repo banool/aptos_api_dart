@@ -2,6 +2,7 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
+import 'package:aptos_api_dart/src/model/move_module_id.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:one_of/one_of.dart';
@@ -13,27 +14,18 @@ part 'delete_module.g.dart';
 /// DeleteModule
 ///
 /// Properties:
-/// * [type]
-/// * [stateKeyHash] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
-/// * [address] - Hex-encoded 16 bytes Aptos account address.  Prefixed with `0x` and leading zeros are trimmed.  See [doc](https://diem.github.io/move/address.html) for more details.
-/// * [module] - Move module id is a string representation of Move module.  Format: \"{address}::{module name}\"  `address` should be hex-encoded 16 bytes account address that is prefixed with `0x` and leading zeros are trimmed.  Module name is case-sensitive.  See [doc](https://diem.github.io/move/modules-and-scripts.html#modules) for more details.
+/// * [address]
+/// * [stateKeyHash]
+/// * [module]
 @BuiltValue()
 abstract class DeleteModule
     implements Built<DeleteModule, DeleteModuleBuilder> {
-  @BuiltValueField(wireName: r'type')
-  String get type;
-
-  /// All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
-  @BuiltValueField(wireName: r'state_key_hash')
-  String get stateKeyHash;
-
-  /// Hex-encoded 16 bytes Aptos account address.  Prefixed with `0x` and leading zeros are trimmed.  See [doc](https://diem.github.io/move/address.html) for more details.
   @BuiltValueField(wireName: r'address')
   String get address;
-
-  /// Move module id is a string representation of Move module.  Format: \"{address}::{module name}\"  `address` should be hex-encoded 16 bytes account address that is prefixed with `0x` and leading zeros are trimmed.  Module name is case-sensitive.  See [doc](https://diem.github.io/move/modules-and-scripts.html#modules) for more details.
+  @BuiltValueField(wireName: r'state_key_hash')
+  String get stateKeyHash;
   @BuiltValueField(wireName: r'module')
-  String get module;
+  MoveModuleId get module;
 
   DeleteModule._();
 
@@ -56,18 +48,15 @@ class _$DeleteModuleSerializer implements PrimitiveSerializer<DeleteModule> {
   Iterable<Object?> _serializeProperties(
       Serializers serializers, DeleteModule object,
       {FullType specifiedType = FullType.unspecified}) sync* {
-    yield r'type';
-    yield serializers.serialize(object.type,
+    yield r'address';
+    yield serializers.serialize(object.address,
         specifiedType: const FullType(String));
     yield r'state_key_hash';
     yield serializers.serialize(object.stateKeyHash,
         specifiedType: const FullType(String));
-    yield r'address';
-    yield serializers.serialize(object.address,
-        specifiedType: const FullType(String));
     yield r'module';
     yield serializers.serialize(object.module,
-        specifiedType: const FullType(String));
+        specifiedType: const FullType(MoveModuleId));
   }
 
   @override
@@ -87,25 +76,20 @@ class _$DeleteModuleSerializer implements PrimitiveSerializer<DeleteModule> {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'type':
+        case r'address':
           final valueDes = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
-          result.type = valueDes;
+          result.address = valueDes;
           break;
         case r'state_key_hash':
           final valueDes = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           result.stateKeyHash = valueDes;
           break;
-        case r'address':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.address = valueDes;
-          break;
         case r'module':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.module = valueDes;
+              specifiedType: const FullType(MoveModuleId)) as MoveModuleId;
+          result.module.replace(valueDes);
           break;
         default:
           unhandled.add(key);

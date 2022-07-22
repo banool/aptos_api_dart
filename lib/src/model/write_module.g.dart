@@ -8,28 +8,22 @@ part of 'write_module.dart';
 
 class _$WriteModule extends WriteModule {
   @override
-  final String type;
+  final String address;
   @override
   final String stateKeyHash;
   @override
-  final String address;
-  @override
-  final MoveModule data;
+  final MoveModuleBytecode data;
 
   factory _$WriteModule([void Function(WriteModuleBuilder)? updates]) =>
       (WriteModuleBuilder()..update(updates))._build();
 
   _$WriteModule._(
-      {required this.type,
-      required this.stateKeyHash,
-      required this.address,
-      required this.data})
+      {required this.address, required this.stateKeyHash, required this.data})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(type, 'WriteModule', 'type');
+    BuiltValueNullFieldError.checkNotNull(address, r'WriteModule', 'address');
     BuiltValueNullFieldError.checkNotNull(
-        stateKeyHash, 'WriteModule', 'stateKeyHash');
-    BuiltValueNullFieldError.checkNotNull(address, 'WriteModule', 'address');
-    BuiltValueNullFieldError.checkNotNull(data, 'WriteModule', 'data');
+        stateKeyHash, r'WriteModule', 'stateKeyHash');
+    BuiltValueNullFieldError.checkNotNull(data, r'WriteModule', 'data');
   }
 
   @override
@@ -43,26 +37,22 @@ class _$WriteModule extends WriteModule {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is WriteModule &&
-        type == other.type &&
-        stateKeyHash == other.stateKeyHash &&
         address == other.address &&
+        stateKeyHash == other.stateKeyHash &&
         data == other.data;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, type.hashCode), stateKeyHash.hashCode),
-            address.hashCode),
-        data.hashCode));
+        $jc($jc(0, address.hashCode), stateKeyHash.hashCode), data.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('WriteModule')
-          ..add('type', type)
-          ..add('stateKeyHash', stateKeyHash)
+    return (newBuiltValueToStringHelper(r'WriteModule')
           ..add('address', address)
+          ..add('stateKeyHash', stateKeyHash)
           ..add('data', data))
         .toString();
   }
@@ -71,21 +61,18 @@ class _$WriteModule extends WriteModule {
 class WriteModuleBuilder implements Builder<WriteModule, WriteModuleBuilder> {
   _$WriteModule? _$v;
 
-  String? _type;
-  String? get type => _$this._type;
-  set type(String? type) => _$this._type = type;
+  String? _address;
+  String? get address => _$this._address;
+  set address(String? address) => _$this._address = address;
 
   String? _stateKeyHash;
   String? get stateKeyHash => _$this._stateKeyHash;
   set stateKeyHash(String? stateKeyHash) => _$this._stateKeyHash = stateKeyHash;
 
-  String? _address;
-  String? get address => _$this._address;
-  set address(String? address) => _$this._address = address;
-
-  MoveModuleBuilder? _data;
-  MoveModuleBuilder get data => _$this._data ??= MoveModuleBuilder();
-  set data(MoveModuleBuilder? data) => _$this._data = data;
+  MoveModuleBytecodeBuilder? _data;
+  MoveModuleBytecodeBuilder get data =>
+      _$this._data ??= MoveModuleBytecodeBuilder();
+  set data(MoveModuleBytecodeBuilder? data) => _$this._data = data;
 
   WriteModuleBuilder() {
     WriteModule._defaults(this);
@@ -94,9 +81,8 @@ class WriteModuleBuilder implements Builder<WriteModule, WriteModuleBuilder> {
   WriteModuleBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _type = $v.type;
-      _stateKeyHash = $v.stateKeyHash;
       _address = $v.address;
+      _stateKeyHash = $v.stateKeyHash;
       _data = $v.data.toBuilder();
       _$v = null;
     }
@@ -122,12 +108,10 @@ class WriteModuleBuilder implements Builder<WriteModule, WriteModuleBuilder> {
     try {
       _$result = _$v ??
           _$WriteModule._(
-              type: BuiltValueNullFieldError.checkNotNull(
-                  type, 'WriteModule', 'type'),
-              stateKeyHash: BuiltValueNullFieldError.checkNotNull(
-                  stateKeyHash, 'WriteModule', 'stateKeyHash'),
               address: BuiltValueNullFieldError.checkNotNull(
-                  address, 'WriteModule', 'address'),
+                  address, r'WriteModule', 'address'),
+              stateKeyHash: BuiltValueNullFieldError.checkNotNull(
+                  stateKeyHash, r'WriteModule', 'stateKeyHash'),
               data: data.build());
     } catch (_) {
       late String _$failedField;
@@ -136,7 +120,7 @@ class WriteModuleBuilder implements Builder<WriteModule, WriteModuleBuilder> {
         data.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            'WriteModule', _$failedField, e.toString());
+            r'WriteModule', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -145,4 +129,4 @@ class WriteModuleBuilder implements Builder<WriteModule, WriteModuleBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

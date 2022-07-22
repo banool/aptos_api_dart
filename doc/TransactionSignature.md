@@ -8,13 +8,12 @@ import 'package:aptos_api_dart/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** |  | 
-**publicKey** | **String** | All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.  | 
-**signature** | **String** | All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.  | 
-**publicKeys** | **BuiltList&lt;String&gt;** | all public keys of the sender account | 
-**signatures** | **BuiltList&lt;String&gt;** | signatures created based on the `threshold` | 
-**threshold** | **int** | The threshold of the multi ed25519 account key. | 
-**bitmap** | **String** | All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.  | 
+**publicKey** | **String** |  | 
+**signature** | **String** |  | 
+**publicKeys** | **BuiltList&lt;String&gt;** |  | 
+**signatures** | **BuiltList&lt;String&gt;** |  | 
+**threshold** | **int** |  | 
+**bitmap** | **String** |  | 
 **sender** | [**AccountSignature**](AccountSignature.md) |  | 
 **secondarySignerAddresses** | **BuiltList&lt;String&gt;** |  | 
 **secondarySigners** | [**BuiltList&lt;AccountSignature&gt;**](AccountSignature.md) |  | 

@@ -8,9 +8,10 @@ import 'package:aptos_api_dart/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** | Move function name | 
-**visibility** | **String** |  | 
-**genericTypeParams** | [**BuiltList&lt;MoveFunctionGenericTypeParamsInner&gt;**](MoveFunctionGenericTypeParamsInner.md) |  | 
+**name** | **String** |  | 
+**visibility** | [**MoveFunctionVisibility**](MoveFunctionVisibility.md) |  | 
+**isEntry** | **bool** |  | 
+**genericTypeParams** | [**BuiltList&lt;MoveFunctionGenericTypeParam&gt;**](MoveFunctionGenericTypeParam.md) |  | 
 **params** | **BuiltList&lt;String&gt;** |  | 
 **return_** | **BuiltList&lt;String&gt;** |  | 
 

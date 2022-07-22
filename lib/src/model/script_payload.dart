@@ -2,7 +2,7 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
-import 'package:aptos_api_dart/src/model/move_script.dart';
+import 'package:aptos_api_dart/src/model/move_script_bytecode.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
@@ -16,17 +16,14 @@ part 'script_payload.g.dart';
 /// ScriptPayload
 ///
 /// Properties:
-/// * [type]
 /// * [code]
 /// * [typeArguments]
 /// * [arguments]
 @BuiltValue()
 abstract class ScriptPayload
     implements Built<ScriptPayload, ScriptPayloadBuilder> {
-  @BuiltValueField(wireName: r'type')
-  String get type;
   @BuiltValueField(wireName: r'code')
-  MoveScript get code;
+  MoveScriptBytecode get code;
   @BuiltValueField(wireName: r'type_arguments')
   BuiltList<String> get typeArguments;
   @BuiltValueField(wireName: r'arguments')
@@ -55,12 +52,9 @@ class _$ScriptPayloadSerializer implements PrimitiveSerializer<ScriptPayload> {
   Iterable<Object?> _serializeProperties(
       Serializers serializers, ScriptPayload object,
       {FullType specifiedType = FullType.unspecified}) sync* {
-    yield r'type';
-    yield serializers.serialize(object.type,
-        specifiedType: const FullType(String));
     yield r'code';
     yield serializers.serialize(object.code,
-        specifiedType: const FullType(MoveScript));
+        specifiedType: const FullType(MoveScriptBytecode));
     yield r'type_arguments';
     yield serializers.serialize(object.typeArguments,
         specifiedType: const FullType(BuiltList, [FullType(String)]));
@@ -87,14 +81,10 @@ class _$ScriptPayloadSerializer implements PrimitiveSerializer<ScriptPayload> {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'type':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.type = valueDes;
-          break;
         case r'code':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(MoveScript)) as MoveScript;
+                  specifiedType: const FullType(MoveScriptBytecode))
+              as MoveScriptBytecode;
           result.code.replace(valueDes);
           break;
         case r'type_arguments':

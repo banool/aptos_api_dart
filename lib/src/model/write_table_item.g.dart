@@ -8,8 +8,6 @@ part of 'write_table_item.dart';
 
 class _$WriteTableItem extends WriteTableItem {
   @override
-  final String type;
-  @override
   final String stateKeyHash;
   @override
   final String handle;
@@ -22,18 +20,16 @@ class _$WriteTableItem extends WriteTableItem {
       (WriteTableItemBuilder()..update(updates))._build();
 
   _$WriteTableItem._(
-      {required this.type,
-      required this.stateKeyHash,
+      {required this.stateKeyHash,
       required this.handle,
       required this.key,
       required this.value})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(type, 'WriteTableItem', 'type');
     BuiltValueNullFieldError.checkNotNull(
-        stateKeyHash, 'WriteTableItem', 'stateKeyHash');
-    BuiltValueNullFieldError.checkNotNull(handle, 'WriteTableItem', 'handle');
-    BuiltValueNullFieldError.checkNotNull(key, 'WriteTableItem', 'key');
-    BuiltValueNullFieldError.checkNotNull(value, 'WriteTableItem', 'value');
+        stateKeyHash, r'WriteTableItem', 'stateKeyHash');
+    BuiltValueNullFieldError.checkNotNull(handle, r'WriteTableItem', 'handle');
+    BuiltValueNullFieldError.checkNotNull(key, r'WriteTableItem', 'key');
+    BuiltValueNullFieldError.checkNotNull(value, r'WriteTableItem', 'value');
   }
 
   @override
@@ -47,7 +43,6 @@ class _$WriteTableItem extends WriteTableItem {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is WriteTableItem &&
-        type == other.type &&
         stateKeyHash == other.stateKeyHash &&
         handle == other.handle &&
         key == other.key &&
@@ -57,17 +52,13 @@ class _$WriteTableItem extends WriteTableItem {
   @override
   int get hashCode {
     return $jf($jc(
-        $jc(
-            $jc($jc($jc(0, type.hashCode), stateKeyHash.hashCode),
-                handle.hashCode),
-            key.hashCode),
+        $jc($jc($jc(0, stateKeyHash.hashCode), handle.hashCode), key.hashCode),
         value.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('WriteTableItem')
-          ..add('type', type)
+    return (newBuiltValueToStringHelper(r'WriteTableItem')
           ..add('stateKeyHash', stateKeyHash)
           ..add('handle', handle)
           ..add('key', key)
@@ -79,10 +70,6 @@ class _$WriteTableItem extends WriteTableItem {
 class WriteTableItemBuilder
     implements Builder<WriteTableItem, WriteTableItemBuilder> {
   _$WriteTableItem? _$v;
-
-  String? _type;
-  String? get type => _$this._type;
-  set type(String? type) => _$this._type = type;
 
   String? _stateKeyHash;
   String? get stateKeyHash => _$this._stateKeyHash;
@@ -107,7 +94,6 @@ class WriteTableItemBuilder
   WriteTableItemBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _type = $v.type;
       _stateKeyHash = $v.stateKeyHash;
       _handle = $v.handle;
       _key = $v.key;
@@ -134,19 +120,17 @@ class WriteTableItemBuilder
   _$WriteTableItem _build() {
     final _$result = _$v ??
         _$WriteTableItem._(
-            type: BuiltValueNullFieldError.checkNotNull(
-                type, 'WriteTableItem', 'type'),
             stateKeyHash: BuiltValueNullFieldError.checkNotNull(
-                stateKeyHash, 'WriteTableItem', 'stateKeyHash'),
+                stateKeyHash, r'WriteTableItem', 'stateKeyHash'),
             handle: BuiltValueNullFieldError.checkNotNull(
-                handle, 'WriteTableItem', 'handle'),
+                handle, r'WriteTableItem', 'handle'),
             key: BuiltValueNullFieldError.checkNotNull(
-                key, 'WriteTableItem', 'key'),
+                key, r'WriteTableItem', 'key'),
             value: BuiltValueNullFieldError.checkNotNull(
-                value, 'WriteTableItem', 'value'));
+                value, r'WriteTableItem', 'value'));
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

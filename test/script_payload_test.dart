@@ -7,12 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(ScriptPayload, () {
-    // String type
-    test('to test the property `type`', () async {
-      // TODO
-    });
-
-    // MoveScript code
+    // MoveScriptBytecode code
     test('to test the property `code`', () async {
       // TODO
     });

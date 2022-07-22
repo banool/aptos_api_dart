@@ -7,18 +7,22 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(MoveFunction, () {
-    // Move function name
     // String name
     test('to test the property `name`', () async {
       // TODO
     });
 
-    // String visibility
+    // MoveFunctionVisibility visibility
     test('to test the property `visibility`', () async {
       // TODO
     });
 
-    // BuiltList<MoveFunctionGenericTypeParamsInner> genericTypeParams
+    // bool isEntry
+    test('to test the property `isEntry`', () async {
+      // TODO
+    });
+
+    // BuiltList<MoveFunctionGenericTypeParam> genericTypeParams
     test('to test the property `genericTypeParams`', () async {
       // TODO
     });

@@ -7,12 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(ModuleBundlePayload, () {
-    // String type
-    test('to test the property `type`', () async {
-      // TODO
-    });
-
-    // BuiltList<MoveModule> modules
+    // BuiltList<MoveModuleBytecode> modules
     test('to test the property `modules`', () async {
       // TODO
     });

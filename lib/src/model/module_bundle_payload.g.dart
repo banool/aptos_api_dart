@@ -8,19 +8,15 @@ part of 'module_bundle_payload.dart';
 
 class _$ModuleBundlePayload extends ModuleBundlePayload {
   @override
-  final String type;
-  @override
-  final BuiltList<MoveModule> modules;
+  final BuiltList<MoveModuleBytecode> modules;
 
   factory _$ModuleBundlePayload(
           [void Function(ModuleBundlePayloadBuilder)? updates]) =>
       (ModuleBundlePayloadBuilder()..update(updates))._build();
 
-  _$ModuleBundlePayload._({required this.type, required this.modules})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(type, 'ModuleBundlePayload', 'type');
+  _$ModuleBundlePayload._({required this.modules}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        modules, 'ModuleBundlePayload', 'modules');
+        modules, r'ModuleBundlePayload', 'modules');
   }
 
   @override
@@ -35,20 +31,17 @@ class _$ModuleBundlePayload extends ModuleBundlePayload {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is ModuleBundlePayload &&
-        type == other.type &&
-        modules == other.modules;
+    return other is ModuleBundlePayload && modules == other.modules;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, type.hashCode), modules.hashCode));
+    return $jf($jc(0, modules.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('ModuleBundlePayload')
-          ..add('type', type)
+    return (newBuiltValueToStringHelper(r'ModuleBundlePayload')
           ..add('modules', modules))
         .toString();
   }
@@ -58,14 +51,11 @@ class ModuleBundlePayloadBuilder
     implements Builder<ModuleBundlePayload, ModuleBundlePayloadBuilder> {
   _$ModuleBundlePayload? _$v;
 
-  String? _type;
-  String? get type => _$this._type;
-  set type(String? type) => _$this._type = type;
-
-  ListBuilder<MoveModule>? _modules;
-  ListBuilder<MoveModule> get modules =>
-      _$this._modules ??= ListBuilder<MoveModule>();
-  set modules(ListBuilder<MoveModule>? modules) => _$this._modules = modules;
+  ListBuilder<MoveModuleBytecode>? _modules;
+  ListBuilder<MoveModuleBytecode> get modules =>
+      _$this._modules ??= ListBuilder<MoveModuleBytecode>();
+  set modules(ListBuilder<MoveModuleBytecode>? modules) =>
+      _$this._modules = modules;
 
   ModuleBundlePayloadBuilder() {
     ModuleBundlePayload._defaults(this);
@@ -74,7 +64,6 @@ class ModuleBundlePayloadBuilder
   ModuleBundlePayloadBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _type = $v.type;
       _modules = $v.modules.toBuilder();
       _$v = null;
     }
@@ -98,11 +87,7 @@ class ModuleBundlePayloadBuilder
   _$ModuleBundlePayload _build() {
     _$ModuleBundlePayload _$result;
     try {
-      _$result = _$v ??
-          _$ModuleBundlePayload._(
-              type: BuiltValueNullFieldError.checkNotNull(
-                  type, 'ModuleBundlePayload', 'type'),
-              modules: modules.build());
+      _$result = _$v ?? _$ModuleBundlePayload._(modules: modules.build());
     } catch (_) {
       late String _$failedField;
       try {
@@ -110,7 +95,7 @@ class ModuleBundlePayloadBuilder
         modules.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            'ModuleBundlePayload', _$failedField, e.toString());
+            r'ModuleBundlePayload', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -119,4 +104,4 @@ class ModuleBundlePayloadBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

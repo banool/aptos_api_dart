@@ -8,18 +8,14 @@ part of 'write_set_payload.dart';
 
 class _$WriteSetPayload extends WriteSetPayload {
   @override
-  final String type;
-  @override
   final WriteSet writeSet;
 
   factory _$WriteSetPayload([void Function(WriteSetPayloadBuilder)? updates]) =>
       (WriteSetPayloadBuilder()..update(updates))._build();
 
-  _$WriteSetPayload._({required this.type, required this.writeSet})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(type, 'WriteSetPayload', 'type');
+  _$WriteSetPayload._({required this.writeSet}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        writeSet, 'WriteSetPayload', 'writeSet');
+        writeSet, r'WriteSetPayload', 'writeSet');
   }
 
   @override
@@ -32,20 +28,17 @@ class _$WriteSetPayload extends WriteSetPayload {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is WriteSetPayload &&
-        type == other.type &&
-        writeSet == other.writeSet;
+    return other is WriteSetPayload && writeSet == other.writeSet;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, type.hashCode), writeSet.hashCode));
+    return $jf($jc(0, writeSet.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('WriteSetPayload')
-          ..add('type', type)
+    return (newBuiltValueToStringHelper(r'WriteSetPayload')
           ..add('writeSet', writeSet))
         .toString();
   }
@@ -54,10 +47,6 @@ class _$WriteSetPayload extends WriteSetPayload {
 class WriteSetPayloadBuilder
     implements Builder<WriteSetPayload, WriteSetPayloadBuilder> {
   _$WriteSetPayload? _$v;
-
-  String? _type;
-  String? get type => _$this._type;
-  set type(String? type) => _$this._type = type;
 
   WriteSetBuilder? _writeSet;
   WriteSetBuilder get writeSet => _$this._writeSet ??= WriteSetBuilder();
@@ -70,7 +59,6 @@ class WriteSetPayloadBuilder
   WriteSetPayloadBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _type = $v.type;
       _writeSet = $v.writeSet.toBuilder();
       _$v = null;
     }
@@ -94,11 +82,7 @@ class WriteSetPayloadBuilder
   _$WriteSetPayload _build() {
     _$WriteSetPayload _$result;
     try {
-      _$result = _$v ??
-          _$WriteSetPayload._(
-              type: BuiltValueNullFieldError.checkNotNull(
-                  type, 'WriteSetPayload', 'type'),
-              writeSet: writeSet.build());
+      _$result = _$v ?? _$WriteSetPayload._(writeSet: writeSet.build());
     } catch (_) {
       late String _$failedField;
       try {
@@ -106,7 +90,7 @@ class WriteSetPayloadBuilder
         writeSet.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            'WriteSetPayload', _$failedField, e.toString());
+            r'WriteSetPayload', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -115,4 +99,4 @@ class WriteSetPayloadBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

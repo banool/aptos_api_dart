@@ -12,18 +12,15 @@ import 'package:one_of/any_of.dart';
 
 part 'multi_agent_signature.g.dart';
 
-/// Multi agent signature, please refer to TBD.
+/// MultiAgentSignature
 ///
 /// Properties:
-/// * [type]
 /// * [sender]
 /// * [secondarySignerAddresses]
 /// * [secondarySigners]
 @BuiltValue()
 abstract class MultiAgentSignature
     implements Built<MultiAgentSignature, MultiAgentSignatureBuilder> {
-  @BuiltValueField(wireName: r'type')
-  String get type;
   @BuiltValueField(wireName: r'sender')
   AccountSignature get sender;
   @BuiltValueField(wireName: r'secondary_signer_addresses')
@@ -58,9 +55,6 @@ class _$MultiAgentSignatureSerializer
   Iterable<Object?> _serializeProperties(
       Serializers serializers, MultiAgentSignature object,
       {FullType specifiedType = FullType.unspecified}) sync* {
-    yield r'type';
-    yield serializers.serialize(object.type,
-        specifiedType: const FullType(String));
     yield r'sender';
     yield serializers.serialize(object.sender,
         specifiedType: const FullType(AccountSignature));
@@ -89,11 +83,6 @@ class _$MultiAgentSignatureSerializer
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'type':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.type = valueDes;
-          break;
         case r'sender':
           final valueDes = serializers.deserialize(value,
                   specifiedType: const FullType(AccountSignature))

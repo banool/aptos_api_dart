@@ -2,7 +2,6 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
-import 'package:aptos_api_dart/src/model/table_item_deletion.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:one_of/one_of.dart';
@@ -11,23 +10,21 @@ import 'package:one_of/any_of.dart';
 
 part 'delete_table_item.g.dart';
 
-/// Delete table item change.
+/// DeleteTableItem
 ///
 /// Properties:
-/// * [type]
-/// * [stateKeyHash] - All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
-/// * [data]
+/// * [stateKeyHash]
+/// * [handle]
+/// * [key]
 @BuiltValue()
 abstract class DeleteTableItem
     implements Built<DeleteTableItem, DeleteTableItemBuilder> {
-  @BuiltValueField(wireName: r'type')
-  String get type;
-
-  /// All bytes data are represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Different with `Address` type, hex-encoded bytes should not trim any zeros.
   @BuiltValueField(wireName: r'state_key_hash')
   String get stateKeyHash;
-  @BuiltValueField(wireName: r'data')
-  TableItemDeletion get data;
+  @BuiltValueField(wireName: r'handle')
+  String get handle;
+  @BuiltValueField(wireName: r'key')
+  String get key;
 
   DeleteTableItem._();
 
@@ -53,15 +50,15 @@ class _$DeleteTableItemSerializer
   Iterable<Object?> _serializeProperties(
       Serializers serializers, DeleteTableItem object,
       {FullType specifiedType = FullType.unspecified}) sync* {
-    yield r'type';
-    yield serializers.serialize(object.type,
-        specifiedType: const FullType(String));
     yield r'state_key_hash';
     yield serializers.serialize(object.stateKeyHash,
         specifiedType: const FullType(String));
-    yield r'data';
-    yield serializers.serialize(object.data,
-        specifiedType: const FullType(TableItemDeletion));
+    yield r'handle';
+    yield serializers.serialize(object.handle,
+        specifiedType: const FullType(String));
+    yield r'key';
+    yield serializers.serialize(object.key,
+        specifiedType: const FullType(String));
   }
 
   @override
@@ -81,21 +78,20 @@ class _$DeleteTableItemSerializer
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'type':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.type = valueDes;
-          break;
         case r'state_key_hash':
           final valueDes = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           result.stateKeyHash = valueDes;
           break;
-        case r'data':
+        case r'handle':
           final valueDes = serializers.deserialize(value,
-                  specifiedType: const FullType(TableItemDeletion))
-              as TableItemDeletion;
-          result.data.replace(valueDes);
+              specifiedType: const FullType(String)) as String;
+          result.handle = valueDes;
+          break;
+        case r'key':
+          final valueDes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          result.key = valueDes;
           break;
         default:
           unhandled.add(key);

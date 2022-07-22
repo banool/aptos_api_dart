@@ -8,15 +8,32 @@ part of 'move_module.dart';
 
 class _$MoveModule extends MoveModule {
   @override
-  final String bytecode;
+  final String address;
   @override
-  final MoveModuleABI? abi;
+  final String name;
+  @override
+  final BuiltList<MoveModuleId> friends;
+  @override
+  final BuiltList<MoveFunction> exposedFunctions;
+  @override
+  final BuiltList<MoveStruct> structs;
 
   factory _$MoveModule([void Function(MoveModuleBuilder)? updates]) =>
       (MoveModuleBuilder()..update(updates))._build();
 
-  _$MoveModule._({required this.bytecode, this.abi}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(bytecode, 'MoveModule', 'bytecode');
+  _$MoveModule._(
+      {required this.address,
+      required this.name,
+      required this.friends,
+      required this.exposedFunctions,
+      required this.structs})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(address, r'MoveModule', 'address');
+    BuiltValueNullFieldError.checkNotNull(name, r'MoveModule', 'name');
+    BuiltValueNullFieldError.checkNotNull(friends, r'MoveModule', 'friends');
+    BuiltValueNullFieldError.checkNotNull(
+        exposedFunctions, r'MoveModule', 'exposedFunctions');
+    BuiltValueNullFieldError.checkNotNull(structs, r'MoveModule', 'structs');
   }
 
   @override
@@ -30,20 +47,29 @@ class _$MoveModule extends MoveModule {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is MoveModule &&
-        bytecode == other.bytecode &&
-        abi == other.abi;
+        address == other.address &&
+        name == other.name &&
+        friends == other.friends &&
+        exposedFunctions == other.exposedFunctions &&
+        structs == other.structs;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, bytecode.hashCode), abi.hashCode));
+    return $jf($jc(
+        $jc($jc($jc($jc(0, address.hashCode), name.hashCode), friends.hashCode),
+            exposedFunctions.hashCode),
+        structs.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('MoveModule')
-          ..add('bytecode', bytecode)
-          ..add('abi', abi))
+    return (newBuiltValueToStringHelper(r'MoveModule')
+          ..add('address', address)
+          ..add('name', name)
+          ..add('friends', friends)
+          ..add('exposedFunctions', exposedFunctions)
+          ..add('structs', structs))
         .toString();
   }
 }
@@ -51,13 +77,29 @@ class _$MoveModule extends MoveModule {
 class MoveModuleBuilder implements Builder<MoveModule, MoveModuleBuilder> {
   _$MoveModule? _$v;
 
-  String? _bytecode;
-  String? get bytecode => _$this._bytecode;
-  set bytecode(String? bytecode) => _$this._bytecode = bytecode;
+  String? _address;
+  String? get address => _$this._address;
+  set address(String? address) => _$this._address = address;
 
-  MoveModuleABIBuilder? _abi;
-  MoveModuleABIBuilder get abi => _$this._abi ??= MoveModuleABIBuilder();
-  set abi(MoveModuleABIBuilder? abi) => _$this._abi = abi;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
+
+  ListBuilder<MoveModuleId>? _friends;
+  ListBuilder<MoveModuleId> get friends =>
+      _$this._friends ??= ListBuilder<MoveModuleId>();
+  set friends(ListBuilder<MoveModuleId>? friends) => _$this._friends = friends;
+
+  ListBuilder<MoveFunction>? _exposedFunctions;
+  ListBuilder<MoveFunction> get exposedFunctions =>
+      _$this._exposedFunctions ??= ListBuilder<MoveFunction>();
+  set exposedFunctions(ListBuilder<MoveFunction>? exposedFunctions) =>
+      _$this._exposedFunctions = exposedFunctions;
+
+  ListBuilder<MoveStruct>? _structs;
+  ListBuilder<MoveStruct> get structs =>
+      _$this._structs ??= ListBuilder<MoveStruct>();
+  set structs(ListBuilder<MoveStruct>? structs) => _$this._structs = structs;
 
   MoveModuleBuilder() {
     MoveModule._defaults(this);
@@ -66,8 +108,11 @@ class MoveModuleBuilder implements Builder<MoveModule, MoveModuleBuilder> {
   MoveModuleBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _bytecode = $v.bytecode;
-      _abi = $v.abi?.toBuilder();
+      _address = $v.address;
+      _name = $v.name;
+      _friends = $v.friends.toBuilder();
+      _exposedFunctions = $v.exposedFunctions.toBuilder();
+      _structs = $v.structs.toBuilder();
       _$v = null;
     }
     return this;
@@ -92,17 +137,25 @@ class MoveModuleBuilder implements Builder<MoveModule, MoveModuleBuilder> {
     try {
       _$result = _$v ??
           _$MoveModule._(
-              bytecode: BuiltValueNullFieldError.checkNotNull(
-                  bytecode, 'MoveModule', 'bytecode'),
-              abi: _abi?.build());
+              address: BuiltValueNullFieldError.checkNotNull(
+                  address, r'MoveModule', 'address'),
+              name: BuiltValueNullFieldError.checkNotNull(
+                  name, r'MoveModule', 'name'),
+              friends: friends.build(),
+              exposedFunctions: exposedFunctions.build(),
+              structs: structs.build());
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'abi';
-        _abi?.build();
+        _$failedField = 'friends';
+        friends.build();
+        _$failedField = 'exposedFunctions';
+        exposedFunctions.build();
+        _$failedField = 'structs';
+        structs.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            'MoveModule', _$failedField, e.toString());
+            r'MoveModule', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -111,4 +164,4 @@ class MoveModuleBuilder implements Builder<MoveModule, MoveModuleBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
