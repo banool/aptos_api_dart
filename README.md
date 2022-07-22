@@ -47,7 +47,7 @@ Please follow the [installation procedure](#installation--usage) and then run th
 import 'package:aptos_api_dart/aptos_api_dart.dart';
 
 
-final api = AptosApiDart().getGeneralApi();
+final api = AptosApiDart().getAccountsApi();
 final String address = address_example; // String | 
 final int ledgerVersion = 56; // int | 
 
@@ -55,7 +55,7 @@ try {
     final response = await api.getAccount(address, ledgerVersion);
     print(response);
 } catch on DioError (e) {
-    print("Exception when calling GeneralApi->getAccount: $e\n");
+    print("Exception when calling AccountsApi->getAccount: $e\n");
 }
 
 ```
@@ -66,15 +66,15 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-[*GeneralApi*](doc/GeneralApi.md) | [**getAccount**](doc/GeneralApi.md#getaccount) | **GET** /accounts/{address} | Get account
-[*GeneralApi*](doc/GeneralApi.md) | [**getAccountModules**](doc/GeneralApi.md#getaccountmodules) | **GET** /accounts/{address}/modules | Get account modules
-[*GeneralApi*](doc/GeneralApi.md) | [**getAccountResources**](doc/GeneralApi.md#getaccountresources) | **GET** /accounts/{address}/resources | Get account resources
-[*GeneralApi*](doc/GeneralApi.md) | [**getEventsByEventHandle**](doc/GeneralApi.md#geteventsbyeventhandle) | **GET** /accounts/{address}/events/{event_handle}/{field_name} | Get events by event handle
-[*GeneralApi*](doc/GeneralApi.md) | [**getEventsByEventKey**](doc/GeneralApi.md#geteventsbyeventkey) | **GET** /events/{event_key} | Get events by event key
+[*AccountsApi*](doc/AccountsApi.md) | [**getAccount**](doc/AccountsApi.md#getaccount) | **GET** /accounts/{address} | Get account
+[*AccountsApi*](doc/AccountsApi.md) | [**getAccountModules**](doc/AccountsApi.md#getaccountmodules) | **GET** /accounts/{address}/modules | Get account modules
+[*AccountsApi*](doc/AccountsApi.md) | [**getAccountResources**](doc/AccountsApi.md#getaccountresources) | **GET** /accounts/{address}/resources | Get account resources
+[*EventsApi*](doc/EventsApi.md) | [**getEventsByEventHandle**](doc/EventsApi.md#geteventsbyeventhandle) | **GET** /accounts/{address}/events/{event_handle}/{field_name} | Get events by event handle
+[*EventsApi*](doc/EventsApi.md) | [**getEventsByEventKey**](doc/EventsApi.md#geteventsbyeventkey) | **GET** /events/{event_key} | Get events by event key
 [*GeneralApi*](doc/GeneralApi.md) | [**getLedgerInfo**](doc/GeneralApi.md#getledgerinfo) | **GET** / | Get ledger info
-[*GeneralApi*](doc/GeneralApi.md) | [**getTransactions**](doc/GeneralApi.md#gettransactions) | **GET** /transactions | Get transactions
 [*GeneralApi*](doc/GeneralApi.md) | [**openapi**](doc/GeneralApi.md#openapi) | **GET** /spec | Show OpenAPI explorer
-[*GeneralApi*](doc/GeneralApi.md) | [**submitTransaction**](doc/GeneralApi.md#submittransaction) | **POST** /transactions | 
+[*TransactionsApi*](doc/TransactionsApi.md) | [**getTransactions**](doc/TransactionsApi.md#gettransactions) | **GET** /transactions | Get transactions
+[*TransactionsApi*](doc/TransactionsApi.md) | [**submitTransaction**](doc/TransactionsApi.md#submittransaction) | **POST** /transactions | 
 
 
 ## Documentation For Models

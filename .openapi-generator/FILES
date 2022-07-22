@@ -3,6 +3,7 @@ README.md
 analysis_options.yaml
 doc/AccountData.md
 doc/AccountSignature.md
+doc/AccountsApi.md
 doc/AptosError.md
 doc/AptosErrorCode.md
 doc/BlockMetadataTransaction.md
@@ -12,6 +13,7 @@ doc/DeleteTableItem.md
 doc/DirectWriteSet.md
 doc/Ed25519Signature.md
 doc/Event.md
+doc/EventsApi.md
 doc/GeneralApi.md
 doc/GenesisPayload.md
 doc/GenesisTransaction.md
@@ -41,6 +43,7 @@ doc/StateCheckpointTransaction.md
 doc/Transaction.md
 doc/TransactionPayload.md
 doc/TransactionSignature.md
+doc/TransactionsApi.md
 doc/UserTransaction.md
 doc/UserTransactionRequest.md
 doc/WriteModule.md
@@ -51,7 +54,10 @@ doc/WriteSetPayload.md
 doc/WriteTableItem.md
 lib/aptos_api_dart.dart
 lib/src/api.dart
+lib/src/api/accounts_api.dart
+lib/src/api/events_api.dart
 lib/src/api/general_api.dart
+lib/src/api/transactions_api.dart
 lib/src/api_util.dart
 lib/src/auth/api_key_auth.dart
 lib/src/auth/auth.dart
@@ -111,6 +117,7 @@ lib/src/serializers.dart
 pubspec.yaml
 test/account_data_test.dart
 test/account_signature_test.dart
+test/accounts_api_test.dart
 test/aptos_error_code_test.dart
 test/aptos_error_test.dart
 test/block_metadata_transaction_test.dart
@@ -120,6 +127,7 @@ test/delete_table_item_test.dart
 test/direct_write_set_test.dart
 test/ed25519_signature_test.dart
 test/event_test.dart
+test/events_api_test.dart
 test/general_api_test.dart
 test/genesis_payload_test.dart
 test/genesis_transaction_test.dart
@@ -149,6 +157,7 @@ test/state_checkpoint_transaction_test.dart
 test/transaction_payload_test.dart
 test/transaction_signature_test.dart
 test/transaction_test.dart
+test/transactions_api_test.dart
 test/user_transaction_request_test.dart
 test/user_transaction_test.dart
 test/write_module_test.dart

@@ -9,7 +9,10 @@ export 'package:aptos_api_dart/src/auth/oauth.dart';
 export 'package:aptos_api_dart/src/serializers.dart';
 export 'package:aptos_api_dart/src/model/date.dart';
 
+export 'package:aptos_api_dart/src/api/accounts_api.dart';
+export 'package:aptos_api_dart/src/api/events_api.dart';
 export 'package:aptos_api_dart/src/api/general_api.dart';
+export 'package:aptos_api_dart/src/api/transactions_api.dart';
 
 export 'package:aptos_api_dart/src/model/account_data.dart';
 export 'package:aptos_api_dart/src/model/account_signature.dart';

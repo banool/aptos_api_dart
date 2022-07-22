@@ -12,13 +12,19 @@ info:
     url: "https://www.apache.org/licenses/LICENSE-2.0.html"
 servers: []
 tags:
+  - name: Accounts
+    description: Access to account resources and modules
+  - name: Events
+    description: Access to events
   - name: General
     description: General information.
+  - name: Transactions
+    description: Access to transactions
 paths:
   "/accounts/{address}":
     get:
       tags:
-        - General
+        - Accounts
       summary: Get account
       description: Return high level information about an account such as its sequence number.
       parameters:
@@ -99,7 +105,7 @@ paths:
   "/accounts/{address}/resources":
     get:
       tags:
-        - General
+        - Accounts
       summary: Get account resources
       description: "This API returns account resources for a specific ledger version (AKA transaction version).\nIf not present, the latest version is used. <---- TODO Update this comment\nThe Aptos nodes prune account state history, via a configurable time window (link).\nIf the requested data has been pruned, the server responds with a 404"
       parameters:
@@ -184,7 +190,7 @@ paths:
   "/accounts/{address}/modules":
     get:
       tags:
-        - General
+        - Accounts
       summary: Get account modules
       description: "This API returns account resources for a specific ledger version (AKA transaction version).\nIf not present, the latest version is used. <---- TODO Update this comment\nThe Aptos nodes prune account state history, via a configurable time window (link).\nIf the requested data has been pruned, the server responds with a 404"
       parameters:
@@ -283,7 +289,7 @@ paths:
   "/events/{event_key}":
     get:
       tags:
-        - General
+        - Events
       summary: Get events by event key
       description: todo
       parameters:
@@ -375,7 +381,7 @@ paths:
   "/accounts/{address}/events/{event_handle}/{field_name}":
     get:
       tags:
-        - General
+        - Events
       summary: Get events by event handle
       description: "This API extracts event key from the account resource identified\nby the `event_handle_struct` and `field_name`, then returns\nevents identified by the event key."
       parameters:
@@ -541,7 +547,7 @@ paths:
   /transactions:
     get:
       tags:
-        - General
+        - Transactions
       summary: Get transactions
       description: todo
       parameters:
@@ -625,7 +631,7 @@ paths:
       operationId: get_transactions
     post:
       tags:
-        - General
+        - Transactions
       requestBody:
         content:
           application/x-bcs:
