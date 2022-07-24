@@ -26,13 +26,13 @@ abstract class IndexResponse
   @BuiltValueField(wireName: r'chain_id')
   int get chainId;
   @BuiltValueField(wireName: r'epoch')
-  int get epoch;
+  String get epoch;
   @BuiltValueField(wireName: r'ledger_version')
-  int get ledgerVersion;
+  String get ledgerVersion;
   @BuiltValueField(wireName: r'oldest_ledger_version')
-  int get oldestLedgerVersion;
+  String get oldestLedgerVersion;
   @BuiltValueField(wireName: r'ledger_timestamp')
-  int get ledgerTimestamp;
+  String get ledgerTimestamp;
   @BuiltValueField(wireName: r'node_role')
   RoleType get nodeRole;
   // enum nodeRoleEnum {  Validator,  FullNode,  };
@@ -65,16 +65,16 @@ class _$IndexResponseSerializer implements PrimitiveSerializer<IndexResponse> {
         specifiedType: const FullType(int));
     yield r'epoch';
     yield serializers.serialize(object.epoch,
-        specifiedType: const FullType(int));
+        specifiedType: const FullType(String));
     yield r'ledger_version';
     yield serializers.serialize(object.ledgerVersion,
-        specifiedType: const FullType(int));
+        specifiedType: const FullType(String));
     yield r'oldest_ledger_version';
     yield serializers.serialize(object.oldestLedgerVersion,
-        specifiedType: const FullType(int));
+        specifiedType: const FullType(String));
     yield r'ledger_timestamp';
     yield serializers.serialize(object.ledgerTimestamp,
-        specifiedType: const FullType(int));
+        specifiedType: const FullType(String));
     yield r'node_role';
     yield serializers.serialize(object.nodeRole,
         specifiedType: const FullType(RoleType));
@@ -104,22 +104,22 @@ class _$IndexResponseSerializer implements PrimitiveSerializer<IndexResponse> {
           break;
         case r'epoch':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.epoch = valueDes;
           break;
         case r'ledger_version':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.ledgerVersion = valueDes;
           break;
         case r'oldest_ledger_version':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.oldestLedgerVersion = valueDes;
           break;
         case r'ledger_timestamp':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.ledgerTimestamp = valueDes;
           break;
         case r'node_role':

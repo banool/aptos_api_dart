@@ -41,7 +41,7 @@ class EventsApi {
     required String address,
     required String eventHandle,
     required String fieldName,
-    int? start,
+    String? start,
     int? limit,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -69,7 +69,7 @@ class EventsApi {
     final _queryParameters = <String, dynamic>{
       if (start != null)
         r'start':
-            encodeQueryParameter(_serializers, start, const FullType(int)),
+            encodeQueryParameter(_serializers, start, const FullType(String)),
       if (limit != null)
         r'limit':
             encodeQueryParameter(_serializers, limit, const FullType(int)),
@@ -131,7 +131,7 @@ class EventsApi {
   /// Throws [DioError] if API call or serialization fails
   Future<Response<BuiltList<Event>>> getEventsByEventKey({
     required String eventKey,
-    int? start,
+    String? start,
     int? limit,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -157,7 +157,7 @@ class EventsApi {
     final _queryParameters = <String, dynamic>{
       if (start != null)
         r'start':
-            encodeQueryParameter(_serializers, start, const FullType(int)),
+            encodeQueryParameter(_serializers, start, const FullType(String)),
       if (limit != null)
         r'limit':
             encodeQueryParameter(_serializers, limit, const FullType(int)),

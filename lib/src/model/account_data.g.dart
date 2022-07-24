@@ -8,7 +8,7 @@ part of 'account_data.dart';
 
 class _$AccountData extends AccountData {
   @override
-  final int sequenceNumber;
+  final String sequenceNumber;
   @override
   final String authenticationKey;
 
@@ -57,9 +57,9 @@ class _$AccountData extends AccountData {
 class AccountDataBuilder implements Builder<AccountData, AccountDataBuilder> {
   _$AccountData? _$v;
 
-  int? _sequenceNumber;
-  int? get sequenceNumber => _$this._sequenceNumber;
-  set sequenceNumber(int? sequenceNumber) =>
+  String? _sequenceNumber;
+  String? get sequenceNumber => _$this._sequenceNumber;
+  set sequenceNumber(String? sequenceNumber) =>
       _$this._sequenceNumber = sequenceNumber;
 
   String? _authenticationKey;

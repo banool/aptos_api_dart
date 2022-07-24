@@ -8,7 +8,7 @@ part of 'genesis_transaction.dart';
 
 class _$GenesisTransaction extends GenesisTransaction {
   @override
-  final int version;
+  final String version;
   @override
   final String hash;
   @override
@@ -16,7 +16,7 @@ class _$GenesisTransaction extends GenesisTransaction {
   @override
   final String eventRootHash;
   @override
-  final int gasUsed;
+  final String gasUsed;
   @override
   final bool success;
   @override
@@ -142,9 +142,9 @@ class GenesisTransactionBuilder
     implements Builder<GenesisTransaction, GenesisTransactionBuilder> {
   _$GenesisTransaction? _$v;
 
-  int? _version;
-  int? get version => _$this._version;
-  set version(int? version) => _$this._version = version;
+  String? _version;
+  String? get version => _$this._version;
+  set version(String? version) => _$this._version = version;
 
   String? _hash;
   String? get hash => _$this._hash;
@@ -160,9 +160,9 @@ class GenesisTransactionBuilder
   set eventRootHash(String? eventRootHash) =>
       _$this._eventRootHash = eventRootHash;
 
-  int? _gasUsed;
-  int? get gasUsed => _$this._gasUsed;
-  set gasUsed(int? gasUsed) => _$this._gasUsed = gasUsed;
+  String? _gasUsed;
+  String? get gasUsed => _$this._gasUsed;
+  set gasUsed(String? gasUsed) => _$this._gasUsed = gasUsed;
 
   bool? _success;
   bool? get success => _$this._success;

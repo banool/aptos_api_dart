@@ -12,6 +12,7 @@ doc/DeleteResource.md
 doc/DeleteTableItem.md
 doc/DirectWriteSet.md
 doc/Ed25519Signature.md
+doc/EncodeSubmissionRequest.md
 doc/Event.md
 doc/EventsApi.md
 doc/GeneralApi.md
@@ -40,12 +41,12 @@ doc/ScriptFunctionPayload.md
 doc/ScriptPayload.md
 doc/ScriptWriteSet.md
 doc/StateCheckpointTransaction.md
+doc/SubmitTransactionRequest.md
 doc/Transaction.md
 doc/TransactionPayload.md
 doc/TransactionSignature.md
 doc/TransactionsApi.md
 doc/UserTransaction.md
-doc/UserTransactionRequest.md
 doc/WriteModule.md
 doc/WriteResource.md
 doc/WriteSet.md
@@ -76,6 +77,7 @@ lib/src/model/delete_resource.dart
 lib/src/model/delete_table_item.dart
 lib/src/model/direct_write_set.dart
 lib/src/model/ed25519_signature.dart
+lib/src/model/encode_submission_request.dart
 lib/src/model/event.dart
 lib/src/model/genesis_payload.dart
 lib/src/model/genesis_transaction.dart
@@ -102,11 +104,11 @@ lib/src/model/script_function_payload.dart
 lib/src/model/script_payload.dart
 lib/src/model/script_write_set.dart
 lib/src/model/state_checkpoint_transaction.dart
+lib/src/model/submit_transaction_request.dart
 lib/src/model/transaction.dart
 lib/src/model/transaction_payload.dart
 lib/src/model/transaction_signature.dart
 lib/src/model/user_transaction.dart
-lib/src/model/user_transaction_request.dart
 lib/src/model/write_module.dart
 lib/src/model/write_resource.dart
 lib/src/model/write_set.dart
@@ -126,6 +128,7 @@ test/delete_resource_test.dart
 test/delete_table_item_test.dart
 test/direct_write_set_test.dart
 test/ed25519_signature_test.dart
+test/encode_submission_request_test.dart
 test/event_test.dart
 test/events_api_test.dart
 test/general_api_test.dart
@@ -154,11 +157,11 @@ test/script_function_payload_test.dart
 test/script_payload_test.dart
 test/script_write_set_test.dart
 test/state_checkpoint_transaction_test.dart
+test/submit_transaction_request_test.dart
 test/transaction_payload_test.dart
 test/transaction_signature_test.dart
 test/transaction_test.dart
 test/transactions_api_test.dart
-test/user_transaction_request_test.dart
 test/user_transaction_test.dart
 test/write_module_test.dart
 test/write_resource_test.dart

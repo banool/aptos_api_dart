@@ -12,7 +12,7 @@ class _$AptosError extends AptosError {
   @override
   final AptosErrorCode? errorCode;
   @override
-  final int? aptosLedgerVersion;
+  final String? aptosLedgerVersion;
 
   factory _$AptosError([void Function(AptosErrorBuilder)? updates]) =>
       (AptosErrorBuilder()..update(updates))._build();
@@ -66,9 +66,9 @@ class AptosErrorBuilder implements Builder<AptosError, AptosErrorBuilder> {
   AptosErrorCode? get errorCode => _$this._errorCode;
   set errorCode(AptosErrorCode? errorCode) => _$this._errorCode = errorCode;
 
-  int? _aptosLedgerVersion;
-  int? get aptosLedgerVersion => _$this._aptosLedgerVersion;
-  set aptosLedgerVersion(int? aptosLedgerVersion) =>
+  String? _aptosLedgerVersion;
+  String? get aptosLedgerVersion => _$this._aptosLedgerVersion;
+  set aptosLedgerVersion(String? aptosLedgerVersion) =>
       _$this._aptosLedgerVersion = aptosLedgerVersion;
 
   AptosErrorBuilder() {

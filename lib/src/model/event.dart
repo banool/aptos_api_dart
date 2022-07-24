@@ -23,7 +23,7 @@ abstract class Event implements Built<Event, EventBuilder> {
   @BuiltValueField(wireName: r'key')
   String get key;
   @BuiltValueField(wireName: r'sequence_number')
-  int get sequenceNumber;
+  String get sequenceNumber;
   @BuiltValueField(wireName: r'type')
   String get type;
   @BuiltValueField(wireName: r'data')
@@ -54,7 +54,7 @@ class _$EventSerializer implements PrimitiveSerializer<Event> {
         specifiedType: const FullType(String));
     yield r'sequence_number';
     yield serializers.serialize(object.sequenceNumber,
-        specifiedType: const FullType(int));
+        specifiedType: const FullType(String));
     yield r'type';
     yield serializers.serialize(object.type,
         specifiedType: const FullType(String));
@@ -89,7 +89,7 @@ class _$EventSerializer implements PrimitiveSerializer<Event> {
           break;
         case r'sequence_number':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.sequenceNumber = valueDes;
           break;
         case r'type':

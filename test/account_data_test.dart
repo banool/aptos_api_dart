@@ -7,7 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(AccountData, () {
-    // int sequenceNumber
+    // String sequenceNumber
     test('to test the property `sequenceNumber`', () async {
       // TODO
     });

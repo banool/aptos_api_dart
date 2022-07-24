@@ -1,3 +1,6 @@
+## 0.5.2
+- Build against API spec from /v1 from https://github.com/aptos-labs/aptos-core/commit/60027e6e0e52c3c6277505c84ff2c5dfa48021da
+
 ## 0.5.1
 - Build against API spec from /v1 from https://github.com/aptos-labs/aptos-core/commit/04246b6d8d184d3d51caad97c689b0febb85ce49
 

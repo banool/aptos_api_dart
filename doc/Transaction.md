@@ -10,25 +10,25 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **hash** | **String** |  | 
 **sender** | **String** |  | 
-**sequenceNumber** | **int** |  | 
-**maxGasAmount** | **int** |  | 
-**gasUnitPrice** | **int** |  | 
-**expirationTimestampSecs** | **int** |  | 
+**sequenceNumber** | **String** |  | 
+**maxGasAmount** | **String** |  | 
+**gasUnitPrice** | **String** |  | 
+**expirationTimestampSecs** | **String** |  | 
 **payload** | [**GenesisPayload**](GenesisPayload.md) |  | 
 **signature** | [**TransactionSignature**](TransactionSignature.md) |  | [optional] 
-**version** | **int** |  | 
+**version** | **String** |  | 
 **stateRootHash** | **String** |  | 
 **eventRootHash** | **String** |  | 
-**gasUsed** | **int** |  | 
+**gasUsed** | **String** |  | 
 **success** | **bool** |  | 
 **vmStatus** | **String** |  | 
 **accumulatorRootHash** | **String** |  | 
 **changes** | [**BuiltList&lt;WriteSetChange&gt;**](WriteSetChange.md) |  | 
 **events** | [**BuiltList&lt;Event&gt;**](Event.md) |  | 
-**timestamp** | **int** |  | 
+**timestamp** | **String** |  | 
 **id** | **String** |  | 
-**epoch** | **int** |  | 
-**round** | **int** |  | 
+**epoch** | **String** |  | 
+**round** | **String** |  | 
 **previousBlockVotes** | **BuiltList&lt;bool&gt;** |  | 
 **proposer** | **String** |  | 
 **failedProposerIndices** | **BuiltList&lt;int&gt;** |  | 

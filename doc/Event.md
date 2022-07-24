@@ -9,7 +9,7 @@ import 'package:aptos_api_dart/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **key** | **String** |  | 
-**sequenceNumber** | **int** |  | 
+**sequenceNumber** | **String** |  | 
 **type** | **String** |  | 
 **data** | [**JsonObject**](.md) |  | 
 

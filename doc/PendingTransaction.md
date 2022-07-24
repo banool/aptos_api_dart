@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **hash** | **String** |  | 
 **sender** | **String** |  | 
-**sequenceNumber** | **int** |  | 
-**maxGasAmount** | **int** |  | 
-**gasUnitPrice** | **int** |  | 
-**expirationTimestampSecs** | **int** |  | 
+**sequenceNumber** | **String** |  | 
+**maxGasAmount** | **String** |  | 
+**gasUnitPrice** | **String** |  | 
+**expirationTimestampSecs** | **String** |  | 
 **payload** | [**TransactionPayload**](TransactionPayload.md) |  | 
 **signature** | [**TransactionSignature**](TransactionSignature.md) |  | [optional] 
 

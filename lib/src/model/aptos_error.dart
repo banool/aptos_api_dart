@@ -25,7 +25,7 @@ abstract class AptosError implements Built<AptosError, AptosErrorBuilder> {
   AptosErrorCode? get errorCode;
   // enum errorCodeEnum {  UnsupportedAcceptType,  ReadFromStorageError,  InvalidBcsInStorageError,  BcsSerializationError,  InvalidStartParam,  InvalidLimitParam,  };
   @BuiltValueField(wireName: r'aptos_ledger_version')
-  int? get aptosLedgerVersion;
+  String? get aptosLedgerVersion;
 
   AptosError._();
 
@@ -59,7 +59,7 @@ class _$AptosErrorSerializer implements PrimitiveSerializer<AptosError> {
     if (object.aptosLedgerVersion != null) {
       yield r'aptos_ledger_version';
       yield serializers.serialize(object.aptosLedgerVersion,
-          specifiedType: const FullType(int));
+          specifiedType: const FullType(String));
     }
   }
 
@@ -92,7 +92,7 @@ class _$AptosErrorSerializer implements PrimitiveSerializer<AptosError> {
           break;
         case r'aptos_ledger_version':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.aptosLedgerVersion = valueDes;
           break;
         default:

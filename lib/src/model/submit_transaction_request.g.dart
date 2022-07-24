@@ -1,14 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'pending_transaction.dart';
+part of 'submit_transaction_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$PendingTransaction extends PendingTransaction {
-  @override
-  final String hash;
+class _$SubmitTransactionRequest extends SubmitTransactionRequest {
   @override
   final String sender;
   @override
@@ -22,51 +20,50 @@ class _$PendingTransaction extends PendingTransaction {
   @override
   final TransactionPayload payload;
   @override
-  final TransactionSignature? signature;
+  final TransactionSignature signature;
 
-  factory _$PendingTransaction(
-          [void Function(PendingTransactionBuilder)? updates]) =>
-      (PendingTransactionBuilder()..update(updates))._build();
+  factory _$SubmitTransactionRequest(
+          [void Function(SubmitTransactionRequestBuilder)? updates]) =>
+      (SubmitTransactionRequestBuilder()..update(updates))._build();
 
-  _$PendingTransaction._(
-      {required this.hash,
-      required this.sender,
+  _$SubmitTransactionRequest._(
+      {required this.sender,
       required this.sequenceNumber,
       required this.maxGasAmount,
       required this.gasUnitPrice,
       required this.expirationTimestampSecs,
       required this.payload,
-      this.signature})
+      required this.signature})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(hash, r'PendingTransaction', 'hash');
     BuiltValueNullFieldError.checkNotNull(
-        sender, r'PendingTransaction', 'sender');
+        sender, r'SubmitTransactionRequest', 'sender');
     BuiltValueNullFieldError.checkNotNull(
-        sequenceNumber, r'PendingTransaction', 'sequenceNumber');
+        sequenceNumber, r'SubmitTransactionRequest', 'sequenceNumber');
     BuiltValueNullFieldError.checkNotNull(
-        maxGasAmount, r'PendingTransaction', 'maxGasAmount');
+        maxGasAmount, r'SubmitTransactionRequest', 'maxGasAmount');
     BuiltValueNullFieldError.checkNotNull(
-        gasUnitPrice, r'PendingTransaction', 'gasUnitPrice');
+        gasUnitPrice, r'SubmitTransactionRequest', 'gasUnitPrice');
     BuiltValueNullFieldError.checkNotNull(expirationTimestampSecs,
-        r'PendingTransaction', 'expirationTimestampSecs');
+        r'SubmitTransactionRequest', 'expirationTimestampSecs');
     BuiltValueNullFieldError.checkNotNull(
-        payload, r'PendingTransaction', 'payload');
+        payload, r'SubmitTransactionRequest', 'payload');
+    BuiltValueNullFieldError.checkNotNull(
+        signature, r'SubmitTransactionRequest', 'signature');
   }
 
   @override
-  PendingTransaction rebuild(
-          void Function(PendingTransactionBuilder) updates) =>
+  SubmitTransactionRequest rebuild(
+          void Function(SubmitTransactionRequestBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  PendingTransactionBuilder toBuilder() =>
-      PendingTransactionBuilder()..replace(this);
+  SubmitTransactionRequestBuilder toBuilder() =>
+      SubmitTransactionRequestBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is PendingTransaction &&
-        hash == other.hash &&
+    return other is SubmitTransactionRequest &&
         sender == other.sender &&
         sequenceNumber == other.sequenceNumber &&
         maxGasAmount == other.maxGasAmount &&
@@ -82,9 +79,7 @@ class _$PendingTransaction extends PendingTransaction {
         $jc(
             $jc(
                 $jc(
-                    $jc(
-                        $jc($jc($jc(0, hash.hashCode), sender.hashCode),
-                            sequenceNumber.hashCode),
+                    $jc($jc($jc(0, sender.hashCode), sequenceNumber.hashCode),
                         maxGasAmount.hashCode),
                     gasUnitPrice.hashCode),
                 expirationTimestampSecs.hashCode),
@@ -94,8 +89,7 @@ class _$PendingTransaction extends PendingTransaction {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'PendingTransaction')
-          ..add('hash', hash)
+    return (newBuiltValueToStringHelper(r'SubmitTransactionRequest')
           ..add('sender', sender)
           ..add('sequenceNumber', sequenceNumber)
           ..add('maxGasAmount', maxGasAmount)
@@ -107,13 +101,10 @@ class _$PendingTransaction extends PendingTransaction {
   }
 }
 
-class PendingTransactionBuilder
-    implements Builder<PendingTransaction, PendingTransactionBuilder> {
-  _$PendingTransaction? _$v;
-
-  String? _hash;
-  String? get hash => _$this._hash;
-  set hash(String? hash) => _$this._hash = hash;
+class SubmitTransactionRequestBuilder
+    implements
+        Builder<SubmitTransactionRequest, SubmitTransactionRequestBuilder> {
+  _$SubmitTransactionRequest? _$v;
 
   String? _sender;
   String? get sender => _$this._sender;
@@ -148,71 +139,70 @@ class PendingTransactionBuilder
   set signature(TransactionSignatureBuilder? signature) =>
       _$this._signature = signature;
 
-  PendingTransactionBuilder() {
-    PendingTransaction._defaults(this);
+  SubmitTransactionRequestBuilder() {
+    SubmitTransactionRequest._defaults(this);
   }
 
-  PendingTransactionBuilder get _$this {
+  SubmitTransactionRequestBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _hash = $v.hash;
       _sender = $v.sender;
       _sequenceNumber = $v.sequenceNumber;
       _maxGasAmount = $v.maxGasAmount;
       _gasUnitPrice = $v.gasUnitPrice;
       _expirationTimestampSecs = $v.expirationTimestampSecs;
       _payload = $v.payload.toBuilder();
-      _signature = $v.signature?.toBuilder();
+      _signature = $v.signature.toBuilder();
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(PendingTransaction other) {
+  void replace(SubmitTransactionRequest other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$PendingTransaction;
+    _$v = other as _$SubmitTransactionRequest;
   }
 
   @override
-  void update(void Function(PendingTransactionBuilder)? updates) {
+  void update(void Function(SubmitTransactionRequestBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  PendingTransaction build() => _build();
+  SubmitTransactionRequest build() => _build();
 
-  _$PendingTransaction _build() {
-    _$PendingTransaction _$result;
+  _$SubmitTransactionRequest _build() {
+    _$SubmitTransactionRequest _$result;
     try {
       _$result = _$v ??
-          _$PendingTransaction._(
-              hash: BuiltValueNullFieldError.checkNotNull(
-                  hash, r'PendingTransaction', 'hash'),
+          _$SubmitTransactionRequest._(
               sender: BuiltValueNullFieldError.checkNotNull(
-                  sender, r'PendingTransaction', 'sender'),
+                  sender, r'SubmitTransactionRequest', 'sender'),
               sequenceNumber: BuiltValueNullFieldError.checkNotNull(
-                  sequenceNumber, r'PendingTransaction', 'sequenceNumber'),
+                  sequenceNumber,
+                  r'SubmitTransactionRequest',
+                  'sequenceNumber'),
               maxGasAmount: BuiltValueNullFieldError.checkNotNull(
-                  maxGasAmount, r'PendingTransaction', 'maxGasAmount'),
+                  maxGasAmount, r'SubmitTransactionRequest', 'maxGasAmount'),
               gasUnitPrice: BuiltValueNullFieldError.checkNotNull(
-                  gasUnitPrice, r'PendingTransaction', 'gasUnitPrice'),
+                  gasUnitPrice, r'SubmitTransactionRequest', 'gasUnitPrice'),
               expirationTimestampSecs: BuiltValueNullFieldError.checkNotNull(
                   expirationTimestampSecs,
-                  r'PendingTransaction',
+                  r'SubmitTransactionRequest',
                   'expirationTimestampSecs'),
               payload: payload.build(),
-              signature: _signature?.build());
+              signature: signature.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'payload';
         payload.build();
         _$failedField = 'signature';
-        _signature?.build();
+        signature.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'PendingTransaction', _$failedField, e.toString());
+            r'SubmitTransactionRequest', _$failedField, e.toString());
       }
       rethrow;
     }

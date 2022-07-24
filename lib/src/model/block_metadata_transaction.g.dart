@@ -8,7 +8,7 @@ part of 'block_metadata_transaction.dart';
 
 class _$BlockMetadataTransaction extends BlockMetadataTransaction {
   @override
-  final int version;
+  final String version;
   @override
   final String hash;
   @override
@@ -16,7 +16,7 @@ class _$BlockMetadataTransaction extends BlockMetadataTransaction {
   @override
   final String eventRootHash;
   @override
-  final int gasUsed;
+  final String gasUsed;
   @override
   final bool success;
   @override
@@ -28,9 +28,9 @@ class _$BlockMetadataTransaction extends BlockMetadataTransaction {
   @override
   final String id;
   @override
-  final int epoch;
+  final String epoch;
   @override
-  final int round;
+  final String round;
   @override
   final BuiltList<Event> events;
   @override
@@ -40,7 +40,7 @@ class _$BlockMetadataTransaction extends BlockMetadataTransaction {
   @override
   final BuiltList<int> failedProposerIndices;
   @override
-  final int timestamp;
+  final String timestamp;
 
   factory _$BlockMetadataTransaction(
           [void Function(BlockMetadataTransactionBuilder)? updates]) =>
@@ -205,9 +205,9 @@ class BlockMetadataTransactionBuilder
         Builder<BlockMetadataTransaction, BlockMetadataTransactionBuilder> {
   _$BlockMetadataTransaction? _$v;
 
-  int? _version;
-  int? get version => _$this._version;
-  set version(int? version) => _$this._version = version;
+  String? _version;
+  String? get version => _$this._version;
+  set version(String? version) => _$this._version = version;
 
   String? _hash;
   String? get hash => _$this._hash;
@@ -223,9 +223,9 @@ class BlockMetadataTransactionBuilder
   set eventRootHash(String? eventRootHash) =>
       _$this._eventRootHash = eventRootHash;
 
-  int? _gasUsed;
-  int? get gasUsed => _$this._gasUsed;
-  set gasUsed(int? gasUsed) => _$this._gasUsed = gasUsed;
+  String? _gasUsed;
+  String? get gasUsed => _$this._gasUsed;
+  set gasUsed(String? gasUsed) => _$this._gasUsed = gasUsed;
 
   bool? _success;
   bool? get success => _$this._success;
@@ -250,13 +250,13 @@ class BlockMetadataTransactionBuilder
   String? get id => _$this._id;
   set id(String? id) => _$this._id = id;
 
-  int? _epoch;
-  int? get epoch => _$this._epoch;
-  set epoch(int? epoch) => _$this._epoch = epoch;
+  String? _epoch;
+  String? get epoch => _$this._epoch;
+  set epoch(String? epoch) => _$this._epoch = epoch;
 
-  int? _round;
-  int? get round => _$this._round;
-  set round(int? round) => _$this._round = round;
+  String? _round;
+  String? get round => _$this._round;
+  set round(String? round) => _$this._round = round;
 
   ListBuilder<Event>? _events;
   ListBuilder<Event> get events => _$this._events ??= ListBuilder<Event>();
@@ -278,9 +278,9 @@ class BlockMetadataTransactionBuilder
   set failedProposerIndices(ListBuilder<int>? failedProposerIndices) =>
       _$this._failedProposerIndices = failedProposerIndices;
 
-  int? _timestamp;
-  int? get timestamp => _$this._timestamp;
-  set timestamp(int? timestamp) => _$this._timestamp = timestamp;
+  String? _timestamp;
+  String? get timestamp => _$this._timestamp;
+  set timestamp(String? timestamp) => _$this._timestamp = timestamp;
 
   BlockMetadataTransactionBuilder() {
     BlockMetadataTransaction._defaults(this);

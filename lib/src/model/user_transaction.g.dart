@@ -8,7 +8,7 @@ part of 'user_transaction.dart';
 
 class _$UserTransaction extends UserTransaction {
   @override
-  final int version;
+  final String version;
   @override
   final String hash;
   @override
@@ -16,7 +16,7 @@ class _$UserTransaction extends UserTransaction {
   @override
   final String eventRootHash;
   @override
-  final int gasUsed;
+  final String gasUsed;
   @override
   final bool success;
   @override
@@ -28,13 +28,13 @@ class _$UserTransaction extends UserTransaction {
   @override
   final String sender;
   @override
-  final int sequenceNumber;
+  final String sequenceNumber;
   @override
-  final int maxGasAmount;
+  final String maxGasAmount;
   @override
-  final int gasUnitPrice;
+  final String gasUnitPrice;
   @override
-  final int expirationTimestampSecs;
+  final String expirationTimestampSecs;
   @override
   final TransactionPayload payload;
   @override
@@ -42,7 +42,7 @@ class _$UserTransaction extends UserTransaction {
   @override
   final BuiltList<Event> events;
   @override
-  final int timestamp;
+  final String timestamp;
 
   factory _$UserTransaction([void Function(UserTransactionBuilder)? updates]) =>
       (UserTransactionBuilder()..update(updates))._build();
@@ -205,9 +205,9 @@ class UserTransactionBuilder
     implements Builder<UserTransaction, UserTransactionBuilder> {
   _$UserTransaction? _$v;
 
-  int? _version;
-  int? get version => _$this._version;
-  set version(int? version) => _$this._version = version;
+  String? _version;
+  String? get version => _$this._version;
+  set version(String? version) => _$this._version = version;
 
   String? _hash;
   String? get hash => _$this._hash;
@@ -223,9 +223,9 @@ class UserTransactionBuilder
   set eventRootHash(String? eventRootHash) =>
       _$this._eventRootHash = eventRootHash;
 
-  int? _gasUsed;
-  int? get gasUsed => _$this._gasUsed;
-  set gasUsed(int? gasUsed) => _$this._gasUsed = gasUsed;
+  String? _gasUsed;
+  String? get gasUsed => _$this._gasUsed;
+  set gasUsed(String? gasUsed) => _$this._gasUsed = gasUsed;
 
   bool? _success;
   bool? get success => _$this._success;
@@ -250,22 +250,22 @@ class UserTransactionBuilder
   String? get sender => _$this._sender;
   set sender(String? sender) => _$this._sender = sender;
 
-  int? _sequenceNumber;
-  int? get sequenceNumber => _$this._sequenceNumber;
-  set sequenceNumber(int? sequenceNumber) =>
+  String? _sequenceNumber;
+  String? get sequenceNumber => _$this._sequenceNumber;
+  set sequenceNumber(String? sequenceNumber) =>
       _$this._sequenceNumber = sequenceNumber;
 
-  int? _maxGasAmount;
-  int? get maxGasAmount => _$this._maxGasAmount;
-  set maxGasAmount(int? maxGasAmount) => _$this._maxGasAmount = maxGasAmount;
+  String? _maxGasAmount;
+  String? get maxGasAmount => _$this._maxGasAmount;
+  set maxGasAmount(String? maxGasAmount) => _$this._maxGasAmount = maxGasAmount;
 
-  int? _gasUnitPrice;
-  int? get gasUnitPrice => _$this._gasUnitPrice;
-  set gasUnitPrice(int? gasUnitPrice) => _$this._gasUnitPrice = gasUnitPrice;
+  String? _gasUnitPrice;
+  String? get gasUnitPrice => _$this._gasUnitPrice;
+  set gasUnitPrice(String? gasUnitPrice) => _$this._gasUnitPrice = gasUnitPrice;
 
-  int? _expirationTimestampSecs;
-  int? get expirationTimestampSecs => _$this._expirationTimestampSecs;
-  set expirationTimestampSecs(int? expirationTimestampSecs) =>
+  String? _expirationTimestampSecs;
+  String? get expirationTimestampSecs => _$this._expirationTimestampSecs;
+  set expirationTimestampSecs(String? expirationTimestampSecs) =>
       _$this._expirationTimestampSecs = expirationTimestampSecs;
 
   TransactionPayloadBuilder? _payload;
@@ -283,9 +283,9 @@ class UserTransactionBuilder
   ListBuilder<Event> get events => _$this._events ??= ListBuilder<Event>();
   set events(ListBuilder<Event>? events) => _$this._events = events;
 
-  int? _timestamp;
-  int? get timestamp => _$this._timestamp;
-  set timestamp(int? timestamp) => _$this._timestamp = timestamp;
+  String? _timestamp;
+  String? get timestamp => _$this._timestamp;
+  set timestamp(String? timestamp) => _$this._timestamp = timestamp;
 
   UserTransactionBuilder() {
     UserTransaction._defaults(this);

@@ -1,17 +1,12 @@
 import 'package:test/test.dart';
 import 'package:aptos_api_dart/aptos_api_dart.dart';
 
-// tests for PendingTransaction
+// tests for EncodeSubmissionRequest
 void main() {
-  final instance = PendingTransactionBuilder();
+  final instance = EncodeSubmissionRequestBuilder();
   // TODO add properties to the builder and call build()
 
-  group(PendingTransaction, () {
-    // String hash
-    test('to test the property `hash`', () async {
-      // TODO
-    });
-
+  group(EncodeSubmissionRequest, () {
     // String sender
     test('to test the property `sender`', () async {
       // TODO
@@ -42,8 +37,8 @@ void main() {
       // TODO
     });
 
-    // TransactionSignature signature
-    test('to test the property `signature`', () async {
+    // BuiltList<String> secondarySigners
+    test('to test the property `secondarySigners`', () async {
       // TODO
     });
   });

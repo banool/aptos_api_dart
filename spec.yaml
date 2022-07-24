@@ -17,7 +17,9 @@ tags:
   - name: Events
     description: Access to events
   - name: General
-    description: General information.
+    description: General information
+  - name: Tables
+    description: Access to tables
   - name: Transactions
     description: Access to transactions
 paths:
@@ -37,8 +39,8 @@ paths:
           deprecated: false
         - name: ledger_version
           schema:
-            type: integer
-            format: uint64
+            type: string
+            format: U64
           in: query
           required: false
           deprecated: false
@@ -63,26 +65,26 @@ paths:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
             X-APTOS-LEDGER-OLDEST-VERSION:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
             X-APTOS-LEDGER-TIMESTAMPUSEC:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
             X-APTOS-EPOCH:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
         "400":
           description: ""
           content:
@@ -107,7 +109,7 @@ paths:
       tags:
         - Accounts
       summary: Get account resources
-      description: "This API returns account resources for a specific ledger version (AKA transaction version).\nIf not present, the latest version is used. <---- TODO Update this comment\nThe Aptos nodes prune account state history, via a configurable time window (link).\nIf the requested data has been pruned, the server responds with a 404"
+      description: "This endpoint returns all account resources at a given address at a\nspecific ledger version (AKA transaction version). If the ledger\nversion is not specified in the request, the latest ledger version is used.\n\nThe Aptos nodes prune account state history, via a configurable time window (link).\nIf the requested data has been pruned, the server responds with a 404."
       parameters:
         - name: address
           schema:
@@ -118,8 +120,8 @@ paths:
           deprecated: false
         - name: ledger_version
           schema:
-            type: integer
-            format: uint64
+            type: string
+            format: U64
           in: query
           required: false
           deprecated: false
@@ -148,26 +150,26 @@ paths:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
             X-APTOS-LEDGER-OLDEST-VERSION:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
             X-APTOS-LEDGER-TIMESTAMPUSEC:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
             X-APTOS-EPOCH:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
         "400":
           description: ""
           content:
@@ -192,7 +194,7 @@ paths:
       tags:
         - Accounts
       summary: Get account modules
-      description: "This API returns account resources for a specific ledger version (AKA transaction version).\nIf not present, the latest version is used. <---- TODO Update this comment\nThe Aptos nodes prune account state history, via a configurable time window (link).\nIf the requested data has been pruned, the server responds with a 404"
+      description: "This endpoint returns account resources for a specific ledger version (AKA transaction version).\nIf not present, the latest version is used. <---- TODO Update this comment\nThe Aptos nodes prune account state history, via a configurable time window (link).\nIf the requested data has been pruned, the server responds with a 404"
       parameters:
         - name: address
           schema:
@@ -203,8 +205,8 @@ paths:
           deprecated: false
         - name: ledger_version
           schema:
-            type: integer
-            format: uint64
+            type: string
+            format: U64
           in: query
           required: false
           deprecated: false
@@ -233,26 +235,26 @@ paths:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
             X-APTOS-LEDGER-OLDEST-VERSION:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
             X-APTOS-LEDGER-TIMESTAMPUSEC:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
             X-APTOS-EPOCH:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
         "400":
           description: ""
           content:
@@ -302,8 +304,8 @@ paths:
           deprecated: false
         - name: start
           schema:
-            type: integer
-            format: uint64
+            type: string
+            format: U64
           in: query
           required: false
           deprecated: false
@@ -339,26 +341,26 @@ paths:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
             X-APTOS-LEDGER-OLDEST-VERSION:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
             X-APTOS-LEDGER-TIMESTAMPUSEC:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
             X-APTOS-EPOCH:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
         "400":
           description: ""
           content:
@@ -408,8 +410,8 @@ paths:
           deprecated: false
         - name: start
           schema:
-            type: integer
-            format: uint64
+            type: string
+            format: U64
           in: query
           required: false
           deprecated: false
@@ -445,26 +447,26 @@ paths:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
             X-APTOS-LEDGER-OLDEST-VERSION:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
             X-APTOS-LEDGER-TIMESTAMPUSEC:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
             X-APTOS-EPOCH:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
         "400":
           description: ""
           content:
@@ -511,26 +513,26 @@ paths:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
             X-APTOS-LEDGER-OLDEST-VERSION:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
             X-APTOS-LEDGER-TIMESTAMPUSEC:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
             X-APTOS-EPOCH:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
         "400":
           description: ""
           content:
@@ -553,8 +555,8 @@ paths:
       parameters:
         - name: start
           schema:
-            type: integer
-            format: uint64
+            type: string
+            format: U64
           in: query
           required: false
           deprecated: false
@@ -590,26 +592,26 @@ paths:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
             X-APTOS-LEDGER-OLDEST-VERSION:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
             X-APTOS-LEDGER-TIMESTAMPUSEC:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
             X-APTOS-EPOCH:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
         "400":
           description: ""
           content:
@@ -632,17 +634,102 @@ paths:
     post:
       tags:
         - Transactions
+      summary: Submit transaction
+      description: todo
       requestBody:
         content:
-          application/x-bcs:
+          application/x.aptos.signed_transaction+bcs:
             schema:
-              $ref: "#/components/schemas/UserTransactionRequest"
+              type: array
+              items:
+                type: integer
+                format: uint8
           application/json:
             schema:
-              $ref: "#/components/schemas/UserTransactionRequest"
+              $ref: "#/components/schemas/SubmitTransactionRequest"
         required: true
       responses:
         "202":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PendingTransaction"
+            application/x-bcs:
+              schema:
+                $ref: "#/components/schemas/PendingTransaction"
+          headers:
+            X-APTOS-CHAIN-ID:
+              required: true
+              deprecated: false
+              schema:
+                type: integer
+                format: uint16
+            X-APTOS-LEDGER-VERSION:
+              required: true
+              deprecated: false
+              schema:
+                type: string
+                format: U64
+            X-APTOS-LEDGER-OLDEST-VERSION:
+              required: true
+              deprecated: false
+              schema:
+                type: string
+                format: U64
+            X-APTOS-LEDGER-TIMESTAMPUSEC:
+              required: true
+              deprecated: false
+              schema:
+                type: string
+                format: U64
+            X-APTOS-EPOCH:
+              required: true
+              deprecated: false
+              schema:
+                type: string
+                format: U64
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AptosError"
+        "413":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AptosError"
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AptosError"
+        "507":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AptosError"
+      operationId: submit_transaction
+  "/transactions/by_hash/{txn_hash}":
+    get:
+      tags:
+        - Transactions
+      summary: Get transaction by hash
+      description: todo
+      parameters:
+        - name: txn_hash
+          schema:
+            type: string
+            format: HashValue
+          in: path
+          required: true
+          deprecated: false
+      responses:
+        "200":
           description: ""
           content:
             application/json:
@@ -662,27 +749,281 @@ paths:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
             X-APTOS-LEDGER-OLDEST-VERSION:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
             X-APTOS-LEDGER-TIMESTAMPUSEC:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
             X-APTOS-EPOCH:
               required: true
               deprecated: false
               schema:
-                type: integer
-                format: uint64
+                type: string
+                format: U64
         "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AptosError"
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AptosError"
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AptosError"
+      operationId: get_transaction_by_hash
+  "/transactions/by_version/{txn_version}":
+    get:
+      tags:
+        - Transactions
+      summary: Get transaction by version
+      description: todo
+      parameters:
+        - name: txn_version
+          schema:
+            type: string
+            format: U64
+          in: path
+          required: true
+          deprecated: false
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction"
+            application/x-bcs:
+              schema:
+                $ref: "#/components/schemas/Transaction"
+          headers:
+            X-APTOS-CHAIN-ID:
+              required: true
+              deprecated: false
+              schema:
+                type: integer
+                format: uint16
+            X-APTOS-LEDGER-VERSION:
+              required: true
+              deprecated: false
+              schema:
+                type: string
+                format: U64
+            X-APTOS-LEDGER-OLDEST-VERSION:
+              required: true
+              deprecated: false
+              schema:
+                type: string
+                format: U64
+            X-APTOS-LEDGER-TIMESTAMPUSEC:
+              required: true
+              deprecated: false
+              schema:
+                type: string
+                format: U64
+            X-APTOS-EPOCH:
+              required: true
+              deprecated: false
+              schema:
+                type: string
+                format: U64
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AptosError"
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AptosError"
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AptosError"
+      operationId: get_transaction_by_version
+  "/accounts/{address}/transactions":
+    get:
+      tags:
+        - Transactions
+      summary: Get account transactions
+      description: "todo\ntodo, note that this currently returns [] even if the account doesn't\nexist, when it should really return a 404."
+      parameters:
+        - name: address
+          schema:
+            type: string
+            format: Address
+          in: path
+          required: true
+          deprecated: false
+        - name: start
+          schema:
+            type: string
+            format: U64
+          in: query
+          required: false
+          deprecated: false
+        - name: limit
+          schema:
+            type: integer
+            format: uint16
+          in: query
+          required: false
+          deprecated: false
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Transaction"
+            application/x-bcs:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Transaction"
+          headers:
+            X-APTOS-CHAIN-ID:
+              required: true
+              deprecated: false
+              schema:
+                type: integer
+                format: uint16
+            X-APTOS-LEDGER-VERSION:
+              required: true
+              deprecated: false
+              schema:
+                type: string
+                format: U64
+            X-APTOS-LEDGER-OLDEST-VERSION:
+              required: true
+              deprecated: false
+              schema:
+                type: string
+                format: U64
+            X-APTOS-LEDGER-TIMESTAMPUSEC:
+              required: true
+              deprecated: false
+              schema:
+                type: string
+                format: U64
+            X-APTOS-EPOCH:
+              required: true
+              deprecated: false
+              schema:
+                type: string
+                format: U64
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AptosError"
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AptosError"
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AptosError"
+      operationId: get_account_transactions
+  /transactions/simulate:
+    post:
+      tags:
+        - Transactions
+      summary: Simulate transaction
+      description: "Simulate submitting a transaction. To use this, you must:\n- Create a SignedTransaction with a zero-padded signature.\n- Submit a SubmitTransactionRequest containing a UserTransactionRequest containing that signature."
+      requestBody:
+        content:
+          application/x.aptos.signed_transaction+bcs:
+            schema:
+              type: array
+              items:
+                type: integer
+                format: uint8
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SubmitTransactionRequest"
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Transaction"
+            application/x-bcs:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Transaction"
+          headers:
+            X-APTOS-CHAIN-ID:
+              required: true
+              deprecated: false
+              schema:
+                type: integer
+                format: uint16
+            X-APTOS-LEDGER-VERSION:
+              required: true
+              deprecated: false
+              schema:
+                type: string
+                format: U64
+            X-APTOS-LEDGER-OLDEST-VERSION:
+              required: true
+              deprecated: false
+              schema:
+                type: string
+                format: U64
+            X-APTOS-LEDGER-TIMESTAMPUSEC:
+              required: true
+              deprecated: false
+              schema:
+                type: string
+                format: U64
+            X-APTOS-EPOCH:
+              required: true
+              deprecated: false
+              schema:
+                type: string
+                format: U64
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AptosError"
+        "413":
           description: ""
           content:
             application/json:
@@ -700,7 +1041,75 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AptosError"
-      operationId: submit_transaction
+      operationId: simulate_transaction
+  /transactions/encode_submission:
+    post:
+      tags:
+        - Transactions
+      summary: Encode submission
+      description: "This endpoint accepts an EncodeSubmissionRequest, which internally is a\nUserTransactionRequestInner (and optionally secondary signers) encoded\nas JSON, validates the request format, and then returns that request\nencoded in BCS. The client can then use this to create a transaction\nsignature to be used in a SubmitTransactionRequest, which it then\npasses to the /transactions POST endpoint.\n\nTo be clear, this endpoint makes it possible to submit transaction\nrequests to the API from languages that do not have library support for\nBCS. If you are using an SDK that has BCS support, such as the official\nRust, TypeScript, or Python SDKs, you do not need to use this endpoint.\n\nTo sign a message using the response from this endpoint:\n- Decode the hex encoded string in the response to bytes.\n- Sign the bytes to create the signature.\n- Use that as the signature field in something like Ed25519Signature, which you then use to build a TransactionSignature."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EncodeSubmissionRequest"
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: string
+                format: HexEncodedBytes
+            application/x-bcs:
+              schema:
+                type: string
+                format: HexEncodedBytes
+          headers:
+            X-APTOS-CHAIN-ID:
+              required: true
+              deprecated: false
+              schema:
+                type: integer
+                format: uint16
+            X-APTOS-LEDGER-VERSION:
+              required: true
+              deprecated: false
+              schema:
+                type: string
+                format: U64
+            X-APTOS-LEDGER-OLDEST-VERSION:
+              required: true
+              deprecated: false
+              schema:
+                type: string
+                format: U64
+            X-APTOS-LEDGER-TIMESTAMPUSEC:
+              required: true
+              deprecated: false
+              schema:
+                type: string
+                format: U64
+            X-APTOS-EPOCH:
+              required: true
+              deprecated: false
+              schema:
+                type: string
+                format: U64
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AptosError"
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AptosError"
+      operationId: encode_submission
 components:
   schemas:
     AccountData:
@@ -710,8 +1119,8 @@ components:
         - authentication_key
       properties:
         sequence_number:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
         authentication_key:
           type: string
           format: HexEncodedBytes
@@ -731,8 +1140,8 @@ components:
         error_code:
           $ref: "#/components/schemas/AptosErrorCode"
         aptos_ledger_version:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
     AptosErrorCode:
       type: string
       description: "These codes provide more granular error information beyond just the HTTP\nstatus code of the response."
@@ -765,8 +1174,8 @@ components:
         - timestamp
       properties:
         version:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
         hash:
           type: string
           format: HashValue
@@ -777,8 +1186,8 @@ components:
           type: string
           format: HashValue
         gas_used:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
         success:
           type: boolean
         vm_status:
@@ -794,11 +1203,11 @@ components:
           type: string
           format: HashValue
         epoch:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
         round:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
         events:
           type: array
           items:
@@ -816,8 +1225,8 @@ components:
             type: integer
             format: uint32
         timestamp:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
     DeleteModule:
       type: object
       required:
@@ -887,6 +1296,38 @@ components:
         signature:
           type: string
           format: HexEncodedBytes
+    EncodeSubmissionRequest:
+      type: object
+      required:
+        - sender
+        - sequence_number
+        - max_gas_amount
+        - gas_unit_price
+        - expiration_timestamp_secs
+        - payload
+      properties:
+        sender:
+          type: string
+          format: Address
+        sequence_number:
+          type: string
+          format: U64
+        max_gas_amount:
+          type: string
+          format: U64
+        gas_unit_price:
+          type: string
+          format: U64
+        expiration_timestamp_secs:
+          type: string
+          format: U64
+        payload:
+          $ref: "#/components/schemas/TransactionPayload"
+        secondary_signers:
+          type: array
+          items:
+            type: string
+            format: Address
     Event:
       type: object
       required:
@@ -899,8 +1340,8 @@ components:
           type: string
           format: EventKey
         sequence_number:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
         type:
           type: string
           format: MoveType
@@ -925,8 +1366,8 @@ components:
         - events
       properties:
         version:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
         hash:
           type: string
           format: HashValue
@@ -937,8 +1378,8 @@ components:
           type: string
           format: HashValue
         gas_used:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
         success:
           type: boolean
         vm_status:
@@ -971,17 +1412,17 @@ components:
           type: integer
           format: uint8
         epoch:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
         ledger_version:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
         oldest_ledger_version:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
         ledger_timestamp:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
         node_role:
           $ref: "#/components/schemas/RoleType"
     ModuleBundlePayload:
@@ -1244,17 +1685,17 @@ components:
           type: string
           format: Address
         sequence_number:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
         max_gas_amount:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
         gas_unit_price:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
         expiration_timestamp_secs:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
         payload:
           $ref: "#/components/schemas/TransactionPayload"
         signature:
@@ -1335,8 +1776,8 @@ components:
         - timestamp
       properties:
         version:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
         hash:
           type: string
           format: HashValue
@@ -1347,8 +1788,8 @@ components:
           type: string
           format: HashValue
         gas_used:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
         success:
           type: boolean
         vm_status:
@@ -1361,8 +1802,38 @@ components:
           items:
             $ref: "#/components/schemas/WriteSetChange"
         timestamp:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
+    SubmitTransactionRequest:
+      type: object
+      required:
+        - sender
+        - sequence_number
+        - max_gas_amount
+        - gas_unit_price
+        - expiration_timestamp_secs
+        - payload
+        - signature
+      properties:
+        sender:
+          type: string
+          format: Address
+        sequence_number:
+          type: string
+          format: U64
+        max_gas_amount:
+          type: string
+          format: U64
+        gas_unit_price:
+          type: string
+          format: U64
+        expiration_timestamp_secs:
+          type: string
+          format: U64
+        payload:
+          $ref: "#/components/schemas/TransactionPayload"
+        signature:
+          $ref: "#/components/schemas/TransactionSignature"
     Transaction:
       type: object
       oneOf:
@@ -1406,8 +1877,8 @@ components:
         - timestamp
       properties:
         version:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
         hash:
           type: string
           format: HashValue
@@ -1418,8 +1889,8 @@ components:
           type: string
           format: HashValue
         gas_used:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
         success:
           type: boolean
         vm_status:
@@ -1435,17 +1906,17 @@ components:
           type: string
           format: Address
         sequence_number:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
         max_gas_amount:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
         gas_unit_price:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
         expiration_timestamp_secs:
-          type: integer
-          format: uint64
+          type: string
+          format: U64
         payload:
           $ref: "#/components/schemas/TransactionPayload"
         signature:
@@ -1455,37 +1926,8 @@ components:
           items:
             $ref: "#/components/schemas/Event"
         timestamp:
-          type: integer
-          format: uint64
-    UserTransactionRequest:
-      type: object
-      required:
-        - sender
-        - sequence_number
-        - max_gas_amount
-        - gas_unit_price
-        - expiration_timestamp_secs
-        - payload
-      properties:
-        sender:
           type: string
-          format: Address
-        sequence_number:
-          type: integer
-          format: uint64
-        max_gas_amount:
-          type: integer
-          format: uint64
-        gas_unit_price:
-          type: integer
-          format: uint64
-        expiration_timestamp_secs:
-          type: integer
-          format: uint64
-        payload:
-          $ref: "#/components/schemas/TransactionPayload"
-        signature:
-          $ref: "#/components/schemas/TransactionSignature"
+          format: U64
     WriteModule:
       type: object
       required:

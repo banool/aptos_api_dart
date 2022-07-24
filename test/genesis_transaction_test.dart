@@ -7,7 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(GenesisTransaction, () {
-    // int version
+    // String version
     test('to test the property `version`', () async {
       // TODO
     });
@@ -27,7 +27,7 @@ void main() {
       // TODO
     });
 
-    // int gasUsed
+    // String gasUsed
     test('to test the property `gasUsed`', () async {
       // TODO
     });

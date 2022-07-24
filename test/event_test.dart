@@ -12,7 +12,7 @@ void main() {
       // TODO
     });
 
-    // int sequenceNumber
+    // String sequenceNumber
     test('to test the property `sequenceNumber`', () async {
       // TODO
     });

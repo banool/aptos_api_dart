@@ -17,22 +17,22 @@ void main() {
       // TODO
     });
 
-    // int sequenceNumber
+    // String sequenceNumber
     test('to test the property `sequenceNumber`', () async {
       // TODO
     });
 
-    // int maxGasAmount
+    // String maxGasAmount
     test('to test the property `maxGasAmount`', () async {
       // TODO
     });
 
-    // int gasUnitPrice
+    // String gasUnitPrice
     test('to test the property `gasUnitPrice`', () async {
       // TODO
     });
 
-    // int expirationTimestampSecs
+    // String expirationTimestampSecs
     test('to test the property `expirationTimestampSecs`', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
       // TODO
     });
 
-    // int version
+    // String version
     test('to test the property `version`', () async {
       // TODO
     });
@@ -62,7 +62,7 @@ void main() {
       // TODO
     });
 
-    // int gasUsed
+    // String gasUsed
     test('to test the property `gasUsed`', () async {
       // TODO
     });
@@ -92,7 +92,7 @@ void main() {
       // TODO
     });
 
-    // int timestamp
+    // String timestamp
     test('to test the property `timestamp`', () async {
       // TODO
     });
@@ -102,12 +102,12 @@ void main() {
       // TODO
     });
 
-    // int epoch
+    // String epoch
     test('to test the property `epoch`', () async {
       // TODO
     });
 
-    // int round
+    // String round
     test('to test the property `round`', () async {
       // TODO
     });

@@ -49,7 +49,7 @@ import 'package:aptos_api_dart/aptos_api_dart.dart';
 
 final api = AptosApiDart().getAccountsApi();
 final String address = address_example; // String | 
-final int ledgerVersion = 56; // int | 
+final String ledgerVersion = ledgerVersion_example; // String | 
 
 try {
     final response = await api.getAccount(address, ledgerVersion);
@@ -73,8 +73,13 @@ Class | Method | HTTP request | Description
 [*EventsApi*](doc/EventsApi.md) | [**getEventsByEventKey**](doc/EventsApi.md#geteventsbyeventkey) | **GET** /events/{event_key} | Get events by event key
 [*GeneralApi*](doc/GeneralApi.md) | [**getLedgerInfo**](doc/GeneralApi.md#getledgerinfo) | **GET** / | Get ledger info
 [*GeneralApi*](doc/GeneralApi.md) | [**openapi**](doc/GeneralApi.md#openapi) | **GET** /spec | Show OpenAPI explorer
+[*TransactionsApi*](doc/TransactionsApi.md) | [**encodeSubmission**](doc/TransactionsApi.md#encodesubmission) | **POST** /transactions/encode_submission | Encode submission
+[*TransactionsApi*](doc/TransactionsApi.md) | [**getAccountTransactions**](doc/TransactionsApi.md#getaccounttransactions) | **GET** /accounts/{address}/transactions | Get account transactions
+[*TransactionsApi*](doc/TransactionsApi.md) | [**getTransactionByHash**](doc/TransactionsApi.md#gettransactionbyhash) | **GET** /transactions/by_hash/{txn_hash} | Get transaction by hash
+[*TransactionsApi*](doc/TransactionsApi.md) | [**getTransactionByVersion**](doc/TransactionsApi.md#gettransactionbyversion) | **GET** /transactions/by_version/{txn_version} | Get transaction by version
 [*TransactionsApi*](doc/TransactionsApi.md) | [**getTransactions**](doc/TransactionsApi.md#gettransactions) | **GET** /transactions | Get transactions
-[*TransactionsApi*](doc/TransactionsApi.md) | [**submitTransaction**](doc/TransactionsApi.md#submittransaction) | **POST** /transactions | 
+[*TransactionsApi*](doc/TransactionsApi.md) | [**simulateTransaction**](doc/TransactionsApi.md#simulatetransaction) | **POST** /transactions/simulate | Simulate transaction
+[*TransactionsApi*](doc/TransactionsApi.md) | [**submitTransaction**](doc/TransactionsApi.md#submittransaction) | **POST** /transactions | Submit transaction
 
 
 ## Documentation For Models
@@ -89,6 +94,7 @@ Class | Method | HTTP request | Description
  - [DeleteTableItem](doc/DeleteTableItem.md)
  - [DirectWriteSet](doc/DirectWriteSet.md)
  - [Ed25519Signature](doc/Ed25519Signature.md)
+ - [EncodeSubmissionRequest](doc/EncodeSubmissionRequest.md)
  - [Event](doc/Event.md)
  - [GenesisPayload](doc/GenesisPayload.md)
  - [GenesisTransaction](doc/GenesisTransaction.md)
@@ -115,11 +121,11 @@ Class | Method | HTTP request | Description
  - [ScriptPayload](doc/ScriptPayload.md)
  - [ScriptWriteSet](doc/ScriptWriteSet.md)
  - [StateCheckpointTransaction](doc/StateCheckpointTransaction.md)
+ - [SubmitTransactionRequest](doc/SubmitTransactionRequest.md)
  - [Transaction](doc/Transaction.md)
  - [TransactionPayload](doc/TransactionPayload.md)
  - [TransactionSignature](doc/TransactionSignature.md)
  - [UserTransaction](doc/UserTransaction.md)
- - [UserTransactionRequest](doc/UserTransactionRequest.md)
  - [WriteModule](doc/WriteModule.md)
  - [WriteResource](doc/WriteResource.md)
  - [WriteSet](doc/WriteSet.md)

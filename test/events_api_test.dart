@@ -10,7 +10,7 @@ void main() {
     //
     // This API extracts event key from the account resource identified by the `event_handle_struct` and `field_name`, then returns events identified by the event key.
     //
-    //Future<BuiltList<Event>> getEventsByEventHandle(String address, String eventHandle, String fieldName, { int start, int limit }) async
+    //Future<BuiltList<Event>> getEventsByEventHandle(String address, String eventHandle, String fieldName, { String start, int limit }) async
     test('test getEventsByEventHandle', () async {
       // TODO
     });
@@ -19,7 +19,7 @@ void main() {
     //
     // todo
     //
-    //Future<BuiltList<Event>> getEventsByEventKey(String eventKey, { int start, int limit }) async
+    //Future<BuiltList<Event>> getEventsByEventKey(String eventKey, { String start, int limit }) async
     test('test getEventsByEventKey', () async {
       // TODO
     });

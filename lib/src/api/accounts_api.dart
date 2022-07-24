@@ -38,7 +38,7 @@ class AccountsApi {
   /// Throws [DioError] if API call or serialization fails
   Future<Response<AccountData>> getAccount({
     required String address,
-    int? ledgerVersion,
+    String? ledgerVersion,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -63,7 +63,7 @@ class AccountsApi {
     final _queryParameters = <String, dynamic>{
       if (ledgerVersion != null)
         r'ledger_version': encodeQueryParameter(
-            _serializers, ledgerVersion, const FullType(int)),
+            _serializers, ledgerVersion, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -105,7 +105,7 @@ class AccountsApi {
   }
 
   /// Get account modules
-  /// This API returns account resources for a specific ledger version (AKA transaction version). If not present, the latest version is used. &lt;---- TODO Update this comment The Aptos nodes prune account state history, via a configurable time window (link). If the requested data has been pruned, the server responds with a 404
+  /// This endpoint returns account resources for a specific ledger version (AKA transaction version). If not present, the latest version is used. &lt;---- TODO Update this comment The Aptos nodes prune account state history, via a configurable time window (link). If the requested data has been pruned, the server responds with a 404
   ///
   /// Parameters:
   /// * [address]
@@ -121,7 +121,7 @@ class AccountsApi {
   /// Throws [DioError] if API call or serialization fails
   Future<Response<BuiltList<MoveModuleBytecode>>> getAccountModules({
     required String address,
-    int? ledgerVersion,
+    String? ledgerVersion,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -146,7 +146,7 @@ class AccountsApi {
     final _queryParameters = <String, dynamic>{
       if (ledgerVersion != null)
         r'ledger_version': encodeQueryParameter(
-            _serializers, ledgerVersion, const FullType(int)),
+            _serializers, ledgerVersion, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -188,7 +188,7 @@ class AccountsApi {
   }
 
   /// Get account resources
-  /// This API returns account resources for a specific ledger version (AKA transaction version). If not present, the latest version is used. &lt;---- TODO Update this comment The Aptos nodes prune account state history, via a configurable time window (link). If the requested data has been pruned, the server responds with a 404
+  /// This endpoint returns all account resources at a given address at a specific ledger version (AKA transaction version). If the ledger version is not specified in the request, the latest ledger version is used.  The Aptos nodes prune account state history, via a configurable time window (link). If the requested data has been pruned, the server responds with a 404.
   ///
   /// Parameters:
   /// * [address]
@@ -204,7 +204,7 @@ class AccountsApi {
   /// Throws [DioError] if API call or serialization fails
   Future<Response<BuiltList<MoveResource>>> getAccountResources({
     required String address,
-    int? ledgerVersion,
+    String? ledgerVersion,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -229,7 +229,7 @@ class AccountsApi {
     final _queryParameters = <String, dynamic>{
       if (ledgerVersion != null)
         r'ledger_version': encodeQueryParameter(
-            _serializers, ledgerVersion, const FullType(int)),
+            _serializers, ledgerVersion, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(

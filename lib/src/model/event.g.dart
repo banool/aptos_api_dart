@@ -10,7 +10,7 @@ class _$Event extends Event {
   @override
   final String key;
   @override
-  final int sequenceNumber;
+  final String sequenceNumber;
   @override
   final String type;
   @override
@@ -73,9 +73,9 @@ class EventBuilder implements Builder<Event, EventBuilder> {
   String? get key => _$this._key;
   set key(String? key) => _$this._key = key;
 
-  int? _sequenceNumber;
-  int? get sequenceNumber => _$this._sequenceNumber;
-  set sequenceNumber(int? sequenceNumber) =>
+  String? _sequenceNumber;
+  String? get sequenceNumber => _$this._sequenceNumber;
+  set sequenceNumber(String? sequenceNumber) =>
       _$this._sequenceNumber = sequenceNumber;
 
   String? _type;

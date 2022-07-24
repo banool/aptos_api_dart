@@ -1,33 +1,33 @@
 import 'package:test/test.dart';
 import 'package:aptos_api_dart/aptos_api_dart.dart';
 
-// tests for UserTransactionRequest
+// tests for SubmitTransactionRequest
 void main() {
-  final instance = UserTransactionRequestBuilder();
+  final instance = SubmitTransactionRequestBuilder();
   // TODO add properties to the builder and call build()
 
-  group(UserTransactionRequest, () {
+  group(SubmitTransactionRequest, () {
     // String sender
     test('to test the property `sender`', () async {
       // TODO
     });
 
-    // int sequenceNumber
+    // String sequenceNumber
     test('to test the property `sequenceNumber`', () async {
       // TODO
     });
 
-    // int maxGasAmount
+    // String maxGasAmount
     test('to test the property `maxGasAmount`', () async {
       // TODO
     });
 
-    // int gasUnitPrice
+    // String gasUnitPrice
     test('to test the property `gasUnitPrice`', () async {
       // TODO
     });
 
-    // int expirationTimestampSecs
+    // String expirationTimestampSecs
     test('to test the property `expirationTimestampSecs`', () async {
       // TODO
     });

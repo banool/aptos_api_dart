@@ -8,7 +8,7 @@ part of 'state_checkpoint_transaction.dart';
 
 class _$StateCheckpointTransaction extends StateCheckpointTransaction {
   @override
-  final int version;
+  final String version;
   @override
   final String hash;
   @override
@@ -16,7 +16,7 @@ class _$StateCheckpointTransaction extends StateCheckpointTransaction {
   @override
   final String eventRootHash;
   @override
-  final int gasUsed;
+  final String gasUsed;
   @override
   final bool success;
   @override
@@ -26,7 +26,7 @@ class _$StateCheckpointTransaction extends StateCheckpointTransaction {
   @override
   final BuiltList<WriteSetChange> changes;
   @override
-  final int timestamp;
+  final String timestamp;
 
   factory _$StateCheckpointTransaction(
           [void Function(StateCheckpointTransactionBuilder)? updates]) =>
@@ -135,9 +135,9 @@ class StateCheckpointTransactionBuilder
         Builder<StateCheckpointTransaction, StateCheckpointTransactionBuilder> {
   _$StateCheckpointTransaction? _$v;
 
-  int? _version;
-  int? get version => _$this._version;
-  set version(int? version) => _$this._version = version;
+  String? _version;
+  String? get version => _$this._version;
+  set version(String? version) => _$this._version = version;
 
   String? _hash;
   String? get hash => _$this._hash;
@@ -153,9 +153,9 @@ class StateCheckpointTransactionBuilder
   set eventRootHash(String? eventRootHash) =>
       _$this._eventRootHash = eventRootHash;
 
-  int? _gasUsed;
-  int? get gasUsed => _$this._gasUsed;
-  set gasUsed(int? gasUsed) => _$this._gasUsed = gasUsed;
+  String? _gasUsed;
+  String? get gasUsed => _$this._gasUsed;
+  set gasUsed(String? gasUsed) => _$this._gasUsed = gasUsed;
 
   bool? _success;
   bool? get success => _$this._success;
@@ -176,9 +176,9 @@ class StateCheckpointTransactionBuilder
   set changes(ListBuilder<WriteSetChange>? changes) =>
       _$this._changes = changes;
 
-  int? _timestamp;
-  int? get timestamp => _$this._timestamp;
-  set timestamp(int? timestamp) => _$this._timestamp = timestamp;
+  String? _timestamp;
+  String? get timestamp => _$this._timestamp;
+  set timestamp(String? timestamp) => _$this._timestamp = timestamp;
 
   StateCheckpointTransactionBuilder() {
     StateCheckpointTransaction._defaults(this);

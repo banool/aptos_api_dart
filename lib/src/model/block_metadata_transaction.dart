@@ -38,7 +38,7 @@ abstract class BlockMetadataTransaction
     implements
         Built<BlockMetadataTransaction, BlockMetadataTransactionBuilder> {
   @BuiltValueField(wireName: r'version')
-  int get version;
+  String get version;
   @BuiltValueField(wireName: r'hash')
   String get hash;
   @BuiltValueField(wireName: r'state_root_hash')
@@ -46,7 +46,7 @@ abstract class BlockMetadataTransaction
   @BuiltValueField(wireName: r'event_root_hash')
   String get eventRootHash;
   @BuiltValueField(wireName: r'gas_used')
-  int get gasUsed;
+  String get gasUsed;
   @BuiltValueField(wireName: r'success')
   bool get success;
   @BuiltValueField(wireName: r'vm_status')
@@ -58,9 +58,9 @@ abstract class BlockMetadataTransaction
   @BuiltValueField(wireName: r'id')
   String get id;
   @BuiltValueField(wireName: r'epoch')
-  int get epoch;
+  String get epoch;
   @BuiltValueField(wireName: r'round')
-  int get round;
+  String get round;
   @BuiltValueField(wireName: r'events')
   BuiltList<Event> get events;
   @BuiltValueField(wireName: r'previous_block_votes')
@@ -70,7 +70,7 @@ abstract class BlockMetadataTransaction
   @BuiltValueField(wireName: r'failed_proposer_indices')
   BuiltList<int> get failedProposerIndices;
   @BuiltValueField(wireName: r'timestamp')
-  int get timestamp;
+  String get timestamp;
 
   BlockMetadataTransaction._();
 
@@ -102,7 +102,7 @@ class _$BlockMetadataTransactionSerializer
       {FullType specifiedType = FullType.unspecified}) sync* {
     yield r'version';
     yield serializers.serialize(object.version,
-        specifiedType: const FullType(int));
+        specifiedType: const FullType(String));
     yield r'hash';
     yield serializers.serialize(object.hash,
         specifiedType: const FullType(String));
@@ -114,7 +114,7 @@ class _$BlockMetadataTransactionSerializer
         specifiedType: const FullType(String));
     yield r'gas_used';
     yield serializers.serialize(object.gasUsed,
-        specifiedType: const FullType(int));
+        specifiedType: const FullType(String));
     yield r'success';
     yield serializers.serialize(object.success,
         specifiedType: const FullType(bool));
@@ -132,10 +132,10 @@ class _$BlockMetadataTransactionSerializer
         specifiedType: const FullType(String));
     yield r'epoch';
     yield serializers.serialize(object.epoch,
-        specifiedType: const FullType(int));
+        specifiedType: const FullType(String));
     yield r'round';
     yield serializers.serialize(object.round,
-        specifiedType: const FullType(int));
+        specifiedType: const FullType(String));
     yield r'events';
     yield serializers.serialize(object.events,
         specifiedType: const FullType(BuiltList, [FullType(Event)]));
@@ -150,7 +150,7 @@ class _$BlockMetadataTransactionSerializer
         specifiedType: const FullType(BuiltList, [FullType(int)]));
     yield r'timestamp';
     yield serializers.serialize(object.timestamp,
-        specifiedType: const FullType(int));
+        specifiedType: const FullType(String));
   }
 
   @override
@@ -172,7 +172,7 @@ class _$BlockMetadataTransactionSerializer
       switch (key) {
         case r'version':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.version = valueDes;
           break;
         case r'hash':
@@ -192,7 +192,7 @@ class _$BlockMetadataTransactionSerializer
           break;
         case r'gas_used':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.gasUsed = valueDes;
           break;
         case r'success':
@@ -224,12 +224,12 @@ class _$BlockMetadataTransactionSerializer
           break;
         case r'epoch':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.epoch = valueDes;
           break;
         case r'round':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.round = valueDes;
           break;
         case r'events':
@@ -257,7 +257,7 @@ class _$BlockMetadataTransactionSerializer
           break;
         case r'timestamp':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.timestamp = valueDes;
           break;
         default:

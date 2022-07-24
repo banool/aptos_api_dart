@@ -1,74 +1,74 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_transaction_request.dart';
+part of 'encode_submission_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$UserTransactionRequest extends UserTransactionRequest {
+class _$EncodeSubmissionRequest extends EncodeSubmissionRequest {
   @override
   final String sender;
   @override
-  final int sequenceNumber;
+  final String sequenceNumber;
   @override
-  final int maxGasAmount;
+  final String maxGasAmount;
   @override
-  final int gasUnitPrice;
+  final String gasUnitPrice;
   @override
-  final int expirationTimestampSecs;
+  final String expirationTimestampSecs;
   @override
   final TransactionPayload payload;
   @override
-  final TransactionSignature? signature;
+  final BuiltList<String>? secondarySigners;
 
-  factory _$UserTransactionRequest(
-          [void Function(UserTransactionRequestBuilder)? updates]) =>
-      (UserTransactionRequestBuilder()..update(updates))._build();
+  factory _$EncodeSubmissionRequest(
+          [void Function(EncodeSubmissionRequestBuilder)? updates]) =>
+      (EncodeSubmissionRequestBuilder()..update(updates))._build();
 
-  _$UserTransactionRequest._(
+  _$EncodeSubmissionRequest._(
       {required this.sender,
       required this.sequenceNumber,
       required this.maxGasAmount,
       required this.gasUnitPrice,
       required this.expirationTimestampSecs,
       required this.payload,
-      this.signature})
+      this.secondarySigners})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        sender, r'UserTransactionRequest', 'sender');
+        sender, r'EncodeSubmissionRequest', 'sender');
     BuiltValueNullFieldError.checkNotNull(
-        sequenceNumber, r'UserTransactionRequest', 'sequenceNumber');
+        sequenceNumber, r'EncodeSubmissionRequest', 'sequenceNumber');
     BuiltValueNullFieldError.checkNotNull(
-        maxGasAmount, r'UserTransactionRequest', 'maxGasAmount');
+        maxGasAmount, r'EncodeSubmissionRequest', 'maxGasAmount');
     BuiltValueNullFieldError.checkNotNull(
-        gasUnitPrice, r'UserTransactionRequest', 'gasUnitPrice');
+        gasUnitPrice, r'EncodeSubmissionRequest', 'gasUnitPrice');
     BuiltValueNullFieldError.checkNotNull(expirationTimestampSecs,
-        r'UserTransactionRequest', 'expirationTimestampSecs');
+        r'EncodeSubmissionRequest', 'expirationTimestampSecs');
     BuiltValueNullFieldError.checkNotNull(
-        payload, r'UserTransactionRequest', 'payload');
+        payload, r'EncodeSubmissionRequest', 'payload');
   }
 
   @override
-  UserTransactionRequest rebuild(
-          void Function(UserTransactionRequestBuilder) updates) =>
+  EncodeSubmissionRequest rebuild(
+          void Function(EncodeSubmissionRequestBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  UserTransactionRequestBuilder toBuilder() =>
-      UserTransactionRequestBuilder()..replace(this);
+  EncodeSubmissionRequestBuilder toBuilder() =>
+      EncodeSubmissionRequestBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is UserTransactionRequest &&
+    return other is EncodeSubmissionRequest &&
         sender == other.sender &&
         sequenceNumber == other.sequenceNumber &&
         maxGasAmount == other.maxGasAmount &&
         gasUnitPrice == other.gasUnitPrice &&
         expirationTimestampSecs == other.expirationTimestampSecs &&
         payload == other.payload &&
-        signature == other.signature;
+        secondarySigners == other.secondarySigners;
   }
 
   @override
@@ -82,47 +82,48 @@ class _$UserTransactionRequest extends UserTransactionRequest {
                     gasUnitPrice.hashCode),
                 expirationTimestampSecs.hashCode),
             payload.hashCode),
-        signature.hashCode));
+        secondarySigners.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'UserTransactionRequest')
+    return (newBuiltValueToStringHelper(r'EncodeSubmissionRequest')
           ..add('sender', sender)
           ..add('sequenceNumber', sequenceNumber)
           ..add('maxGasAmount', maxGasAmount)
           ..add('gasUnitPrice', gasUnitPrice)
           ..add('expirationTimestampSecs', expirationTimestampSecs)
           ..add('payload', payload)
-          ..add('signature', signature))
+          ..add('secondarySigners', secondarySigners))
         .toString();
   }
 }
 
-class UserTransactionRequestBuilder
-    implements Builder<UserTransactionRequest, UserTransactionRequestBuilder> {
-  _$UserTransactionRequest? _$v;
+class EncodeSubmissionRequestBuilder
+    implements
+        Builder<EncodeSubmissionRequest, EncodeSubmissionRequestBuilder> {
+  _$EncodeSubmissionRequest? _$v;
 
   String? _sender;
   String? get sender => _$this._sender;
   set sender(String? sender) => _$this._sender = sender;
 
-  int? _sequenceNumber;
-  int? get sequenceNumber => _$this._sequenceNumber;
-  set sequenceNumber(int? sequenceNumber) =>
+  String? _sequenceNumber;
+  String? get sequenceNumber => _$this._sequenceNumber;
+  set sequenceNumber(String? sequenceNumber) =>
       _$this._sequenceNumber = sequenceNumber;
 
-  int? _maxGasAmount;
-  int? get maxGasAmount => _$this._maxGasAmount;
-  set maxGasAmount(int? maxGasAmount) => _$this._maxGasAmount = maxGasAmount;
+  String? _maxGasAmount;
+  String? get maxGasAmount => _$this._maxGasAmount;
+  set maxGasAmount(String? maxGasAmount) => _$this._maxGasAmount = maxGasAmount;
 
-  int? _gasUnitPrice;
-  int? get gasUnitPrice => _$this._gasUnitPrice;
-  set gasUnitPrice(int? gasUnitPrice) => _$this._gasUnitPrice = gasUnitPrice;
+  String? _gasUnitPrice;
+  String? get gasUnitPrice => _$this._gasUnitPrice;
+  set gasUnitPrice(String? gasUnitPrice) => _$this._gasUnitPrice = gasUnitPrice;
 
-  int? _expirationTimestampSecs;
-  int? get expirationTimestampSecs => _$this._expirationTimestampSecs;
-  set expirationTimestampSecs(int? expirationTimestampSecs) =>
+  String? _expirationTimestampSecs;
+  String? get expirationTimestampSecs => _$this._expirationTimestampSecs;
+  set expirationTimestampSecs(String? expirationTimestampSecs) =>
       _$this._expirationTimestampSecs = expirationTimestampSecs;
 
   TransactionPayloadBuilder? _payload;
@@ -130,17 +131,17 @@ class UserTransactionRequestBuilder
       _$this._payload ??= TransactionPayloadBuilder();
   set payload(TransactionPayloadBuilder? payload) => _$this._payload = payload;
 
-  TransactionSignatureBuilder? _signature;
-  TransactionSignatureBuilder get signature =>
-      _$this._signature ??= TransactionSignatureBuilder();
-  set signature(TransactionSignatureBuilder? signature) =>
-      _$this._signature = signature;
+  ListBuilder<String>? _secondarySigners;
+  ListBuilder<String> get secondarySigners =>
+      _$this._secondarySigners ??= ListBuilder<String>();
+  set secondarySigners(ListBuilder<String>? secondarySigners) =>
+      _$this._secondarySigners = secondarySigners;
 
-  UserTransactionRequestBuilder() {
-    UserTransactionRequest._defaults(this);
+  EncodeSubmissionRequestBuilder() {
+    EncodeSubmissionRequest._defaults(this);
   }
 
-  UserTransactionRequestBuilder get _$this {
+  EncodeSubmissionRequestBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _sender = $v.sender;
@@ -149,55 +150,55 @@ class UserTransactionRequestBuilder
       _gasUnitPrice = $v.gasUnitPrice;
       _expirationTimestampSecs = $v.expirationTimestampSecs;
       _payload = $v.payload.toBuilder();
-      _signature = $v.signature?.toBuilder();
+      _secondarySigners = $v.secondarySigners?.toBuilder();
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(UserTransactionRequest other) {
+  void replace(EncodeSubmissionRequest other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$UserTransactionRequest;
+    _$v = other as _$EncodeSubmissionRequest;
   }
 
   @override
-  void update(void Function(UserTransactionRequestBuilder)? updates) {
+  void update(void Function(EncodeSubmissionRequestBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  UserTransactionRequest build() => _build();
+  EncodeSubmissionRequest build() => _build();
 
-  _$UserTransactionRequest _build() {
-    _$UserTransactionRequest _$result;
+  _$EncodeSubmissionRequest _build() {
+    _$EncodeSubmissionRequest _$result;
     try {
       _$result = _$v ??
-          _$UserTransactionRequest._(
+          _$EncodeSubmissionRequest._(
               sender: BuiltValueNullFieldError.checkNotNull(
-                  sender, r'UserTransactionRequest', 'sender'),
+                  sender, r'EncodeSubmissionRequest', 'sender'),
               sequenceNumber: BuiltValueNullFieldError.checkNotNull(
-                  sequenceNumber, r'UserTransactionRequest', 'sequenceNumber'),
+                  sequenceNumber, r'EncodeSubmissionRequest', 'sequenceNumber'),
               maxGasAmount: BuiltValueNullFieldError.checkNotNull(
-                  maxGasAmount, r'UserTransactionRequest', 'maxGasAmount'),
+                  maxGasAmount, r'EncodeSubmissionRequest', 'maxGasAmount'),
               gasUnitPrice: BuiltValueNullFieldError.checkNotNull(
-                  gasUnitPrice, r'UserTransactionRequest', 'gasUnitPrice'),
+                  gasUnitPrice, r'EncodeSubmissionRequest', 'gasUnitPrice'),
               expirationTimestampSecs: BuiltValueNullFieldError.checkNotNull(
                   expirationTimestampSecs,
-                  r'UserTransactionRequest',
+                  r'EncodeSubmissionRequest',
                   'expirationTimestampSecs'),
               payload: payload.build(),
-              signature: _signature?.build());
+              secondarySigners: _secondarySigners?.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'payload';
         payload.build();
-        _$failedField = 'signature';
-        _signature?.build();
+        _$failedField = 'secondarySigners';
+        _secondarySigners?.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'UserTransactionRequest', _$failedField, e.toString());
+            r'EncodeSubmissionRequest', _$failedField, e.toString());
       }
       rethrow;
     }

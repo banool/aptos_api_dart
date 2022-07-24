@@ -27,7 +27,7 @@ import 'package:aptos_api_dart/api.dart';
 
 final api = AptosApiDart().getAccountsApi();
 final String address = address_example; // String | 
-final int ledgerVersion = 56; // int | 
+final String ledgerVersion = ledgerVersion_example; // String | 
 
 try {
     final response = api.getAccount(address, ledgerVersion);
@@ -42,7 +42,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **address** | **String**|  | 
- **ledgerVersion** | **int**|  | [optional] 
+ **ledgerVersion** | **String**|  | [optional] 
 
 ### Return type
 
@@ -64,7 +64,7 @@ No authorization required
 
 Get account modules
 
-This API returns account resources for a specific ledger version (AKA transaction version). If not present, the latest version is used. <---- TODO Update this comment The Aptos nodes prune account state history, via a configurable time window (link). If the requested data has been pruned, the server responds with a 404
+This endpoint returns account resources for a specific ledger version (AKA transaction version). If not present, the latest version is used. <---- TODO Update this comment The Aptos nodes prune account state history, via a configurable time window (link). If the requested data has been pruned, the server responds with a 404
 
 ### Example
 ```dart
@@ -72,7 +72,7 @@ import 'package:aptos_api_dart/api.dart';
 
 final api = AptosApiDart().getAccountsApi();
 final String address = address_example; // String | 
-final int ledgerVersion = 56; // int | 
+final String ledgerVersion = ledgerVersion_example; // String | 
 
 try {
     final response = api.getAccountModules(address, ledgerVersion);
@@ -87,7 +87,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **address** | **String**|  | 
- **ledgerVersion** | **int**|  | [optional] 
+ **ledgerVersion** | **String**|  | [optional] 
 
 ### Return type
 
@@ -109,7 +109,7 @@ No authorization required
 
 Get account resources
 
-This API returns account resources for a specific ledger version (AKA transaction version). If not present, the latest version is used. <---- TODO Update this comment The Aptos nodes prune account state history, via a configurable time window (link). If the requested data has been pruned, the server responds with a 404
+This endpoint returns all account resources at a given address at a specific ledger version (AKA transaction version). If the ledger version is not specified in the request, the latest ledger version is used.  The Aptos nodes prune account state history, via a configurable time window (link). If the requested data has been pruned, the server responds with a 404.
 
 ### Example
 ```dart
@@ -117,7 +117,7 @@ import 'package:aptos_api_dart/api.dart';
 
 final api = AptosApiDart().getAccountsApi();
 final String address = address_example; // String | 
-final int ledgerVersion = 56; // int | 
+final String ledgerVersion = ledgerVersion_example; // String | 
 
 try {
     final response = api.getAccountResources(address, ledgerVersion);
@@ -132,7 +132,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **address** | **String**|  | 
- **ledgerVersion** | **int**|  | [optional] 
+ **ledgerVersion** | **String**|  | [optional] 
 
 ### Return type
 

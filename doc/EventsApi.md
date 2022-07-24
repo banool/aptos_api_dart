@@ -28,7 +28,7 @@ final api = AptosApiDart().getEventsApi();
 final String address = address_example; // String | 
 final String eventHandle = eventHandle_example; // String | 
 final String fieldName = fieldName_example; // String | 
-final int start = 56; // int | 
+final String start = start_example; // String | 
 final int limit = 56; // int | 
 
 try {
@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
  **address** | **String**|  | 
  **eventHandle** | **String**|  | 
  **fieldName** | **String**|  | 
- **start** | **int**|  | [optional] 
+ **start** | **String**|  | [optional] 
  **limit** | **int**|  | [optional] 
 
 ### Return type
@@ -77,7 +77,7 @@ import 'package:aptos_api_dart/api.dart';
 
 final api = AptosApiDart().getEventsApi();
 final String eventKey = eventKey_example; // String | 
-final int start = 56; // int | 
+final String start = start_example; // String | 
 final int limit = 56; // int | 
 
 try {
@@ -93,7 +93,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **eventKey** | **String**|  | 
- **start** | **int**|  | [optional] 
+ **start** | **String**|  | [optional] 
  **limit** | **int**|  | [optional] 
 
 ### Return type

@@ -17,7 +17,7 @@ void main() {
       // TODO
     });
 
-    // int aptosLedgerVersion
+    // String aptosLedgerVersion
     test('to test the property `aptosLedgerVersion`', () async {
       // TODO
     });

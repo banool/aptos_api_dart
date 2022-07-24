@@ -30,7 +30,7 @@ abstract class StateCheckpointTransaction
     implements
         Built<StateCheckpointTransaction, StateCheckpointTransactionBuilder> {
   @BuiltValueField(wireName: r'version')
-  int get version;
+  String get version;
   @BuiltValueField(wireName: r'hash')
   String get hash;
   @BuiltValueField(wireName: r'state_root_hash')
@@ -38,7 +38,7 @@ abstract class StateCheckpointTransaction
   @BuiltValueField(wireName: r'event_root_hash')
   String get eventRootHash;
   @BuiltValueField(wireName: r'gas_used')
-  int get gasUsed;
+  String get gasUsed;
   @BuiltValueField(wireName: r'success')
   bool get success;
   @BuiltValueField(wireName: r'vm_status')
@@ -48,7 +48,7 @@ abstract class StateCheckpointTransaction
   @BuiltValueField(wireName: r'changes')
   BuiltList<WriteSetChange> get changes;
   @BuiltValueField(wireName: r'timestamp')
-  int get timestamp;
+  String get timestamp;
 
   StateCheckpointTransaction._();
 
@@ -80,7 +80,7 @@ class _$StateCheckpointTransactionSerializer
       {FullType specifiedType = FullType.unspecified}) sync* {
     yield r'version';
     yield serializers.serialize(object.version,
-        specifiedType: const FullType(int));
+        specifiedType: const FullType(String));
     yield r'hash';
     yield serializers.serialize(object.hash,
         specifiedType: const FullType(String));
@@ -92,7 +92,7 @@ class _$StateCheckpointTransactionSerializer
         specifiedType: const FullType(String));
     yield r'gas_used';
     yield serializers.serialize(object.gasUsed,
-        specifiedType: const FullType(int));
+        specifiedType: const FullType(String));
     yield r'success';
     yield serializers.serialize(object.success,
         specifiedType: const FullType(bool));
@@ -107,7 +107,7 @@ class _$StateCheckpointTransactionSerializer
         specifiedType: const FullType(BuiltList, [FullType(WriteSetChange)]));
     yield r'timestamp';
     yield serializers.serialize(object.timestamp,
-        specifiedType: const FullType(int));
+        specifiedType: const FullType(String));
   }
 
   @override
@@ -129,7 +129,7 @@ class _$StateCheckpointTransactionSerializer
       switch (key) {
         case r'version':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.version = valueDes;
           break;
         case r'hash':
@@ -149,7 +149,7 @@ class _$StateCheckpointTransactionSerializer
           break;
         case r'gas_used':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.gasUsed = valueDes;
           break;
         case r'success':
@@ -176,7 +176,7 @@ class _$StateCheckpointTransactionSerializer
           break;
         case r'timestamp':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.timestamp = valueDes;
           break;
         default:

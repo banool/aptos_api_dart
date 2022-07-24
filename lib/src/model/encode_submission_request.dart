@@ -2,7 +2,7 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
-import 'package:aptos_api_dart/src/model/transaction_signature.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:aptos_api_dart/src/model/transaction_payload.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -10,9 +10,9 @@ import 'package:one_of/one_of.dart';
 import 'package:one_of/any_of.dart';
 // ignore_for_file: unused_element, unused_import
 
-part 'user_transaction_request.g.dart';
+part 'encode_submission_request.g.dart';
 
-/// UserTransactionRequest
+/// EncodeSubmissionRequest
 ///
 /// Properties:
 /// * [sender]
@@ -21,80 +21,80 @@ part 'user_transaction_request.g.dart';
 /// * [gasUnitPrice]
 /// * [expirationTimestampSecs]
 /// * [payload]
-/// * [signature]
+/// * [secondarySigners]
 @BuiltValue()
-abstract class UserTransactionRequest
-    implements Built<UserTransactionRequest, UserTransactionRequestBuilder> {
+abstract class EncodeSubmissionRequest
+    implements Built<EncodeSubmissionRequest, EncodeSubmissionRequestBuilder> {
   @BuiltValueField(wireName: r'sender')
   String get sender;
   @BuiltValueField(wireName: r'sequence_number')
-  int get sequenceNumber;
+  String get sequenceNumber;
   @BuiltValueField(wireName: r'max_gas_amount')
-  int get maxGasAmount;
+  String get maxGasAmount;
   @BuiltValueField(wireName: r'gas_unit_price')
-  int get gasUnitPrice;
+  String get gasUnitPrice;
   @BuiltValueField(wireName: r'expiration_timestamp_secs')
-  int get expirationTimestampSecs;
+  String get expirationTimestampSecs;
   @BuiltValueField(wireName: r'payload')
   TransactionPayload get payload;
-  @BuiltValueField(wireName: r'signature')
-  TransactionSignature? get signature;
+  @BuiltValueField(wireName: r'secondary_signers')
+  BuiltList<String>? get secondarySigners;
 
-  UserTransactionRequest._();
+  EncodeSubmissionRequest._();
 
-  factory UserTransactionRequest(
-          [void updates(UserTransactionRequestBuilder b)]) =
-      _$UserTransactionRequest;
+  factory EncodeSubmissionRequest(
+          [void updates(EncodeSubmissionRequestBuilder b)]) =
+      _$EncodeSubmissionRequest;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(UserTransactionRequestBuilder b) => b;
+  static void _defaults(EncodeSubmissionRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UserTransactionRequest> get serializer =>
-      _$UserTransactionRequestSerializer();
+  static Serializer<EncodeSubmissionRequest> get serializer =>
+      _$EncodeSubmissionRequestSerializer();
 }
 
-class _$UserTransactionRequestSerializer
-    implements PrimitiveSerializer<UserTransactionRequest> {
+class _$EncodeSubmissionRequestSerializer
+    implements PrimitiveSerializer<EncodeSubmissionRequest> {
   @override
   final Iterable<Type> types = const [
-    UserTransactionRequest,
-    _$UserTransactionRequest
+    EncodeSubmissionRequest,
+    _$EncodeSubmissionRequest
   ];
 
   @override
-  final String wireName = r'UserTransactionRequest';
+  final String wireName = r'EncodeSubmissionRequest';
 
   Iterable<Object?> _serializeProperties(
-      Serializers serializers, UserTransactionRequest object,
+      Serializers serializers, EncodeSubmissionRequest object,
       {FullType specifiedType = FullType.unspecified}) sync* {
     yield r'sender';
     yield serializers.serialize(object.sender,
         specifiedType: const FullType(String));
     yield r'sequence_number';
     yield serializers.serialize(object.sequenceNumber,
-        specifiedType: const FullType(int));
+        specifiedType: const FullType(String));
     yield r'max_gas_amount';
     yield serializers.serialize(object.maxGasAmount,
-        specifiedType: const FullType(int));
+        specifiedType: const FullType(String));
     yield r'gas_unit_price';
     yield serializers.serialize(object.gasUnitPrice,
-        specifiedType: const FullType(int));
+        specifiedType: const FullType(String));
     yield r'expiration_timestamp_secs';
     yield serializers.serialize(object.expirationTimestampSecs,
-        specifiedType: const FullType(int));
+        specifiedType: const FullType(String));
     yield r'payload';
     yield serializers.serialize(object.payload,
         specifiedType: const FullType(TransactionPayload));
-    if (object.signature != null) {
-      yield r'signature';
-      yield serializers.serialize(object.signature,
-          specifiedType: const FullType(TransactionSignature));
+    if (object.secondarySigners != null) {
+      yield r'secondary_signers';
+      yield serializers.serialize(object.secondarySigners,
+          specifiedType: const FullType(BuiltList, [FullType(String)]));
     }
   }
 
   @override
-  Object serialize(Serializers serializers, UserTransactionRequest object,
+  Object serialize(Serializers serializers, EncodeSubmissionRequest object,
       {FullType specifiedType = FullType.unspecified}) {
     return _serializeProperties(serializers, object,
             specifiedType: specifiedType)
@@ -104,7 +104,7 @@ class _$UserTransactionRequestSerializer
   void _deserializeProperties(Serializers serializers, Object serialized,
       {FullType specifiedType = FullType.unspecified,
       required List<Object?> serializedList,
-      required UserTransactionRequestBuilder result,
+      required EncodeSubmissionRequestBuilder result,
       required List<Object?> unhandled}) {
     for (var i = 0; i < serializedList.length; i += 2) {
       final key = serializedList[i] as String;
@@ -117,22 +117,22 @@ class _$UserTransactionRequestSerializer
           break;
         case r'sequence_number':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.sequenceNumber = valueDes;
           break;
         case r'max_gas_amount':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.maxGasAmount = valueDes;
           break;
         case r'gas_unit_price':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.gasUnitPrice = valueDes;
           break;
         case r'expiration_timestamp_secs':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.expirationTimestampSecs = valueDes;
           break;
         case r'payload':
@@ -141,11 +141,11 @@ class _$UserTransactionRequestSerializer
               as TransactionPayload;
           result.payload.replace(valueDes);
           break;
-        case r'signature':
+        case r'secondary_signers':
           final valueDes = serializers.deserialize(value,
-                  specifiedType: const FullType(TransactionSignature))
-              as TransactionSignature;
-          result.signature.replace(valueDes);
+                  specifiedType: const FullType(BuiltList, [FullType(String)]))
+              as BuiltList<String>;
+          result.secondarySigners.replace(valueDes);
           break;
         default:
           unhandled.add(key);
@@ -156,9 +156,10 @@ class _$UserTransactionRequestSerializer
   }
 
   @override
-  UserTransactionRequest deserialize(Serializers serializers, Object serialized,
+  EncodeSubmissionRequest deserialize(
+      Serializers serializers, Object serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = UserTransactionRequestBuilder();
+    final result = EncodeSubmissionRequestBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(serializers, serialized,

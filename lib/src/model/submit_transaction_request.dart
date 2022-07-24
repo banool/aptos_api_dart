@@ -10,12 +10,11 @@ import 'package:one_of/one_of.dart';
 import 'package:one_of/any_of.dart';
 // ignore_for_file: unused_element, unused_import
 
-part 'pending_transaction.g.dart';
+part 'submit_transaction_request.g.dart';
 
-/// PendingTransaction
+/// SubmitTransactionRequest
 ///
 /// Properties:
-/// * [hash]
 /// * [sender]
 /// * [sequenceNumber]
 /// * [maxGasAmount]
@@ -24,10 +23,9 @@ part 'pending_transaction.g.dart';
 /// * [payload]
 /// * [signature]
 @BuiltValue()
-abstract class PendingTransaction
-    implements Built<PendingTransaction, PendingTransactionBuilder> {
-  @BuiltValueField(wireName: r'hash')
-  String get hash;
+abstract class SubmitTransactionRequest
+    implements
+        Built<SubmitTransactionRequest, SubmitTransactionRequestBuilder> {
   @BuiltValueField(wireName: r'sender')
   String get sender;
   @BuiltValueField(wireName: r'sequence_number')
@@ -41,35 +39,36 @@ abstract class PendingTransaction
   @BuiltValueField(wireName: r'payload')
   TransactionPayload get payload;
   @BuiltValueField(wireName: r'signature')
-  TransactionSignature? get signature;
+  TransactionSignature get signature;
 
-  PendingTransaction._();
+  SubmitTransactionRequest._();
 
-  factory PendingTransaction([void updates(PendingTransactionBuilder b)]) =
-      _$PendingTransaction;
+  factory SubmitTransactionRequest(
+          [void updates(SubmitTransactionRequestBuilder b)]) =
+      _$SubmitTransactionRequest;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(PendingTransactionBuilder b) => b;
+  static void _defaults(SubmitTransactionRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PendingTransaction> get serializer =>
-      _$PendingTransactionSerializer();
+  static Serializer<SubmitTransactionRequest> get serializer =>
+      _$SubmitTransactionRequestSerializer();
 }
 
-class _$PendingTransactionSerializer
-    implements PrimitiveSerializer<PendingTransaction> {
+class _$SubmitTransactionRequestSerializer
+    implements PrimitiveSerializer<SubmitTransactionRequest> {
   @override
-  final Iterable<Type> types = const [PendingTransaction, _$PendingTransaction];
+  final Iterable<Type> types = const [
+    SubmitTransactionRequest,
+    _$SubmitTransactionRequest
+  ];
 
   @override
-  final String wireName = r'PendingTransaction';
+  final String wireName = r'SubmitTransactionRequest';
 
   Iterable<Object?> _serializeProperties(
-      Serializers serializers, PendingTransaction object,
+      Serializers serializers, SubmitTransactionRequest object,
       {FullType specifiedType = FullType.unspecified}) sync* {
-    yield r'hash';
-    yield serializers.serialize(object.hash,
-        specifiedType: const FullType(String));
     yield r'sender';
     yield serializers.serialize(object.sender,
         specifiedType: const FullType(String));
@@ -88,15 +87,13 @@ class _$PendingTransactionSerializer
     yield r'payload';
     yield serializers.serialize(object.payload,
         specifiedType: const FullType(TransactionPayload));
-    if (object.signature != null) {
-      yield r'signature';
-      yield serializers.serialize(object.signature,
-          specifiedType: const FullType(TransactionSignature));
-    }
+    yield r'signature';
+    yield serializers.serialize(object.signature,
+        specifiedType: const FullType(TransactionSignature));
   }
 
   @override
-  Object serialize(Serializers serializers, PendingTransaction object,
+  Object serialize(Serializers serializers, SubmitTransactionRequest object,
       {FullType specifiedType = FullType.unspecified}) {
     return _serializeProperties(serializers, object,
             specifiedType: specifiedType)
@@ -106,17 +103,12 @@ class _$PendingTransactionSerializer
   void _deserializeProperties(Serializers serializers, Object serialized,
       {FullType specifiedType = FullType.unspecified,
       required List<Object?> serializedList,
-      required PendingTransactionBuilder result,
+      required SubmitTransactionRequestBuilder result,
       required List<Object?> unhandled}) {
     for (var i = 0; i < serializedList.length; i += 2) {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'hash':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          result.hash = valueDes;
-          break;
         case r'sender':
           final valueDes = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -163,9 +155,10 @@ class _$PendingTransactionSerializer
   }
 
   @override
-  PendingTransaction deserialize(Serializers serializers, Object serialized,
+  SubmitTransactionRequest deserialize(
+      Serializers serializers, Object serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = PendingTransactionBuilder();
+    final result = SubmitTransactionRequestBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(serializers, serialized,

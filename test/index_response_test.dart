@@ -12,22 +12,22 @@ void main() {
       // TODO
     });
 
-    // int epoch
+    // String epoch
     test('to test the property `epoch`', () async {
       // TODO
     });
 
-    // int ledgerVersion
+    // String ledgerVersion
     test('to test the property `ledgerVersion`', () async {
       // TODO
     });
 
-    // int oldestLedgerVersion
+    // String oldestLedgerVersion
     test('to test the property `oldestLedgerVersion`', () async {
       // TODO
     });
 
-    // int ledgerTimestamp
+    // String ledgerTimestamp
     test('to test the property `ledgerTimestamp`', () async {
       // TODO
     });

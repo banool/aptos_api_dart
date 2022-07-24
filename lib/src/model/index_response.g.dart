@@ -10,13 +10,13 @@ class _$IndexResponse extends IndexResponse {
   @override
   final int chainId;
   @override
-  final int epoch;
+  final String epoch;
   @override
-  final int ledgerVersion;
+  final String ledgerVersion;
   @override
-  final int oldestLedgerVersion;
+  final String oldestLedgerVersion;
   @override
-  final int ledgerTimestamp;
+  final String ledgerTimestamp;
   @override
   final RoleType nodeRole;
 
@@ -95,23 +95,23 @@ class IndexResponseBuilder
   int? get chainId => _$this._chainId;
   set chainId(int? chainId) => _$this._chainId = chainId;
 
-  int? _epoch;
-  int? get epoch => _$this._epoch;
-  set epoch(int? epoch) => _$this._epoch = epoch;
+  String? _epoch;
+  String? get epoch => _$this._epoch;
+  set epoch(String? epoch) => _$this._epoch = epoch;
 
-  int? _ledgerVersion;
-  int? get ledgerVersion => _$this._ledgerVersion;
-  set ledgerVersion(int? ledgerVersion) =>
+  String? _ledgerVersion;
+  String? get ledgerVersion => _$this._ledgerVersion;
+  set ledgerVersion(String? ledgerVersion) =>
       _$this._ledgerVersion = ledgerVersion;
 
-  int? _oldestLedgerVersion;
-  int? get oldestLedgerVersion => _$this._oldestLedgerVersion;
-  set oldestLedgerVersion(int? oldestLedgerVersion) =>
+  String? _oldestLedgerVersion;
+  String? get oldestLedgerVersion => _$this._oldestLedgerVersion;
+  set oldestLedgerVersion(String? oldestLedgerVersion) =>
       _$this._oldestLedgerVersion = oldestLedgerVersion;
 
-  int? _ledgerTimestamp;
-  int? get ledgerTimestamp => _$this._ledgerTimestamp;
-  set ledgerTimestamp(int? ledgerTimestamp) =>
+  String? _ledgerTimestamp;
+  String? get ledgerTimestamp => _$this._ledgerTimestamp;
+  set ledgerTimestamp(String? ledgerTimestamp) =>
       _$this._ledgerTimestamp = ledgerTimestamp;
 
   RoleType? _nodeRole;

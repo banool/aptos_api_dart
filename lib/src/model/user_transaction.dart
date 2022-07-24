@@ -40,7 +40,7 @@ part 'user_transaction.g.dart';
 abstract class UserTransaction
     implements Built<UserTransaction, UserTransactionBuilder> {
   @BuiltValueField(wireName: r'version')
-  int get version;
+  String get version;
   @BuiltValueField(wireName: r'hash')
   String get hash;
   @BuiltValueField(wireName: r'state_root_hash')
@@ -48,7 +48,7 @@ abstract class UserTransaction
   @BuiltValueField(wireName: r'event_root_hash')
   String get eventRootHash;
   @BuiltValueField(wireName: r'gas_used')
-  int get gasUsed;
+  String get gasUsed;
   @BuiltValueField(wireName: r'success')
   bool get success;
   @BuiltValueField(wireName: r'vm_status')
@@ -60,13 +60,13 @@ abstract class UserTransaction
   @BuiltValueField(wireName: r'sender')
   String get sender;
   @BuiltValueField(wireName: r'sequence_number')
-  int get sequenceNumber;
+  String get sequenceNumber;
   @BuiltValueField(wireName: r'max_gas_amount')
-  int get maxGasAmount;
+  String get maxGasAmount;
   @BuiltValueField(wireName: r'gas_unit_price')
-  int get gasUnitPrice;
+  String get gasUnitPrice;
   @BuiltValueField(wireName: r'expiration_timestamp_secs')
-  int get expirationTimestampSecs;
+  String get expirationTimestampSecs;
   @BuiltValueField(wireName: r'payload')
   TransactionPayload get payload;
   @BuiltValueField(wireName: r'signature')
@@ -74,7 +74,7 @@ abstract class UserTransaction
   @BuiltValueField(wireName: r'events')
   BuiltList<Event> get events;
   @BuiltValueField(wireName: r'timestamp')
-  int get timestamp;
+  String get timestamp;
 
   UserTransaction._();
 
@@ -102,7 +102,7 @@ class _$UserTransactionSerializer
       {FullType specifiedType = FullType.unspecified}) sync* {
     yield r'version';
     yield serializers.serialize(object.version,
-        specifiedType: const FullType(int));
+        specifiedType: const FullType(String));
     yield r'hash';
     yield serializers.serialize(object.hash,
         specifiedType: const FullType(String));
@@ -114,7 +114,7 @@ class _$UserTransactionSerializer
         specifiedType: const FullType(String));
     yield r'gas_used';
     yield serializers.serialize(object.gasUsed,
-        specifiedType: const FullType(int));
+        specifiedType: const FullType(String));
     yield r'success';
     yield serializers.serialize(object.success,
         specifiedType: const FullType(bool));
@@ -132,16 +132,16 @@ class _$UserTransactionSerializer
         specifiedType: const FullType(String));
     yield r'sequence_number';
     yield serializers.serialize(object.sequenceNumber,
-        specifiedType: const FullType(int));
+        specifiedType: const FullType(String));
     yield r'max_gas_amount';
     yield serializers.serialize(object.maxGasAmount,
-        specifiedType: const FullType(int));
+        specifiedType: const FullType(String));
     yield r'gas_unit_price';
     yield serializers.serialize(object.gasUnitPrice,
-        specifiedType: const FullType(int));
+        specifiedType: const FullType(String));
     yield r'expiration_timestamp_secs';
     yield serializers.serialize(object.expirationTimestampSecs,
-        specifiedType: const FullType(int));
+        specifiedType: const FullType(String));
     yield r'payload';
     yield serializers.serialize(object.payload,
         specifiedType: const FullType(TransactionPayload));
@@ -155,7 +155,7 @@ class _$UserTransactionSerializer
         specifiedType: const FullType(BuiltList, [FullType(Event)]));
     yield r'timestamp';
     yield serializers.serialize(object.timestamp,
-        specifiedType: const FullType(int));
+        specifiedType: const FullType(String));
   }
 
   @override
@@ -177,7 +177,7 @@ class _$UserTransactionSerializer
       switch (key) {
         case r'version':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.version = valueDes;
           break;
         case r'hash':
@@ -197,7 +197,7 @@ class _$UserTransactionSerializer
           break;
         case r'gas_used':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.gasUsed = valueDes;
           break;
         case r'success':
@@ -229,22 +229,22 @@ class _$UserTransactionSerializer
           break;
         case r'sequence_number':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.sequenceNumber = valueDes;
           break;
         case r'max_gas_amount':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.maxGasAmount = valueDes;
           break;
         case r'gas_unit_price':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.gasUnitPrice = valueDes;
           break;
         case r'expiration_timestamp_secs':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.expirationTimestampSecs = valueDes;
           break;
         case r'payload':
@@ -267,7 +267,7 @@ class _$UserTransactionSerializer
           break;
         case r'timestamp':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.timestamp = valueDes;
           break;
         default:

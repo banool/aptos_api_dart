@@ -24,6 +24,7 @@ import 'package:aptos_api_dart/src/model/delete_resource.dart';
 import 'package:aptos_api_dart/src/model/delete_table_item.dart';
 import 'package:aptos_api_dart/src/model/direct_write_set.dart';
 import 'package:aptos_api_dart/src/model/ed25519_signature.dart';
+import 'package:aptos_api_dart/src/model/encode_submission_request.dart';
 import 'package:aptos_api_dart/src/model/event.dart';
 import 'package:aptos_api_dart/src/model/genesis_payload.dart';
 import 'package:aptos_api_dart/src/model/genesis_transaction.dart';
@@ -50,11 +51,11 @@ import 'package:aptos_api_dart/src/model/script_function_payload.dart';
 import 'package:aptos_api_dart/src/model/script_payload.dart';
 import 'package:aptos_api_dart/src/model/script_write_set.dart';
 import 'package:aptos_api_dart/src/model/state_checkpoint_transaction.dart';
+import 'package:aptos_api_dart/src/model/submit_transaction_request.dart';
 import 'package:aptos_api_dart/src/model/transaction.dart';
 import 'package:aptos_api_dart/src/model/transaction_payload.dart';
 import 'package:aptos_api_dart/src/model/transaction_signature.dart';
 import 'package:aptos_api_dart/src/model/user_transaction.dart';
-import 'package:aptos_api_dart/src/model/user_transaction_request.dart';
 import 'package:aptos_api_dart/src/model/write_module.dart';
 import 'package:aptos_api_dart/src/model/write_resource.dart';
 import 'package:aptos_api_dart/src/model/write_set.dart';
@@ -75,6 +76,7 @@ part 'serializers.g.dart';
   DeleteTableItem,
   DirectWriteSet,
   Ed25519Signature,
+  EncodeSubmissionRequest,
   Event,
   GenesisPayload,
   GenesisTransaction,
@@ -101,11 +103,11 @@ part 'serializers.g.dart';
   ScriptPayload,
   ScriptWriteSet,
   StateCheckpointTransaction,
+  SubmitTransactionRequest,
   Transaction,
   TransactionPayload,
   TransactionSignature,
   UserTransaction,
-  UserTransactionRequest,
   WriteModule,
   WriteResource,
   WriteSet,
@@ -125,6 +127,10 @@ Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(MoveModuleBytecode)]),
         () => ListBuilder<MoveModuleBytecode>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(int)]),
+        () => ListBuilder<int>(),
       )
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(MoveResource)]),

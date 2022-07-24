@@ -18,7 +18,7 @@ part 'account_data.g.dart';
 @BuiltValue()
 abstract class AccountData implements Built<AccountData, AccountDataBuilder> {
   @BuiltValueField(wireName: r'sequence_number')
-  int get sequenceNumber;
+  String get sequenceNumber;
   @BuiltValueField(wireName: r'authentication_key')
   String get authenticationKey;
 
@@ -45,7 +45,7 @@ class _$AccountDataSerializer implements PrimitiveSerializer<AccountData> {
       {FullType specifiedType = FullType.unspecified}) sync* {
     yield r'sequence_number';
     yield serializers.serialize(object.sequenceNumber,
-        specifiedType: const FullType(int));
+        specifiedType: const FullType(String));
     yield r'authentication_key';
     yield serializers.serialize(object.authenticationKey,
         specifiedType: const FullType(String));
@@ -70,7 +70,7 @@ class _$AccountDataSerializer implements PrimitiveSerializer<AccountData> {
       switch (key) {
         case r'sequence_number':
           final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           result.sequenceNumber = valueDes;
           break;
         case r'authentication_key':
