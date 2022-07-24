@@ -129,10 +129,6 @@ Serializers serializers = (_$serializers.toBuilder()
         () => ListBuilder<MoveModuleBytecode>(),
       )
       ..addBuilderFactory(
-        const FullType(BuiltList, [FullType(int)]),
-        () => ListBuilder<int>(),
-      )
-      ..addBuilderFactory(
         const FullType(BuiltList, [FullType(MoveResource)]),
         () => ListBuilder<MoveResource>(),
       )

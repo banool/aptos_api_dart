@@ -435,7 +435,7 @@ class TransactionsApi {
   /// Simulate submitting a transaction. To use this, you must: - Create a SignedTransaction with a zero-padded signature. - Submit a SubmitTransactionRequest containing a UserTransactionRequest containing that signature.
   ///
   /// Parameters:
-  /// * [requestBody]
+  /// * [submitTransactionRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -446,7 +446,7 @@ class TransactionsApi {
   /// Returns a [Future] containing a [Response] with a [BuiltList<Transaction>] as data
   /// Throws [DioError] if API call or serialization fails
   Future<Response<BuiltList<Transaction>>> simulateTransaction({
-    required BuiltList<int> requestBody,
+    required SubmitTransactionRequest submitTransactionRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -471,8 +471,9 @@ class TransactionsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(BuiltList, [FullType(int)]);
-      _bodyData = _serializers.serialize(requestBody, specifiedType: _type);
+      const _type = FullType(SubmitTransactionRequest);
+      _bodyData = _serializers.serialize(submitTransactionRequest,
+          specifiedType: _type);
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _options.compose(
@@ -526,7 +527,7 @@ class TransactionsApi {
   /// todo
   ///
   /// Parameters:
-  /// * [requestBody]
+  /// * [submitTransactionRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -537,7 +538,7 @@ class TransactionsApi {
   /// Returns a [Future] containing a [Response] with a [PendingTransaction] as data
   /// Throws [DioError] if API call or serialization fails
   Future<Response<PendingTransaction>> submitTransaction({
-    required BuiltList<int> requestBody,
+    required SubmitTransactionRequest submitTransactionRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -562,8 +563,9 @@ class TransactionsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(BuiltList, [FullType(int)]);
-      _bodyData = _serializers.serialize(requestBody, specifiedType: _type);
+      const _type = FullType(SubmitTransactionRequest);
+      _bodyData = _serializers.serialize(submitTransactionRequest,
+          specifiedType: _type);
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _options.compose(

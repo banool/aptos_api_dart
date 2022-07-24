@@ -240,7 +240,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **simulateTransaction**
-> BuiltList<Transaction> simulateTransaction(requestBody)
+> BuiltList<Transaction> simulateTransaction(submitTransactionRequest)
 
 Simulate transaction
 
@@ -251,10 +251,10 @@ Simulate submitting a transaction. To use this, you must: - Create a SignedTrans
 import 'package:aptos_api_dart/api.dart';
 
 final api = AptosApiDart().getTransactionsApi();
-final BuiltList<int> requestBody = ; // BuiltList<int> | 
+final SubmitTransactionRequest submitTransactionRequest = ; // SubmitTransactionRequest | 
 
 try {
-    final response = api.simulateTransaction(requestBody);
+    final response = api.simulateTransaction(submitTransactionRequest);
     print(response);
 } catch on DioError (e) {
     print('Exception when calling TransactionsApi->simulateTransaction: $e\n');
@@ -265,7 +265,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requestBody** | [**BuiltList&lt;int&gt;**](int.md)|  | 
+ **submitTransactionRequest** | [**SubmitTransactionRequest**](SubmitTransactionRequest.md)|  | 
 
 ### Return type
 
@@ -277,13 +277,13 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/x.aptos.signed_transaction+bcs, application/json
+ - **Content-Type**: application/json, application/x.aptos.signed_transaction+bcs
  - **Accept**: application/json, application/x-bcs
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **submitTransaction**
-> PendingTransaction submitTransaction(requestBody)
+> PendingTransaction submitTransaction(submitTransactionRequest)
 
 Submit transaction
 
@@ -294,10 +294,10 @@ todo
 import 'package:aptos_api_dart/api.dart';
 
 final api = AptosApiDart().getTransactionsApi();
-final BuiltList<int> requestBody = ; // BuiltList<int> | 
+final SubmitTransactionRequest submitTransactionRequest = ; // SubmitTransactionRequest | 
 
 try {
-    final response = api.submitTransaction(requestBody);
+    final response = api.submitTransaction(submitTransactionRequest);
     print(response);
 } catch on DioError (e) {
     print('Exception when calling TransactionsApi->submitTransaction: $e\n');
@@ -308,7 +308,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requestBody** | [**BuiltList&lt;int&gt;**](int.md)|  | 
+ **submitTransactionRequest** | [**SubmitTransactionRequest**](SubmitTransactionRequest.md)|  | 
 
 ### Return type
 
@@ -320,7 +320,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/x.aptos.signed_transaction+bcs, application/json
+ - **Content-Type**: application/json, application/x.aptos.signed_transaction+bcs
  - **Accept**: application/json, application/x-bcs
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

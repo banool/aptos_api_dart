@@ -638,15 +638,15 @@ paths:
       description: todo
       requestBody:
         content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SubmitTransactionRequest"
           application/x.aptos.signed_transaction+bcs:
             schema:
               type: array
               items:
                 type: integer
                 format: uint8
-          application/json:
-            schema:
-              $ref: "#/components/schemas/SubmitTransactionRequest"
         required: true
       responses:
         "202":
@@ -962,15 +962,15 @@ paths:
       description: "Simulate submitting a transaction. To use this, you must:\n- Create a SignedTransaction with a zero-padded signature.\n- Submit a SubmitTransactionRequest containing a UserTransactionRequest containing that signature."
       requestBody:
         content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SubmitTransactionRequest"
           application/x.aptos.signed_transaction+bcs:
             schema:
               type: array
               items:
                 type: integer
                 format: uint8
-          application/json:
-            schema:
-              $ref: "#/components/schemas/SubmitTransactionRequest"
         required: true
       responses:
         "200":

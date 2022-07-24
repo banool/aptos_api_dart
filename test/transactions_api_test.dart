@@ -55,7 +55,7 @@ void main() {
     //
     // Simulate submitting a transaction. To use this, you must: - Create a SignedTransaction with a zero-padded signature. - Submit a SubmitTransactionRequest containing a UserTransactionRequest containing that signature.
     //
-    //Future<BuiltList<Transaction>> simulateTransaction(BuiltList<int> requestBody) async
+    //Future<BuiltList<Transaction>> simulateTransaction(SubmitTransactionRequest submitTransactionRequest) async
     test('test simulateTransaction', () async {
       // TODO
     });
@@ -64,7 +64,7 @@ void main() {
     //
     // todo
     //
-    //Future<PendingTransaction> submitTransaction(BuiltList<int> requestBody) async
+    //Future<PendingTransaction> submitTransaction(SubmitTransactionRequest submitTransactionRequest) async
     test('test submitTransaction', () async {
       // TODO
     });
