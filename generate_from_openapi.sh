@@ -16,6 +16,8 @@ OPENAPI_GENERATOR_CLI="openapi-generator-cli"
 
 # For when we can use the mainline generator again:
 # OPENAPI_GENERATOR_CLI="openapitools/openapi-generator-cli:latest"
+# Get latest generator
+# docker pull openapitools/openapi-generator-cli
 
 set -e
 
@@ -26,30 +28,36 @@ which flutter
 which dart
 
 # Delete the existing files
+rm -rf build/*
 rm -rf test/*
 rm -rf lib/*
 rm -rf doc/*
 rm -rf .openapi-generator
 
-# Get latest generator
-# docker pull openapitools/openapi-generator-cli
-
 spec="$1"
 if [[ $spec == "" ]]; then
-    spec="https://raw.githubusercontent.com/aptos-labs/aptos-core/main/api/doc/openapi.yaml"
+    spec="https://raw.githubusercontent.com/aptos-labs/aptos-core/devnet/api/doc/spec.yaml"
 fi
+
+# Get current version
+CURRENT_VERSION=`cat CHANGELOG.md | head -n 1 | perl -pe "s|.*?## ||"`
 
 # Generate code
 docker run \
   --rm \
   --mount type=bind,source=$PWD,target=/hostdir \
-  $OPENAPI_GENERATOR_CLI generate \
+  $OPENAPI_GENERATOR_CLI \
+  generate \
   -i $spec \
   -g dart-dio \
   -c /hostdir/openapi-generator.yaml \
   -o /hostdir
 
 sleep 1
+
+# Restore and bump the version in pubspec.yaml
+sed -i '' -E "s/0.0.1/$CURRENT_VERSION/" pubspec.yaml
+perl -i -pe 's/^(version:\s+\d+\.\d+\.)(\d+)$/$1.($2+1).$3/e' pubspec.yaml
 
 # Get deps if necessary
 flutter pub get
@@ -65,11 +73,6 @@ find test -type f -name "*.dart" | xargs dart format --fix
 
 # Fix up the README
 sed -i '' -E 's@ \(EXPERIMENTAL\)@@' README.md
-
-# Make sure the user fixes up the version and bumps it
-echo "WARNING: This script resets the version, make sure to bump it yourself manually from what it was"
-
-echo
 
 # Make sure the user adds the necessary serializers
 echo "WARNING: Make sure to make the following changes manually for now: https://github.com/banool/aptos_api_dart/pull/2/files"
