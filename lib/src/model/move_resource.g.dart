@@ -8,9 +8,9 @@ part of 'move_resource.dart';
 
 class _$MoveResource extends MoveResource {
   @override
-  final MoveStructTag type;
+  final String type;
   @override
-  final String data;
+  final JsonObject data;
 
   factory _$MoveResource([void Function(MoveResourceBuilder)? updates]) =>
       (MoveResourceBuilder()..update(updates))._build();
@@ -51,13 +51,13 @@ class MoveResourceBuilder
     implements Builder<MoveResource, MoveResourceBuilder> {
   _$MoveResource? _$v;
 
-  MoveStructTagBuilder? _type;
-  MoveStructTagBuilder get type => _$this._type ??= MoveStructTagBuilder();
-  set type(MoveStructTagBuilder? type) => _$this._type = type;
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
 
-  String? _data;
-  String? get data => _$this._data;
-  set data(String? data) => _$this._data = data;
+  JsonObject? _data;
+  JsonObject? get data => _$this._data;
+  set data(JsonObject? data) => _$this._data = data;
 
   MoveResourceBuilder() {
     MoveResource._defaults(this);
@@ -66,7 +66,7 @@ class MoveResourceBuilder
   MoveResourceBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _type = $v.type.toBuilder();
+      _type = $v.type;
       _data = $v.data;
       _$v = null;
     }
@@ -88,24 +88,12 @@ class MoveResourceBuilder
   MoveResource build() => _build();
 
   _$MoveResource _build() {
-    _$MoveResource _$result;
-    try {
-      _$result = _$v ??
-          _$MoveResource._(
-              type: type.build(),
-              data: BuiltValueNullFieldError.checkNotNull(
-                  data, r'MoveResource', 'data'));
-    } catch (_) {
-      late String _$failedField;
-      try {
-        _$failedField = 'type';
-        type.build();
-      } catch (e) {
-        throw BuiltValueNestedFieldError(
-            r'MoveResource', _$failedField, e.toString());
-      }
-      rethrow;
-    }
+    final _$result = _$v ??
+        _$MoveResource._(
+            type: BuiltValueNullFieldError.checkNotNull(
+                type, r'MoveResource', 'type'),
+            data: BuiltValueNullFieldError.checkNotNull(
+                data, r'MoveResource', 'data'));
     replace(_$result);
     return _$result;
   }

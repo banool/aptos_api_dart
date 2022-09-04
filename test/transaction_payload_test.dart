@@ -7,7 +7,13 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(TransactionPayload, () {
-    // ScriptFunctionId function_
+    // String type
+    test('to test the property `type`', () async {
+      // TODO
+    });
+
+    // Entry function id is string representation of a entry function defined on-chain.  Format: `{address}::{module name}::{function name}`  Both `module name` and `function name` are case-sensitive.
+    // String function_
     test('to test the property `function_`', () async {
       // TODO
     });
@@ -29,11 +35,6 @@ void main() {
 
     // BuiltList<MoveModuleBytecode> modules
     test('to test the property `modules`', () async {
-      // TODO
-    });
-
-    // WriteSet writeSet
-    test('to test the property `writeSet`', () async {
       // TODO
     });
   });

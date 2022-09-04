@@ -10,17 +10,19 @@ class _$AptosError extends AptosError {
   @override
   final String message;
   @override
-  final AptosErrorCode? errorCode;
+  final AptosErrorCode errorCode;
   @override
-  final String? aptosLedgerVersion;
+  final int? vmErrorCode;
 
   factory _$AptosError([void Function(AptosErrorBuilder)? updates]) =>
       (AptosErrorBuilder()..update(updates))._build();
 
   _$AptosError._(
-      {required this.message, this.errorCode, this.aptosLedgerVersion})
+      {required this.message, required this.errorCode, this.vmErrorCode})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(message, r'AptosError', 'message');
+    BuiltValueNullFieldError.checkNotNull(
+        errorCode, r'AptosError', 'errorCode');
   }
 
   @override
@@ -36,13 +38,13 @@ class _$AptosError extends AptosError {
     return other is AptosError &&
         message == other.message &&
         errorCode == other.errorCode &&
-        aptosLedgerVersion == other.aptosLedgerVersion;
+        vmErrorCode == other.vmErrorCode;
   }
 
   @override
   int get hashCode {
     return $jf($jc($jc($jc(0, message.hashCode), errorCode.hashCode),
-        aptosLedgerVersion.hashCode));
+        vmErrorCode.hashCode));
   }
 
   @override
@@ -50,7 +52,7 @@ class _$AptosError extends AptosError {
     return (newBuiltValueToStringHelper(r'AptosError')
           ..add('message', message)
           ..add('errorCode', errorCode)
-          ..add('aptosLedgerVersion', aptosLedgerVersion))
+          ..add('vmErrorCode', vmErrorCode))
         .toString();
   }
 }
@@ -66,10 +68,9 @@ class AptosErrorBuilder implements Builder<AptosError, AptosErrorBuilder> {
   AptosErrorCode? get errorCode => _$this._errorCode;
   set errorCode(AptosErrorCode? errorCode) => _$this._errorCode = errorCode;
 
-  String? _aptosLedgerVersion;
-  String? get aptosLedgerVersion => _$this._aptosLedgerVersion;
-  set aptosLedgerVersion(String? aptosLedgerVersion) =>
-      _$this._aptosLedgerVersion = aptosLedgerVersion;
+  int? _vmErrorCode;
+  int? get vmErrorCode => _$this._vmErrorCode;
+  set vmErrorCode(int? vmErrorCode) => _$this._vmErrorCode = vmErrorCode;
 
   AptosErrorBuilder() {
     AptosError._defaults(this);
@@ -80,7 +81,7 @@ class AptosErrorBuilder implements Builder<AptosError, AptosErrorBuilder> {
     if ($v != null) {
       _message = $v.message;
       _errorCode = $v.errorCode;
-      _aptosLedgerVersion = $v.aptosLedgerVersion;
+      _vmErrorCode = $v.vmErrorCode;
       _$v = null;
     }
     return this;
@@ -105,8 +106,9 @@ class AptosErrorBuilder implements Builder<AptosError, AptosErrorBuilder> {
         _$AptosError._(
             message: BuiltValueNullFieldError.checkNotNull(
                 message, r'AptosError', 'message'),
-            errorCode: errorCode,
-            aptosLedgerVersion: aptosLedgerVersion);
+            errorCode: BuiltValueNullFieldError.checkNotNull(
+                errorCode, r'AptosError', 'errorCode'),
+            vmErrorCode: vmErrorCode);
     replace(_$result);
     return _$result;
   }

@@ -10,12 +10,14 @@ import 'package:aptos_api_dart/src/auth/basic_auth.dart';
 import 'package:aptos_api_dart/src/auth/bearer_auth.dart';
 import 'package:aptos_api_dart/src/auth/oauth.dart';
 import 'package:aptos_api_dart/src/api/accounts_api.dart';
+import 'package:aptos_api_dart/src/api/blocks_api.dart';
 import 'package:aptos_api_dart/src/api/events_api.dart';
 import 'package:aptos_api_dart/src/api/general_api.dart';
+import 'package:aptos_api_dart/src/api/tables_api.dart';
 import 'package:aptos_api_dart/src/api/transactions_api.dart';
 
 class AptosApiDart {
-  static const String basePath = r'http://localhost';
+  static const String basePath = r'https://raw.githubusercontent.com/v1';
 
   final Dio dio;
   final Serializers serializers;
@@ -85,6 +87,12 @@ class AptosApiDart {
     return AccountsApi(dio, serializers);
   }
 
+  /// Get BlocksApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  BlocksApi getBlocksApi() {
+    return BlocksApi(dio, serializers);
+  }
+
   /// Get EventsApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   EventsApi getEventsApi() {
@@ -95,6 +103,12 @@ class AptosApiDart {
   /// by doing that all interceptors will not be executed
   GeneralApi getGeneralApi() {
     return GeneralApi(dio, serializers);
+  }
+
+  /// Get TablesApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  TablesApi getTablesApi() {
+    return TablesApi(dio, serializers);
   }
 
   /// Get TransactionsApi instance, base route and serializer can be overridden by a given but be careful,

@@ -3,7 +3,7 @@ import 'package:aptos_api_dart/aptos_api_dart.dart';
 
 // tests for MultiAgentSignature
 void main() {
-  final instance = MultiAgentSignatureBuilder();
+  //final instance = MultiAgentSignatureBuilder();
   // TODO add properties to the builder and call build()
 
   group(MultiAgentSignature, () {

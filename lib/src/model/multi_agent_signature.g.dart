@@ -6,7 +6,20 @@ part of 'multi_agent_signature.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$MultiAgentSignature extends MultiAgentSignature {
+abstract class MultiAgentSignatureBuilder {
+  void replace(MultiAgentSignature other);
+  void update(void Function(MultiAgentSignatureBuilder) updates);
+  AccountSignatureBuilder get sender;
+  set sender(AccountSignatureBuilder? sender);
+
+  ListBuilder<String> get secondarySignerAddresses;
+  set secondarySignerAddresses(ListBuilder<String>? secondarySignerAddresses);
+
+  ListBuilder<AccountSignature> get secondarySigners;
+  set secondarySigners(ListBuilder<AccountSignature>? secondarySigners);
+}
+
+class _$$MultiAgentSignature extends $MultiAgentSignature {
   @override
   final AccountSignature sender;
   @override
@@ -14,36 +27,36 @@ class _$MultiAgentSignature extends MultiAgentSignature {
   @override
   final BuiltList<AccountSignature> secondarySigners;
 
-  factory _$MultiAgentSignature(
-          [void Function(MultiAgentSignatureBuilder)? updates]) =>
-      (MultiAgentSignatureBuilder()..update(updates))._build();
+  factory _$$MultiAgentSignature(
+          [void Function($MultiAgentSignatureBuilder)? updates]) =>
+      ($MultiAgentSignatureBuilder()..update(updates))._build();
 
-  _$MultiAgentSignature._(
+  _$$MultiAgentSignature._(
       {required this.sender,
       required this.secondarySignerAddresses,
       required this.secondarySigners})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        sender, r'MultiAgentSignature', 'sender');
+        sender, r'$MultiAgentSignature', 'sender');
     BuiltValueNullFieldError.checkNotNull(secondarySignerAddresses,
-        r'MultiAgentSignature', 'secondarySignerAddresses');
+        r'$MultiAgentSignature', 'secondarySignerAddresses');
     BuiltValueNullFieldError.checkNotNull(
-        secondarySigners, r'MultiAgentSignature', 'secondarySigners');
+        secondarySigners, r'$MultiAgentSignature', 'secondarySigners');
   }
 
   @override
-  MultiAgentSignature rebuild(
-          void Function(MultiAgentSignatureBuilder) updates) =>
+  $MultiAgentSignature rebuild(
+          void Function($MultiAgentSignatureBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  MultiAgentSignatureBuilder toBuilder() =>
-      MultiAgentSignatureBuilder()..replace(this);
+  $MultiAgentSignatureBuilder toBuilder() =>
+      $MultiAgentSignatureBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is MultiAgentSignature &&
+    return other is $MultiAgentSignature &&
         sender == other.sender &&
         secondarySignerAddresses == other.secondarySignerAddresses &&
         secondarySigners == other.secondarySigners;
@@ -58,7 +71,7 @@ class _$MultiAgentSignature extends MultiAgentSignature {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'MultiAgentSignature')
+    return (newBuiltValueToStringHelper(r'$MultiAgentSignature')
           ..add('sender', sender)
           ..add('secondarySignerAddresses', secondarySignerAddresses)
           ..add('secondarySigners', secondarySigners))
@@ -66,32 +79,37 @@ class _$MultiAgentSignature extends MultiAgentSignature {
   }
 }
 
-class MultiAgentSignatureBuilder
-    implements Builder<MultiAgentSignature, MultiAgentSignatureBuilder> {
-  _$MultiAgentSignature? _$v;
+class $MultiAgentSignatureBuilder
+    implements
+        Builder<$MultiAgentSignature, $MultiAgentSignatureBuilder>,
+        MultiAgentSignatureBuilder {
+  _$$MultiAgentSignature? _$v;
 
   AccountSignatureBuilder? _sender;
   AccountSignatureBuilder get sender =>
       _$this._sender ??= AccountSignatureBuilder();
-  set sender(AccountSignatureBuilder? sender) => _$this._sender = sender;
+  set sender(covariant AccountSignatureBuilder? sender) =>
+      _$this._sender = sender;
 
   ListBuilder<String>? _secondarySignerAddresses;
   ListBuilder<String> get secondarySignerAddresses =>
       _$this._secondarySignerAddresses ??= ListBuilder<String>();
-  set secondarySignerAddresses(ListBuilder<String>? secondarySignerAddresses) =>
+  set secondarySignerAddresses(
+          covariant ListBuilder<String>? secondarySignerAddresses) =>
       _$this._secondarySignerAddresses = secondarySignerAddresses;
 
   ListBuilder<AccountSignature>? _secondarySigners;
   ListBuilder<AccountSignature> get secondarySigners =>
       _$this._secondarySigners ??= ListBuilder<AccountSignature>();
-  set secondarySigners(ListBuilder<AccountSignature>? secondarySigners) =>
+  set secondarySigners(
+          covariant ListBuilder<AccountSignature>? secondarySigners) =>
       _$this._secondarySigners = secondarySigners;
 
-  MultiAgentSignatureBuilder() {
-    MultiAgentSignature._defaults(this);
+  $MultiAgentSignatureBuilder() {
+    $MultiAgentSignature._defaults(this);
   }
 
-  MultiAgentSignatureBuilder get _$this {
+  $MultiAgentSignatureBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _sender = $v.sender.toBuilder();
@@ -103,24 +121,24 @@ class MultiAgentSignatureBuilder
   }
 
   @override
-  void replace(MultiAgentSignature other) {
+  void replace(covariant $MultiAgentSignature other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$MultiAgentSignature;
+    _$v = other as _$$MultiAgentSignature;
   }
 
   @override
-  void update(void Function(MultiAgentSignatureBuilder)? updates) {
+  void update(void Function($MultiAgentSignatureBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  MultiAgentSignature build() => _build();
+  $MultiAgentSignature build() => _build();
 
-  _$MultiAgentSignature _build() {
-    _$MultiAgentSignature _$result;
+  _$$MultiAgentSignature _build() {
+    _$$MultiAgentSignature _$result;
     try {
       _$result = _$v ??
-          _$MultiAgentSignature._(
+          _$$MultiAgentSignature._(
               sender: sender.build(),
               secondarySignerAddresses: secondarySignerAddresses.build(),
               secondarySigners: secondarySigners.build());
@@ -135,7 +153,7 @@ class MultiAgentSignatureBuilder
         secondarySigners.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'MultiAgentSignature', _$failedField, e.toString());
+            r'$MultiAgentSignature', _$failedField, e.toString());
       }
       rethrow;
     }

@@ -9,20 +9,14 @@ part of 'move_struct_generic_type_param.dart';
 class _$MoveStructGenericTypeParam extends MoveStructGenericTypeParam {
   @override
   final BuiltList<String> constraints;
-  @override
-  final bool isPhantom;
 
   factory _$MoveStructGenericTypeParam(
           [void Function(MoveStructGenericTypeParamBuilder)? updates]) =>
       (MoveStructGenericTypeParamBuilder()..update(updates))._build();
 
-  _$MoveStructGenericTypeParam._(
-      {required this.constraints, required this.isPhantom})
-      : super._() {
+  _$MoveStructGenericTypeParam._({required this.constraints}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
         constraints, r'MoveStructGenericTypeParam', 'constraints');
-    BuiltValueNullFieldError.checkNotNull(
-        isPhantom, r'MoveStructGenericTypeParam', 'isPhantom');
   }
 
   @override
@@ -38,20 +32,18 @@ class _$MoveStructGenericTypeParam extends MoveStructGenericTypeParam {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is MoveStructGenericTypeParam &&
-        constraints == other.constraints &&
-        isPhantom == other.isPhantom;
+        constraints == other.constraints;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, constraints.hashCode), isPhantom.hashCode));
+    return $jf($jc(0, constraints.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'MoveStructGenericTypeParam')
-          ..add('constraints', constraints)
-          ..add('isPhantom', isPhantom))
+          ..add('constraints', constraints))
         .toString();
   }
 }
@@ -67,10 +59,6 @@ class MoveStructGenericTypeParamBuilder
   set constraints(ListBuilder<String>? constraints) =>
       _$this._constraints = constraints;
 
-  bool? _isPhantom;
-  bool? get isPhantom => _$this._isPhantom;
-  set isPhantom(bool? isPhantom) => _$this._isPhantom = isPhantom;
-
   MoveStructGenericTypeParamBuilder() {
     MoveStructGenericTypeParam._defaults(this);
   }
@@ -79,7 +67,6 @@ class MoveStructGenericTypeParamBuilder
     final $v = _$v;
     if ($v != null) {
       _constraints = $v.constraints.toBuilder();
-      _isPhantom = $v.isPhantom;
       _$v = null;
     }
     return this;
@@ -103,10 +90,7 @@ class MoveStructGenericTypeParamBuilder
     _$MoveStructGenericTypeParam _$result;
     try {
       _$result = _$v ??
-          _$MoveStructGenericTypeParam._(
-              constraints: constraints.build(),
-              isPhantom: BuiltValueNullFieldError.checkNotNull(
-                  isPhantom, r'MoveStructGenericTypeParam', 'isPhantom'));
+          _$MoveStructGenericTypeParam._(constraints: constraints.build());
     } catch (_) {
       late String _$failedField;
       try {

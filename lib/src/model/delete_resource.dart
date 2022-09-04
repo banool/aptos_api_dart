@@ -2,38 +2,30 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
-import 'package:aptos_api_dart/src/model/move_struct_tag.dart';
+// ignore_for_file: unused_element
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:one_of/one_of.dart';
-import 'package:one_of/any_of.dart';
-// ignore_for_file: unused_element, unused_import
 
 part 'delete_resource.g.dart';
 
 /// DeleteResource
 ///
 /// Properties:
-/// * [address]
+/// * [address] - Hex encoded 32 byte Aptos account address
 /// * [stateKeyHash]
-/// * [resource]
-@BuiltValue()
-abstract class DeleteResource
-    implements Built<DeleteResource, DeleteResourceBuilder> {
+/// * [resource] - String representation of a MoveStructTag (on-chain Move struct type). This exists so you can specify MoveStructTags as path / query parameters, e.g. for get_events_by_event_handle.  It is a combination of:   1. `move_module_address`, `module_name` and `struct_name`, all joined by `::`   2. `struct generic type parameters` joined by `, `  Examples:   * `0x1::coin::CoinStore<0x1::aptos_coin::AptosCoin>`   * `0x1::account::Account`  Note:   1. Empty chars should be ignored when comparing 2 struct tag ids.   2. When used in an URL path, should be encoded by url-encoding (AKA percent-encoding).  See [doc](https://aptos.dev/concepts/basics-accounts) for more details.
+@BuiltValue(instantiable: false)
+abstract class DeleteResource {
+  /// Hex encoded 32 byte Aptos account address
   @BuiltValueField(wireName: r'address')
   String get address;
+
   @BuiltValueField(wireName: r'state_key_hash')
   String get stateKeyHash;
+
+  /// String representation of a MoveStructTag (on-chain Move struct type). This exists so you can specify MoveStructTags as path / query parameters, e.g. for get_events_by_event_handle.  It is a combination of:   1. `move_module_address`, `module_name` and `struct_name`, all joined by `::`   2. `struct generic type parameters` joined by `, `  Examples:   * `0x1::coin::CoinStore<0x1::aptos_coin::AptosCoin>`   * `0x1::account::Account`  Note:   1. Empty chars should be ignored when comparing 2 struct tag ids.   2. When used in an URL path, should be encoded by url-encoding (AKA percent-encoding).  See [doc](https://aptos.dev/concepts/basics-accounts) for more details.
   @BuiltValueField(wireName: r'resource')
-  MoveStructTag get resource;
-
-  DeleteResource._();
-
-  factory DeleteResource([void updates(DeleteResourceBuilder b)]) =
-      _$DeleteResource;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(DeleteResourceBuilder b) => b;
+  String get resource;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<DeleteResource> get serializer =>
@@ -43,56 +35,122 @@ abstract class DeleteResource
 class _$DeleteResourceSerializer
     implements PrimitiveSerializer<DeleteResource> {
   @override
-  final Iterable<Type> types = const [DeleteResource, _$DeleteResource];
+  final Iterable<Type> types = const [DeleteResource];
 
   @override
   final String wireName = r'DeleteResource';
 
   Iterable<Object?> _serializeProperties(
-      Serializers serializers, DeleteResource object,
-      {FullType specifiedType = FullType.unspecified}) sync* {
+    Serializers serializers,
+    DeleteResource object, {
+    FullType specifiedType = FullType.unspecified,
+  }) sync* {
     yield r'address';
-    yield serializers.serialize(object.address,
-        specifiedType: const FullType(String));
+    yield serializers.serialize(
+      object.address,
+      specifiedType: const FullType(String),
+    );
     yield r'state_key_hash';
-    yield serializers.serialize(object.stateKeyHash,
-        specifiedType: const FullType(String));
+    yield serializers.serialize(
+      object.stateKeyHash,
+      specifiedType: const FullType(String),
+    );
     yield r'resource';
-    yield serializers.serialize(object.resource,
-        specifiedType: const FullType(MoveStructTag));
+    yield serializers.serialize(
+      object.resource,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override
-  Object serialize(Serializers serializers, DeleteResource object,
-      {FullType specifiedType = FullType.unspecified}) {
+  Object serialize(
+    Serializers serializers,
+    DeleteResource object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     return _serializeProperties(serializers, object,
             specifiedType: specifiedType)
         .toList();
   }
 
-  void _deserializeProperties(Serializers serializers, Object serialized,
-      {FullType specifiedType = FullType.unspecified,
-      required List<Object?> serializedList,
-      required DeleteResourceBuilder result,
-      required List<Object?> unhandled}) {
+  @override
+  DeleteResource deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return serializers.deserialize(serialized,
+        specifiedType: FullType($DeleteResource)) as $DeleteResource;
+  }
+}
+
+/// a concrete implementation of [DeleteResource], since [DeleteResource] is not instantiable
+@BuiltValue(instantiable: true)
+abstract class $DeleteResource
+    implements DeleteResource, Built<$DeleteResource, $DeleteResourceBuilder> {
+  $DeleteResource._();
+
+  factory $DeleteResource([void Function($DeleteResourceBuilder)? updates]) =
+      _$$DeleteResource;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults($DeleteResourceBuilder b) => b;
+
+  @BuiltValueSerializer(custom: true)
+  static Serializer<$DeleteResource> get serializer =>
+      _$$DeleteResourceSerializer();
+}
+
+class _$$DeleteResourceSerializer
+    implements PrimitiveSerializer<$DeleteResource> {
+  @override
+  final Iterable<Type> types = const [$DeleteResource, _$$DeleteResource];
+
+  @override
+  final String wireName = r'$DeleteResource';
+
+  @override
+  Object serialize(
+    Serializers serializers,
+    $DeleteResource object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return serializers.serialize(object,
+        specifiedType: FullType(DeleteResource))!;
+  }
+
+  void _deserializeProperties(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+    required List<Object?> serializedList,
+    required DeleteResourceBuilder result,
+    required List<Object?> unhandled,
+  }) {
     for (var i = 0; i < serializedList.length; i += 2) {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
         case r'address':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
           result.address = valueDes;
           break;
         case r'state_key_hash':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
           result.stateKeyHash = valueDes;
           break;
         case r'resource':
-          final valueDes = serializers.deserialize(value,
-              specifiedType: const FullType(MoveStructTag)) as MoveStructTag;
-          result.resource.replace(valueDes);
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.resource = valueDes;
           break;
         default:
           unhandled.add(key);
@@ -103,16 +161,22 @@ class _$DeleteResourceSerializer
   }
 
   @override
-  DeleteResource deserialize(Serializers serializers, Object serialized,
-      {FullType specifiedType = FullType.unspecified}) {
-    final result = DeleteResourceBuilder();
+  $DeleteResource deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = $DeleteResourceBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
-    _deserializeProperties(serializers, serialized,
-        specifiedType: specifiedType,
-        serializedList: serializedList,
-        unhandled: unhandled,
-        result: result);
+    _deserializeProperties(
+      serializers,
+      serialized,
+      specifiedType: specifiedType,
+      serializedList: serializedList,
+      unhandled: unhandled,
+      result: result,
+    );
     return result.build();
   }
 }

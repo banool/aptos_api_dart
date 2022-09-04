@@ -28,10 +28,10 @@ which flutter
 which dart
 
 # Delete the existing files
-rm -rf build/*
-rm -rf test/*
-rm -rf lib/*
-rm -rf doc/*
+rm -rf build
+rm -rf test
+rm -rf lib
+rm -rf doc
 rm -rf .openapi-generator
 
 spec="$1"
@@ -73,8 +73,5 @@ find test -type f -name "*.dart" | xargs dart format --fix
 
 # Fix up the README
 sed -i '' -E 's@ \(EXPERIMENTAL\)@@' README.md
-
-# Make sure the user adds the necessary serializers
-echo "WARNING: Make sure to make the following changes manually for now: https://github.com/banool/aptos_api_dart/pull/2/files"
 
 echo "Generated spec from: $spec" > source.txt

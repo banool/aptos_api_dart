@@ -42,12 +42,12 @@ Serializer<RoleType> _$roleTypeSerializer = _$RoleTypeSerializer();
 
 class _$RoleTypeSerializer implements PrimitiveSerializer<RoleType> {
   static const Map<String, Object> _toWire = <String, Object>{
-    'validator': 'Validator',
-    'fullNode': 'FullNode',
+    'validator': 'validator',
+    'fullNode': 'full_node',
   };
   static const Map<Object, String> _fromWire = <Object, String>{
-    'Validator': 'validator',
-    'FullNode': 'fullNode',
+    'validator': 'validator',
+    'full_node': 'fullNode',
   };
 
   @override

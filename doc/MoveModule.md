@@ -8,9 +8,9 @@ import 'package:aptos_api_dart/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address** | **String** |  | 
+**address** | **String** | Hex encoded 32 byte Aptos account address | 
 **name** | **String** |  | 
-**friends** | [**BuiltList&lt;MoveModuleId&gt;**](MoveModuleId.md) |  | 
+**friends** | **BuiltList&lt;String&gt;** |  | 
 **exposedFunctions** | [**BuiltList&lt;MoveFunction&gt;**](MoveFunction.md) |  | 
 **structs** | [**BuiltList&lt;MoveStruct&gt;**](MoveStruct.md) |  | 
 

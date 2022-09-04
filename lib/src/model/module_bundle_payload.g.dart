@@ -6,32 +6,39 @@ part of 'module_bundle_payload.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$ModuleBundlePayload extends ModuleBundlePayload {
+abstract class ModuleBundlePayloadBuilder {
+  void replace(ModuleBundlePayload other);
+  void update(void Function(ModuleBundlePayloadBuilder) updates);
+  ListBuilder<MoveModuleBytecode> get modules;
+  set modules(ListBuilder<MoveModuleBytecode>? modules);
+}
+
+class _$$ModuleBundlePayload extends $ModuleBundlePayload {
   @override
   final BuiltList<MoveModuleBytecode> modules;
 
-  factory _$ModuleBundlePayload(
-          [void Function(ModuleBundlePayloadBuilder)? updates]) =>
-      (ModuleBundlePayloadBuilder()..update(updates))._build();
+  factory _$$ModuleBundlePayload(
+          [void Function($ModuleBundlePayloadBuilder)? updates]) =>
+      ($ModuleBundlePayloadBuilder()..update(updates))._build();
 
-  _$ModuleBundlePayload._({required this.modules}) : super._() {
+  _$$ModuleBundlePayload._({required this.modules}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        modules, r'ModuleBundlePayload', 'modules');
+        modules, r'$ModuleBundlePayload', 'modules');
   }
 
   @override
-  ModuleBundlePayload rebuild(
-          void Function(ModuleBundlePayloadBuilder) updates) =>
+  $ModuleBundlePayload rebuild(
+          void Function($ModuleBundlePayloadBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ModuleBundlePayloadBuilder toBuilder() =>
-      ModuleBundlePayloadBuilder()..replace(this);
+  $ModuleBundlePayloadBuilder toBuilder() =>
+      $ModuleBundlePayloadBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is ModuleBundlePayload && modules == other.modules;
+    return other is $ModuleBundlePayload && modules == other.modules;
   }
 
   @override
@@ -41,27 +48,29 @@ class _$ModuleBundlePayload extends ModuleBundlePayload {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'ModuleBundlePayload')
+    return (newBuiltValueToStringHelper(r'$ModuleBundlePayload')
           ..add('modules', modules))
         .toString();
   }
 }
 
-class ModuleBundlePayloadBuilder
-    implements Builder<ModuleBundlePayload, ModuleBundlePayloadBuilder> {
-  _$ModuleBundlePayload? _$v;
+class $ModuleBundlePayloadBuilder
+    implements
+        Builder<$ModuleBundlePayload, $ModuleBundlePayloadBuilder>,
+        ModuleBundlePayloadBuilder {
+  _$$ModuleBundlePayload? _$v;
 
   ListBuilder<MoveModuleBytecode>? _modules;
   ListBuilder<MoveModuleBytecode> get modules =>
       _$this._modules ??= ListBuilder<MoveModuleBytecode>();
-  set modules(ListBuilder<MoveModuleBytecode>? modules) =>
+  set modules(covariant ListBuilder<MoveModuleBytecode>? modules) =>
       _$this._modules = modules;
 
-  ModuleBundlePayloadBuilder() {
-    ModuleBundlePayload._defaults(this);
+  $ModuleBundlePayloadBuilder() {
+    $ModuleBundlePayload._defaults(this);
   }
 
-  ModuleBundlePayloadBuilder get _$this {
+  $ModuleBundlePayloadBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _modules = $v.modules.toBuilder();
@@ -71,23 +80,23 @@ class ModuleBundlePayloadBuilder
   }
 
   @override
-  void replace(ModuleBundlePayload other) {
+  void replace(covariant $ModuleBundlePayload other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$ModuleBundlePayload;
+    _$v = other as _$$ModuleBundlePayload;
   }
 
   @override
-  void update(void Function(ModuleBundlePayloadBuilder)? updates) {
+  void update(void Function($ModuleBundlePayloadBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  ModuleBundlePayload build() => _build();
+  $ModuleBundlePayload build() => _build();
 
-  _$ModuleBundlePayload _build() {
-    _$ModuleBundlePayload _$result;
+  _$$ModuleBundlePayload _build() {
+    _$$ModuleBundlePayload _$result;
     try {
-      _$result = _$v ?? _$ModuleBundlePayload._(modules: modules.build());
+      _$result = _$v ?? _$$ModuleBundlePayload._(modules: modules.build());
     } catch (_) {
       late String _$failedField;
       try {
@@ -95,7 +104,7 @@ class ModuleBundlePayloadBuilder
         modules.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'ModuleBundlePayload', _$failedField, e.toString());
+            r'$ModuleBundlePayload', _$failedField, e.toString());
       }
       rethrow;
     }

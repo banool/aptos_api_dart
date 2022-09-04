@@ -2,6 +2,7 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
+// ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -9,9 +10,9 @@ import 'package:built_value/serializer.dart';
 part 'role_type.g.dart';
 
 class RoleType extends EnumClass {
-  @BuiltValueEnumConst(wireName: r'Validator')
+  @BuiltValueEnumConst(wireName: r'validator')
   static const RoleType validator = _$validator;
-  @BuiltValueEnumConst(wireName: r'FullNode')
+  @BuiltValueEnumConst(wireName: r'full_node')
   static const RoleType fullNode = _$fullNode;
 
   static Serializer<RoleType> get serializer => _$roleTypeSerializer;

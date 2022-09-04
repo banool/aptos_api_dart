@@ -6,29 +6,38 @@ part of 'write_set_payload.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$WriteSetPayload extends WriteSetPayload {
+abstract class WriteSetPayloadBuilder {
+  void replace(WriteSetPayload other);
+  void update(void Function(WriteSetPayloadBuilder) updates);
+  WriteSetBuilder get writeSet;
+  set writeSet(WriteSetBuilder? writeSet);
+}
+
+class _$$WriteSetPayload extends $WriteSetPayload {
   @override
   final WriteSet writeSet;
 
-  factory _$WriteSetPayload([void Function(WriteSetPayloadBuilder)? updates]) =>
-      (WriteSetPayloadBuilder()..update(updates))._build();
+  factory _$$WriteSetPayload(
+          [void Function($WriteSetPayloadBuilder)? updates]) =>
+      ($WriteSetPayloadBuilder()..update(updates))._build();
 
-  _$WriteSetPayload._({required this.writeSet}) : super._() {
+  _$$WriteSetPayload._({required this.writeSet}) : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        writeSet, r'WriteSetPayload', 'writeSet');
+        writeSet, r'$WriteSetPayload', 'writeSet');
   }
 
   @override
-  WriteSetPayload rebuild(void Function(WriteSetPayloadBuilder) updates) =>
+  $WriteSetPayload rebuild(void Function($WriteSetPayloadBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  WriteSetPayloadBuilder toBuilder() => WriteSetPayloadBuilder()..replace(this);
+  $WriteSetPayloadBuilder toBuilder() =>
+      $WriteSetPayloadBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is WriteSetPayload && writeSet == other.writeSet;
+    return other is $WriteSetPayload && writeSet == other.writeSet;
   }
 
   @override
@@ -38,25 +47,28 @@ class _$WriteSetPayload extends WriteSetPayload {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'WriteSetPayload')
+    return (newBuiltValueToStringHelper(r'$WriteSetPayload')
           ..add('writeSet', writeSet))
         .toString();
   }
 }
 
-class WriteSetPayloadBuilder
-    implements Builder<WriteSetPayload, WriteSetPayloadBuilder> {
-  _$WriteSetPayload? _$v;
+class $WriteSetPayloadBuilder
+    implements
+        Builder<$WriteSetPayload, $WriteSetPayloadBuilder>,
+        WriteSetPayloadBuilder {
+  _$$WriteSetPayload? _$v;
 
   WriteSetBuilder? _writeSet;
   WriteSetBuilder get writeSet => _$this._writeSet ??= WriteSetBuilder();
-  set writeSet(WriteSetBuilder? writeSet) => _$this._writeSet = writeSet;
+  set writeSet(covariant WriteSetBuilder? writeSet) =>
+      _$this._writeSet = writeSet;
 
-  WriteSetPayloadBuilder() {
-    WriteSetPayload._defaults(this);
+  $WriteSetPayloadBuilder() {
+    $WriteSetPayload._defaults(this);
   }
 
-  WriteSetPayloadBuilder get _$this {
+  $WriteSetPayloadBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _writeSet = $v.writeSet.toBuilder();
@@ -66,23 +78,23 @@ class WriteSetPayloadBuilder
   }
 
   @override
-  void replace(WriteSetPayload other) {
+  void replace(covariant $WriteSetPayload other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$WriteSetPayload;
+    _$v = other as _$$WriteSetPayload;
   }
 
   @override
-  void update(void Function(WriteSetPayloadBuilder)? updates) {
+  void update(void Function($WriteSetPayloadBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  WriteSetPayload build() => _build();
+  $WriteSetPayload build() => _build();
 
-  _$WriteSetPayload _build() {
-    _$WriteSetPayload _$result;
+  _$$WriteSetPayload _build() {
+    _$$WriteSetPayload _$result;
     try {
-      _$result = _$v ?? _$WriteSetPayload._(writeSet: writeSet.build());
+      _$result = _$v ?? _$$WriteSetPayload._(writeSet: writeSet.build());
     } catch (_) {
       late String _$failedField;
       try {
@@ -90,7 +102,7 @@ class WriteSetPayloadBuilder
         writeSet.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'WriteSetPayload', _$failedField, e.toString());
+            r'$WriteSetPayload', _$failedField, e.toString());
       }
       rethrow;
     }

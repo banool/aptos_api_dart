@@ -2,25 +2,32 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
+// ignore_for_file: unused_element
 import 'package:aptos_api_dart/src/model/write_set.dart';
-import 'package:aptos_api_dart/src/model/write_set_payload.dart';
+import 'package:aptos_api_dart/src/model/genesis_payload_write_set_payload.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:one_of/one_of.dart';
-import 'package:one_of/any_of.dart';
-// ignore_for_file: unused_element, unused_import
 
 part 'genesis_payload.g.dart';
 
 /// GenesisPayload
 ///
 /// Properties:
+/// * [type]
 /// * [writeSet]
 @BuiltValue()
 abstract class GenesisPayload
     implements Built<GenesisPayload, GenesisPayloadBuilder> {
-  /// One Of [WriteSetPayload]
+  /// One Of [GenesisPayloadWriteSetPayload]
   OneOf get oneOf;
+
+  static const String discriminatorFieldName = r'type';
+
+  static const Map<String, Type> discriminatorMapping = {
+    r'GenesisPayload_WriteSetPayload': GenesisPayloadWriteSetPayload,
+    r'write_set_payload': GenesisPayloadWriteSetPayload,
+  };
 
   GenesisPayload._();
 
@@ -44,28 +51,65 @@ class _$GenesisPayloadSerializer
   final String wireName = r'GenesisPayload';
 
   Iterable<Object?> _serializeProperties(
-      Serializers serializers, GenesisPayload object,
-      {FullType specifiedType = FullType.unspecified}) sync* {}
+    Serializers serializers,
+    GenesisPayload object, {
+    FullType specifiedType = FullType.unspecified,
+  }) sync* {}
 
   @override
-  Object serialize(Serializers serializers, GenesisPayload object,
-      {FullType specifiedType = FullType.unspecified}) {
+  Object serialize(
+    Serializers serializers,
+    GenesisPayload object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final oneOf = object.oneOf;
     return serializers.serialize(oneOf.value,
         specifiedType: FullType(oneOf.valueType))!;
   }
 
   @override
-  GenesisPayload deserialize(Serializers serializers, Object serialized,
-      {FullType specifiedType = FullType.unspecified}) {
+  GenesisPayload deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = GenesisPayloadBuilder();
     Object? oneOfDataSrc;
-    final targetType = const FullType(OneOf, [
-      FullType(WriteSetPayload),
-    ]);
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final discIndex =
+        serializedList.indexOf(GenesisPayload.discriminatorFieldName) + 1;
+    final discValue = serializers.deserialize(serializedList[discIndex],
+        specifiedType: FullType(String)) as String;
     oneOfDataSrc = serialized;
-    result.oneOf = serializers.deserialize(oneOfDataSrc,
-        specifiedType: targetType) as OneOf;
+    final oneOfTypes = [
+      GenesisPayloadWriteSetPayload,
+      GenesisPayloadWriteSetPayload,
+    ];
+    Object oneOfResult;
+    Type oneOfType;
+    switch (discValue) {
+      case 'GenesisPayload_WriteSetPayload':
+        oneOfResult = serializers.deserialize(
+          oneOfDataSrc,
+          specifiedType: FullType(GenesisPayloadWriteSetPayload),
+        ) as GenesisPayloadWriteSetPayload;
+        oneOfType = GenesisPayloadWriteSetPayload;
+        break;
+      case 'write_set_payload':
+        oneOfResult = serializers.deserialize(
+          oneOfDataSrc,
+          specifiedType: FullType(GenesisPayloadWriteSetPayload),
+        ) as GenesisPayloadWriteSetPayload;
+        oneOfType = GenesisPayloadWriteSetPayload;
+        break;
+      default:
+        throw UnsupportedError(
+            "Couldn't deserialize oneOf for the discriminator value: ${discValue}");
+    }
+    result.oneOf = OneOfDynamic(
+        typeIndex: oneOfTypes.indexOf(oneOfType),
+        types: oneOfTypes,
+        value: oneOfResult);
     return result.build();
   }
 }

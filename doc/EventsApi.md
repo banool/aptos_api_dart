@@ -5,7 +5,7 @@
 import 'package:aptos_api_dart/api.dart';
 ```
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://raw.githubusercontent.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **getEventsByEventHandle**
-> BuiltList<Event> getEventsByEventHandle(address, eventHandle, fieldName, start, limit)
+> BuiltList<VersionedEvent> getEventsByEventHandle(address, eventHandle, fieldName, start, limit)
 
 Get events by event handle
 
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BuiltList&lt;Event&gt;**](Event.md)
+[**BuiltList&lt;VersionedEvent&gt;**](VersionedEvent.md)
 
 ### Authorization
 
@@ -65,11 +65,11 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getEventsByEventKey**
-> BuiltList<Event> getEventsByEventKey(eventKey, start, limit)
+> BuiltList<VersionedEvent> getEventsByEventKey(eventKey, start, limit)
 
 Get events by event key
 
-todo
+This endpoint allows you to get a list of events of a specific type as identified by its event key, which is a globally unique ID.
 
 ### Example
 ```dart
@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BuiltList&lt;Event&gt;**](Event.md)
+[**BuiltList&lt;VersionedEvent&gt;**](VersionedEvent.md)
 
 ### Authorization
 

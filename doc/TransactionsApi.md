@@ -5,16 +5,18 @@
 import 'package:aptos_api_dart/api.dart';
 ```
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://raw.githubusercontent.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**encodeSubmission**](TransactionsApi.md#encodesubmission) | **POST** /transactions/encode_submission | Encode submission
+[**estimateGasPrice**](TransactionsApi.md#estimategasprice) | **GET** /estimate_gas_price | Estimate gas price
 [**getAccountTransactions**](TransactionsApi.md#getaccounttransactions) | **GET** /accounts/{address}/transactions | Get account transactions
 [**getTransactionByHash**](TransactionsApi.md#gettransactionbyhash) | **GET** /transactions/by_hash/{txn_hash} | Get transaction by hash
 [**getTransactionByVersion**](TransactionsApi.md#gettransactionbyversion) | **GET** /transactions/by_version/{txn_version} | Get transaction by version
 [**getTransactions**](TransactionsApi.md#gettransactions) | **GET** /transactions | Get transactions
 [**simulateTransaction**](TransactionsApi.md#simulatetransaction) | **POST** /transactions/simulate | Simulate transaction
+[**submitBatchTransactions**](TransactionsApi.md#submitbatchtransactions) | **POST** /transactions/batch | 
 [**submitTransaction**](TransactionsApi.md#submittransaction) | **POST** /transactions | Submit transaction
 
 
@@ -61,12 +63,49 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **estimateGasPrice**
+> GasEstimation estimateGasPrice()
+
+Estimate gas price
+
+### Example
+```dart
+import 'package:aptos_api_dart/api.dart';
+
+final api = AptosApiDart().getTransactionsApi();
+
+try {
+    final response = api.estimateGasPrice();
+    print(response);
+} catch on DioError (e) {
+    print('Exception when calling TransactionsApi->estimateGasPrice: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GasEstimation**](GasEstimation.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/x-bcs
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getAccountTransactions**
 > BuiltList<Transaction> getAccountTransactions(address, start, limit)
 
 Get account transactions
 
-todo todo, note that this currently returns [] even if the account doesn't exist, when it should really return a 404.
+todo
 
 ### Example
 ```dart
@@ -113,7 +152,7 @@ No authorization required
 
 Get transaction by hash
 
-todo
+Look up a transaction by its hash. This is the same hash that is returned by the API when submitting a transaction (see PendingTransaction).  When given a transaction hash, the server first looks for the transaction in storage (on-chain, committed). If no on-chain transaction is found, it looks the transaction up by hash in the mempool (pending, not yet committed).  To create a transaction hash by yourself, do the following: 1. Hash message bytes: \"RawTransaction\" bytes + BCS bytes of [Transaction](https://aptos-labs.github.io/aptos-core/aptos_types/transaction/enum.Transaction.html). 2. Apply hash algorithm `SHA3-256` to the hash message bytes. 3. Hex-encode the hash bytes with `0x` prefix.
 
 ### Example
 ```dart
@@ -199,7 +238,7 @@ No authorization required
 
 Get transactions
 
-todo
+Get on-chain (meaning, committed) transactions. You may specify from when you want the transactions and how to include in the response.
 
 ### Example
 ```dart
@@ -240,11 +279,11 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **simulateTransaction**
-> BuiltList<Transaction> simulateTransaction(submitTransactionRequest)
+> BuiltList<UserTransaction> simulateTransaction(submitTransactionRequest)
 
 Simulate transaction
 
-Simulate submitting a transaction. To use this, you must: - Create a SignedTransaction with a zero-padded signature. - Submit a SubmitTransactionRequest containing a UserTransactionRequest containing that signature.
+Simulate submitting a transaction. To use this, you must: - Create a SignedTransaction with a zero-padded signature. - Submit a SubmitTransactionRequest containing a UserTransactionRequest containing that signature.  To use this endpoint with BCS, you must submit a SignedTransaction encoded as BCS. See SignedTransaction in types/src/transaction/mod.rs.
 
 ### Example
 ```dart
@@ -269,7 +308,48 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BuiltList&lt;Transaction&gt;**](Transaction.md)
+[**BuiltList&lt;UserTransaction&gt;**](UserTransaction.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/x.aptos.signed_transaction+bcs
+ - **Accept**: application/json, application/x-bcs
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **submitBatchTransactions**
+> TransactionsBatchSubmissionResult submitBatchTransactions(submitTransactionRequest)
+
+
+
+### Example
+```dart
+import 'package:aptos_api_dart/api.dart';
+
+final api = AptosApiDart().getTransactionsApi();
+final BuiltList<SubmitTransactionRequest> submitTransactionRequest = ; // BuiltList<SubmitTransactionRequest> | 
+
+try {
+    final response = api.submitBatchTransactions(submitTransactionRequest);
+    print(response);
+} catch on DioError (e) {
+    print('Exception when calling TransactionsApi->submitBatchTransactions: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **submitTransactionRequest** | [**BuiltList&lt;SubmitTransactionRequest&gt;**](SubmitTransactionRequest.md)|  | 
+
+### Return type
+
+[**TransactionsBatchSubmissionResult**](TransactionsBatchSubmissionResult.md)
 
 ### Authorization
 
@@ -287,7 +367,7 @@ No authorization required
 
 Submit transaction
 
-todo
+This endpoint accepts transaction submissions in two formats.  To submit a transaction as JSON, you must submit a SubmitTransactionRequest. To build this request, do the following:  1. Encode the transaction as BCS. If you are using a language that has native BCS support, make sure of that library. If not, you may take advantage of /transactions/encode_submission. When using this endpoint, make sure you trust the node you're talking to, as it is possible they could manipulate your request. 2. Sign the encoded transaction and use it to create a TransactionSignature. 3. Submit the request. Make sure to use the \"application/json\" Content-Type.  To submit a transaction as BCS, you must submit a SignedTransaction encoded as BCS. See SignedTransaction in types/src/transaction/mod.rs.
 
 ### Example
 ```dart

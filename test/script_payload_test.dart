@@ -3,7 +3,7 @@ import 'package:aptos_api_dart/aptos_api_dart.dart';
 
 // tests for ScriptPayload
 void main() {
-  final instance = ScriptPayloadBuilder();
+  //final instance = ScriptPayloadBuilder();
   // TODO add properties to the builder and call build()
 
   group(ScriptPayload, () {

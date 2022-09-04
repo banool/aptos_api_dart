@@ -7,6 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(AptosError, () {
+    // A message describing the error
     // String message
     test('to test the property `message`', () async {
       // TODO
@@ -17,8 +18,9 @@ void main() {
       // TODO
     });
 
-    // String aptosLedgerVersion
-    test('to test the property `aptosLedgerVersion`', () async {
+    // A code providing VM error details when submitting transactions to the VM
+    // int vmErrorCode
+    test('to test the property `vmErrorCode`', () async {
       // TODO
     });
   });

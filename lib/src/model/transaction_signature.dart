@@ -2,36 +2,50 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
+// ignore_for_file: unused_element
 import 'package:aptos_api_dart/src/model/account_signature.dart';
-import 'package:aptos_api_dart/src/model/multi_ed25519_signature.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:aptos_api_dart/src/model/multi_agent_signature.dart';
-import 'package:aptos_api_dart/src/model/ed25519_signature.dart';
+import 'package:aptos_api_dart/src/model/transaction_signature_multi_ed25519_signature.dart';
+import 'package:aptos_api_dart/src/model/transaction_signature_ed25519_signature.dart';
+import 'package:aptos_api_dart/src/model/transaction_signature_multi_agent_signature.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:one_of/one_of.dart';
-import 'package:one_of/any_of.dart';
-// ignore_for_file: unused_element, unused_import
 
 part 'transaction_signature.g.dart';
 
 /// TransactionSignature
 ///
 /// Properties:
-/// * [publicKey]
-/// * [signature]
+/// * [type]
+/// * [publicKey] - All bytes (Vec<u8>) data is represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Unlike the `Address` type, HexEncodedBytes will not trim any zeros.
+/// * [signature] - All bytes (Vec<u8>) data is represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Unlike the `Address` type, HexEncodedBytes will not trim any zeros.
 /// * [publicKeys]
 /// * [signatures]
 /// * [threshold]
-/// * [bitmap]
+/// * [bitmap] - All bytes (Vec<u8>) data is represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Unlike the `Address` type, HexEncodedBytes will not trim any zeros.
 /// * [sender]
 /// * [secondarySignerAddresses]
 /// * [secondarySigners]
 @BuiltValue()
 abstract class TransactionSignature
     implements Built<TransactionSignature, TransactionSignatureBuilder> {
-  /// One Of [Ed25519Signature], [MultiAgentSignature], [MultiEd25519Signature]
+  /// One Of [TransactionSignatureEd25519Signature], [TransactionSignatureMultiAgentSignature], [TransactionSignatureMultiEd25519Signature]
   OneOf get oneOf;
+
+  static const String discriminatorFieldName = r'type';
+
+  static const Map<String, Type> discriminatorMapping = {
+    r'TransactionSignature_Ed25519Signature':
+        TransactionSignatureEd25519Signature,
+    r'TransactionSignature_MultiAgentSignature':
+        TransactionSignatureMultiAgentSignature,
+    r'TransactionSignature_MultiEd25519Signature':
+        TransactionSignatureMultiEd25519Signature,
+    r'ed25519_signature': TransactionSignatureEd25519Signature,
+    r'multi_agent_signature': TransactionSignatureMultiAgentSignature,
+    r'multi_ed25519_signature': TransactionSignatureMultiEd25519Signature,
+  };
 
   TransactionSignature._();
 
@@ -58,30 +72,97 @@ class _$TransactionSignatureSerializer
   final String wireName = r'TransactionSignature';
 
   Iterable<Object?> _serializeProperties(
-      Serializers serializers, TransactionSignature object,
-      {FullType specifiedType = FullType.unspecified}) sync* {}
+    Serializers serializers,
+    TransactionSignature object, {
+    FullType specifiedType = FullType.unspecified,
+  }) sync* {}
 
   @override
-  Object serialize(Serializers serializers, TransactionSignature object,
-      {FullType specifiedType = FullType.unspecified}) {
+  Object serialize(
+    Serializers serializers,
+    TransactionSignature object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final oneOf = object.oneOf;
     return serializers.serialize(oneOf.value,
         specifiedType: FullType(oneOf.valueType))!;
   }
 
   @override
-  TransactionSignature deserialize(Serializers serializers, Object serialized,
-      {FullType specifiedType = FullType.unspecified}) {
+  TransactionSignature deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
     final result = TransactionSignatureBuilder();
     Object? oneOfDataSrc;
-    final targetType = const FullType(OneOf, [
-      FullType(Ed25519Signature),
-      FullType(MultiEd25519Signature),
-      FullType(MultiAgentSignature),
-    ]);
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final discIndex =
+        serializedList.indexOf(TransactionSignature.discriminatorFieldName) + 1;
+    final discValue = serializers.deserialize(serializedList[discIndex],
+        specifiedType: FullType(String)) as String;
     oneOfDataSrc = serialized;
-    result.oneOf = serializers.deserialize(oneOfDataSrc,
-        specifiedType: targetType) as OneOf;
+    final oneOfTypes = [
+      TransactionSignatureEd25519Signature,
+      TransactionSignatureMultiAgentSignature,
+      TransactionSignatureMultiEd25519Signature,
+      TransactionSignatureEd25519Signature,
+      TransactionSignatureMultiAgentSignature,
+      TransactionSignatureMultiEd25519Signature,
+    ];
+    Object oneOfResult;
+    Type oneOfType;
+    switch (discValue) {
+      case 'TransactionSignature_Ed25519Signature':
+        oneOfResult = serializers.deserialize(
+          oneOfDataSrc,
+          specifiedType: FullType(TransactionSignatureEd25519Signature),
+        ) as TransactionSignatureEd25519Signature;
+        oneOfType = TransactionSignatureEd25519Signature;
+        break;
+      case 'TransactionSignature_MultiAgentSignature':
+        oneOfResult = serializers.deserialize(
+          oneOfDataSrc,
+          specifiedType: FullType(TransactionSignatureMultiAgentSignature),
+        ) as TransactionSignatureMultiAgentSignature;
+        oneOfType = TransactionSignatureMultiAgentSignature;
+        break;
+      case 'TransactionSignature_MultiEd25519Signature':
+        oneOfResult = serializers.deserialize(
+          oneOfDataSrc,
+          specifiedType: FullType(TransactionSignatureMultiEd25519Signature),
+        ) as TransactionSignatureMultiEd25519Signature;
+        oneOfType = TransactionSignatureMultiEd25519Signature;
+        break;
+      case 'ed25519_signature':
+        oneOfResult = serializers.deserialize(
+          oneOfDataSrc,
+          specifiedType: FullType(TransactionSignatureEd25519Signature),
+        ) as TransactionSignatureEd25519Signature;
+        oneOfType = TransactionSignatureEd25519Signature;
+        break;
+      case 'multi_agent_signature':
+        oneOfResult = serializers.deserialize(
+          oneOfDataSrc,
+          specifiedType: FullType(TransactionSignatureMultiAgentSignature),
+        ) as TransactionSignatureMultiAgentSignature;
+        oneOfType = TransactionSignatureMultiAgentSignature;
+        break;
+      case 'multi_ed25519_signature':
+        oneOfResult = serializers.deserialize(
+          oneOfDataSrc,
+          specifiedType: FullType(TransactionSignatureMultiEd25519Signature),
+        ) as TransactionSignatureMultiEd25519Signature;
+        oneOfType = TransactionSignatureMultiEd25519Signature;
+        break;
+      default:
+        throw UnsupportedError(
+            "Couldn't deserialize oneOf for the discriminator value: ${discValue}");
+    }
+    result.oneOf = OneOfDynamic(
+        typeIndex: oneOfTypes.indexOf(oneOfType),
+        types: oneOfTypes,
+        value: oneOfResult);
     return result.build();
   }
 }

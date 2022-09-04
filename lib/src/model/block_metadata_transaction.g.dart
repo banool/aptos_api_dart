@@ -6,15 +6,75 @@ part of 'block_metadata_transaction.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$BlockMetadataTransaction extends BlockMetadataTransaction {
+abstract class BlockMetadataTransactionBuilder {
+  void replace(BlockMetadataTransaction other);
+  void update(void Function(BlockMetadataTransactionBuilder) updates);
+  String? get version;
+  set version(String? version);
+
+  String? get hash;
+  set hash(String? hash);
+
+  String? get stateChangeHash;
+  set stateChangeHash(String? stateChangeHash);
+
+  String? get eventRootHash;
+  set eventRootHash(String? eventRootHash);
+
+  String? get stateCheckpointHash;
+  set stateCheckpointHash(String? stateCheckpointHash);
+
+  String? get gasUsed;
+  set gasUsed(String? gasUsed);
+
+  bool? get success;
+  set success(bool? success);
+
+  String? get vmStatus;
+  set vmStatus(String? vmStatus);
+
+  String? get accumulatorRootHash;
+  set accumulatorRootHash(String? accumulatorRootHash);
+
+  ListBuilder<WriteSetChange> get changes;
+  set changes(ListBuilder<WriteSetChange>? changes);
+
+  String? get id;
+  set id(String? id);
+
+  String? get epoch;
+  set epoch(String? epoch);
+
+  String? get round;
+  set round(String? round);
+
+  ListBuilder<Event> get events;
+  set events(ListBuilder<Event>? events);
+
+  ListBuilder<int> get previousBlockVotesBitvec;
+  set previousBlockVotesBitvec(ListBuilder<int>? previousBlockVotesBitvec);
+
+  String? get proposer;
+  set proposer(String? proposer);
+
+  ListBuilder<int> get failedProposerIndices;
+  set failedProposerIndices(ListBuilder<int>? failedProposerIndices);
+
+  String? get timestamp;
+  set timestamp(String? timestamp);
+}
+
+class _$$BlockMetadataTransaction extends $BlockMetadataTransaction {
   @override
   final String version;
   @override
   final String hash;
   @override
-  final String stateRootHash;
+  final String stateChangeHash;
   @override
   final String eventRootHash;
+  @override
+  final String? stateCheckpointHash;
   @override
   final String gasUsed;
   @override
@@ -34,7 +94,7 @@ class _$BlockMetadataTransaction extends BlockMetadataTransaction {
   @override
   final BuiltList<Event> events;
   @override
-  final BuiltList<bool> previousBlockVotes;
+  final BuiltList<int> previousBlockVotesBitvec;
   @override
   final String proposer;
   @override
@@ -42,15 +102,16 @@ class _$BlockMetadataTransaction extends BlockMetadataTransaction {
   @override
   final String timestamp;
 
-  factory _$BlockMetadataTransaction(
-          [void Function(BlockMetadataTransactionBuilder)? updates]) =>
-      (BlockMetadataTransactionBuilder()..update(updates))._build();
+  factory _$$BlockMetadataTransaction(
+          [void Function($BlockMetadataTransactionBuilder)? updates]) =>
+      ($BlockMetadataTransactionBuilder()..update(updates))._build();
 
-  _$BlockMetadataTransaction._(
+  _$$BlockMetadataTransaction._(
       {required this.version,
       required this.hash,
-      required this.stateRootHash,
+      required this.stateChangeHash,
       required this.eventRootHash,
+      this.stateCheckpointHash,
       required this.gasUsed,
       required this.success,
       required this.vmStatus,
@@ -60,64 +121,65 @@ class _$BlockMetadataTransaction extends BlockMetadataTransaction {
       required this.epoch,
       required this.round,
       required this.events,
-      required this.previousBlockVotes,
+      required this.previousBlockVotesBitvec,
       required this.proposer,
       required this.failedProposerIndices,
       required this.timestamp})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        version, r'BlockMetadataTransaction', 'version');
+        version, r'$BlockMetadataTransaction', 'version');
     BuiltValueNullFieldError.checkNotNull(
-        hash, r'BlockMetadataTransaction', 'hash');
+        hash, r'$BlockMetadataTransaction', 'hash');
     BuiltValueNullFieldError.checkNotNull(
-        stateRootHash, r'BlockMetadataTransaction', 'stateRootHash');
+        stateChangeHash, r'$BlockMetadataTransaction', 'stateChangeHash');
     BuiltValueNullFieldError.checkNotNull(
-        eventRootHash, r'BlockMetadataTransaction', 'eventRootHash');
+        eventRootHash, r'$BlockMetadataTransaction', 'eventRootHash');
     BuiltValueNullFieldError.checkNotNull(
-        gasUsed, r'BlockMetadataTransaction', 'gasUsed');
+        gasUsed, r'$BlockMetadataTransaction', 'gasUsed');
     BuiltValueNullFieldError.checkNotNull(
-        success, r'BlockMetadataTransaction', 'success');
+        success, r'$BlockMetadataTransaction', 'success');
     BuiltValueNullFieldError.checkNotNull(
-        vmStatus, r'BlockMetadataTransaction', 'vmStatus');
+        vmStatus, r'$BlockMetadataTransaction', 'vmStatus');
     BuiltValueNullFieldError.checkNotNull(accumulatorRootHash,
-        r'BlockMetadataTransaction', 'accumulatorRootHash');
+        r'$BlockMetadataTransaction', 'accumulatorRootHash');
     BuiltValueNullFieldError.checkNotNull(
-        changes, r'BlockMetadataTransaction', 'changes');
+        changes, r'$BlockMetadataTransaction', 'changes');
     BuiltValueNullFieldError.checkNotNull(
-        id, r'BlockMetadataTransaction', 'id');
+        id, r'$BlockMetadataTransaction', 'id');
     BuiltValueNullFieldError.checkNotNull(
-        epoch, r'BlockMetadataTransaction', 'epoch');
+        epoch, r'$BlockMetadataTransaction', 'epoch');
     BuiltValueNullFieldError.checkNotNull(
-        round, r'BlockMetadataTransaction', 'round');
+        round, r'$BlockMetadataTransaction', 'round');
     BuiltValueNullFieldError.checkNotNull(
-        events, r'BlockMetadataTransaction', 'events');
+        events, r'$BlockMetadataTransaction', 'events');
+    BuiltValueNullFieldError.checkNotNull(previousBlockVotesBitvec,
+        r'$BlockMetadataTransaction', 'previousBlockVotesBitvec');
     BuiltValueNullFieldError.checkNotNull(
-        previousBlockVotes, r'BlockMetadataTransaction', 'previousBlockVotes');
-    BuiltValueNullFieldError.checkNotNull(
-        proposer, r'BlockMetadataTransaction', 'proposer');
+        proposer, r'$BlockMetadataTransaction', 'proposer');
     BuiltValueNullFieldError.checkNotNull(failedProposerIndices,
-        r'BlockMetadataTransaction', 'failedProposerIndices');
+        r'$BlockMetadataTransaction', 'failedProposerIndices');
     BuiltValueNullFieldError.checkNotNull(
-        timestamp, r'BlockMetadataTransaction', 'timestamp');
+        timestamp, r'$BlockMetadataTransaction', 'timestamp');
   }
 
   @override
-  BlockMetadataTransaction rebuild(
-          void Function(BlockMetadataTransactionBuilder) updates) =>
+  $BlockMetadataTransaction rebuild(
+          void Function($BlockMetadataTransactionBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  BlockMetadataTransactionBuilder toBuilder() =>
-      BlockMetadataTransactionBuilder()..replace(this);
+  $BlockMetadataTransactionBuilder toBuilder() =>
+      $BlockMetadataTransactionBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is BlockMetadataTransaction &&
+    return other is $BlockMetadataTransaction &&
         version == other.version &&
         hash == other.hash &&
-        stateRootHash == other.stateRootHash &&
+        stateChangeHash == other.stateChangeHash &&
         eventRootHash == other.eventRootHash &&
+        stateCheckpointHash == other.stateCheckpointHash &&
         gasUsed == other.gasUsed &&
         success == other.success &&
         vmStatus == other.vmStatus &&
@@ -127,7 +189,7 @@ class _$BlockMetadataTransaction extends BlockMetadataTransaction {
         epoch == other.epoch &&
         round == other.round &&
         events == other.events &&
-        previousBlockVotes == other.previousBlockVotes &&
+        previousBlockVotesBitvec == other.previousBlockVotesBitvec &&
         proposer == other.proposer &&
         failedProposerIndices == other.failedProposerIndices &&
         timestamp == other.timestamp;
@@ -152,14 +214,17 @@ class _$BlockMetadataTransaction extends BlockMetadataTransaction {
                                                             $jc(
                                                                 $jc(
                                                                     $jc(
-                                                                        0,
-                                                                        version
+                                                                        $jc(
+                                                                            0,
+                                                                            version
+                                                                                .hashCode),
+                                                                        hash
                                                                             .hashCode),
-                                                                    hash
+                                                                    stateChangeHash
                                                                         .hashCode),
-                                                                stateRootHash
+                                                                eventRootHash
                                                                     .hashCode),
-                                                            eventRootHash
+                                                            stateCheckpointHash
                                                                 .hashCode),
                                                         gasUsed.hashCode),
                                                     success.hashCode),
@@ -170,7 +235,7 @@ class _$BlockMetadataTransaction extends BlockMetadataTransaction {
                                 epoch.hashCode),
                             round.hashCode),
                         events.hashCode),
-                    previousBlockVotes.hashCode),
+                    previousBlockVotesBitvec.hashCode),
                 proposer.hashCode),
             failedProposerIndices.hashCode),
         timestamp.hashCode));
@@ -178,11 +243,12 @@ class _$BlockMetadataTransaction extends BlockMetadataTransaction {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'BlockMetadataTransaction')
+    return (newBuiltValueToStringHelper(r'$BlockMetadataTransaction')
           ..add('version', version)
           ..add('hash', hash)
-          ..add('stateRootHash', stateRootHash)
+          ..add('stateChangeHash', stateChangeHash)
           ..add('eventRootHash', eventRootHash)
+          ..add('stateCheckpointHash', stateCheckpointHash)
           ..add('gasUsed', gasUsed)
           ..add('success', success)
           ..add('vmStatus', vmStatus)
@@ -192,7 +258,7 @@ class _$BlockMetadataTransaction extends BlockMetadataTransaction {
           ..add('epoch', epoch)
           ..add('round', round)
           ..add('events', events)
-          ..add('previousBlockVotes', previousBlockVotes)
+          ..add('previousBlockVotesBitvec', previousBlockVotesBitvec)
           ..add('proposer', proposer)
           ..add('failedProposerIndices', failedProposerIndices)
           ..add('timestamp', timestamp))
@@ -200,99 +266,108 @@ class _$BlockMetadataTransaction extends BlockMetadataTransaction {
   }
 }
 
-class BlockMetadataTransactionBuilder
+class $BlockMetadataTransactionBuilder
     implements
-        Builder<BlockMetadataTransaction, BlockMetadataTransactionBuilder> {
-  _$BlockMetadataTransaction? _$v;
+        Builder<$BlockMetadataTransaction, $BlockMetadataTransactionBuilder>,
+        BlockMetadataTransactionBuilder {
+  _$$BlockMetadataTransaction? _$v;
 
   String? _version;
   String? get version => _$this._version;
-  set version(String? version) => _$this._version = version;
+  set version(covariant String? version) => _$this._version = version;
 
   String? _hash;
   String? get hash => _$this._hash;
-  set hash(String? hash) => _$this._hash = hash;
+  set hash(covariant String? hash) => _$this._hash = hash;
 
-  String? _stateRootHash;
-  String? get stateRootHash => _$this._stateRootHash;
-  set stateRootHash(String? stateRootHash) =>
-      _$this._stateRootHash = stateRootHash;
+  String? _stateChangeHash;
+  String? get stateChangeHash => _$this._stateChangeHash;
+  set stateChangeHash(covariant String? stateChangeHash) =>
+      _$this._stateChangeHash = stateChangeHash;
 
   String? _eventRootHash;
   String? get eventRootHash => _$this._eventRootHash;
-  set eventRootHash(String? eventRootHash) =>
+  set eventRootHash(covariant String? eventRootHash) =>
       _$this._eventRootHash = eventRootHash;
+
+  String? _stateCheckpointHash;
+  String? get stateCheckpointHash => _$this._stateCheckpointHash;
+  set stateCheckpointHash(covariant String? stateCheckpointHash) =>
+      _$this._stateCheckpointHash = stateCheckpointHash;
 
   String? _gasUsed;
   String? get gasUsed => _$this._gasUsed;
-  set gasUsed(String? gasUsed) => _$this._gasUsed = gasUsed;
+  set gasUsed(covariant String? gasUsed) => _$this._gasUsed = gasUsed;
 
   bool? _success;
   bool? get success => _$this._success;
-  set success(bool? success) => _$this._success = success;
+  set success(covariant bool? success) => _$this._success = success;
 
   String? _vmStatus;
   String? get vmStatus => _$this._vmStatus;
-  set vmStatus(String? vmStatus) => _$this._vmStatus = vmStatus;
+  set vmStatus(covariant String? vmStatus) => _$this._vmStatus = vmStatus;
 
   String? _accumulatorRootHash;
   String? get accumulatorRootHash => _$this._accumulatorRootHash;
-  set accumulatorRootHash(String? accumulatorRootHash) =>
+  set accumulatorRootHash(covariant String? accumulatorRootHash) =>
       _$this._accumulatorRootHash = accumulatorRootHash;
 
   ListBuilder<WriteSetChange>? _changes;
   ListBuilder<WriteSetChange> get changes =>
       _$this._changes ??= ListBuilder<WriteSetChange>();
-  set changes(ListBuilder<WriteSetChange>? changes) =>
+  set changes(covariant ListBuilder<WriteSetChange>? changes) =>
       _$this._changes = changes;
 
   String? _id;
   String? get id => _$this._id;
-  set id(String? id) => _$this._id = id;
+  set id(covariant String? id) => _$this._id = id;
 
   String? _epoch;
   String? get epoch => _$this._epoch;
-  set epoch(String? epoch) => _$this._epoch = epoch;
+  set epoch(covariant String? epoch) => _$this._epoch = epoch;
 
   String? _round;
   String? get round => _$this._round;
-  set round(String? round) => _$this._round = round;
+  set round(covariant String? round) => _$this._round = round;
 
   ListBuilder<Event>? _events;
   ListBuilder<Event> get events => _$this._events ??= ListBuilder<Event>();
-  set events(ListBuilder<Event>? events) => _$this._events = events;
+  set events(covariant ListBuilder<Event>? events) => _$this._events = events;
 
-  ListBuilder<bool>? _previousBlockVotes;
-  ListBuilder<bool> get previousBlockVotes =>
-      _$this._previousBlockVotes ??= ListBuilder<bool>();
-  set previousBlockVotes(ListBuilder<bool>? previousBlockVotes) =>
-      _$this._previousBlockVotes = previousBlockVotes;
+  ListBuilder<int>? _previousBlockVotesBitvec;
+  ListBuilder<int> get previousBlockVotesBitvec =>
+      _$this._previousBlockVotesBitvec ??= ListBuilder<int>();
+  set previousBlockVotesBitvec(
+          covariant ListBuilder<int>? previousBlockVotesBitvec) =>
+      _$this._previousBlockVotesBitvec = previousBlockVotesBitvec;
 
   String? _proposer;
   String? get proposer => _$this._proposer;
-  set proposer(String? proposer) => _$this._proposer = proposer;
+  set proposer(covariant String? proposer) => _$this._proposer = proposer;
 
   ListBuilder<int>? _failedProposerIndices;
   ListBuilder<int> get failedProposerIndices =>
       _$this._failedProposerIndices ??= ListBuilder<int>();
-  set failedProposerIndices(ListBuilder<int>? failedProposerIndices) =>
+  set failedProposerIndices(
+          covariant ListBuilder<int>? failedProposerIndices) =>
       _$this._failedProposerIndices = failedProposerIndices;
 
   String? _timestamp;
   String? get timestamp => _$this._timestamp;
-  set timestamp(String? timestamp) => _$this._timestamp = timestamp;
+  set timestamp(covariant String? timestamp) => _$this._timestamp = timestamp;
 
-  BlockMetadataTransactionBuilder() {
-    BlockMetadataTransaction._defaults(this);
+  $BlockMetadataTransactionBuilder() {
+    $BlockMetadataTransaction._defaults(this);
   }
 
-  BlockMetadataTransactionBuilder get _$this {
+  $BlockMetadataTransactionBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _version = $v.version;
       _hash = $v.hash;
-      _stateRootHash = $v.stateRootHash;
+      _stateChangeHash = $v.stateChangeHash;
       _eventRootHash = $v.eventRootHash;
+      _stateCheckpointHash = $v.stateCheckpointHash;
       _gasUsed = $v.gasUsed;
       _success = $v.success;
       _vmStatus = $v.vmStatus;
@@ -302,7 +377,7 @@ class BlockMetadataTransactionBuilder
       _epoch = $v.epoch;
       _round = $v.round;
       _events = $v.events.toBuilder();
-      _previousBlockVotes = $v.previousBlockVotes.toBuilder();
+      _previousBlockVotesBitvec = $v.previousBlockVotesBitvec.toBuilder();
       _proposer = $v.proposer;
       _failedProposerIndices = $v.failedProposerIndices.toBuilder();
       _timestamp = $v.timestamp;
@@ -312,49 +387,50 @@ class BlockMetadataTransactionBuilder
   }
 
   @override
-  void replace(BlockMetadataTransaction other) {
+  void replace(covariant $BlockMetadataTransaction other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$BlockMetadataTransaction;
+    _$v = other as _$$BlockMetadataTransaction;
   }
 
   @override
-  void update(void Function(BlockMetadataTransactionBuilder)? updates) {
+  void update(void Function($BlockMetadataTransactionBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  BlockMetadataTransaction build() => _build();
+  $BlockMetadataTransaction build() => _build();
 
-  _$BlockMetadataTransaction _build() {
-    _$BlockMetadataTransaction _$result;
+  _$$BlockMetadataTransaction _build() {
+    _$$BlockMetadataTransaction _$result;
     try {
       _$result = _$v ??
-          _$BlockMetadataTransaction._(
+          _$$BlockMetadataTransaction._(
               version: BuiltValueNullFieldError.checkNotNull(
-                  version, r'BlockMetadataTransaction', 'version'),
+                  version, r'$BlockMetadataTransaction', 'version'),
               hash: BuiltValueNullFieldError.checkNotNull(
-                  hash, r'BlockMetadataTransaction', 'hash'),
-              stateRootHash: BuiltValueNullFieldError.checkNotNull(
-                  stateRootHash, r'BlockMetadataTransaction', 'stateRootHash'),
+                  hash, r'$BlockMetadataTransaction', 'hash'),
+              stateChangeHash: BuiltValueNullFieldError.checkNotNull(
+                  stateChangeHash, r'$BlockMetadataTransaction', 'stateChangeHash'),
               eventRootHash: BuiltValueNullFieldError.checkNotNull(
-                  eventRootHash, r'BlockMetadataTransaction', 'eventRootHash'),
+                  eventRootHash, r'$BlockMetadataTransaction', 'eventRootHash'),
+              stateCheckpointHash: stateCheckpointHash,
               gasUsed: BuiltValueNullFieldError.checkNotNull(
-                  gasUsed, r'BlockMetadataTransaction', 'gasUsed'),
+                  gasUsed, r'$BlockMetadataTransaction', 'gasUsed'),
               success: BuiltValueNullFieldError.checkNotNull(
-                  success, r'BlockMetadataTransaction', 'success'),
+                  success, r'$BlockMetadataTransaction', 'success'),
               vmStatus: BuiltValueNullFieldError.checkNotNull(
-                  vmStatus, r'BlockMetadataTransaction', 'vmStatus'),
+                  vmStatus, r'$BlockMetadataTransaction', 'vmStatus'),
               accumulatorRootHash:
-                  BuiltValueNullFieldError.checkNotNull(accumulatorRootHash, r'BlockMetadataTransaction', 'accumulatorRootHash'),
+                  BuiltValueNullFieldError.checkNotNull(accumulatorRootHash, r'$BlockMetadataTransaction', 'accumulatorRootHash'),
               changes: changes.build(),
-              id: BuiltValueNullFieldError.checkNotNull(id, r'BlockMetadataTransaction', 'id'),
-              epoch: BuiltValueNullFieldError.checkNotNull(epoch, r'BlockMetadataTransaction', 'epoch'),
-              round: BuiltValueNullFieldError.checkNotNull(round, r'BlockMetadataTransaction', 'round'),
+              id: BuiltValueNullFieldError.checkNotNull(id, r'$BlockMetadataTransaction', 'id'),
+              epoch: BuiltValueNullFieldError.checkNotNull(epoch, r'$BlockMetadataTransaction', 'epoch'),
+              round: BuiltValueNullFieldError.checkNotNull(round, r'$BlockMetadataTransaction', 'round'),
               events: events.build(),
-              previousBlockVotes: previousBlockVotes.build(),
-              proposer: BuiltValueNullFieldError.checkNotNull(proposer, r'BlockMetadataTransaction', 'proposer'),
+              previousBlockVotesBitvec: previousBlockVotesBitvec.build(),
+              proposer: BuiltValueNullFieldError.checkNotNull(proposer, r'$BlockMetadataTransaction', 'proposer'),
               failedProposerIndices: failedProposerIndices.build(),
-              timestamp: BuiltValueNullFieldError.checkNotNull(timestamp, r'BlockMetadataTransaction', 'timestamp'));
+              timestamp: BuiltValueNullFieldError.checkNotNull(timestamp, r'$BlockMetadataTransaction', 'timestamp'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -363,14 +439,14 @@ class BlockMetadataTransactionBuilder
 
         _$failedField = 'events';
         events.build();
-        _$failedField = 'previousBlockVotes';
-        previousBlockVotes.build();
+        _$failedField = 'previousBlockVotesBitvec';
+        previousBlockVotesBitvec.build();
 
         _$failedField = 'failedProposerIndices';
         failedProposerIndices.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'BlockMetadataTransaction', _$failedField, e.toString());
+            r'$BlockMetadataTransaction', _$failedField, e.toString());
       }
       rethrow;
     }

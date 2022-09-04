@@ -6,7 +6,26 @@ part of 'write_table_item.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$WriteTableItem extends WriteTableItem {
+abstract class WriteTableItemBuilder {
+  void replace(WriteTableItem other);
+  void update(void Function(WriteTableItemBuilder) updates);
+  String? get stateKeyHash;
+  set stateKeyHash(String? stateKeyHash);
+
+  String? get handle;
+  set handle(String? handle);
+
+  String? get key;
+  set key(String? key);
+
+  String? get value;
+  set value(String? value);
+
+  DecodedTableDataBuilder get data;
+  set data(DecodedTableDataBuilder? data);
+}
+
+class _$$WriteTableItem extends $WriteTableItem {
   @override
   final String stateKeyHash;
   @override
@@ -15,119 +34,150 @@ class _$WriteTableItem extends WriteTableItem {
   final String key;
   @override
   final String value;
+  @override
+  final DecodedTableData? data;
 
-  factory _$WriteTableItem([void Function(WriteTableItemBuilder)? updates]) =>
-      (WriteTableItemBuilder()..update(updates))._build();
+  factory _$$WriteTableItem([void Function($WriteTableItemBuilder)? updates]) =>
+      ($WriteTableItemBuilder()..update(updates))._build();
 
-  _$WriteTableItem._(
+  _$$WriteTableItem._(
       {required this.stateKeyHash,
       required this.handle,
       required this.key,
-      required this.value})
+      required this.value,
+      this.data})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        stateKeyHash, r'WriteTableItem', 'stateKeyHash');
-    BuiltValueNullFieldError.checkNotNull(handle, r'WriteTableItem', 'handle');
-    BuiltValueNullFieldError.checkNotNull(key, r'WriteTableItem', 'key');
-    BuiltValueNullFieldError.checkNotNull(value, r'WriteTableItem', 'value');
+        stateKeyHash, r'$WriteTableItem', 'stateKeyHash');
+    BuiltValueNullFieldError.checkNotNull(handle, r'$WriteTableItem', 'handle');
+    BuiltValueNullFieldError.checkNotNull(key, r'$WriteTableItem', 'key');
+    BuiltValueNullFieldError.checkNotNull(value, r'$WriteTableItem', 'value');
   }
 
   @override
-  WriteTableItem rebuild(void Function(WriteTableItemBuilder) updates) =>
+  $WriteTableItem rebuild(void Function($WriteTableItemBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  WriteTableItemBuilder toBuilder() => WriteTableItemBuilder()..replace(this);
+  $WriteTableItemBuilder toBuilder() => $WriteTableItemBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is WriteTableItem &&
+    return other is $WriteTableItem &&
         stateKeyHash == other.stateKeyHash &&
         handle == other.handle &&
         key == other.key &&
-        value == other.value;
+        value == other.value &&
+        data == other.data;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, stateKeyHash.hashCode), handle.hashCode), key.hashCode),
-        value.hashCode));
+        $jc(
+            $jc($jc($jc(0, stateKeyHash.hashCode), handle.hashCode),
+                key.hashCode),
+            value.hashCode),
+        data.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'WriteTableItem')
+    return (newBuiltValueToStringHelper(r'$WriteTableItem')
           ..add('stateKeyHash', stateKeyHash)
           ..add('handle', handle)
           ..add('key', key)
-          ..add('value', value))
+          ..add('value', value)
+          ..add('data', data))
         .toString();
   }
 }
 
-class WriteTableItemBuilder
-    implements Builder<WriteTableItem, WriteTableItemBuilder> {
-  _$WriteTableItem? _$v;
+class $WriteTableItemBuilder
+    implements
+        Builder<$WriteTableItem, $WriteTableItemBuilder>,
+        WriteTableItemBuilder {
+  _$$WriteTableItem? _$v;
 
   String? _stateKeyHash;
   String? get stateKeyHash => _$this._stateKeyHash;
-  set stateKeyHash(String? stateKeyHash) => _$this._stateKeyHash = stateKeyHash;
+  set stateKeyHash(covariant String? stateKeyHash) =>
+      _$this._stateKeyHash = stateKeyHash;
 
   String? _handle;
   String? get handle => _$this._handle;
-  set handle(String? handle) => _$this._handle = handle;
+  set handle(covariant String? handle) => _$this._handle = handle;
 
   String? _key;
   String? get key => _$this._key;
-  set key(String? key) => _$this._key = key;
+  set key(covariant String? key) => _$this._key = key;
 
   String? _value;
   String? get value => _$this._value;
-  set value(String? value) => _$this._value = value;
+  set value(covariant String? value) => _$this._value = value;
 
-  WriteTableItemBuilder() {
-    WriteTableItem._defaults(this);
+  DecodedTableDataBuilder? _data;
+  DecodedTableDataBuilder get data =>
+      _$this._data ??= DecodedTableDataBuilder();
+  set data(covariant DecodedTableDataBuilder? data) => _$this._data = data;
+
+  $WriteTableItemBuilder() {
+    $WriteTableItem._defaults(this);
   }
 
-  WriteTableItemBuilder get _$this {
+  $WriteTableItemBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _stateKeyHash = $v.stateKeyHash;
       _handle = $v.handle;
       _key = $v.key;
       _value = $v.value;
+      _data = $v.data?.toBuilder();
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(WriteTableItem other) {
+  void replace(covariant $WriteTableItem other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$WriteTableItem;
+    _$v = other as _$$WriteTableItem;
   }
 
   @override
-  void update(void Function(WriteTableItemBuilder)? updates) {
+  void update(void Function($WriteTableItemBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  WriteTableItem build() => _build();
+  $WriteTableItem build() => _build();
 
-  _$WriteTableItem _build() {
-    final _$result = _$v ??
-        _$WriteTableItem._(
-            stateKeyHash: BuiltValueNullFieldError.checkNotNull(
-                stateKeyHash, r'WriteTableItem', 'stateKeyHash'),
-            handle: BuiltValueNullFieldError.checkNotNull(
-                handle, r'WriteTableItem', 'handle'),
-            key: BuiltValueNullFieldError.checkNotNull(
-                key, r'WriteTableItem', 'key'),
-            value: BuiltValueNullFieldError.checkNotNull(
-                value, r'WriteTableItem', 'value'));
+  _$$WriteTableItem _build() {
+    _$$WriteTableItem _$result;
+    try {
+      _$result = _$v ??
+          _$$WriteTableItem._(
+              stateKeyHash: BuiltValueNullFieldError.checkNotNull(
+                  stateKeyHash, r'$WriteTableItem', 'stateKeyHash'),
+              handle: BuiltValueNullFieldError.checkNotNull(
+                  handle, r'$WriteTableItem', 'handle'),
+              key: BuiltValueNullFieldError.checkNotNull(
+                  key, r'$WriteTableItem', 'key'),
+              value: BuiltValueNullFieldError.checkNotNull(
+                  value, r'$WriteTableItem', 'value'),
+              data: _data?.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'data';
+        _data?.build();
+      } catch (e) {
+        throw BuiltValueNestedFieldError(
+            r'$WriteTableItem', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

@@ -6,15 +6,78 @@ part of 'user_transaction.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$UserTransaction extends UserTransaction {
+abstract class UserTransactionBuilder {
+  void replace(UserTransaction other);
+  void update(void Function(UserTransactionBuilder) updates);
+  String? get version;
+  set version(String? version);
+
+  String? get hash;
+  set hash(String? hash);
+
+  String? get stateChangeHash;
+  set stateChangeHash(String? stateChangeHash);
+
+  String? get eventRootHash;
+  set eventRootHash(String? eventRootHash);
+
+  String? get stateCheckpointHash;
+  set stateCheckpointHash(String? stateCheckpointHash);
+
+  String? get gasUsed;
+  set gasUsed(String? gasUsed);
+
+  bool? get success;
+  set success(bool? success);
+
+  String? get vmStatus;
+  set vmStatus(String? vmStatus);
+
+  String? get accumulatorRootHash;
+  set accumulatorRootHash(String? accumulatorRootHash);
+
+  ListBuilder<WriteSetChange> get changes;
+  set changes(ListBuilder<WriteSetChange>? changes);
+
+  String? get sender;
+  set sender(String? sender);
+
+  String? get sequenceNumber;
+  set sequenceNumber(String? sequenceNumber);
+
+  String? get maxGasAmount;
+  set maxGasAmount(String? maxGasAmount);
+
+  String? get gasUnitPrice;
+  set gasUnitPrice(String? gasUnitPrice);
+
+  String? get expirationTimestampSecs;
+  set expirationTimestampSecs(String? expirationTimestampSecs);
+
+  TransactionPayloadBuilder get payload;
+  set payload(TransactionPayloadBuilder? payload);
+
+  TransactionSignatureBuilder get signature;
+  set signature(TransactionSignatureBuilder? signature);
+
+  ListBuilder<Event> get events;
+  set events(ListBuilder<Event>? events);
+
+  String? get timestamp;
+  set timestamp(String? timestamp);
+}
+
+class _$$UserTransaction extends $UserTransaction {
   @override
   final String version;
   @override
   final String hash;
   @override
-  final String stateRootHash;
+  final String stateChangeHash;
   @override
   final String eventRootHash;
+  @override
+  final String? stateCheckpointHash;
   @override
   final String gasUsed;
   @override
@@ -44,14 +107,16 @@ class _$UserTransaction extends UserTransaction {
   @override
   final String timestamp;
 
-  factory _$UserTransaction([void Function(UserTransactionBuilder)? updates]) =>
-      (UserTransactionBuilder()..update(updates))._build();
+  factory _$$UserTransaction(
+          [void Function($UserTransactionBuilder)? updates]) =>
+      ($UserTransactionBuilder()..update(updates))._build();
 
-  _$UserTransaction._(
+  _$$UserTransaction._(
       {required this.version,
       required this.hash,
-      required this.stateRootHash,
+      required this.stateChangeHash,
       required this.eventRootHash,
+      this.stateCheckpointHash,
       required this.gasUsed,
       required this.success,
       required this.vmStatus,
@@ -68,53 +133,57 @@ class _$UserTransaction extends UserTransaction {
       required this.timestamp})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        version, r'UserTransaction', 'version');
-    BuiltValueNullFieldError.checkNotNull(hash, r'UserTransaction', 'hash');
+        version, r'$UserTransaction', 'version');
+    BuiltValueNullFieldError.checkNotNull(hash, r'$UserTransaction', 'hash');
     BuiltValueNullFieldError.checkNotNull(
-        stateRootHash, r'UserTransaction', 'stateRootHash');
+        stateChangeHash, r'$UserTransaction', 'stateChangeHash');
     BuiltValueNullFieldError.checkNotNull(
-        eventRootHash, r'UserTransaction', 'eventRootHash');
+        eventRootHash, r'$UserTransaction', 'eventRootHash');
     BuiltValueNullFieldError.checkNotNull(
-        gasUsed, r'UserTransaction', 'gasUsed');
+        gasUsed, r'$UserTransaction', 'gasUsed');
     BuiltValueNullFieldError.checkNotNull(
-        success, r'UserTransaction', 'success');
+        success, r'$UserTransaction', 'success');
     BuiltValueNullFieldError.checkNotNull(
-        vmStatus, r'UserTransaction', 'vmStatus');
+        vmStatus, r'$UserTransaction', 'vmStatus');
     BuiltValueNullFieldError.checkNotNull(
-        accumulatorRootHash, r'UserTransaction', 'accumulatorRootHash');
+        accumulatorRootHash, r'$UserTransaction', 'accumulatorRootHash');
     BuiltValueNullFieldError.checkNotNull(
-        changes, r'UserTransaction', 'changes');
-    BuiltValueNullFieldError.checkNotNull(sender, r'UserTransaction', 'sender');
+        changes, r'$UserTransaction', 'changes');
     BuiltValueNullFieldError.checkNotNull(
-        sequenceNumber, r'UserTransaction', 'sequenceNumber');
+        sender, r'$UserTransaction', 'sender');
     BuiltValueNullFieldError.checkNotNull(
-        maxGasAmount, r'UserTransaction', 'maxGasAmount');
+        sequenceNumber, r'$UserTransaction', 'sequenceNumber');
     BuiltValueNullFieldError.checkNotNull(
-        gasUnitPrice, r'UserTransaction', 'gasUnitPrice');
+        maxGasAmount, r'$UserTransaction', 'maxGasAmount');
     BuiltValueNullFieldError.checkNotNull(
-        expirationTimestampSecs, r'UserTransaction', 'expirationTimestampSecs');
+        gasUnitPrice, r'$UserTransaction', 'gasUnitPrice');
+    BuiltValueNullFieldError.checkNotNull(expirationTimestampSecs,
+        r'$UserTransaction', 'expirationTimestampSecs');
     BuiltValueNullFieldError.checkNotNull(
-        payload, r'UserTransaction', 'payload');
-    BuiltValueNullFieldError.checkNotNull(events, r'UserTransaction', 'events');
+        payload, r'$UserTransaction', 'payload');
     BuiltValueNullFieldError.checkNotNull(
-        timestamp, r'UserTransaction', 'timestamp');
+        events, r'$UserTransaction', 'events');
+    BuiltValueNullFieldError.checkNotNull(
+        timestamp, r'$UserTransaction', 'timestamp');
   }
 
   @override
-  UserTransaction rebuild(void Function(UserTransactionBuilder) updates) =>
+  $UserTransaction rebuild(void Function($UserTransactionBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  UserTransactionBuilder toBuilder() => UserTransactionBuilder()..replace(this);
+  $UserTransactionBuilder toBuilder() =>
+      $UserTransactionBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is UserTransaction &&
+    return other is $UserTransaction &&
         version == other.version &&
         hash == other.hash &&
-        stateRootHash == other.stateRootHash &&
+        stateChangeHash == other.stateChangeHash &&
         eventRootHash == other.eventRootHash &&
+        stateCheckpointHash == other.stateCheckpointHash &&
         gasUsed == other.gasUsed &&
         success == other.success &&
         vmStatus == other.vmStatus &&
@@ -151,14 +220,17 @@ class _$UserTransaction extends UserTransaction {
                                                                 $jc(
                                                                     $jc(
                                                                         $jc(
-                                                                            0,
-                                                                            version
+                                                                            $jc(
+                                                                                0,
+                                                                                version
+                                                                                    .hashCode),
+                                                                            hash
                                                                                 .hashCode),
-                                                                        hash
+                                                                        stateChangeHash
                                                                             .hashCode),
-                                                                    stateRootHash
+                                                                    eventRootHash
                                                                         .hashCode),
-                                                                eventRootHash
+                                                                stateCheckpointHash
                                                                     .hashCode),
                                                             gasUsed.hashCode),
                                                         success.hashCode),
@@ -178,11 +250,12 @@ class _$UserTransaction extends UserTransaction {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'UserTransaction')
+    return (newBuiltValueToStringHelper(r'$UserTransaction')
           ..add('version', version)
           ..add('hash', hash)
-          ..add('stateRootHash', stateRootHash)
+          ..add('stateChangeHash', stateChangeHash)
           ..add('eventRootHash', eventRootHash)
+          ..add('stateCheckpointHash', stateCheckpointHash)
           ..add('gasUsed', gasUsed)
           ..add('success', success)
           ..add('vmStatus', vmStatus)
@@ -201,103 +274,114 @@ class _$UserTransaction extends UserTransaction {
   }
 }
 
-class UserTransactionBuilder
-    implements Builder<UserTransaction, UserTransactionBuilder> {
-  _$UserTransaction? _$v;
+class $UserTransactionBuilder
+    implements
+        Builder<$UserTransaction, $UserTransactionBuilder>,
+        UserTransactionBuilder {
+  _$$UserTransaction? _$v;
 
   String? _version;
   String? get version => _$this._version;
-  set version(String? version) => _$this._version = version;
+  set version(covariant String? version) => _$this._version = version;
 
   String? _hash;
   String? get hash => _$this._hash;
-  set hash(String? hash) => _$this._hash = hash;
+  set hash(covariant String? hash) => _$this._hash = hash;
 
-  String? _stateRootHash;
-  String? get stateRootHash => _$this._stateRootHash;
-  set stateRootHash(String? stateRootHash) =>
-      _$this._stateRootHash = stateRootHash;
+  String? _stateChangeHash;
+  String? get stateChangeHash => _$this._stateChangeHash;
+  set stateChangeHash(covariant String? stateChangeHash) =>
+      _$this._stateChangeHash = stateChangeHash;
 
   String? _eventRootHash;
   String? get eventRootHash => _$this._eventRootHash;
-  set eventRootHash(String? eventRootHash) =>
+  set eventRootHash(covariant String? eventRootHash) =>
       _$this._eventRootHash = eventRootHash;
+
+  String? _stateCheckpointHash;
+  String? get stateCheckpointHash => _$this._stateCheckpointHash;
+  set stateCheckpointHash(covariant String? stateCheckpointHash) =>
+      _$this._stateCheckpointHash = stateCheckpointHash;
 
   String? _gasUsed;
   String? get gasUsed => _$this._gasUsed;
-  set gasUsed(String? gasUsed) => _$this._gasUsed = gasUsed;
+  set gasUsed(covariant String? gasUsed) => _$this._gasUsed = gasUsed;
 
   bool? _success;
   bool? get success => _$this._success;
-  set success(bool? success) => _$this._success = success;
+  set success(covariant bool? success) => _$this._success = success;
 
   String? _vmStatus;
   String? get vmStatus => _$this._vmStatus;
-  set vmStatus(String? vmStatus) => _$this._vmStatus = vmStatus;
+  set vmStatus(covariant String? vmStatus) => _$this._vmStatus = vmStatus;
 
   String? _accumulatorRootHash;
   String? get accumulatorRootHash => _$this._accumulatorRootHash;
-  set accumulatorRootHash(String? accumulatorRootHash) =>
+  set accumulatorRootHash(covariant String? accumulatorRootHash) =>
       _$this._accumulatorRootHash = accumulatorRootHash;
 
   ListBuilder<WriteSetChange>? _changes;
   ListBuilder<WriteSetChange> get changes =>
       _$this._changes ??= ListBuilder<WriteSetChange>();
-  set changes(ListBuilder<WriteSetChange>? changes) =>
+  set changes(covariant ListBuilder<WriteSetChange>? changes) =>
       _$this._changes = changes;
 
   String? _sender;
   String? get sender => _$this._sender;
-  set sender(String? sender) => _$this._sender = sender;
+  set sender(covariant String? sender) => _$this._sender = sender;
 
   String? _sequenceNumber;
   String? get sequenceNumber => _$this._sequenceNumber;
-  set sequenceNumber(String? sequenceNumber) =>
+  set sequenceNumber(covariant String? sequenceNumber) =>
       _$this._sequenceNumber = sequenceNumber;
 
   String? _maxGasAmount;
   String? get maxGasAmount => _$this._maxGasAmount;
-  set maxGasAmount(String? maxGasAmount) => _$this._maxGasAmount = maxGasAmount;
+  set maxGasAmount(covariant String? maxGasAmount) =>
+      _$this._maxGasAmount = maxGasAmount;
 
   String? _gasUnitPrice;
   String? get gasUnitPrice => _$this._gasUnitPrice;
-  set gasUnitPrice(String? gasUnitPrice) => _$this._gasUnitPrice = gasUnitPrice;
+  set gasUnitPrice(covariant String? gasUnitPrice) =>
+      _$this._gasUnitPrice = gasUnitPrice;
 
   String? _expirationTimestampSecs;
   String? get expirationTimestampSecs => _$this._expirationTimestampSecs;
-  set expirationTimestampSecs(String? expirationTimestampSecs) =>
+  set expirationTimestampSecs(covariant String? expirationTimestampSecs) =>
       _$this._expirationTimestampSecs = expirationTimestampSecs;
 
   TransactionPayloadBuilder? _payload;
   TransactionPayloadBuilder get payload =>
       _$this._payload ??= TransactionPayloadBuilder();
-  set payload(TransactionPayloadBuilder? payload) => _$this._payload = payload;
+  set payload(covariant TransactionPayloadBuilder? payload) =>
+      _$this._payload = payload;
 
   TransactionSignatureBuilder? _signature;
   TransactionSignatureBuilder get signature =>
       _$this._signature ??= TransactionSignatureBuilder();
-  set signature(TransactionSignatureBuilder? signature) =>
+  set signature(covariant TransactionSignatureBuilder? signature) =>
       _$this._signature = signature;
 
   ListBuilder<Event>? _events;
   ListBuilder<Event> get events => _$this._events ??= ListBuilder<Event>();
-  set events(ListBuilder<Event>? events) => _$this._events = events;
+  set events(covariant ListBuilder<Event>? events) => _$this._events = events;
 
   String? _timestamp;
   String? get timestamp => _$this._timestamp;
-  set timestamp(String? timestamp) => _$this._timestamp = timestamp;
+  set timestamp(covariant String? timestamp) => _$this._timestamp = timestamp;
 
-  UserTransactionBuilder() {
-    UserTransaction._defaults(this);
+  $UserTransactionBuilder() {
+    $UserTransaction._defaults(this);
   }
 
-  UserTransactionBuilder get _$this {
+  $UserTransactionBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _version = $v.version;
       _hash = $v.hash;
-      _stateRootHash = $v.stateRootHash;
+      _stateChangeHash = $v.stateChangeHash;
       _eventRootHash = $v.eventRootHash;
+      _stateCheckpointHash = $v.stateCheckpointHash;
       _gasUsed = $v.gasUsed;
       _success = $v.success;
       _vmStatus = $v.vmStatus;
@@ -318,51 +402,51 @@ class UserTransactionBuilder
   }
 
   @override
-  void replace(UserTransaction other) {
+  void replace(covariant $UserTransaction other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$UserTransaction;
+    _$v = other as _$$UserTransaction;
   }
 
   @override
-  void update(void Function(UserTransactionBuilder)? updates) {
+  void update(void Function($UserTransactionBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  UserTransaction build() => _build();
+  $UserTransaction build() => _build();
 
-  _$UserTransaction _build() {
-    _$UserTransaction _$result;
+  _$$UserTransaction _build() {
+    _$$UserTransaction _$result;
     try {
       _$result = _$v ??
-          _$UserTransaction._(
+          _$$UserTransaction._(
               version: BuiltValueNullFieldError.checkNotNull(
-                  version, r'UserTransaction', 'version'),
+                  version, r'$UserTransaction', 'version'),
               hash: BuiltValueNullFieldError.checkNotNull(
-                  hash, r'UserTransaction', 'hash'),
-              stateRootHash: BuiltValueNullFieldError.checkNotNull(
-                  stateRootHash, r'UserTransaction', 'stateRootHash'),
+                  hash, r'$UserTransaction', 'hash'),
+              stateChangeHash: BuiltValueNullFieldError.checkNotNull(
+                  stateChangeHash, r'$UserTransaction', 'stateChangeHash'),
               eventRootHash: BuiltValueNullFieldError.checkNotNull(
-                  eventRootHash, r'UserTransaction', 'eventRootHash'),
+                  eventRootHash, r'$UserTransaction', 'eventRootHash'),
+              stateCheckpointHash: stateCheckpointHash,
               gasUsed: BuiltValueNullFieldError.checkNotNull(
-                  gasUsed, r'UserTransaction', 'gasUsed'),
+                  gasUsed, r'$UserTransaction', 'gasUsed'),
               success: BuiltValueNullFieldError.checkNotNull(
-                  success, r'UserTransaction', 'success'),
+                  success, r'$UserTransaction', 'success'),
               vmStatus: BuiltValueNullFieldError.checkNotNull(
-                  vmStatus, r'UserTransaction', 'vmStatus'),
+                  vmStatus, r'$UserTransaction', 'vmStatus'),
               accumulatorRootHash: BuiltValueNullFieldError.checkNotNull(
-                  accumulatorRootHash, r'UserTransaction', 'accumulatorRootHash'),
+                  accumulatorRootHash, r'$UserTransaction', 'accumulatorRootHash'),
               changes: changes.build(),
-              sender:
-                  BuiltValueNullFieldError.checkNotNull(sender, r'UserTransaction', 'sender'),
-              sequenceNumber: BuiltValueNullFieldError.checkNotNull(sequenceNumber, r'UserTransaction', 'sequenceNumber'),
-              maxGasAmount: BuiltValueNullFieldError.checkNotNull(maxGasAmount, r'UserTransaction', 'maxGasAmount'),
-              gasUnitPrice: BuiltValueNullFieldError.checkNotNull(gasUnitPrice, r'UserTransaction', 'gasUnitPrice'),
-              expirationTimestampSecs: BuiltValueNullFieldError.checkNotNull(expirationTimestampSecs, r'UserTransaction', 'expirationTimestampSecs'),
+              sender: BuiltValueNullFieldError.checkNotNull(sender, r'$UserTransaction', 'sender'),
+              sequenceNumber: BuiltValueNullFieldError.checkNotNull(sequenceNumber, r'$UserTransaction', 'sequenceNumber'),
+              maxGasAmount: BuiltValueNullFieldError.checkNotNull(maxGasAmount, r'$UserTransaction', 'maxGasAmount'),
+              gasUnitPrice: BuiltValueNullFieldError.checkNotNull(gasUnitPrice, r'$UserTransaction', 'gasUnitPrice'),
+              expirationTimestampSecs: BuiltValueNullFieldError.checkNotNull(expirationTimestampSecs, r'$UserTransaction', 'expirationTimestampSecs'),
               payload: payload.build(),
               signature: _signature?.build(),
               events: events.build(),
-              timestamp: BuiltValueNullFieldError.checkNotNull(timestamp, r'UserTransaction', 'timestamp'));
+              timestamp: BuiltValueNullFieldError.checkNotNull(timestamp, r'$UserTransaction', 'timestamp'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -377,7 +461,7 @@ class UserTransactionBuilder
         events.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'UserTransaction', _$failedField, e.toString());
+            r'$UserTransaction', _$failedField, e.toString());
       }
       rethrow;
     }

@@ -2,6 +2,7 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
+// ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -9,11 +10,11 @@ import 'package:built_value/serializer.dart';
 part 'move_function_visibility.g.dart';
 
 class MoveFunctionVisibility extends EnumClass {
-  @BuiltValueEnumConst(wireName: r'Private')
+  @BuiltValueEnumConst(wireName: r'private')
   static const MoveFunctionVisibility private = _$private;
-  @BuiltValueEnumConst(wireName: r'Public')
+  @BuiltValueEnumConst(wireName: r'public')
   static const MoveFunctionVisibility public = _$public;
-  @BuiltValueEnumConst(wireName: r'Friend')
+  @BuiltValueEnumConst(wireName: r'friend')
   static const MoveFunctionVisibility friend = _$friend;
 
   static Serializer<MoveFunctionVisibility> get serializer =>

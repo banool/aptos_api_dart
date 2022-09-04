@@ -3,10 +3,11 @@ import 'package:aptos_api_dart/aptos_api_dart.dart';
 
 // tests for ScriptWriteSet
 void main() {
-  final instance = ScriptWriteSetBuilder();
+  //final instance = ScriptWriteSetBuilder();
   // TODO add properties to the builder and call build()
 
   group(ScriptWriteSet, () {
+    // Hex encoded 32 byte Aptos account address
     // String executeAs
     test('to test the property `executeAs`', () async {
       // TODO

@@ -7,11 +7,18 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(TransactionSignature, () {
+    // String type
+    test('to test the property `type`', () async {
+      // TODO
+    });
+
+    // All bytes (Vec<u8>) data is represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Unlike the `Address` type, HexEncodedBytes will not trim any zeros.
     // String publicKey
     test('to test the property `publicKey`', () async {
       // TODO
     });
 
+    // All bytes (Vec<u8>) data is represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Unlike the `Address` type, HexEncodedBytes will not trim any zeros.
     // String signature
     test('to test the property `signature`', () async {
       // TODO
@@ -32,6 +39,7 @@ void main() {
       // TODO
     });
 
+    // All bytes (Vec<u8>) data is represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Unlike the `Address` type, HexEncodedBytes will not trim any zeros.
     // String bitmap
     test('to test the property `bitmap`', () async {
       // TODO

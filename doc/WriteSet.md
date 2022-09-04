@@ -8,7 +8,8 @@ import 'package:aptos_api_dart/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**executeAs** | **String** |  | 
+**type** | **String** |  | 
+**executeAs** | **String** | Hex encoded 32 byte Aptos account address | 
 **script** | [**ScriptPayload**](ScriptPayload.md) |  | 
 **changes** | [**BuiltList&lt;WriteSetChange&gt;**](WriteSetChange.md) |  | 
 **events** | [**BuiltList&lt;Event&gt;**](Event.md) |  | 

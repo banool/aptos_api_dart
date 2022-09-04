@@ -6,7 +6,20 @@ part of 'write_module.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$WriteModule extends WriteModule {
+abstract class WriteModuleBuilder {
+  void replace(WriteModule other);
+  void update(void Function(WriteModuleBuilder) updates);
+  String? get address;
+  set address(String? address);
+
+  String? get stateKeyHash;
+  set stateKeyHash(String? stateKeyHash);
+
+  MoveModuleBytecodeBuilder get data;
+  set data(MoveModuleBytecodeBuilder? data);
+}
+
+class _$$WriteModule extends $WriteModule {
   @override
   final String address;
   @override
@@ -14,29 +27,29 @@ class _$WriteModule extends WriteModule {
   @override
   final MoveModuleBytecode data;
 
-  factory _$WriteModule([void Function(WriteModuleBuilder)? updates]) =>
-      (WriteModuleBuilder()..update(updates))._build();
+  factory _$$WriteModule([void Function($WriteModuleBuilder)? updates]) =>
+      ($WriteModuleBuilder()..update(updates))._build();
 
-  _$WriteModule._(
+  _$$WriteModule._(
       {required this.address, required this.stateKeyHash, required this.data})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(address, r'WriteModule', 'address');
+    BuiltValueNullFieldError.checkNotNull(address, r'$WriteModule', 'address');
     BuiltValueNullFieldError.checkNotNull(
-        stateKeyHash, r'WriteModule', 'stateKeyHash');
-    BuiltValueNullFieldError.checkNotNull(data, r'WriteModule', 'data');
+        stateKeyHash, r'$WriteModule', 'stateKeyHash');
+    BuiltValueNullFieldError.checkNotNull(data, r'$WriteModule', 'data');
   }
 
   @override
-  WriteModule rebuild(void Function(WriteModuleBuilder) updates) =>
+  $WriteModule rebuild(void Function($WriteModuleBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  WriteModuleBuilder toBuilder() => WriteModuleBuilder()..replace(this);
+  $WriteModuleBuilder toBuilder() => $WriteModuleBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is WriteModule &&
+    return other is $WriteModule &&
         address == other.address &&
         stateKeyHash == other.stateKeyHash &&
         data == other.data;
@@ -50,7 +63,7 @@ class _$WriteModule extends WriteModule {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'WriteModule')
+    return (newBuiltValueToStringHelper(r'$WriteModule')
           ..add('address', address)
           ..add('stateKeyHash', stateKeyHash)
           ..add('data', data))
@@ -58,27 +71,29 @@ class _$WriteModule extends WriteModule {
   }
 }
 
-class WriteModuleBuilder implements Builder<WriteModule, WriteModuleBuilder> {
-  _$WriteModule? _$v;
+class $WriteModuleBuilder
+    implements Builder<$WriteModule, $WriteModuleBuilder>, WriteModuleBuilder {
+  _$$WriteModule? _$v;
 
   String? _address;
   String? get address => _$this._address;
-  set address(String? address) => _$this._address = address;
+  set address(covariant String? address) => _$this._address = address;
 
   String? _stateKeyHash;
   String? get stateKeyHash => _$this._stateKeyHash;
-  set stateKeyHash(String? stateKeyHash) => _$this._stateKeyHash = stateKeyHash;
+  set stateKeyHash(covariant String? stateKeyHash) =>
+      _$this._stateKeyHash = stateKeyHash;
 
   MoveModuleBytecodeBuilder? _data;
   MoveModuleBytecodeBuilder get data =>
       _$this._data ??= MoveModuleBytecodeBuilder();
-  set data(MoveModuleBytecodeBuilder? data) => _$this._data = data;
+  set data(covariant MoveModuleBytecodeBuilder? data) => _$this._data = data;
 
-  WriteModuleBuilder() {
-    WriteModule._defaults(this);
+  $WriteModuleBuilder() {
+    $WriteModule._defaults(this);
   }
 
-  WriteModuleBuilder get _$this {
+  $WriteModuleBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _address = $v.address;
@@ -90,28 +105,28 @@ class WriteModuleBuilder implements Builder<WriteModule, WriteModuleBuilder> {
   }
 
   @override
-  void replace(WriteModule other) {
+  void replace(covariant $WriteModule other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$WriteModule;
+    _$v = other as _$$WriteModule;
   }
 
   @override
-  void update(void Function(WriteModuleBuilder)? updates) {
+  void update(void Function($WriteModuleBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  WriteModule build() => _build();
+  $WriteModule build() => _build();
 
-  _$WriteModule _build() {
-    _$WriteModule _$result;
+  _$$WriteModule _build() {
+    _$$WriteModule _$result;
     try {
       _$result = _$v ??
-          _$WriteModule._(
+          _$$WriteModule._(
               address: BuiltValueNullFieldError.checkNotNull(
-                  address, r'WriteModule', 'address'),
+                  address, r'$WriteModule', 'address'),
               stateKeyHash: BuiltValueNullFieldError.checkNotNull(
-                  stateKeyHash, r'WriteModule', 'stateKeyHash'),
+                  stateKeyHash, r'$WriteModule', 'stateKeyHash'),
               data: data.build());
     } catch (_) {
       late String _$failedField;
@@ -120,7 +135,7 @@ class WriteModuleBuilder implements Builder<WriteModule, WriteModuleBuilder> {
         data.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'WriteModule', _$failedField, e.toString());
+            r'$WriteModule', _$failedField, e.toString());
       }
       rethrow;
     }

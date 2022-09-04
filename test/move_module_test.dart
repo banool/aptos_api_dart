@@ -7,6 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(MoveModule, () {
+    // Hex encoded 32 byte Aptos account address
     // String address
     test('to test the property `address`', () async {
       // TODO
@@ -17,7 +18,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<MoveModuleId> friends
+    // BuiltList<String> friends
     test('to test the property `friends`', () async {
       // TODO
     });

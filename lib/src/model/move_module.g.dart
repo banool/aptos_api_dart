@@ -12,7 +12,7 @@ class _$MoveModule extends MoveModule {
   @override
   final String name;
   @override
-  final BuiltList<MoveModuleId> friends;
+  final BuiltList<String> friends;
   @override
   final BuiltList<MoveFunction> exposedFunctions;
   @override
@@ -85,10 +85,9 @@ class MoveModuleBuilder implements Builder<MoveModule, MoveModuleBuilder> {
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  ListBuilder<MoveModuleId>? _friends;
-  ListBuilder<MoveModuleId> get friends =>
-      _$this._friends ??= ListBuilder<MoveModuleId>();
-  set friends(ListBuilder<MoveModuleId>? friends) => _$this._friends = friends;
+  ListBuilder<String>? _friends;
+  ListBuilder<String> get friends => _$this._friends ??= ListBuilder<String>();
+  set friends(ListBuilder<String>? friends) => _$this._friends = friends;
 
   ListBuilder<MoveFunction>? _exposedFunctions;
   ListBuilder<MoveFunction> get exposedFunctions =>

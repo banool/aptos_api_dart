@@ -7,6 +7,12 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(WriteSet, () {
+    // String type
+    test('to test the property `type`', () async {
+      // TODO
+    });
+
+    // Hex encoded 32 byte Aptos account address
     // String executeAs
     test('to test the property `executeAs`', () async {
       // TODO

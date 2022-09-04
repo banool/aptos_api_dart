@@ -9,7 +9,7 @@ import 'package:dio/dio.dart';
 
 import 'package:aptos_api_dart/src/api_util.dart';
 import 'package:aptos_api_dart/src/model/aptos_error.dart';
-import 'package:aptos_api_dart/src/model/event.dart';
+import 'package:aptos_api_dart/src/model/versioned_event.dart';
 import 'package:built_collection/built_collection.dart';
 
 class EventsApi {
@@ -35,9 +35,9 @@ class EventsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltList<Event>] as data
+  /// Returns a [Future] containing a [Response] with a [BuiltList<VersionedEvent>] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<BuiltList<Event>>> getEventsByEventHandle({
+  Future<Response<BuiltList<VersionedEvent>>> getEventsByEventHandle({
     required String address,
     required String eventHandle,
     required String fieldName,
@@ -84,14 +84,14 @@ class EventsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<Event> _responseData;
+    BuiltList<VersionedEvent> _responseData;
 
     try {
-      const _responseType = FullType(BuiltList, [FullType(Event)]);
+      const _responseType = FullType(BuiltList, [FullType(VersionedEvent)]);
       _responseData = _serializers.deserialize(
         _response.data!,
         specifiedType: _responseType,
-      ) as BuiltList<Event>;
+      ) as BuiltList<VersionedEvent>;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -101,7 +101,7 @@ class EventsApi {
       )..stackTrace = stackTrace;
     }
 
-    return Response<BuiltList<Event>>(
+    return Response<BuiltList<VersionedEvent>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -114,7 +114,7 @@ class EventsApi {
   }
 
   /// Get events by event key
-  /// todo
+  /// This endpoint allows you to get a list of events of a specific type as identified by its event key, which is a globally unique ID.
   ///
   /// Parameters:
   /// * [eventKey]
@@ -127,9 +127,9 @@ class EventsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltList<Event>] as data
+  /// Returns a [Future] containing a [Response] with a [BuiltList<VersionedEvent>] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<BuiltList<Event>>> getEventsByEventKey({
+  Future<Response<BuiltList<VersionedEvent>>> getEventsByEventKey({
     required String eventKey,
     String? start,
     int? limit,
@@ -172,14 +172,14 @@ class EventsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<Event> _responseData;
+    BuiltList<VersionedEvent> _responseData;
 
     try {
-      const _responseType = FullType(BuiltList, [FullType(Event)]);
+      const _responseType = FullType(BuiltList, [FullType(VersionedEvent)]);
       _responseData = _serializers.deserialize(
         _response.data!,
         specifiedType: _responseType,
-      ) as BuiltList<Event>;
+      ) as BuiltList<VersionedEvent>;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -189,7 +189,7 @@ class EventsApi {
       )..stackTrace = stackTrace;
     }
 
-    return Response<BuiltList<Event>>(
+    return Response<BuiltList<VersionedEvent>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

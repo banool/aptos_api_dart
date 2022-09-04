@@ -3,7 +3,7 @@ import 'package:aptos_api_dart/aptos_api_dart.dart';
 
 // tests for DirectWriteSet
 void main() {
-  final instance = DirectWriteSetBuilder();
+  //final instance = DirectWriteSetBuilder();
   // TODO add properties to the builder and call build()
 
   group(DirectWriteSet, () {

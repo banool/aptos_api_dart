@@ -19,6 +19,10 @@ class _$IndexResponse extends IndexResponse {
   final String ledgerTimestamp;
   @override
   final RoleType nodeRole;
+  @override
+  final String oldestBlockHeight;
+  @override
+  final String blockHeight;
 
   factory _$IndexResponse([void Function(IndexResponseBuilder)? updates]) =>
       (IndexResponseBuilder()..update(updates))._build();
@@ -29,7 +33,9 @@ class _$IndexResponse extends IndexResponse {
       required this.ledgerVersion,
       required this.oldestLedgerVersion,
       required this.ledgerTimestamp,
-      required this.nodeRole})
+      required this.nodeRole,
+      required this.oldestBlockHeight,
+      required this.blockHeight})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(chainId, r'IndexResponse', 'chainId');
     BuiltValueNullFieldError.checkNotNull(epoch, r'IndexResponse', 'epoch');
@@ -41,6 +47,10 @@ class _$IndexResponse extends IndexResponse {
         ledgerTimestamp, r'IndexResponse', 'ledgerTimestamp');
     BuiltValueNullFieldError.checkNotNull(
         nodeRole, r'IndexResponse', 'nodeRole');
+    BuiltValueNullFieldError.checkNotNull(
+        oldestBlockHeight, r'IndexResponse', 'oldestBlockHeight');
+    BuiltValueNullFieldError.checkNotNull(
+        blockHeight, r'IndexResponse', 'blockHeight');
   }
 
   @override
@@ -59,7 +69,9 @@ class _$IndexResponse extends IndexResponse {
         ledgerVersion == other.ledgerVersion &&
         oldestLedgerVersion == other.oldestLedgerVersion &&
         ledgerTimestamp == other.ledgerTimestamp &&
-        nodeRole == other.nodeRole;
+        nodeRole == other.nodeRole &&
+        oldestBlockHeight == other.oldestBlockHeight &&
+        blockHeight == other.blockHeight;
   }
 
   @override
@@ -67,11 +79,15 @@ class _$IndexResponse extends IndexResponse {
     return $jf($jc(
         $jc(
             $jc(
-                $jc($jc($jc(0, chainId.hashCode), epoch.hashCode),
-                    ledgerVersion.hashCode),
-                oldestLedgerVersion.hashCode),
-            ledgerTimestamp.hashCode),
-        nodeRole.hashCode));
+                $jc(
+                    $jc(
+                        $jc($jc($jc(0, chainId.hashCode), epoch.hashCode),
+                            ledgerVersion.hashCode),
+                        oldestLedgerVersion.hashCode),
+                    ledgerTimestamp.hashCode),
+                nodeRole.hashCode),
+            oldestBlockHeight.hashCode),
+        blockHeight.hashCode));
   }
 
   @override
@@ -82,7 +98,9 @@ class _$IndexResponse extends IndexResponse {
           ..add('ledgerVersion', ledgerVersion)
           ..add('oldestLedgerVersion', oldestLedgerVersion)
           ..add('ledgerTimestamp', ledgerTimestamp)
-          ..add('nodeRole', nodeRole))
+          ..add('nodeRole', nodeRole)
+          ..add('oldestBlockHeight', oldestBlockHeight)
+          ..add('blockHeight', blockHeight))
         .toString();
   }
 }
@@ -118,6 +136,15 @@ class IndexResponseBuilder
   RoleType? get nodeRole => _$this._nodeRole;
   set nodeRole(RoleType? nodeRole) => _$this._nodeRole = nodeRole;
 
+  String? _oldestBlockHeight;
+  String? get oldestBlockHeight => _$this._oldestBlockHeight;
+  set oldestBlockHeight(String? oldestBlockHeight) =>
+      _$this._oldestBlockHeight = oldestBlockHeight;
+
+  String? _blockHeight;
+  String? get blockHeight => _$this._blockHeight;
+  set blockHeight(String? blockHeight) => _$this._blockHeight = blockHeight;
+
   IndexResponseBuilder() {
     IndexResponse._defaults(this);
   }
@@ -131,6 +158,8 @@ class IndexResponseBuilder
       _oldestLedgerVersion = $v.oldestLedgerVersion;
       _ledgerTimestamp = $v.ledgerTimestamp;
       _nodeRole = $v.nodeRole;
+      _oldestBlockHeight = $v.oldestBlockHeight;
+      _blockHeight = $v.blockHeight;
       _$v = null;
     }
     return this;
@@ -164,7 +193,11 @@ class IndexResponseBuilder
             ledgerTimestamp: BuiltValueNullFieldError.checkNotNull(
                 ledgerTimestamp, r'IndexResponse', 'ledgerTimestamp'),
             nodeRole: BuiltValueNullFieldError.checkNotNull(
-                nodeRole, r'IndexResponse', 'nodeRole'));
+                nodeRole, r'IndexResponse', 'nodeRole'),
+            oldestBlockHeight: BuiltValueNullFieldError.checkNotNull(
+                oldestBlockHeight, r'IndexResponse', 'oldestBlockHeight'),
+            blockHeight: BuiltValueNullFieldError.checkNotNull(
+                blockHeight, r'IndexResponse', 'blockHeight'));
     replace(_$result);
     return _$result;
   }

@@ -11,10 +11,5 @@ void main() {
     test('to test the property `constraints`', () async {
       // TODO
     });
-
-    // bool isPhantom
-    test('to test the property `isPhantom`', () async {
-      // TODO
-    });
   });
 }

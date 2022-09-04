@@ -8,7 +8,7 @@ import 'package:aptos_api_dart/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address** | **String** |  | 
+**address** | **String** | Hex encoded 32 byte Aptos account address | 
 **stateKeyHash** | **String** |  | 
 **data** | [**MoveResource**](MoveResource.md) |  | 
 

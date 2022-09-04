@@ -1,14 +1,18 @@
+## 0.5.4
+- Build against API spec from /v1 from https://github.com/aptos-labs/aptos-core/commit/8399cd1c7b9662d3a6a09c28363c5f66f0839c41.
+- Use latest, fully functioning version of openapi-generator from https://github.com/OpenAPITools/openapi-generator/pull/12295.
+
 ## 0.5.3
-- Build against API spec from /v1 from https://github.com/aptos-labs/aptos-core/commit/bc6358a02a62de02f3a982bdc1357a4833af8108
+- Build against API spec from /v1 from https://github.com/aptos-labs/aptos-core/commit/bc6358a02a62de02f3a982bdc1357a4833af8108.
 
 ## 0.5.2
-- Build against API spec from /v1 from https://github.com/aptos-labs/aptos-core/commit/60027e6e0e52c3c6277505c84ff2c5dfa48021da
+- Build against API spec from /v1 from https://github.com/aptos-labs/aptos-core/commit/60027e6e0e52c3c6277505c84ff2c5dfa48021da.
 
 ## 0.5.1
-- Build against API spec from /v1 from https://github.com/aptos-labs/aptos-core/commit/04246b6d8d184d3d51caad97c689b0febb85ce49
+- Build against API spec from /v1 from https://github.com/aptos-labs/aptos-core/commit/04246b6d8d184d3d51caad97c689b0febb85ce49.
 
 ## 0.5.0
-- Build against API spec from /v1 from https://github.com/aptos-labs/aptos-core/commit/ecffe6eecf8bc3f0a56e8fb1e06810a663c37dd2
+- Build against API spec from /v1 from https://github.com/aptos-labs/aptos-core/commit/ecffe6eecf8bc3f0a56e8fb1e06810a663c37dd2.
 
 ## 0.4.1
 - Build against API spec from https://github.com/aptos-labs/aptos-core/commit/0f8d277d53d77ef7638b98efbdeb8dd8c419e78a.

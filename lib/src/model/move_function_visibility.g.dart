@@ -51,14 +51,14 @@ Serializer<MoveFunctionVisibility> _$moveFunctionVisibilitySerializer =
 class _$MoveFunctionVisibilitySerializer
     implements PrimitiveSerializer<MoveFunctionVisibility> {
   static const Map<String, Object> _toWire = <String, Object>{
-    'private': 'Private',
-    'public': 'Public',
-    'friend': 'Friend',
+    'private': 'private',
+    'public': 'public',
+    'friend': 'friend',
   };
   static const Map<Object, String> _fromWire = <Object, String>{
-    'Private': 'private',
-    'Public': 'public',
-    'Friend': 'friend',
+    'private': 'private',
+    'public': 'public',
+    'friend': 'friend',
   };
 
   @override

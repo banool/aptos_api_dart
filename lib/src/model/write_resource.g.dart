@@ -6,7 +6,20 @@ part of 'write_resource.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$WriteResource extends WriteResource {
+abstract class WriteResourceBuilder {
+  void replace(WriteResource other);
+  void update(void Function(WriteResourceBuilder) updates);
+  String? get address;
+  set address(String? address);
+
+  String? get stateKeyHash;
+  set stateKeyHash(String? stateKeyHash);
+
+  MoveResourceBuilder get data;
+  set data(MoveResourceBuilder? data);
+}
+
+class _$$WriteResource extends $WriteResource {
   @override
   final String address;
   @override
@@ -14,29 +27,30 @@ class _$WriteResource extends WriteResource {
   @override
   final MoveResource data;
 
-  factory _$WriteResource([void Function(WriteResourceBuilder)? updates]) =>
-      (WriteResourceBuilder()..update(updates))._build();
+  factory _$$WriteResource([void Function($WriteResourceBuilder)? updates]) =>
+      ($WriteResourceBuilder()..update(updates))._build();
 
-  _$WriteResource._(
+  _$$WriteResource._(
       {required this.address, required this.stateKeyHash, required this.data})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(address, r'WriteResource', 'address');
     BuiltValueNullFieldError.checkNotNull(
-        stateKeyHash, r'WriteResource', 'stateKeyHash');
-    BuiltValueNullFieldError.checkNotNull(data, r'WriteResource', 'data');
+        address, r'$WriteResource', 'address');
+    BuiltValueNullFieldError.checkNotNull(
+        stateKeyHash, r'$WriteResource', 'stateKeyHash');
+    BuiltValueNullFieldError.checkNotNull(data, r'$WriteResource', 'data');
   }
 
   @override
-  WriteResource rebuild(void Function(WriteResourceBuilder) updates) =>
+  $WriteResource rebuild(void Function($WriteResourceBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  WriteResourceBuilder toBuilder() => WriteResourceBuilder()..replace(this);
+  $WriteResourceBuilder toBuilder() => $WriteResourceBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is WriteResource &&
+    return other is $WriteResource &&
         address == other.address &&
         stateKeyHash == other.stateKeyHash &&
         data == other.data;
@@ -50,7 +64,7 @@ class _$WriteResource extends WriteResource {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'WriteResource')
+    return (newBuiltValueToStringHelper(r'$WriteResource')
           ..add('address', address)
           ..add('stateKeyHash', stateKeyHash)
           ..add('data', data))
@@ -58,27 +72,30 @@ class _$WriteResource extends WriteResource {
   }
 }
 
-class WriteResourceBuilder
-    implements Builder<WriteResource, WriteResourceBuilder> {
-  _$WriteResource? _$v;
+class $WriteResourceBuilder
+    implements
+        Builder<$WriteResource, $WriteResourceBuilder>,
+        WriteResourceBuilder {
+  _$$WriteResource? _$v;
 
   String? _address;
   String? get address => _$this._address;
-  set address(String? address) => _$this._address = address;
+  set address(covariant String? address) => _$this._address = address;
 
   String? _stateKeyHash;
   String? get stateKeyHash => _$this._stateKeyHash;
-  set stateKeyHash(String? stateKeyHash) => _$this._stateKeyHash = stateKeyHash;
+  set stateKeyHash(covariant String? stateKeyHash) =>
+      _$this._stateKeyHash = stateKeyHash;
 
   MoveResourceBuilder? _data;
   MoveResourceBuilder get data => _$this._data ??= MoveResourceBuilder();
-  set data(MoveResourceBuilder? data) => _$this._data = data;
+  set data(covariant MoveResourceBuilder? data) => _$this._data = data;
 
-  WriteResourceBuilder() {
-    WriteResource._defaults(this);
+  $WriteResourceBuilder() {
+    $WriteResource._defaults(this);
   }
 
-  WriteResourceBuilder get _$this {
+  $WriteResourceBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _address = $v.address;
@@ -90,28 +107,28 @@ class WriteResourceBuilder
   }
 
   @override
-  void replace(WriteResource other) {
+  void replace(covariant $WriteResource other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$WriteResource;
+    _$v = other as _$$WriteResource;
   }
 
   @override
-  void update(void Function(WriteResourceBuilder)? updates) {
+  void update(void Function($WriteResourceBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  WriteResource build() => _build();
+  $WriteResource build() => _build();
 
-  _$WriteResource _build() {
-    _$WriteResource _$result;
+  _$$WriteResource _build() {
+    _$$WriteResource _$result;
     try {
       _$result = _$v ??
-          _$WriteResource._(
+          _$$WriteResource._(
               address: BuiltValueNullFieldError.checkNotNull(
-                  address, r'WriteResource', 'address'),
+                  address, r'$WriteResource', 'address'),
               stateKeyHash: BuiltValueNullFieldError.checkNotNull(
-                  stateKeyHash, r'WriteResource', 'stateKeyHash'),
+                  stateKeyHash, r'$WriteResource', 'stateKeyHash'),
               data: data.build());
     } catch (_) {
       late String _$failedField;
@@ -120,7 +137,7 @@ class WriteResourceBuilder
         data.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'WriteResource', _$failedField, e.toString());
+            r'$WriteResource', _$failedField, e.toString());
       }
       rethrow;
     }

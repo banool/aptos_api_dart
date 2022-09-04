@@ -8,11 +8,12 @@ import 'package:aptos_api_dart/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**version** | **String** |  | 
+**version** | **String** | A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.  | 
 **hash** | **String** |  | 
-**stateRootHash** | **String** |  | 
+**stateChangeHash** | **String** |  | 
 **eventRootHash** | **String** |  | 
-**gasUsed** | **String** |  | 
+**stateCheckpointHash** | **String** |  | [optional] 
+**gasUsed** | **String** | A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.  | 
 **success** | **bool** |  | 
 **vmStatus** | **String** |  | 
 **accumulatorRootHash** | **String** |  | 
