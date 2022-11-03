@@ -9,11 +9,11 @@ import 'package:built_value/serializer.dart';
 
 part 'transactions_batch_single_submission_failure.g.dart';
 
-/// TransactionsBatchSingleSubmissionFailure
+/// Information telling which batch submission transactions failed
 ///
 /// Properties:
 /// * [error]
-/// * [transactionIndex]
+/// * [transactionIndex] - The index of which transaction failed, same as submission order
 @BuiltValue()
 abstract class TransactionsBatchSingleSubmissionFailure
     implements
@@ -22,6 +22,7 @@ abstract class TransactionsBatchSingleSubmissionFailure
   @BuiltValueField(wireName: r'error')
   AptosError get error;
 
+  /// The index of which transaction failed, same as submission order
   @BuiltValueField(wireName: r'transaction_index')
   int get transactionIndex;
 

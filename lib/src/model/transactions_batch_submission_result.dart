@@ -10,15 +10,16 @@ import 'package:built_value/serializer.dart';
 
 part 'transactions_batch_submission_result.g.dart';
 
-/// TransactionsBatchSubmissionResult
+/// Batch transaction submission result  Tells which transactions failed
 ///
 /// Properties:
-/// * [transactionFailures]
+/// * [transactionFailures] - Summary of the failed transactions
 @BuiltValue()
 abstract class TransactionsBatchSubmissionResult
     implements
         Built<TransactionsBatchSubmissionResult,
             TransactionsBatchSubmissionResultBuilder> {
+  /// Summary of the failed transactions
   @BuiltValueField(wireName: r'transaction_failures')
   BuiltList<TransactionsBatchSingleSubmissionFailure> get transactionFailures;
 

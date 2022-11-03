@@ -7,19 +7,18 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(VersionedEvent, () {
-    // A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
+    // A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
     // String version
     test('to test the property `version`', () async {
       // TODO
     });
 
-    // Event key is a global index for an event stream.  It is hex-encoded BCS bytes of `EventHandle` `guid` field value, which is a combination of a `uint64` creation number and account address (without trimming leading zeros).  For example, event key `0x000000000000000088fbd33f54e1126269769780feb24480428179f552e2313fbe571b72e62a1ca1` is combined by the following 2 parts:   1. `0000000000000000`: `uint64` representation of `0`.   2. `88fbd33f54e1126269769780feb24480428179f552e2313fbe571b72e62a1ca1`: 32 bytes of account address.
-    // String key
-    test('to test the property `key`', () async {
+    // EventGuid guid
+    test('to test the property `guid`', () async {
       // TODO
     });
 
-    // A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
+    // A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
     // String sequenceNumber
     test('to test the property `sequenceNumber`', () async {
       // TODO
@@ -31,6 +30,7 @@ void main() {
       // TODO
     });
 
+    // The JSON representation of the event
     // JsonObject data
     test('to test the property `data`', () async {
       // TODO

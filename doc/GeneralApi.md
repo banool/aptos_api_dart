@@ -65,7 +65,7 @@ By default this endpoint just checks that it can get the latest ledger info and 
 import 'package:aptos_api_dart/api.dart';
 
 final api = AptosApiDart().getGeneralApi();
-final int durationSecs = 56; // int | 
+final int durationSecs = 56; // int | Threshold in seconds that the server can be behind to be considered healthy  If not provided, the healthcheck will always succeed
 
 try {
     final response = api.healthy(durationSecs);
@@ -79,7 +79,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **durationSecs** | **int**|  | [optional] 
+ **durationSecs** | **int**| Threshold in seconds that the server can be behind to be considered healthy  If not provided, the healthcheck will always succeed | [optional] 
 
 ### Return type
 

@@ -9,15 +9,16 @@ import 'package:built_value/serializer.dart';
 
 part 'move_function_generic_type_param.g.dart';
 
-/// MoveFunctionGenericTypeParam
+/// Move function generic type param
 ///
 /// Properties:
-/// * [constraints]
+/// * [constraints] - Move abilities tied to the generic type param and associated with the function that uses it
 @BuiltValue()
 abstract class MoveFunctionGenericTypeParam
     implements
         Built<MoveFunctionGenericTypeParam,
             MoveFunctionGenericTypeParamBuilder> {
+  /// Move abilities tied to the generic type param and associated with the function that uses it
   @BuiltValueField(wireName: r'constraints')
   BuiltList<String> get constraints;
 

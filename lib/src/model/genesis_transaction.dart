@@ -12,24 +12,24 @@ import 'package:built_value/serializer.dart';
 
 part 'genesis_transaction.g.dart';
 
-/// GenesisTransaction
+/// The genesis transaction  This only occurs at the genesis transaction (version 0)
 ///
 /// Properties:
-/// * [version] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [version] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
 /// * [hash]
 /// * [stateChangeHash]
 /// * [eventRootHash]
 /// * [stateCheckpointHash]
-/// * [gasUsed] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
-/// * [success]
-/// * [vmStatus]
+/// * [gasUsed] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [success] - Whether the transaction was successful
+/// * [vmStatus] - The VM status of the transaction, can tell useful information in a failure
 /// * [accumulatorRootHash]
-/// * [changes]
+/// * [changes] - Final state of resources changed by the transaction
 /// * [payload]
-/// * [events]
+/// * [events] - Events emitted during genesis
 @BuiltValue(instantiable: false)
 abstract class GenesisTransaction {
-  /// A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
+  /// A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
   @BuiltValueField(wireName: r'version')
   String get version;
 
@@ -45,25 +45,29 @@ abstract class GenesisTransaction {
   @BuiltValueField(wireName: r'state_checkpoint_hash')
   String? get stateCheckpointHash;
 
-  /// A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
+  /// A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
   @BuiltValueField(wireName: r'gas_used')
   String get gasUsed;
 
+  /// Whether the transaction was successful
   @BuiltValueField(wireName: r'success')
   bool get success;
 
+  /// The VM status of the transaction, can tell useful information in a failure
   @BuiltValueField(wireName: r'vm_status')
   String get vmStatus;
 
   @BuiltValueField(wireName: r'accumulator_root_hash')
   String get accumulatorRootHash;
 
+  /// Final state of resources changed by the transaction
   @BuiltValueField(wireName: r'changes')
   BuiltList<WriteSetChange> get changes;
 
   @BuiltValueField(wireName: r'payload')
   GenesisPayload get payload;
 
+  /// Events emitted during genesis
   @BuiltValueField(wireName: r'events')
   BuiltList<Event> get events;
 

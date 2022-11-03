@@ -10,21 +10,23 @@ import 'package:built_value/serializer.dart';
 
 part 'entry_function_payload.g.dart';
 
-/// EntryFunctionPayload
+/// Payload which runs a single entry function
 ///
 /// Properties:
 /// * [function_] - Entry function id is string representation of a entry function defined on-chain.  Format: `{address}::{module name}::{function name}`  Both `module name` and `function name` are case-sensitive.
-/// * [typeArguments]
-/// * [arguments]
+/// * [typeArguments] - Type arguments of the function
+/// * [arguments] - Arguments of the function
 @BuiltValue(instantiable: false)
 abstract class EntryFunctionPayload {
   /// Entry function id is string representation of a entry function defined on-chain.  Format: `{address}::{module name}::{function name}`  Both `module name` and `function name` are case-sensitive.
   @BuiltValueField(wireName: r'function')
   String get function_;
 
+  /// Type arguments of the function
   @BuiltValueField(wireName: r'type_arguments')
   BuiltList<String> get typeArguments;
 
+  /// Arguments of the function
   @BuiltValueField(wireName: r'arguments')
   BuiltList<JsonObject?> get arguments;
 

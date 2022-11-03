@@ -8,7 +8,7 @@ import 'package:built_value/serializer.dart';
 
 part 'move_struct_field.g.dart';
 
-/// MoveStructField
+/// Move struct field
 ///
 /// Properties:
 /// * [name]

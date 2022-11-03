@@ -23,6 +23,8 @@ class _$IndexResponse extends IndexResponse {
   final String oldestBlockHeight;
   @override
   final String blockHeight;
+  @override
+  final String? gitHash;
 
   factory _$IndexResponse([void Function(IndexResponseBuilder)? updates]) =>
       (IndexResponseBuilder()..update(updates))._build();
@@ -35,7 +37,8 @@ class _$IndexResponse extends IndexResponse {
       required this.ledgerTimestamp,
       required this.nodeRole,
       required this.oldestBlockHeight,
-      required this.blockHeight})
+      required this.blockHeight,
+      this.gitHash})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(chainId, r'IndexResponse', 'chainId');
     BuiltValueNullFieldError.checkNotNull(epoch, r'IndexResponse', 'epoch');
@@ -71,7 +74,8 @@ class _$IndexResponse extends IndexResponse {
         ledgerTimestamp == other.ledgerTimestamp &&
         nodeRole == other.nodeRole &&
         oldestBlockHeight == other.oldestBlockHeight &&
-        blockHeight == other.blockHeight;
+        blockHeight == other.blockHeight &&
+        gitHash == other.gitHash;
   }
 
   @override
@@ -81,13 +85,15 @@ class _$IndexResponse extends IndexResponse {
             $jc(
                 $jc(
                     $jc(
-                        $jc($jc($jc(0, chainId.hashCode), epoch.hashCode),
-                            ledgerVersion.hashCode),
-                        oldestLedgerVersion.hashCode),
-                    ledgerTimestamp.hashCode),
-                nodeRole.hashCode),
-            oldestBlockHeight.hashCode),
-        blockHeight.hashCode));
+                        $jc(
+                            $jc($jc($jc(0, chainId.hashCode), epoch.hashCode),
+                                ledgerVersion.hashCode),
+                            oldestLedgerVersion.hashCode),
+                        ledgerTimestamp.hashCode),
+                    nodeRole.hashCode),
+                oldestBlockHeight.hashCode),
+            blockHeight.hashCode),
+        gitHash.hashCode));
   }
 
   @override
@@ -100,7 +106,8 @@ class _$IndexResponse extends IndexResponse {
           ..add('ledgerTimestamp', ledgerTimestamp)
           ..add('nodeRole', nodeRole)
           ..add('oldestBlockHeight', oldestBlockHeight)
-          ..add('blockHeight', blockHeight))
+          ..add('blockHeight', blockHeight)
+          ..add('gitHash', gitHash))
         .toString();
   }
 }
@@ -145,6 +152,10 @@ class IndexResponseBuilder
   String? get blockHeight => _$this._blockHeight;
   set blockHeight(String? blockHeight) => _$this._blockHeight = blockHeight;
 
+  String? _gitHash;
+  String? get gitHash => _$this._gitHash;
+  set gitHash(String? gitHash) => _$this._gitHash = gitHash;
+
   IndexResponseBuilder() {
     IndexResponse._defaults(this);
   }
@@ -160,6 +171,7 @@ class IndexResponseBuilder
       _nodeRole = $v.nodeRole;
       _oldestBlockHeight = $v.oldestBlockHeight;
       _blockHeight = $v.blockHeight;
+      _gitHash = $v.gitHash;
       _$v = null;
     }
     return this;
@@ -197,7 +209,8 @@ class IndexResponseBuilder
             oldestBlockHeight: BuiltValueNullFieldError.checkNotNull(
                 oldestBlockHeight, r'IndexResponse', 'oldestBlockHeight'),
             blockHeight: BuiltValueNullFieldError.checkNotNull(
-                blockHeight, r'IndexResponse', 'blockHeight'));
+                blockHeight, r'IndexResponse', 'blockHeight'),
+            gitHash: gitHash);
     replace(_$result);
     return _$result;
   }

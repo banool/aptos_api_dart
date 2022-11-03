@@ -16,17 +16,17 @@ part 'transaction_state_checkpoint_transaction.g.dart';
 ///
 /// Properties:
 /// * [type]
-/// * [version] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [version] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
 /// * [hash]
 /// * [stateChangeHash]
 /// * [eventRootHash]
 /// * [stateCheckpointHash]
-/// * [gasUsed] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
-/// * [success]
-/// * [vmStatus]
+/// * [gasUsed] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [success] - Whether the transaction was successful
+/// * [vmStatus] - The VM status of the transaction, can tell useful information in a failure
 /// * [accumulatorRootHash]
-/// * [changes]
-/// * [timestamp] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [changes] - Final state of resources changed by the transaction
+/// * [timestamp] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
 @BuiltValue()
 abstract class TransactionStateCheckpointTransaction
     implements

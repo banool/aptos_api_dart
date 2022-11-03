@@ -9,25 +9,29 @@ import 'package:built_value/serializer.dart';
 
 part 'decoded_table_data.g.dart';
 
-/// DecodedTableData
+/// Decoded table data
 ///
 /// Properties:
-/// * [key]
-/// * [keyType]
-/// * [value]
-/// * [valueType]
+/// * [key] - Key of table in JSON
+/// * [keyType] - Type of key
+/// * [value] - Value of table in JSON
+/// * [valueType] - Type of value
 @BuiltValue()
 abstract class DecodedTableData
     implements Built<DecodedTableData, DecodedTableDataBuilder> {
+  /// Key of table in JSON
   @BuiltValueField(wireName: r'key')
   JsonObject? get key;
 
+  /// Type of key
   @BuiltValueField(wireName: r'key_type')
   String get keyType;
 
+  /// Value of table in JSON
   @BuiltValueField(wireName: r'value')
   JsonObject? get value;
 
+  /// Type of value
   @BuiltValueField(wireName: r'value_type')
   String get valueType;
 

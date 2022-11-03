@@ -23,6 +23,7 @@ doc/Ed25519Signature.md
 doc/EncodeSubmissionRequest.md
 doc/EntryFunctionPayload.md
 doc/Event.md
+doc/EventGuid.md
 doc/EventsApi.md
 doc/GasEstimation.md
 doc/GeneralApi.md
@@ -140,6 +141,7 @@ lib/src/model/ed25519_signature.dart
 lib/src/model/encode_submission_request.dart
 lib/src/model/entry_function_payload.dart
 lib/src/model/event.dart
+lib/src/model/event_guid.dart
 lib/src/model/gas_estimation.dart
 lib/src/model/genesis_payload.dart
 lib/src/model/genesis_payload_write_set_payload.dart
@@ -240,6 +242,7 @@ test/direct_write_set_test.dart
 test/ed25519_signature_test.dart
 test/encode_submission_request_test.dart
 test/entry_function_payload_test.dart
+test/event_guid_test.dart
 test/event_test.dart
 test/events_api_test.dart
 test/gas_estimation_test.dart

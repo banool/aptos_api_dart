@@ -18,8 +18,8 @@ part 'transaction_payload_script_payload.g.dart';
 /// Properties:
 /// * [type]
 /// * [code]
-/// * [typeArguments]
-/// * [arguments]
+/// * [typeArguments] - Type arguments of the function
+/// * [arguments] - Arguments of the function
 @BuiltValue()
 abstract class TransactionPayloadScriptPayload
     implements

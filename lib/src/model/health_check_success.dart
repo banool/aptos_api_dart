@@ -8,7 +8,7 @@ import 'package:built_value/serializer.dart';
 
 part 'health_check_success.g.dart';
 
-/// HealthCheckSuccess
+/// Representation of a successful healthcheck
 ///
 /// Properties:
 /// * [message]

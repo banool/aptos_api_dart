@@ -8,7 +8,7 @@ import 'package:built_value/serializer.dart';
 
 part 'ed25519_signature.g.dart';
 
-/// Ed25519Signature
+/// A single Ed25519 signature
 ///
 /// Properties:
 /// * [publicKey] - All bytes (Vec<u8>) data is represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Unlike the `Address` type, HexEncodedBytes will not trim any zeros.

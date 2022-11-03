@@ -9,7 +9,7 @@ import 'package:built_value/serializer.dart';
 
 part 'delete_table_item.g.dart';
 
-/// DeleteTableItem
+/// Delete a table item
 ///
 /// Properties:
 /// * [stateKeyHash]

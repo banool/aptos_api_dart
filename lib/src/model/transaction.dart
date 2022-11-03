@@ -19,35 +19,35 @@ import 'package:one_of/one_of.dart';
 
 part 'transaction.g.dart';
 
-/// Transaction
+/// Enum of the different types of transactions in Aptos
 ///
 /// Properties:
 /// * [type]
 /// * [hash]
-/// * [sender] - Hex encoded 32 byte Aptos account address
-/// * [sequenceNumber] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
-/// * [maxGasAmount] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
-/// * [gasUnitPrice] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
-/// * [expirationTimestampSecs] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [sender] - A hex encoded 32 byte Aptos account address.  This is represented in a string as a 64 character hex string, sometimes shortened by stripping leading 0s, and adding a 0x.  For example, address 0x0000000000000000000000000000000000000000000000000000000000000001 is represented as 0x1.
+/// * [sequenceNumber] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [maxGasAmount] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [gasUnitPrice] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [expirationTimestampSecs] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
 /// * [payload]
 /// * [signature]
-/// * [version] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [version] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
 /// * [stateChangeHash]
 /// * [eventRootHash]
 /// * [stateCheckpointHash]
-/// * [gasUsed] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
-/// * [success]
-/// * [vmStatus]
+/// * [gasUsed] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [success] - Whether the transaction was successful
+/// * [vmStatus] - The VM status of the transaction, can tell useful information in a failure
 /// * [accumulatorRootHash]
-/// * [changes]
-/// * [events]
-/// * [timestamp] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [changes] - Final state of resources changed by the transaction
+/// * [events] - The events emitted at the block creation
+/// * [timestamp] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
 /// * [id]
-/// * [epoch] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
-/// * [round] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
-/// * [previousBlockVotesBitvec]
-/// * [proposer] - Hex encoded 32 byte Aptos account address
-/// * [failedProposerIndices]
+/// * [epoch] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [round] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [previousBlockVotesBitvec] - Previous block votes
+/// * [proposer] - A hex encoded 32 byte Aptos account address.  This is represented in a string as a 64 character hex string, sometimes shortened by stripping leading 0s, and adding a 0x.  For example, address 0x0000000000000000000000000000000000000000000000000000000000000001 is represented as 0x1.
+/// * [failedProposerIndices] - The indices of the proposers who failed to propose
 @BuiltValue()
 abstract class Transaction implements Built<Transaction, TransactionBuilder> {
   /// One Of [TransactionBlockMetadataTransaction], [TransactionGenesisTransaction], [TransactionPendingTransaction], [TransactionStateCheckpointTransaction], [TransactionUserTransaction]

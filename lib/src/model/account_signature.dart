@@ -12,15 +12,15 @@ import 'package:one_of/one_of.dart';
 
 part 'account_signature.g.dart';
 
-/// AccountSignature
+/// Account signature scheme  The account signature scheme allows you to have two types of accounts:  1. A single Ed25519 key account, one private key 2. A k-of-n multi-Ed25519 key account, multiple private keys, such that k-of-n must sign a transaction.
 ///
 /// Properties:
 /// * [type]
 /// * [publicKey] - All bytes (Vec<u8>) data is represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Unlike the `Address` type, HexEncodedBytes will not trim any zeros.
 /// * [signature] - All bytes (Vec<u8>) data is represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Unlike the `Address` type, HexEncodedBytes will not trim any zeros.
-/// * [publicKeys]
-/// * [signatures]
-/// * [threshold]
+/// * [publicKeys] - The public keys for the Ed25519 signature
+/// * [signatures] - Signature associated with the public keys in the same order
+/// * [threshold] - The number of signatures required for a successful transaction
 /// * [bitmap] - All bytes (Vec<u8>) data is represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Unlike the `Address` type, HexEncodedBytes will not trim any zeros.
 @BuiltValue()
 abstract class AccountSignature

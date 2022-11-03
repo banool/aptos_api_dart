@@ -16,13 +16,13 @@ import 'package:one_of/one_of.dart';
 
 part 'transaction_payload.g.dart';
 
-/// TransactionPayload
+/// An enum of the possible transaction payloads
 ///
 /// Properties:
 /// * [type]
 /// * [function_] - Entry function id is string representation of a entry function defined on-chain.  Format: `{address}::{module name}::{function name}`  Both `module name` and `function name` are case-sensitive.
-/// * [typeArguments]
-/// * [arguments]
+/// * [typeArguments] - Type arguments of the function
+/// * [arguments] - Arguments of the function
 /// * [code]
 /// * [modules]
 @BuiltValue()

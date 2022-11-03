@@ -16,7 +16,7 @@ Method | HTTP request | Description
 [**getTransactionByVersion**](TransactionsApi.md#gettransactionbyversion) | **GET** /transactions/by_version/{txn_version} | Get transaction by version
 [**getTransactions**](TransactionsApi.md#gettransactions) | **GET** /transactions | Get transactions
 [**simulateTransaction**](TransactionsApi.md#simulatetransaction) | **POST** /transactions/simulate | Simulate transaction
-[**submitBatchTransactions**](TransactionsApi.md#submitbatchtransactions) | **POST** /transactions/batch | 
+[**submitBatchTransactions**](TransactionsApi.md#submitbatchtransactions) | **POST** /transactions/batch | Submit batch transactions
 [**submitTransaction**](TransactionsApi.md#submittransaction) | **POST** /transactions | Submit transaction
 
 
@@ -68,6 +68,8 @@ No authorization required
 
 Estimate gas price
 
+Currently, the gas estimation is handled by taking the median of the last 100,000 transactions If a user wants to prioritize their transaction and is willing to pay, they can pay more than the gas price.  If they're willing to wait longer, they can pay less.  Note that the gas price moves with the fee market, and should only increase when demand outweighs supply.  If there have been no transactions in the last 100,000 transactions, the price will be 1.
+
 ### Example
 ```dart
 import 'package:aptos_api_dart/api.dart';
@@ -105,16 +107,16 @@ No authorization required
 
 Get account transactions
 
-todo
+Retrieves transactions from an account.  If the start version is too far in the past a 410 will be returned.  If no start version is given, it will start at 0
 
 ### Example
 ```dart
 import 'package:aptos_api_dart/api.dart';
 
 final api = AptosApiDart().getTransactionsApi();
-final String address = address_example; // String | 
-final String start = start_example; // String | 
-final int limit = 56; // int | 
+final String address = address_example; // String | Address of account with or without a `0x` prefix
+final String start = start_example; // String | Ledger version to start list of transactions  If not provided, defaults to showing the latest transactions
+final int limit = 56; // int | Max number of transactions to retrieve.  If not provided, defaults to default page size
 
 try {
     final response = api.getAccountTransactions(address, start, limit);
@@ -128,9 +130,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **address** | **String**|  | 
- **start** | **String**|  | [optional] 
- **limit** | **int**|  | [optional] 
+ **address** | **String**| Address of account with or without a `0x` prefix | 
+ **start** | **String**| Ledger version to start list of transactions  If not provided, defaults to showing the latest transactions | [optional] 
+ **limit** | **int**| Max number of transactions to retrieve.  If not provided, defaults to default page size | [optional] 
 
 ### Return type
 
@@ -159,7 +161,7 @@ Look up a transaction by its hash. This is the same hash that is returned by the
 import 'package:aptos_api_dart/api.dart';
 
 final api = AptosApiDart().getTransactionsApi();
-final String txnHash = txnHash_example; // String | 
+final String txnHash = txnHash_example; // String | Hash of transaction to retrieve
 
 try {
     final response = api.getTransactionByHash(txnHash);
@@ -173,7 +175,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **txnHash** | **String**|  | 
+ **txnHash** | **String**| Hash of transaction to retrieve | 
 
 ### Return type
 
@@ -195,14 +197,14 @@ No authorization required
 
 Get transaction by version
 
-todo
+Retrieves a transaction by a given version.  If the version has been pruned, a 410 will be returned.
 
 ### Example
 ```dart
 import 'package:aptos_api_dart/api.dart';
 
 final api = AptosApiDart().getTransactionsApi();
-final String txnVersion = txnVersion_example; // String | 
+final String txnVersion = txnVersion_example; // String | Version of transaction to retrieve
 
 try {
     final response = api.getTransactionByVersion(txnVersion);
@@ -216,7 +218,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **txnVersion** | **String**|  | 
+ **txnVersion** | **String**| Version of transaction to retrieve | 
 
 ### Return type
 
@@ -238,15 +240,15 @@ No authorization required
 
 Get transactions
 
-Get on-chain (meaning, committed) transactions. You may specify from when you want the transactions and how to include in the response.
+Retrieve on-chain committed transactions. The page size and start can be provided to get a specific sequence of transactions.  If the version has been pruned, then a 410 will be returned
 
 ### Example
 ```dart
 import 'package:aptos_api_dart/api.dart';
 
 final api = AptosApiDart().getTransactionsApi();
-final String start = start_example; // String | 
-final int limit = 56; // int | 
+final String start = start_example; // String | Ledger version to start list of transactions  If not provided, defaults to showing the latest transactions
+final int limit = 56; // int | Max number of transactions to retrieve.  If not provided, defaults to default page size
 
 try {
     final response = api.getTransactions(start, limit);
@@ -260,8 +262,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **start** | **String**|  | [optional] 
- **limit** | **int**|  | [optional] 
+ **start** | **String**| Ledger version to start list of transactions  If not provided, defaults to showing the latest transactions | [optional] 
+ **limit** | **int**| Max number of transactions to retrieve.  If not provided, defaults to default page size | [optional] 
 
 ### Return type
 
@@ -279,11 +281,11 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **simulateTransaction**
-> BuiltList<UserTransaction> simulateTransaction(submitTransactionRequest)
+> BuiltList<UserTransaction> simulateTransaction(submitTransactionRequest, estimateMaxGasAmount, estimateGasUnitPrice, estimatePrioritizedGasUnitPrice)
 
 Simulate transaction
 
-Simulate submitting a transaction. To use this, you must: - Create a SignedTransaction with a zero-padded signature. - Submit a SubmitTransactionRequest containing a UserTransactionRequest containing that signature.  To use this endpoint with BCS, you must submit a SignedTransaction encoded as BCS. See SignedTransaction in types/src/transaction/mod.rs.
+The output of the transaction will have the exact transaction outputs and events that running an actual signed transaction would have.  However, it will not have the associated state hashes, as they are not updated in storage.  This can be used to estimate the maximum gas units for a submitted transaction.  To use this, you must: - Create a SignedTransaction with a zero-padded signature. - Submit a SubmitTransactionRequest containing a UserTransactionRequest containing that signature.  To use this endpoint with BCS, you must submit a SignedTransaction encoded as BCS. See SignedTransaction in types/src/transaction/mod.rs.
 
 ### Example
 ```dart
@@ -291,9 +293,12 @@ import 'package:aptos_api_dart/api.dart';
 
 final api = AptosApiDart().getTransactionsApi();
 final SubmitTransactionRequest submitTransactionRequest = ; // SubmitTransactionRequest | 
+final bool estimateMaxGasAmount = true; // bool | If set to true, the max gas value in the transaction will be ignored and the maximum possible gas will be used
+final bool estimateGasUnitPrice = true; // bool | If set to true, the gas unit price in the transaction will be ignored and the estimated value will be used
+final bool estimatePrioritizedGasUnitPrice = true; // bool | If set to true, the transaction will use a higher price than the original estimate.
 
 try {
-    final response = api.simulateTransaction(submitTransactionRequest);
+    final response = api.simulateTransaction(submitTransactionRequest, estimateMaxGasAmount, estimateGasUnitPrice, estimatePrioritizedGasUnitPrice);
     print(response);
 } catch on DioError (e) {
     print('Exception when calling TransactionsApi->simulateTransaction: $e\n');
@@ -305,6 +310,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **submitTransactionRequest** | [**SubmitTransactionRequest**](SubmitTransactionRequest.md)|  | 
+ **estimateMaxGasAmount** | **bool**| If set to true, the max gas value in the transaction will be ignored and the maximum possible gas will be used | [optional] 
+ **estimateGasUnitPrice** | **bool**| If set to true, the gas unit price in the transaction will be ignored and the estimated value will be used | [optional] 
+ **estimatePrioritizedGasUnitPrice** | **bool**| If set to true, the transaction will use a higher price than the original estimate. | [optional] 
 
 ### Return type
 
@@ -324,7 +332,9 @@ No authorization required
 # **submitBatchTransactions**
 > TransactionsBatchSubmissionResult submitBatchTransactions(submitTransactionRequest)
 
+Submit batch transactions
 
+This allows you to submit multiple transactions.  The response has three outcomes:  1. All transactions succeed, and it will return a 202 2. Some transactions succeed, and it will return the failed transactions and a 206 3. No transactions succeed, and it will also return the failed transactions and a 206  To submit a transaction as JSON, you must submit a SubmitTransactionRequest. To build this request, do the following:  1. Encode the transaction as BCS. If you are using a language that has native BCS support, make sure to use that library. If not, you may take advantage of /transactions/encode_submission. When using this endpoint, make sure you trust the node you're talking to, as it is possible they could manipulate your request. 2. Sign the encoded transaction and use it to create a TransactionSignature. 3. Submit the request. Make sure to use the \"application/json\" Content-Type.  To submit a transaction as BCS, you must submit a SignedTransaction encoded as BCS. See SignedTransaction in types/src/transaction/mod.rs. Make sure to use the `application/x.aptos.signed_transaction+bcs` Content-Type.
 
 ### Example
 ```dart
@@ -367,7 +377,7 @@ No authorization required
 
 Submit transaction
 
-This endpoint accepts transaction submissions in two formats.  To submit a transaction as JSON, you must submit a SubmitTransactionRequest. To build this request, do the following:  1. Encode the transaction as BCS. If you are using a language that has native BCS support, make sure of that library. If not, you may take advantage of /transactions/encode_submission. When using this endpoint, make sure you trust the node you're talking to, as it is possible they could manipulate your request. 2. Sign the encoded transaction and use it to create a TransactionSignature. 3. Submit the request. Make sure to use the \"application/json\" Content-Type.  To submit a transaction as BCS, you must submit a SignedTransaction encoded as BCS. See SignedTransaction in types/src/transaction/mod.rs.
+This endpoint accepts transaction submissions in two formats.  To submit a transaction as JSON, you must submit a SubmitTransactionRequest. To build this request, do the following:  1. Encode the transaction as BCS. If you are using a language that has native BCS support, make sure of that library. If not, you may take advantage of /transactions/encode_submission. When using this endpoint, make sure you trust the node you're talking to, as it is possible they could manipulate your request. 2. Sign the encoded transaction and use it to create a TransactionSignature. 3. Submit the request. Make sure to use the \"application/json\" Content-Type.  To submit a transaction as BCS, you must submit a SignedTransaction encoded as BCS. See SignedTransaction in types/src/transaction/mod.rs. Make sure to use the `application/x.aptos.signed_transaction+bcs` Content-Type.
 
 ### Example
 ```dart

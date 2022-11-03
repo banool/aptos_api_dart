@@ -7,6 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(TransactionsBatchSubmissionResult, () {
+    // Summary of the failed transactions
     // BuiltList<TransactionsBatchSingleSubmissionFailure> transactionFailures
     test('to test the property `transactionFailures`', () async {
       // TODO

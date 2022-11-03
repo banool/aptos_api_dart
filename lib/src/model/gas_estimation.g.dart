@@ -8,12 +8,20 @@ part of 'gas_estimation.dart';
 
 class _$GasEstimation extends GasEstimation {
   @override
+  final int? deprioritizedGasEstimate;
+  @override
   final int gasEstimate;
+  @override
+  final int? prioritizedGasEstimate;
 
   factory _$GasEstimation([void Function(GasEstimationBuilder)? updates]) =>
       (GasEstimationBuilder()..update(updates))._build();
 
-  _$GasEstimation._({required this.gasEstimate}) : super._() {
+  _$GasEstimation._(
+      {this.deprioritizedGasEstimate,
+      required this.gasEstimate,
+      this.prioritizedGasEstimate})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(
         gasEstimate, r'GasEstimation', 'gasEstimate');
   }
@@ -28,18 +36,25 @@ class _$GasEstimation extends GasEstimation {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GasEstimation && gasEstimate == other.gasEstimate;
+    return other is GasEstimation &&
+        deprioritizedGasEstimate == other.deprioritizedGasEstimate &&
+        gasEstimate == other.gasEstimate &&
+        prioritizedGasEstimate == other.prioritizedGasEstimate;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(0, gasEstimate.hashCode));
+    return $jf($jc(
+        $jc($jc(0, deprioritizedGasEstimate.hashCode), gasEstimate.hashCode),
+        prioritizedGasEstimate.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'GasEstimation')
-          ..add('gasEstimate', gasEstimate))
+          ..add('deprioritizedGasEstimate', deprioritizedGasEstimate)
+          ..add('gasEstimate', gasEstimate)
+          ..add('prioritizedGasEstimate', prioritizedGasEstimate))
         .toString();
   }
 }
@@ -48,9 +63,19 @@ class GasEstimationBuilder
     implements Builder<GasEstimation, GasEstimationBuilder> {
   _$GasEstimation? _$v;
 
+  int? _deprioritizedGasEstimate;
+  int? get deprioritizedGasEstimate => _$this._deprioritizedGasEstimate;
+  set deprioritizedGasEstimate(int? deprioritizedGasEstimate) =>
+      _$this._deprioritizedGasEstimate = deprioritizedGasEstimate;
+
   int? _gasEstimate;
   int? get gasEstimate => _$this._gasEstimate;
   set gasEstimate(int? gasEstimate) => _$this._gasEstimate = gasEstimate;
+
+  int? _prioritizedGasEstimate;
+  int? get prioritizedGasEstimate => _$this._prioritizedGasEstimate;
+  set prioritizedGasEstimate(int? prioritizedGasEstimate) =>
+      _$this._prioritizedGasEstimate = prioritizedGasEstimate;
 
   GasEstimationBuilder() {
     GasEstimation._defaults(this);
@@ -59,7 +84,9 @@ class GasEstimationBuilder
   GasEstimationBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _deprioritizedGasEstimate = $v.deprioritizedGasEstimate;
       _gasEstimate = $v.gasEstimate;
+      _prioritizedGasEstimate = $v.prioritizedGasEstimate;
       _$v = null;
     }
     return this;
@@ -82,8 +109,10 @@ class GasEstimationBuilder
   _$GasEstimation _build() {
     final _$result = _$v ??
         _$GasEstimation._(
+            deprioritizedGasEstimate: deprioritizedGasEstimate,
             gasEstimate: BuiltValueNullFieldError.checkNotNull(
-                gasEstimate, r'GasEstimation', 'gasEstimate'));
+                gasEstimate, r'GasEstimation', 'gasEstimate'),
+            prioritizedGasEstimate: prioritizedGasEstimate);
     replace(_$result);
     return _$result;
   }

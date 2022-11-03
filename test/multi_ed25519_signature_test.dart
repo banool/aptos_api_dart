@@ -7,16 +7,19 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(MultiEd25519Signature, () {
+    // The public keys for the Ed25519 signature
     // BuiltList<String> publicKeys
     test('to test the property `publicKeys`', () async {
       // TODO
     });
 
+    // Signature associated with the public keys in the same order
     // BuiltList<String> signatures
     test('to test the property `signatures`', () async {
       // TODO
     });
 
+    // The number of signatures required for a successful transaction
     // int threshold
     test('to test the property `threshold`', () async {
       // TODO

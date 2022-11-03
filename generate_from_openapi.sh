@@ -2,22 +2,7 @@
 
 # Adapted from https://www.reddit.com/r/FlutterDev/comments/isokya/comment/hrhq53v/?utm_source=share&utm_medium=web2x&context=3
 
-# For now use the locally built openapi-generator. We need to do this because I
-# need the functionality of this not yet committed branch:
-# https://github.com/Bdaya-Dev/openapi-generator/tree/dart-dio-handle-discriminator
-# https://github.com/OpenAPITools/openapi-generator/pull/12295
-
-# To get it, do this:
-# git clone git@github.com:Bdaya-Dev/openapi-generator.git
-# git checkout dart-dio-handle-discriminator
-# docker build -t openapi-generator-cli .
-
-OPENAPI_GENERATOR_CLI="openapi-generator-cli"
-
-# For when we can use the mainline generator again:
-# OPENAPI_GENERATOR_CLI="openapitools/openapi-generator-cli:latest"
-# Get latest generator
-# docker pull openapitools/openapi-generator-cli
+OPENAPI_GENERATOR_CLI="openapitools/openapi-generator-cli:v6.2.1"
 
 set -e
 

@@ -22,11 +22,11 @@ class AccountsApi {
   const AccountsApi(this._dio, this._serializers);
 
   /// Get account
-  /// Return high level information about an account such as its sequence number.
+  /// Retrieves high level information about an account such as its sequence number and authentication key  Returns a 404 if the account doesn&#39;t exist
   ///
   /// Parameters:
-  /// * [address]
-  /// * [ledgerVersion]
+  /// * [address] - Address of account with or without a `0x` prefix
+  /// * [ledgerVersion] - Ledger version to get state of account  If not provided, it will be the latest version
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -104,13 +104,13 @@ class AccountsApi {
     );
   }
 
-  /// Get specific account module
-  /// This endpoint returns the module with a specific name residing at a given account at a specified ledger version (AKA transaction version). If the ledger version is not specified in the request, the latest ledger version is used.  The Aptos nodes prune account state history, via a configurable time window (link). If the requested data has been pruned, the server responds with a 404.
+  /// Get account module
+  /// Retrieves an individual module from a given account and at a specific ledger version. If the ledger version is not specified in the request, the latest ledger version is used.  The Aptos nodes prune account state history, via a configurable time window. If the requested ledger version has been pruned, the server responds with a 410.
   ///
   /// Parameters:
-  /// * [address]
-  /// * [moduleName]
-  /// * [ledgerVersion]
+  /// * [address] - Address of account with or without a `0x` prefix
+  /// * [moduleName] - Name of module to retrieve e.g. `coin`
+  /// * [ledgerVersion] - Ledger version to get state of account  If not provided, it will be the latest version
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -191,11 +191,11 @@ class AccountsApi {
   }
 
   /// Get account modules
-  /// This endpoint returns all account modules at a given address at a specific ledger version (AKA transaction version). If the ledger version is not specified in the request, the latest ledger version is used.  The Aptos nodes prune account state history, via a configurable time window (link). If the requested data has been pruned, the server responds with a 404.
+  /// Retrieves all account modules&#39; bytecode for a given account at a specific ledger version. If the ledger version is not specified in the request, the latest ledger version is used.  The Aptos nodes prune account state history, via a configurable time window. If the requested ledger version has been pruned, the server responds with a 410.
   ///
   /// Parameters:
-  /// * [address]
-  /// * [ledgerVersion]
+  /// * [address] - Address of account with or without a `0x` prefix
+  /// * [ledgerVersion] - Ledger version to get state of account  If not provided, it will be the latest version
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -273,13 +273,13 @@ class AccountsApi {
     );
   }
 
-  /// Get specific account resource
-  /// This endpoint returns the resource of a specific type residing at a given account at a specified ledger version (AKA transaction version). If the ledger version is not specified in the request, the latest ledger version is used.  The Aptos nodes prune account state history, via a configurable time window (link). If the requested data has been pruned, the server responds with a 404.
+  /// Get account resource
+  /// Retrieves an individual resource from a given account and at a specific ledger version. If the ledger version is not specified in the request, the latest ledger version is used.  The Aptos nodes prune account state history, via a configurable time window. If the requested ledger version has been pruned, the server responds with a 410.
   ///
   /// Parameters:
-  /// * [address]
-  /// * [resourceType]
-  /// * [ledgerVersion]
+  /// * [address] - Address of account with or without a `0x` prefix
+  /// * [resourceType] - Name of struct to retrieve e.g. `0x1::account::Account`
+  /// * [ledgerVersion] - Ledger version to get state of account  If not provided, it will be the latest version
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -360,11 +360,11 @@ class AccountsApi {
   }
 
   /// Get account resources
-  /// This endpoint returns all account resources at a given address at a specific ledger version (AKA transaction version). If the ledger version is not specified in the request, the latest ledger version is used.  The Aptos nodes prune account state history, via a configurable time window (link). If the requested data has been pruned, the server responds with a 404.
+  /// Retrieves all account resources for a given account and a specific ledger version.  If the ledger version is not specified in the request, the latest ledger version is used.  The Aptos nodes prune account state history, via a configurable time window. If the requested ledger version has been pruned, the server responds with a 410.
   ///
   /// Parameters:
-  /// * [address]
-  /// * [ledgerVersion]
+  /// * [address] - Address of account with or without a `0x` prefix
+  /// * [ledgerVersion] - Ledger version to get state of account  If not provided, it will be the latest version
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request

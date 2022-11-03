@@ -1,8 +1,6 @@
 # Aptos API
 
 ## Generating
-First, make sure you have `openapi-generator`, at least as new as 5.4.0.
-
 To generate the code in this repo, you just need to run this:
 ```
 ./generate_from_openapi.sh

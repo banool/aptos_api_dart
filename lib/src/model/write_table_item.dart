@@ -9,7 +9,7 @@ import 'package:built_value/serializer.dart';
 
 part 'write_table_item.g.dart';
 
-/// WriteTableItem
+/// Change set to write a table item
 ///
 /// Properties:
 /// * [stateKeyHash]

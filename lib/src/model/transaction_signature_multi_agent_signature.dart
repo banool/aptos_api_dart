@@ -17,8 +17,8 @@ part 'transaction_signature_multi_agent_signature.g.dart';
 /// Properties:
 /// * [type]
 /// * [sender]
-/// * [secondarySignerAddresses]
-/// * [secondarySigners]
+/// * [secondarySignerAddresses] - The other involved parties' addresses
+/// * [secondarySigners] - The associated signatures, in the same order as the secondary addresses
 @BuiltValue()
 abstract class TransactionSignatureMultiAgentSignature
     implements

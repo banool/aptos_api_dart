@@ -10,20 +10,22 @@ import 'package:built_value/serializer.dart';
 
 part 'multi_agent_signature.g.dart';
 
-/// MultiAgentSignature
+/// Multi agent signature for multi agent transactions  This allows you to have transactions across multiple accounts
 ///
 /// Properties:
 /// * [sender]
-/// * [secondarySignerAddresses]
-/// * [secondarySigners]
+/// * [secondarySignerAddresses] - The other involved parties' addresses
+/// * [secondarySigners] - The associated signatures, in the same order as the secondary addresses
 @BuiltValue(instantiable: false)
 abstract class MultiAgentSignature {
   @BuiltValueField(wireName: r'sender')
   AccountSignature get sender;
 
+  /// The other involved parties' addresses
   @BuiltValueField(wireName: r'secondary_signer_addresses')
   BuiltList<String> get secondarySignerAddresses;
 
+  /// The associated signatures, in the same order as the secondary addresses
   @BuiltValueField(wireName: r'secondary_signers')
   BuiltList<AccountSignature> get secondarySigners;
 

@@ -9,7 +9,7 @@ import 'package:built_value/serializer.dart';
 
 part 'move_module_bytecode.g.dart';
 
-/// MoveModuleBytecode
+/// Move module bytecode along with it's ABI
 ///
 /// Properties:
 /// * [bytecode] - All bytes (Vec<u8>) data is represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Unlike the `Address` type, HexEncodedBytes will not trim any zeros.

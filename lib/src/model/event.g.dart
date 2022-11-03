@@ -8,7 +8,7 @@ part of 'event.dart';
 
 class _$Event extends Event {
   @override
-  final String key;
+  final EventGuid guid;
   @override
   final String sequenceNumber;
   @override
@@ -20,12 +20,12 @@ class _$Event extends Event {
       (EventBuilder()..update(updates))._build();
 
   _$Event._(
-      {required this.key,
+      {required this.guid,
       required this.sequenceNumber,
       required this.type,
       this.data})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(key, r'Event', 'key');
+    BuiltValueNullFieldError.checkNotNull(guid, r'Event', 'guid');
     BuiltValueNullFieldError.checkNotNull(
         sequenceNumber, r'Event', 'sequenceNumber');
     BuiltValueNullFieldError.checkNotNull(type, r'Event', 'type');
@@ -42,7 +42,7 @@ class _$Event extends Event {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is Event &&
-        key == other.key &&
+        guid == other.guid &&
         sequenceNumber == other.sequenceNumber &&
         type == other.type &&
         data == other.data;
@@ -51,14 +51,14 @@ class _$Event extends Event {
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, key.hashCode), sequenceNumber.hashCode), type.hashCode),
+        $jc($jc($jc(0, guid.hashCode), sequenceNumber.hashCode), type.hashCode),
         data.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'Event')
-          ..add('key', key)
+          ..add('guid', guid)
           ..add('sequenceNumber', sequenceNumber)
           ..add('type', type)
           ..add('data', data))
@@ -69,9 +69,9 @@ class _$Event extends Event {
 class EventBuilder implements Builder<Event, EventBuilder> {
   _$Event? _$v;
 
-  String? _key;
-  String? get key => _$this._key;
-  set key(String? key) => _$this._key = key;
+  EventGuidBuilder? _guid;
+  EventGuidBuilder get guid => _$this._guid ??= EventGuidBuilder();
+  set guid(EventGuidBuilder? guid) => _$this._guid = guid;
 
   String? _sequenceNumber;
   String? get sequenceNumber => _$this._sequenceNumber;
@@ -93,7 +93,7 @@ class EventBuilder implements Builder<Event, EventBuilder> {
   EventBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _key = $v.key;
+      _guid = $v.guid.toBuilder();
       _sequenceNumber = $v.sequenceNumber;
       _type = $v.type;
       _data = $v.data;
@@ -117,13 +117,26 @@ class EventBuilder implements Builder<Event, EventBuilder> {
   Event build() => _build();
 
   _$Event _build() {
-    final _$result = _$v ??
-        _$Event._(
-            key: BuiltValueNullFieldError.checkNotNull(key, r'Event', 'key'),
-            sequenceNumber: BuiltValueNullFieldError.checkNotNull(
-                sequenceNumber, r'Event', 'sequenceNumber'),
-            type: BuiltValueNullFieldError.checkNotNull(type, r'Event', 'type'),
-            data: data);
+    _$Event _$result;
+    try {
+      _$result = _$v ??
+          _$Event._(
+              guid: guid.build(),
+              sequenceNumber: BuiltValueNullFieldError.checkNotNull(
+                  sequenceNumber, r'Event', 'sequenceNumber'),
+              type:
+                  BuiltValueNullFieldError.checkNotNull(type, r'Event', 'type'),
+              data: data);
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'guid';
+        guid.build();
+      } catch (e) {
+        throw BuiltValueNestedFieldError(r'Event', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

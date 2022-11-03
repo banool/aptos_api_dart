@@ -9,17 +9,19 @@ import 'package:built_value/serializer.dart';
 
 part 'deleted_table_data.g.dart';
 
-/// DeletedTableData
+/// Deleted table data
 ///
 /// Properties:
-/// * [key]
-/// * [keyType]
+/// * [key] - Deleted key
+/// * [keyType] - Deleted key type
 @BuiltValue()
 abstract class DeletedTableData
     implements Built<DeletedTableData, DeletedTableDataBuilder> {
+  /// Deleted key
   @BuiltValueField(wireName: r'key')
   JsonObject? get key;
 
+  /// Deleted key type
   @BuiltValueField(wireName: r'key_type')
   String get keyType;
 

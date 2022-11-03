@@ -19,15 +19,14 @@ class EventsApi {
 
   const EventsApi(this._dio, this._serializers);
 
-  /// Get events by event handle
-  /// This API extracts event key from the account resource identified by the &#x60;event_handle_struct&#x60; and &#x60;field_name&#x60;, then returns events identified by the event key.
+  /// Get events by creation number
+  /// Event types are globally identifiable by an account &#x60;address&#x60; and monotonically increasing &#x60;creation_number&#x60;, one per event type emitted to the given account. This API returns events corresponding to that that event type.
   ///
   /// Parameters:
-  /// * [address]
-  /// * [eventHandle]
-  /// * [fieldName]
-  /// * [start]
-  /// * [limit]
+  /// * [address] - Hex-encoded 32 byte Aptos account, with or without a `0x` prefix, for which events are queried. This refers to the account that events were emitted to, not the account hosting the move module that emits that event type.
+  /// * [creationNumber] - Creation number corresponding to the event stream originating from the given account.
+  /// * [start] - Starting sequence number of events.  If unspecified, by default will retrieve the most recent events
+  /// * [limit] - Max number of events to retrieve.  If unspecified, defaults to default page size
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -37,10 +36,9 @@ class EventsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<VersionedEvent>] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<BuiltList<VersionedEvent>>> getEventsByEventHandle({
+  Future<Response<BuiltList<VersionedEvent>>> getEventsByCreationNumber({
     required String address,
-    required String eventHandle,
-    required String fieldName,
+    required String creationNumber,
     String? start,
     int? limit,
     CancelToken? cancelToken,
@@ -50,10 +48,9 @@ class EventsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/accounts/{address}/events/{event_handle}/{field_name}'
+    final _path = r'/accounts/{address}/events/{creation_number}'
         .replaceAll('{' r'address' '}', address.toString())
-        .replaceAll('{' r'event_handle' '}', eventHandle.toString())
-        .replaceAll('{' r'field_name' '}', fieldName.toString());
+        .replaceAll('{' r'creation_number' '}', creationNumber.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -113,13 +110,15 @@ class EventsApi {
     );
   }
 
-  /// Get events by event key
-  /// This endpoint allows you to get a list of events of a specific type as identified by its event key, which is a globally unique ID.
+  /// Get events by event handle
+  /// This API uses the given account &#x60;address&#x60;, &#x60;eventHandle&#x60;, and &#x60;fieldName&#x60; to build a key that can globally identify an event types. It then uses this key to return events emitted to the given account matching that event type.
   ///
   /// Parameters:
-  /// * [eventKey]
-  /// * [start]
-  /// * [limit]
+  /// * [address] - Hex-encoded 32 byte Aptos account, with or without a `0x` prefix, for which events are queried. This refers to the account that events were emitted to, not the account hosting the move module that emits that event type.
+  /// * [eventHandle] - Name of struct to lookup event handle e.g. `0x1::account::Account`
+  /// * [fieldName] - Name of field to lookup event handle e.g. `withdraw_events`
+  /// * [start] - Starting sequence number of events.  If unspecified, by default will retrieve the most recent
+  /// * [limit] - Max number of events to retrieve.  If unspecified, defaults to default page size
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -129,8 +128,10 @@ class EventsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<VersionedEvent>] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<BuiltList<VersionedEvent>>> getEventsByEventKey({
-    required String eventKey,
+  Future<Response<BuiltList<VersionedEvent>>> getEventsByEventHandle({
+    required String address,
+    required String eventHandle,
+    required String fieldName,
     String? start,
     int? limit,
     CancelToken? cancelToken,
@@ -140,8 +141,10 @@ class EventsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/events/{event_key}'
-        .replaceAll('{' r'event_key' '}', eventKey.toString());
+    final _path = r'/accounts/{address}/events/{event_handle}/{field_name}'
+        .replaceAll('{' r'address' '}', address.toString())
+        .replaceAll('{' r'event_handle' '}', eventHandle.toString())
+        .replaceAll('{' r'field_name' '}', fieldName.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{

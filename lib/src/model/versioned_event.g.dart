@@ -10,7 +10,7 @@ class _$VersionedEvent extends VersionedEvent {
   @override
   final String version;
   @override
-  final String key;
+  final EventGuid guid;
   @override
   final String sequenceNumber;
   @override
@@ -23,14 +23,14 @@ class _$VersionedEvent extends VersionedEvent {
 
   _$VersionedEvent._(
       {required this.version,
-      required this.key,
+      required this.guid,
       required this.sequenceNumber,
       required this.type,
       this.data})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         version, r'VersionedEvent', 'version');
-    BuiltValueNullFieldError.checkNotNull(key, r'VersionedEvent', 'key');
+    BuiltValueNullFieldError.checkNotNull(guid, r'VersionedEvent', 'guid');
     BuiltValueNullFieldError.checkNotNull(
         sequenceNumber, r'VersionedEvent', 'sequenceNumber');
     BuiltValueNullFieldError.checkNotNull(type, r'VersionedEvent', 'type');
@@ -48,7 +48,7 @@ class _$VersionedEvent extends VersionedEvent {
     if (identical(other, this)) return true;
     return other is VersionedEvent &&
         version == other.version &&
-        key == other.key &&
+        guid == other.guid &&
         sequenceNumber == other.sequenceNumber &&
         type == other.type &&
         data == other.data;
@@ -58,7 +58,7 @@ class _$VersionedEvent extends VersionedEvent {
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc($jc($jc(0, version.hashCode), key.hashCode),
+            $jc($jc($jc(0, version.hashCode), guid.hashCode),
                 sequenceNumber.hashCode),
             type.hashCode),
         data.hashCode));
@@ -68,7 +68,7 @@ class _$VersionedEvent extends VersionedEvent {
   String toString() {
     return (newBuiltValueToStringHelper(r'VersionedEvent')
           ..add('version', version)
-          ..add('key', key)
+          ..add('guid', guid)
           ..add('sequenceNumber', sequenceNumber)
           ..add('type', type)
           ..add('data', data))
@@ -84,9 +84,9 @@ class VersionedEventBuilder
   String? get version => _$this._version;
   set version(String? version) => _$this._version = version;
 
-  String? _key;
-  String? get key => _$this._key;
-  set key(String? key) => _$this._key = key;
+  EventGuidBuilder? _guid;
+  EventGuidBuilder get guid => _$this._guid ??= EventGuidBuilder();
+  set guid(EventGuidBuilder? guid) => _$this._guid = guid;
 
   String? _sequenceNumber;
   String? get sequenceNumber => _$this._sequenceNumber;
@@ -109,7 +109,7 @@ class VersionedEventBuilder
     final $v = _$v;
     if ($v != null) {
       _version = $v.version;
-      _key = $v.key;
+      _guid = $v.guid.toBuilder();
       _sequenceNumber = $v.sequenceNumber;
       _type = $v.type;
       _data = $v.data;
@@ -133,17 +133,29 @@ class VersionedEventBuilder
   VersionedEvent build() => _build();
 
   _$VersionedEvent _build() {
-    final _$result = _$v ??
-        _$VersionedEvent._(
-            version: BuiltValueNullFieldError.checkNotNull(
-                version, r'VersionedEvent', 'version'),
-            key: BuiltValueNullFieldError.checkNotNull(
-                key, r'VersionedEvent', 'key'),
-            sequenceNumber: BuiltValueNullFieldError.checkNotNull(
-                sequenceNumber, r'VersionedEvent', 'sequenceNumber'),
-            type: BuiltValueNullFieldError.checkNotNull(
-                type, r'VersionedEvent', 'type'),
-            data: data);
+    _$VersionedEvent _$result;
+    try {
+      _$result = _$v ??
+          _$VersionedEvent._(
+              version: BuiltValueNullFieldError.checkNotNull(
+                  version, r'VersionedEvent', 'version'),
+              guid: guid.build(),
+              sequenceNumber: BuiltValueNullFieldError.checkNotNull(
+                  sequenceNumber, r'VersionedEvent', 'sequenceNumber'),
+              type: BuiltValueNullFieldError.checkNotNull(
+                  type, r'VersionedEvent', 'type'),
+              data: data);
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'guid';
+        guid.build();
+      } catch (e) {
+        throw BuiltValueNestedFieldError(
+            r'VersionedEvent', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

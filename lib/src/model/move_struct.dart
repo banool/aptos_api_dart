@@ -11,28 +11,32 @@ import 'package:built_value/serializer.dart';
 
 part 'move_struct.g.dart';
 
-/// MoveStruct
+/// A move struct
 ///
 /// Properties:
 /// * [name]
-/// * [isNative]
-/// * [abilities]
-/// * [genericTypeParams]
-/// * [fields]
+/// * [isNative] - Whether the struct is a native struct of Move
+/// * [abilities] - Abilities associated with the struct
+/// * [genericTypeParams] - Generic types associated with the struct
+/// * [fields] - Fields associated with the struct
 @BuiltValue()
 abstract class MoveStruct implements Built<MoveStruct, MoveStructBuilder> {
   @BuiltValueField(wireName: r'name')
   String get name;
 
+  /// Whether the struct is a native struct of Move
   @BuiltValueField(wireName: r'is_native')
   bool get isNative;
 
+  /// Abilities associated with the struct
   @BuiltValueField(wireName: r'abilities')
   BuiltList<String> get abilities;
 
+  /// Generic types associated with the struct
   @BuiltValueField(wireName: r'generic_type_params')
   BuiltList<MoveStructGenericTypeParam> get genericTypeParams;
 
+  /// Fields associated with the struct
   @BuiltValueField(wireName: r'fields')
   BuiltList<MoveStructField> get fields;
 

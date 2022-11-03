@@ -10,10 +10,15 @@ import 'package:built_value/serializer.dart';
 part 'move_function_visibility.g.dart';
 
 class MoveFunctionVisibility extends EnumClass {
+  /// Move function visibility
   @BuiltValueEnumConst(wireName: r'private')
   static const MoveFunctionVisibility private = _$private;
+
+  /// Move function visibility
   @BuiltValueEnumConst(wireName: r'public')
   static const MoveFunctionVisibility public = _$public;
+
+  /// Move function visibility
   @BuiltValueEnumConst(wireName: r'friend')
   static const MoveFunctionVisibility friend = _$friend;
 

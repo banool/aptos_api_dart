@@ -17,11 +17,13 @@ void main() {
       // TODO
     });
 
+    // Type arguments of the function
     // BuiltList<String> typeArguments
     test('to test the property `typeArguments`', () async {
       // TODO
     });
 
+    // Arguments of the function
     // BuiltList<JsonObject> arguments
     test('to test the property `arguments`', () async {
       // TODO

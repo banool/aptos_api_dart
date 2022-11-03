@@ -7,6 +7,7 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(MoveStructGenericTypeParam, () {
+    // Move abilities tied to the generic type param and associated with the type that uses it
     // BuiltList<String> constraints
     test('to test the property `constraints`', () async {
       // TODO

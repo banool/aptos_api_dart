@@ -23,6 +23,7 @@ abstract class AptosError implements Built<AptosError, AptosErrorBuilder> {
 
   @BuiltValueField(wireName: r'error_code')
   AptosErrorCode get errorCode;
+  // enum errorCodeEnum {  account_not_found,  resource_not_found,  module_not_found,  struct_field_not_found,  version_not_found,  transaction_not_found,  table_item_not_found,  block_not_found,  version_pruned,  block_pruned,  invalid_input,  invalid_transaction_update,  sequence_number_too_old,  vm_error,  health_check_failed,  mempool_is_full,  internal_error,  web_framework_error,  bcs_not_supported,  api_disabled,  };
 
   /// A code providing VM error details when submitting transactions to the VM
   @BuiltValueField(wireName: r'vm_error_code')

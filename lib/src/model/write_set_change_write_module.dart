@@ -15,8 +15,8 @@ part 'write_set_change_write_module.g.dart';
 ///
 /// Properties:
 /// * [type]
-/// * [address] - Hex encoded 32 byte Aptos account address
-/// * [stateKeyHash]
+/// * [address] - A hex encoded 32 byte Aptos account address.  This is represented in a string as a 64 character hex string, sometimes shortened by stripping leading 0s, and adding a 0x.  For example, address 0x0000000000000000000000000000000000000000000000000000000000000001 is represented as 0x1.
+/// * [stateKeyHash] - State key hash
 /// * [data]
 @BuiltValue()
 abstract class WriteSetChangeWriteModule

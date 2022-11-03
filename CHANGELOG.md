@@ -1,3 +1,8 @@
+## 1.0.0
+- Build against API spec from /v1 from https://github.com/aptos-labs/aptos-core/commit/5ca8a7a5ce0f65ff44cd6ad1485543467d5782f6.
+- Use version 6.2.1 of the openapi-generator-cli tool.
+- Note: Aptos has launched mainnet now, this version corresponds to a mainnet API spec.
+
 ## 0.5.4
 - Build against API spec from /v1 from https://github.com/aptos-labs/aptos-core/commit/8399cd1c7b9662d3a6a09c28363c5f66f0839c41.
 - Use latest, fully functioning version of openapi-generator from https://github.com/OpenAPITools/openapi-generator/pull/12295.

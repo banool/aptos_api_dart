@@ -17,16 +17,16 @@ Method | HTTP request | Description
 
 Get table item
 
-Get a table item from the table identified by {table_handle} in the path and the \"key\" (TableItemRequest) provided in the request body.  This is a POST endpoint because the \"key\" for requesting a specific table item (TableItemRequest) could be quite complex, as each of its fields could themselves be composed of other structs. This makes it impractical to express using query params, meaning GET isn't an option.
+Get a table item at a specific ledger version from the table identified by {table_handle} in the path and the \"key\" (TableItemRequest) provided in the request body.  This is a POST endpoint because the \"key\" for requesting a specific table item (TableItemRequest) could be quite complex, as each of its fields could themselves be composed of other structs. This makes it impractical to express using query params, meaning GET isn't an option.  The Aptos nodes prune account state history, via a configurable time window. If the requested ledger version has been pruned, the server responds with a 410.
 
 ### Example
 ```dart
 import 'package:aptos_api_dart/api.dart';
 
 final api = AptosApiDart().getTablesApi();
-final String tableHandle = tableHandle_example; // String | 
+final String tableHandle = tableHandle_example; // String | Table handle hex encoded 32-byte string
 final TableItemRequest tableItemRequest = ; // TableItemRequest | 
-final String ledgerVersion = ledgerVersion_example; // String | 
+final String ledgerVersion = ledgerVersion_example; // String | Ledger version to get state of account  If not provided, it will be the latest version
 
 try {
     final response = api.getTableItem(tableHandle, tableItemRequest, ledgerVersion);
@@ -40,9 +40,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tableHandle** | **String**|  | 
+ **tableHandle** | **String**| Table handle hex encoded 32-byte string | 
  **tableItemRequest** | [**TableItemRequest**](TableItemRequest.md)|  | 
- **ledgerVersion** | **String**|  | [optional] 
+ **ledgerVersion** | **String**| Ledger version to get state of account  If not provided, it will be the latest version | [optional] 
 
 ### Return type
 

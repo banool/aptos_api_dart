@@ -14,19 +14,19 @@ import 'package:one_of/one_of.dart';
 
 part 'transaction_signature.g.dart';
 
-/// TransactionSignature
+/// An enum representing the different transaction signatures available
 ///
 /// Properties:
 /// * [type]
 /// * [publicKey] - All bytes (Vec<u8>) data is represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Unlike the `Address` type, HexEncodedBytes will not trim any zeros.
 /// * [signature] - All bytes (Vec<u8>) data is represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Unlike the `Address` type, HexEncodedBytes will not trim any zeros.
-/// * [publicKeys]
-/// * [signatures]
-/// * [threshold]
+/// * [publicKeys] - The public keys for the Ed25519 signature
+/// * [signatures] - Signature associated with the public keys in the same order
+/// * [threshold] - The number of signatures required for a successful transaction
 /// * [bitmap] - All bytes (Vec<u8>) data is represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Unlike the `Address` type, HexEncodedBytes will not trim any zeros.
 /// * [sender]
-/// * [secondarySignerAddresses]
-/// * [secondarySigners]
+/// * [secondarySignerAddresses] - The other involved parties' addresses
+/// * [secondarySigners] - The associated signatures, in the same order as the secondary addresses
 @BuiltValue()
 abstract class TransactionSignature
     implements Built<TransactionSignature, TransactionSignatureBuilder> {

@@ -9,36 +9,38 @@ import 'package:built_value/serializer.dart';
 
 part 'index_response.g.dart';
 
-/// The struct holding all data returned to the client by the index endpoint (i.e., GET \"/\").
+/// The struct holding all data returned to the client by the index endpoint (i.e., GET \"/\").  Only for responding in JSON
 ///
 /// Properties:
-/// * [chainId]
-/// * [epoch] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
-/// * [ledgerVersion] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
-/// * [oldestLedgerVersion] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
-/// * [ledgerTimestamp] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [chainId] - Chain ID of the current chain
+/// * [epoch] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [ledgerVersion] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [oldestLedgerVersion] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [ledgerTimestamp] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
 /// * [nodeRole]
-/// * [oldestBlockHeight] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
-/// * [blockHeight] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [oldestBlockHeight] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [blockHeight] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [gitHash]
 @BuiltValue()
 abstract class IndexResponse
     implements Built<IndexResponse, IndexResponseBuilder> {
+  /// Chain ID of the current chain
   @BuiltValueField(wireName: r'chain_id')
   int get chainId;
 
-  /// A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
+  /// A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
   @BuiltValueField(wireName: r'epoch')
   String get epoch;
 
-  /// A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
+  /// A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
   @BuiltValueField(wireName: r'ledger_version')
   String get ledgerVersion;
 
-  /// A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
+  /// A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
   @BuiltValueField(wireName: r'oldest_ledger_version')
   String get oldestLedgerVersion;
 
-  /// A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
+  /// A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
   @BuiltValueField(wireName: r'ledger_timestamp')
   String get ledgerTimestamp;
 
@@ -46,13 +48,16 @@ abstract class IndexResponse
   RoleType get nodeRole;
   // enum nodeRoleEnum {  validator,  full_node,  };
 
-  /// A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
+  /// A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
   @BuiltValueField(wireName: r'oldest_block_height')
   String get oldestBlockHeight;
 
-  /// A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
+  /// A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
   @BuiltValueField(wireName: r'block_height')
   String get blockHeight;
+
+  @BuiltValueField(wireName: r'git_hash')
+  String? get gitHash;
 
   IndexResponse._();
 
@@ -119,6 +124,13 @@ class _$IndexResponseSerializer implements PrimitiveSerializer<IndexResponse> {
       object.blockHeight,
       specifiedType: const FullType(String),
     );
+    if (object.gitHash != null) {
+      yield r'git_hash';
+      yield serializers.serialize(
+        object.gitHash,
+        specifiedType: const FullType(String),
+      );
+    }
   }
 
   @override
@@ -199,6 +211,13 @@ class _$IndexResponseSerializer implements PrimitiveSerializer<IndexResponse> {
             specifiedType: const FullType(String),
           ) as String;
           result.blockHeight = valueDes;
+          break;
+        case r'git_hash':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.gitHash = valueDes;
           break;
         default:
           unhandled.add(key);

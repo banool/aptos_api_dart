@@ -94,7 +94,7 @@ class GeneralApi {
   /// By default this endpoint just checks that it can get the latest ledger info and then returns 200.  If the duration_secs param is provided, this endpoint will return a 200 if the following condition is true:  &#x60;server_latest_ledger_info_timestamp &gt;&#x3D; server_current_time_timestamp - duration_secs&#x60;
   ///
   /// Parameters:
-  /// * [durationSecs]
+  /// * [durationSecs] - Threshold in seconds that the server can be behind to be considered healthy  If not provided, the healthcheck will always succeed
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request

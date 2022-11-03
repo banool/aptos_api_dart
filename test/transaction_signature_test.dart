@@ -24,16 +24,19 @@ void main() {
       // TODO
     });
 
+    // The public keys for the Ed25519 signature
     // BuiltList<String> publicKeys
     test('to test the property `publicKeys`', () async {
       // TODO
     });
 
+    // Signature associated with the public keys in the same order
     // BuiltList<String> signatures
     test('to test the property `signatures`', () async {
       // TODO
     });
 
+    // The number of signatures required for a successful transaction
     // int threshold
     test('to test the property `threshold`', () async {
       // TODO
@@ -50,11 +53,13 @@ void main() {
       // TODO
     });
 
+    // The other involved parties' addresses
     // BuiltList<String> secondarySignerAddresses
     test('to test the property `secondarySignerAddresses`', () async {
       // TODO
     });
 
+    // The associated signatures, in the same order as the secondary addresses
     // BuiltList<AccountSignature> secondarySigners
     test('to test the property `secondarySigners`', () async {
       // TODO

@@ -9,21 +9,24 @@ import 'package:built_value/serializer.dart';
 
 part 'multi_ed25519_signature.g.dart';
 
-/// MultiEd25519Signature
+/// A Ed25519 multi-sig signature  This allows k-of-n signing for a transaction
 ///
 /// Properties:
-/// * [publicKeys]
-/// * [signatures]
-/// * [threshold]
+/// * [publicKeys] - The public keys for the Ed25519 signature
+/// * [signatures] - Signature associated with the public keys in the same order
+/// * [threshold] - The number of signatures required for a successful transaction
 /// * [bitmap] - All bytes (Vec<u8>) data is represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Unlike the `Address` type, HexEncodedBytes will not trim any zeros.
 @BuiltValue(instantiable: false)
 abstract class MultiEd25519Signature {
+  /// The public keys for the Ed25519 signature
   @BuiltValueField(wireName: r'public_keys')
   BuiltList<String> get publicKeys;
 
+  /// Signature associated with the public keys in the same order
   @BuiltValueField(wireName: r'signatures')
   BuiltList<String> get signatures;
 
+  /// The number of signatures required for a successful transaction
   @BuiltValueField(wireName: r'threshold')
   int get threshold;
 

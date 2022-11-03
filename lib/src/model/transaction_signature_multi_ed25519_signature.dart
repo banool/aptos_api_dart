@@ -15,9 +15,9 @@ part 'transaction_signature_multi_ed25519_signature.g.dart';
 ///
 /// Properties:
 /// * [type]
-/// * [publicKeys]
-/// * [signatures]
-/// * [threshold]
+/// * [publicKeys] - The public keys for the Ed25519 signature
+/// * [signatures] - Signature associated with the public keys in the same order
+/// * [threshold] - The number of signatures required for a successful transaction
 /// * [bitmap] - All bytes (Vec<u8>) data is represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Unlike the `Address` type, HexEncodedBytes will not trim any zeros.
 @BuiltValue()
 abstract class TransactionSignatureMultiEd25519Signature

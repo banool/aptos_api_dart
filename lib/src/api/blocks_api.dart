@@ -19,11 +19,11 @@ class BlocksApi {
   const BlocksApi(this._dio, this._serializers);
 
   /// Get blocks by height
-  /// This endpoint allows you to get the transactions in a block and the corresponding block information.
+  /// This endpoint allows you to get the transactions in a block and the corresponding block information.  Transactions are limited by max default transactions size.  If not all transactions are present, the user will need to query for the rest of the transactions via the get transactions API.  If the block is pruned, it will return a 410
   ///
   /// Parameters:
-  /// * [blockHeight]
-  /// * [withTransactions]
+  /// * [blockHeight] - Block height to lookup.  Starts at 0
+  /// * [withTransactions] - If set to true, include all transactions in the block  If not provided, no transactions will be retrieved
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -102,11 +102,11 @@ class BlocksApi {
   }
 
   /// Get blocks by version
-  /// This endpoint allows you to get the transactions in a block and the corresponding block information given a version in the block.
+  /// This endpoint allows you to get the transactions in a block and the corresponding block information given a version in the block.  Transactions are limited by max default transactions size.  If not all transactions are present, the user will need to query for the rest of the transactions via the get transactions API.  If the block has been pruned, it will return a 410
   ///
   /// Parameters:
-  /// * [version]
-  /// * [withTransactions]
+  /// * [version] - Ledger version to lookup block information for.
+  /// * [withTransactions] - If set to true, include all transactions in the block  If not provided, no transactions will be retrieved
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request

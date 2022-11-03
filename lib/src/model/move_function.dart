@@ -11,15 +11,15 @@ import 'package:built_value/serializer.dart';
 
 part 'move_function.g.dart';
 
-/// MoveFunction
+/// Move function
 ///
 /// Properties:
 /// * [name]
 /// * [visibility]
-/// * [isEntry]
-/// * [genericTypeParams]
-/// * [params]
-/// * [return_]
+/// * [isEntry] - Whether the function can be called as an entry function directly in a transaction
+/// * [genericTypeParams] - Generic type params associated with the Move function
+/// * [params] - Parameters associated with the move function
+/// * [return_] - Return type of the function
 @BuiltValue()
 abstract class MoveFunction
     implements Built<MoveFunction, MoveFunctionBuilder> {
@@ -30,15 +30,19 @@ abstract class MoveFunction
   MoveFunctionVisibility get visibility;
   // enum visibilityEnum {  private,  public,  friend,  };
 
+  /// Whether the function can be called as an entry function directly in a transaction
   @BuiltValueField(wireName: r'is_entry')
   bool get isEntry;
 
+  /// Generic type params associated with the Move function
   @BuiltValueField(wireName: r'generic_type_params')
   BuiltList<MoveFunctionGenericTypeParam> get genericTypeParams;
 
+  /// Parameters associated with the move function
   @BuiltValueField(wireName: r'params')
   BuiltList<String> get params;
 
+  /// Return type of the function
   @BuiltValueField(wireName: r'return')
   BuiltList<String> get return_;
 

@@ -11,7 +11,7 @@ import 'package:one_of/one_of.dart';
 
 part 'genesis_payload.g.dart';
 
-/// GenesisPayload
+/// The writeset payload of the Genesis transaction
 ///
 /// Properties:
 /// * [type]

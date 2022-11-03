@@ -10,36 +10,37 @@ import 'package:built_value/serializer.dart';
 
 part 'block.g.dart';
 
-/// Block
+/// A Block with or without transactions  This contains the information about a transactions along with associated transactions if requested
 ///
 /// Properties:
-/// * [blockHeight] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [blockHeight] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
 /// * [blockHash]
-/// * [blockTimestamp] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
-/// * [firstVersion] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
-/// * [lastVersion] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
-/// * [transactions]
+/// * [blockTimestamp] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [firstVersion] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [lastVersion] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [transactions] - The transactions in the block in sequential order
 @BuiltValue()
 abstract class Block implements Built<Block, BlockBuilder> {
-  /// A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
+  /// A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
   @BuiltValueField(wireName: r'block_height')
   String get blockHeight;
 
   @BuiltValueField(wireName: r'block_hash')
   String get blockHash;
 
-  /// A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
+  /// A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
   @BuiltValueField(wireName: r'block_timestamp')
   String get blockTimestamp;
 
-  /// A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
+  /// A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
   @BuiltValueField(wireName: r'first_version')
   String get firstVersion;
 
-  /// A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
+  /// A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
   @BuiltValueField(wireName: r'last_version')
   String get lastVersion;
 
+  /// The transactions in the block in sequential order
   @BuiltValueField(wireName: r'transactions')
   BuiltList<Transaction>? get transactions;
 

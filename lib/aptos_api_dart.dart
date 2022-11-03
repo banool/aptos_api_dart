@@ -36,6 +36,7 @@ export 'package:aptos_api_dart/src/model/ed25519_signature.dart';
 export 'package:aptos_api_dart/src/model/encode_submission_request.dart';
 export 'package:aptos_api_dart/src/model/entry_function_payload.dart';
 export 'package:aptos_api_dart/src/model/event.dart';
+export 'package:aptos_api_dart/src/model/event_guid.dart';
 export 'package:aptos_api_dart/src/model/gas_estimation.dart';
 export 'package:aptos_api_dart/src/model/genesis_payload.dart';
 export 'package:aptos_api_dart/src/model/genesis_payload_write_set_payload.dart';

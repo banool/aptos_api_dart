@@ -11,29 +11,32 @@ import 'package:built_value/serializer.dart';
 
 part 'move_module.g.dart';
 
-/// MoveModule
+/// A Move module
 ///
 /// Properties:
-/// * [address] - Hex encoded 32 byte Aptos account address
+/// * [address] - A hex encoded 32 byte Aptos account address.  This is represented in a string as a 64 character hex string, sometimes shortened by stripping leading 0s, and adding a 0x.  For example, address 0x0000000000000000000000000000000000000000000000000000000000000001 is represented as 0x1.
 /// * [name]
-/// * [friends]
-/// * [exposedFunctions]
-/// * [structs]
+/// * [friends] - Friends of the module
+/// * [exposedFunctions] - Public functions of the module
+/// * [structs] - Structs of the module
 @BuiltValue()
 abstract class MoveModule implements Built<MoveModule, MoveModuleBuilder> {
-  /// Hex encoded 32 byte Aptos account address
+  /// A hex encoded 32 byte Aptos account address.  This is represented in a string as a 64 character hex string, sometimes shortened by stripping leading 0s, and adding a 0x.  For example, address 0x0000000000000000000000000000000000000000000000000000000000000001 is represented as 0x1.
   @BuiltValueField(wireName: r'address')
   String get address;
 
   @BuiltValueField(wireName: r'name')
   String get name;
 
+  /// Friends of the module
   @BuiltValueField(wireName: r'friends')
   BuiltList<String> get friends;
 
+  /// Public functions of the module
   @BuiltValueField(wireName: r'exposed_functions')
   BuiltList<MoveFunction> get exposedFunctions;
 
+  /// Structs of the module
   @BuiltValueField(wireName: r'structs')
   BuiltList<MoveStruct> get structs;
 

@@ -9,18 +9,19 @@ import 'package:built_value/serializer.dart';
 
 part 'write_resource.g.dart';
 
-/// WriteResource
+/// Write a resource or update an existing one
 ///
 /// Properties:
-/// * [address] - Hex encoded 32 byte Aptos account address
-/// * [stateKeyHash]
+/// * [address] - A hex encoded 32 byte Aptos account address.  This is represented in a string as a 64 character hex string, sometimes shortened by stripping leading 0s, and adding a 0x.  For example, address 0x0000000000000000000000000000000000000000000000000000000000000001 is represented as 0x1.
+/// * [stateKeyHash] - State key hash
 /// * [data]
 @BuiltValue(instantiable: false)
 abstract class WriteResource {
-  /// Hex encoded 32 byte Aptos account address
+  /// A hex encoded 32 byte Aptos account address.  This is represented in a string as a 64 character hex string, sometimes shortened by stripping leading 0s, and adding a 0x.  For example, address 0x0000000000000000000000000000000000000000000000000000000000000001 is represented as 0x1.
   @BuiltValueField(wireName: r'address')
   String get address;
 
+  /// State key hash
   @BuiltValueField(wireName: r'state_key_hash')
   String get stateKeyHash;
 

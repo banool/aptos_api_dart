@@ -114,7 +114,7 @@ class TransactionsApi {
   }
 
   /// Estimate gas price
-  ///
+  /// Currently, the gas estimation is handled by taking the median of the last 100,000 transactions If a user wants to prioritize their transaction and is willing to pay, they can pay more than the gas price.  If they&#39;re willing to wait longer, they can pay less.  Note that the gas price moves with the fee market, and should only increase when demand outweighs supply.  If there have been no transactions in the last 100,000 transactions, the price will be 1.
   ///
   /// Parameters:
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -185,12 +185,12 @@ class TransactionsApi {
   }
 
   /// Get account transactions
-  /// todo
+  /// Retrieves transactions from an account.  If the start version is too far in the past a 410 will be returned.  If no start version is given, it will start at 0
   ///
   /// Parameters:
-  /// * [address]
-  /// * [start]
-  /// * [limit]
+  /// * [address] - Address of account with or without a `0x` prefix
+  /// * [start] - Ledger version to start list of transactions  If not provided, defaults to showing the latest transactions
+  /// * [limit] - Max number of transactions to retrieve.  If not provided, defaults to default page size
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -276,7 +276,7 @@ class TransactionsApi {
   /// Look up a transaction by its hash. This is the same hash that is returned by the API when submitting a transaction (see PendingTransaction).  When given a transaction hash, the server first looks for the transaction in storage (on-chain, committed). If no on-chain transaction is found, it looks the transaction up by hash in the mempool (pending, not yet committed).  To create a transaction hash by yourself, do the following: 1. Hash message bytes: \&quot;RawTransaction\&quot; bytes + BCS bytes of [Transaction](https://aptos-labs.github.io/aptos-core/aptos_types/transaction/enum.Transaction.html). 2. Apply hash algorithm &#x60;SHA3-256&#x60; to the hash message bytes. 3. Hex-encode the hash bytes with &#x60;0x&#x60; prefix.
   ///
   /// Parameters:
-  /// * [txnHash]
+  /// * [txnHash] - Hash of transaction to retrieve
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -347,10 +347,10 @@ class TransactionsApi {
   }
 
   /// Get transaction by version
-  /// todo
+  /// Retrieves a transaction by a given version.  If the version has been pruned, a 410 will be returned.
   ///
   /// Parameters:
-  /// * [txnVersion]
+  /// * [txnVersion] - Version of transaction to retrieve
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -421,11 +421,11 @@ class TransactionsApi {
   }
 
   /// Get transactions
-  /// Get on-chain (meaning, committed) transactions. You may specify from when you want the transactions and how to include in the response.
+  /// Retrieve on-chain committed transactions. The page size and start can be provided to get a specific sequence of transactions.  If the version has been pruned, then a 410 will be returned
   ///
   /// Parameters:
-  /// * [start]
-  /// * [limit]
+  /// * [start] - Ledger version to start list of transactions  If not provided, defaults to showing the latest transactions
+  /// * [limit] - Max number of transactions to retrieve.  If not provided, defaults to default page size
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -506,10 +506,13 @@ class TransactionsApi {
   }
 
   /// Simulate transaction
-  /// Simulate submitting a transaction. To use this, you must: - Create a SignedTransaction with a zero-padded signature. - Submit a SubmitTransactionRequest containing a UserTransactionRequest containing that signature.  To use this endpoint with BCS, you must submit a SignedTransaction encoded as BCS. See SignedTransaction in types/src/transaction/mod.rs.
+  /// The output of the transaction will have the exact transaction outputs and events that running an actual signed transaction would have.  However, it will not have the associated state hashes, as they are not updated in storage.  This can be used to estimate the maximum gas units for a submitted transaction.  To use this, you must: - Create a SignedTransaction with a zero-padded signature. - Submit a SubmitTransactionRequest containing a UserTransactionRequest containing that signature.  To use this endpoint with BCS, you must submit a SignedTransaction encoded as BCS. See SignedTransaction in types/src/transaction/mod.rs.
   ///
   /// Parameters:
   /// * [submitTransactionRequest]
+  /// * [estimateMaxGasAmount] - If set to true, the max gas value in the transaction will be ignored and the maximum possible gas will be used
+  /// * [estimateGasUnitPrice] - If set to true, the gas unit price in the transaction will be ignored and the estimated value will be used
+  /// * [estimatePrioritizedGasUnitPrice] - If set to true, the transaction will use a higher price than the original estimate.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -521,6 +524,9 @@ class TransactionsApi {
   /// Throws [DioError] if API call or serialization fails
   Future<Response<BuiltList<UserTransaction>>> simulateTransaction({
     required SubmitTransactionRequest submitTransactionRequest,
+    bool? estimateMaxGasAmount,
+    bool? estimateGasUnitPrice,
+    bool? estimatePrioritizedGasUnitPrice,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -542,6 +548,20 @@ class TransactionsApi {
       validateStatus: validateStatus,
     );
 
+    final _queryParameters = <String, dynamic>{
+      if (estimateMaxGasAmount != null)
+        r'estimate_max_gas_amount': encodeQueryParameter(
+            _serializers, estimateMaxGasAmount, const FullType(bool)),
+      if (estimateGasUnitPrice != null)
+        r'estimate_gas_unit_price': encodeQueryParameter(
+            _serializers, estimateGasUnitPrice, const FullType(bool)),
+      if (estimatePrioritizedGasUnitPrice != null)
+        r'estimate_prioritized_gas_unit_price': encodeQueryParameter(
+            _serializers,
+            estimatePrioritizedGasUnitPrice,
+            const FullType(bool)),
+    };
+
     dynamic _bodyData;
 
     try {
@@ -553,6 +573,7 @@ class TransactionsApi {
         requestOptions: _options.compose(
           _dio.options,
           _path,
+          queryParameters: _queryParameters,
         ),
         type: DioErrorType.other,
         error: error,
@@ -563,6 +584,7 @@ class TransactionsApi {
       _path,
       data: _bodyData,
       options: _options,
+      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
@@ -597,8 +619,8 @@ class TransactionsApi {
     );
   }
 
-  /// submitBatchTransactions
-  ///
+  /// Submit batch transactions
+  /// This allows you to submit multiple transactions.  The response has three outcomes:  1. All transactions succeed, and it will return a 202 2. Some transactions succeed, and it will return the failed transactions and a 206 3. No transactions succeed, and it will also return the failed transactions and a 206  To submit a transaction as JSON, you must submit a SubmitTransactionRequest. To build this request, do the following:  1. Encode the transaction as BCS. If you are using a language that has native BCS support, make sure to use that library. If not, you may take advantage of /transactions/encode_submission. When using this endpoint, make sure you trust the node you&#39;re talking to, as it is possible they could manipulate your request. 2. Sign the encoded transaction and use it to create a TransactionSignature. 3. Submit the request. Make sure to use the \&quot;application/json\&quot; Content-Type.  To submit a transaction as BCS, you must submit a SignedTransaction encoded as BCS. See SignedTransaction in types/src/transaction/mod.rs. Make sure to use the &#x60;application/x.aptos.signed_transaction+bcs&#x60; Content-Type.
   ///
   /// Parameters:
   /// * [submitTransactionRequest]
@@ -690,7 +712,7 @@ class TransactionsApi {
   }
 
   /// Submit transaction
-  /// This endpoint accepts transaction submissions in two formats.  To submit a transaction as JSON, you must submit a SubmitTransactionRequest. To build this request, do the following:  1. Encode the transaction as BCS. If you are using a language that has native BCS support, make sure of that library. If not, you may take advantage of /transactions/encode_submission. When using this endpoint, make sure you trust the node you&#39;re talking to, as it is possible they could manipulate your request. 2. Sign the encoded transaction and use it to create a TransactionSignature. 3. Submit the request. Make sure to use the \&quot;application/json\&quot; Content-Type.  To submit a transaction as BCS, you must submit a SignedTransaction encoded as BCS. See SignedTransaction in types/src/transaction/mod.rs.
+  /// This endpoint accepts transaction submissions in two formats.  To submit a transaction as JSON, you must submit a SubmitTransactionRequest. To build this request, do the following:  1. Encode the transaction as BCS. If you are using a language that has native BCS support, make sure of that library. If not, you may take advantage of /transactions/encode_submission. When using this endpoint, make sure you trust the node you&#39;re talking to, as it is possible they could manipulate your request. 2. Sign the encoded transaction and use it to create a TransactionSignature. 3. Submit the request. Make sure to use the \&quot;application/json\&quot; Content-Type.  To submit a transaction as BCS, you must submit a SignedTransaction encoded as BCS. See SignedTransaction in types/src/transaction/mod.rs. Make sure to use the &#x60;application/x.aptos.signed_transaction+bcs&#x60; Content-Type.
   ///
   /// Parameters:
   /// * [submitTransactionRequest]

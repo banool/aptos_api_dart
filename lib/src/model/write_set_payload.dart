@@ -9,7 +9,7 @@ import 'package:built_value/serializer.dart';
 
 part 'write_set_payload.g.dart';
 
-/// WriteSetPayload
+/// A writeset payload, used only for genesis
 ///
 /// Properties:
 /// * [writeSet]

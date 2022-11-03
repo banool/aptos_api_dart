@@ -34,6 +34,7 @@ import 'package:aptos_api_dart/src/model/ed25519_signature.dart';
 import 'package:aptos_api_dart/src/model/encode_submission_request.dart';
 import 'package:aptos_api_dart/src/model/entry_function_payload.dart';
 import 'package:aptos_api_dart/src/model/event.dart';
+import 'package:aptos_api_dart/src/model/event_guid.dart';
 import 'package:aptos_api_dart/src/model/gas_estimation.dart';
 import 'package:aptos_api_dart/src/model/genesis_payload.dart';
 import 'package:aptos_api_dart/src/model/genesis_payload_write_set_payload.dart';
@@ -144,6 +145,7 @@ part 'serializers.g.dart';
   EntryFunctionPayload,
   $EntryFunctionPayload,
   Event,
+  EventGuid,
   GasEstimation,
   GenesisPayload,
   GenesisPayloadWriteSetPayload,

@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** |  | 
 **function_** | **String** | Entry function id is string representation of a entry function defined on-chain.  Format: `{address}::{module name}::{function name}`  Both `module name` and `function name` are case-sensitive.  | 
-**typeArguments** | **BuiltList&lt;String&gt;** |  | 
-**arguments** | [**BuiltList&lt;JsonObject&gt;**](JsonObject.md) |  | 
+**typeArguments** | **BuiltList&lt;String&gt;** | Type arguments of the function | 
+**arguments** | [**BuiltList&lt;JsonObject&gt;**](JsonObject.md) | Arguments of the function | 
 **code** | [**MoveScriptBytecode**](MoveScriptBytecode.md) |  | 
 **modules** | [**BuiltList&lt;MoveModuleBytecode&gt;**](MoveModuleBytecode.md) |  | 
 

@@ -7,11 +7,13 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(DeletedTableData, () {
+    // Deleted key
     // JsonObject key
     test('to test the property `key`', () async {
       // TODO
     });
 
+    // Deleted key type
     // String keyType
     test('to test the property `keyType`', () async {
       // TODO

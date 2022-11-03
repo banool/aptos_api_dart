@@ -12,6 +12,7 @@ void main() {
       // TODO
     });
 
+    // The index of which transaction failed, same as submission order
     // int transactionIndex
     test('to test the property `transactionIndex`', () async {
       // TODO

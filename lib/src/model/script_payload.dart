@@ -11,20 +11,22 @@ import 'package:built_value/serializer.dart';
 
 part 'script_payload.g.dart';
 
-/// ScriptPayload
+/// Payload which runs a script that can run multiple functions
 ///
 /// Properties:
 /// * [code]
-/// * [typeArguments]
-/// * [arguments]
+/// * [typeArguments] - Type arguments of the function
+/// * [arguments] - Arguments of the function
 @BuiltValue(instantiable: false)
 abstract class ScriptPayload {
   @BuiltValueField(wireName: r'code')
   MoveScriptBytecode get code;
 
+  /// Type arguments of the function
   @BuiltValueField(wireName: r'type_arguments')
   BuiltList<String> get typeArguments;
 
+  /// Arguments of the function
   @BuiltValueField(wireName: r'arguments')
   BuiltList<JsonObject?> get arguments;
 

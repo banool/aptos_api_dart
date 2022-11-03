@@ -6,54 +6,54 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'account_data.g.dart';
+part 'event_guid.g.dart';
 
-/// Account data  A simplified version of the onchain Account resource
+/// EventGuid
 ///
 /// Properties:
-/// * [sequenceNumber] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
-/// * [authenticationKey] - All bytes (Vec<u8>) data is represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Unlike the `Address` type, HexEncodedBytes will not trim any zeros.
+/// * [creationNumber] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
+/// * [accountAddress] - A hex encoded 32 byte Aptos account address.  This is represented in a string as a 64 character hex string, sometimes shortened by stripping leading 0s, and adding a 0x.  For example, address 0x0000000000000000000000000000000000000000000000000000000000000001 is represented as 0x1.
 @BuiltValue()
-abstract class AccountData implements Built<AccountData, AccountDataBuilder> {
+abstract class EventGuid implements Built<EventGuid, EventGuidBuilder> {
   /// A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
-  @BuiltValueField(wireName: r'sequence_number')
-  String get sequenceNumber;
+  @BuiltValueField(wireName: r'creation_number')
+  String get creationNumber;
 
-  /// All bytes (Vec<u8>) data is represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Unlike the `Address` type, HexEncodedBytes will not trim any zeros.
-  @BuiltValueField(wireName: r'authentication_key')
-  String get authenticationKey;
+  /// A hex encoded 32 byte Aptos account address.  This is represented in a string as a 64 character hex string, sometimes shortened by stripping leading 0s, and adding a 0x.  For example, address 0x0000000000000000000000000000000000000000000000000000000000000001 is represented as 0x1.
+  @BuiltValueField(wireName: r'account_address')
+  String get accountAddress;
 
-  AccountData._();
+  EventGuid._();
 
-  factory AccountData([void updates(AccountDataBuilder b)]) = _$AccountData;
+  factory EventGuid([void updates(EventGuidBuilder b)]) = _$EventGuid;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(AccountDataBuilder b) => b;
+  static void _defaults(EventGuidBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<AccountData> get serializer => _$AccountDataSerializer();
+  static Serializer<EventGuid> get serializer => _$EventGuidSerializer();
 }
 
-class _$AccountDataSerializer implements PrimitiveSerializer<AccountData> {
+class _$EventGuidSerializer implements PrimitiveSerializer<EventGuid> {
   @override
-  final Iterable<Type> types = const [AccountData, _$AccountData];
+  final Iterable<Type> types = const [EventGuid, _$EventGuid];
 
   @override
-  final String wireName = r'AccountData';
+  final String wireName = r'EventGuid';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    AccountData object, {
+    EventGuid object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'sequence_number';
+    yield r'creation_number';
     yield serializers.serialize(
-      object.sequenceNumber,
+      object.creationNumber,
       specifiedType: const FullType(String),
     );
-    yield r'authentication_key';
+    yield r'account_address';
     yield serializers.serialize(
-      object.authenticationKey,
+      object.accountAddress,
       specifiedType: const FullType(String),
     );
   }
@@ -61,7 +61,7 @@ class _$AccountDataSerializer implements PrimitiveSerializer<AccountData> {
   @override
   Object serialize(
     Serializers serializers,
-    AccountData object, {
+    EventGuid object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object,
@@ -74,26 +74,26 @@ class _$AccountDataSerializer implements PrimitiveSerializer<AccountData> {
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required AccountDataBuilder result,
+    required EventGuidBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'sequence_number':
+        case r'creation_number':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.sequenceNumber = valueDes;
+          result.creationNumber = valueDes;
           break;
-        case r'authentication_key':
+        case r'account_address':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.authenticationKey = valueDes;
+          result.accountAddress = valueDes;
           break;
         default:
           unhandled.add(key);
@@ -104,12 +104,12 @@ class _$AccountDataSerializer implements PrimitiveSerializer<AccountData> {
   }
 
   @override
-  AccountData deserialize(
+  EventGuid deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = AccountDataBuilder();
+    final result = EventGuidBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

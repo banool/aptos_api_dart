@@ -8,15 +8,26 @@ import 'package:built_value/serializer.dart';
 
 part 'gas_estimation.g.dart';
 
-/// GasEstimation
+/// Struct holding the outputs of the estimate gas API
 ///
 /// Properties:
-/// * [gasEstimate]
+/// * [deprioritizedGasEstimate] - The deprioritized estimate for the gas unit price
+/// * [gasEstimate] - The current estimate for the gas unit price
+/// * [prioritizedGasEstimate] - The prioritized estimate for the gas unit price
 @BuiltValue()
 abstract class GasEstimation
     implements Built<GasEstimation, GasEstimationBuilder> {
+  /// The deprioritized estimate for the gas unit price
+  @BuiltValueField(wireName: r'deprioritized_gas_estimate')
+  int? get deprioritizedGasEstimate;
+
+  /// The current estimate for the gas unit price
   @BuiltValueField(wireName: r'gas_estimate')
   int get gasEstimate;
+
+  /// The prioritized estimate for the gas unit price
+  @BuiltValueField(wireName: r'prioritized_gas_estimate')
+  int? get prioritizedGasEstimate;
 
   GasEstimation._();
 
@@ -43,11 +54,25 @@ class _$GasEstimationSerializer implements PrimitiveSerializer<GasEstimation> {
     GasEstimation object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    if (object.deprioritizedGasEstimate != null) {
+      yield r'deprioritized_gas_estimate';
+      yield serializers.serialize(
+        object.deprioritizedGasEstimate,
+        specifiedType: const FullType(int),
+      );
+    }
     yield r'gas_estimate';
     yield serializers.serialize(
       object.gasEstimate,
       specifiedType: const FullType(int),
     );
+    if (object.prioritizedGasEstimate != null) {
+      yield r'prioritized_gas_estimate';
+      yield serializers.serialize(
+        object.prioritizedGasEstimate,
+        specifiedType: const FullType(int),
+      );
+    }
   }
 
   @override
@@ -73,12 +98,26 @@ class _$GasEstimationSerializer implements PrimitiveSerializer<GasEstimation> {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'deprioritized_gas_estimate':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.deprioritizedGasEstimate = valueDes;
+          break;
         case r'gas_estimate':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(int),
           ) as int;
           result.gasEstimate = valueDes;
+          break;
+        case r'prioritized_gas_estimate':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.prioritizedGasEstimate = valueDes;
           break;
         default:
           unhandled.add(key);

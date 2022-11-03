@@ -13,7 +13,7 @@ import 'package:one_of/any_of.dart';
 
 part 'move_value.g.dart';
 
-/// MoveValue
+/// An enum of the possible Move value types
 @BuiltValue()
 abstract class MoveValue implements Built<MoveValue, MoveValueBuilder> {
   /// Any Of [BuiltList<MoveValue>], [JsonObject], [String], [bool], [int]

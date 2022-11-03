@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** |  | 
 **visibility** | [**MoveFunctionVisibility**](MoveFunctionVisibility.md) |  | 
-**isEntry** | **bool** |  | 
-**genericTypeParams** | [**BuiltList&lt;MoveFunctionGenericTypeParam&gt;**](MoveFunctionGenericTypeParam.md) |  | 
-**params** | **BuiltList&lt;String&gt;** |  | 
-**return_** | **BuiltList&lt;String&gt;** |  | 
+**isEntry** | **bool** | Whether the function can be called as an entry function directly in a transaction | 
+**genericTypeParams** | [**BuiltList&lt;MoveFunctionGenericTypeParam&gt;**](MoveFunctionGenericTypeParam.md) | Generic type params associated with the Move function | 
+**params** | **BuiltList&lt;String&gt;** | Parameters associated with the move function | 
+**return_** | **BuiltList&lt;String&gt;** | Return type of the function | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

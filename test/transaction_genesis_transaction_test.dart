@@ -12,7 +12,7 @@ void main() {
       // TODO
     });
 
-    // A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
+    // A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
     // String version
     test('to test the property `version`', () async {
       // TODO
@@ -38,17 +38,19 @@ void main() {
       // TODO
     });
 
-    // A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatability with languages such as JavaScript that do not parse u64s in JSON natively.
+    // A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
     // String gasUsed
     test('to test the property `gasUsed`', () async {
       // TODO
     });
 
+    // Whether the transaction was successful
     // bool success
     test('to test the property `success`', () async {
       // TODO
     });
 
+    // The VM status of the transaction, can tell useful information in a failure
     // String vmStatus
     test('to test the property `vmStatus`', () async {
       // TODO
@@ -59,6 +61,7 @@ void main() {
       // TODO
     });
 
+    // Final state of resources changed by the transaction
     // BuiltList<WriteSetChange> changes
     test('to test the property `changes`', () async {
       // TODO
@@ -69,6 +72,7 @@ void main() {
       // TODO
     });
 
+    // Events emitted during genesis
     // BuiltList<Event> events
     test('to test the property `events`', () async {
       // TODO

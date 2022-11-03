@@ -9,8 +9,8 @@ import 'package:aptos_api_dart/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | [**MoveScriptBytecode**](MoveScriptBytecode.md) |  | 
-**typeArguments** | **BuiltList&lt;String&gt;** |  | 
-**arguments** | [**BuiltList&lt;JsonObject&gt;**](JsonObject.md) |  | 
+**typeArguments** | **BuiltList&lt;String&gt;** | Type arguments of the function | 
+**arguments** | [**BuiltList&lt;JsonObject&gt;**](JsonObject.md) | Arguments of the function | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

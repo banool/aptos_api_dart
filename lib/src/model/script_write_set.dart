@@ -12,11 +12,11 @@ part 'script_write_set.g.dart';
 /// ScriptWriteSet
 ///
 /// Properties:
-/// * [executeAs] - Hex encoded 32 byte Aptos account address
+/// * [executeAs] - A hex encoded 32 byte Aptos account address.  This is represented in a string as a 64 character hex string, sometimes shortened by stripping leading 0s, and adding a 0x.  For example, address 0x0000000000000000000000000000000000000000000000000000000000000001 is represented as 0x1.
 /// * [script]
 @BuiltValue(instantiable: false)
 abstract class ScriptWriteSet {
-  /// Hex encoded 32 byte Aptos account address
+  /// A hex encoded 32 byte Aptos account address.  This is represented in a string as a 64 character hex string, sometimes shortened by stripping leading 0s, and adding a 0x.  For example, address 0x0000000000000000000000000000000000000000000000000000000000000001 is represented as 0x1.
   @BuiltValueField(wireName: r'execute_as')
   String get executeAs;
 

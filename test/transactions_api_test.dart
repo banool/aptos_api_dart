@@ -17,6 +17,8 @@ void main() {
 
     // Estimate gas price
     //
+    // Currently, the gas estimation is handled by taking the median of the last 100,000 transactions If a user wants to prioritize their transaction and is willing to pay, they can pay more than the gas price.  If they're willing to wait longer, they can pay less.  Note that the gas price moves with the fee market, and should only increase when demand outweighs supply.  If there have been no transactions in the last 100,000 transactions, the price will be 1.
+    //
     //Future<GasEstimation> estimateGasPrice() async
     test('test estimateGasPrice', () async {
       // TODO
@@ -24,7 +26,7 @@ void main() {
 
     // Get account transactions
     //
-    // todo
+    // Retrieves transactions from an account.  If the start version is too far in the past a 410 will be returned.  If no start version is given, it will start at 0
     //
     //Future<BuiltList<Transaction>> getAccountTransactions(String address, { String start, int limit }) async
     test('test getAccountTransactions', () async {
@@ -42,7 +44,7 @@ void main() {
 
     // Get transaction by version
     //
-    // todo
+    // Retrieves a transaction by a given version.  If the version has been pruned, a 410 will be returned.
     //
     //Future<Transaction> getTransactionByVersion(String txnVersion) async
     test('test getTransactionByVersion', () async {
@@ -51,7 +53,7 @@ void main() {
 
     // Get transactions
     //
-    // Get on-chain (meaning, committed) transactions. You may specify from when you want the transactions and how to include in the response.
+    // Retrieve on-chain committed transactions. The page size and start can be provided to get a specific sequence of transactions.  If the version has been pruned, then a 410 will be returned
     //
     //Future<BuiltList<Transaction>> getTransactions({ String start, int limit }) async
     test('test getTransactions', () async {
@@ -60,13 +62,17 @@ void main() {
 
     // Simulate transaction
     //
-    // Simulate submitting a transaction. To use this, you must: - Create a SignedTransaction with a zero-padded signature. - Submit a SubmitTransactionRequest containing a UserTransactionRequest containing that signature.  To use this endpoint with BCS, you must submit a SignedTransaction encoded as BCS. See SignedTransaction in types/src/transaction/mod.rs.
+    // The output of the transaction will have the exact transaction outputs and events that running an actual signed transaction would have.  However, it will not have the associated state hashes, as they are not updated in storage.  This can be used to estimate the maximum gas units for a submitted transaction.  To use this, you must: - Create a SignedTransaction with a zero-padded signature. - Submit a SubmitTransactionRequest containing a UserTransactionRequest containing that signature.  To use this endpoint with BCS, you must submit a SignedTransaction encoded as BCS. See SignedTransaction in types/src/transaction/mod.rs.
     //
-    //Future<BuiltList<UserTransaction>> simulateTransaction(SubmitTransactionRequest submitTransactionRequest) async
+    //Future<BuiltList<UserTransaction>> simulateTransaction(SubmitTransactionRequest submitTransactionRequest, { bool estimateMaxGasAmount, bool estimateGasUnitPrice, bool estimatePrioritizedGasUnitPrice }) async
     test('test simulateTransaction', () async {
       // TODO
     });
 
+    // Submit batch transactions
+    //
+    // This allows you to submit multiple transactions.  The response has three outcomes:  1. All transactions succeed, and it will return a 202 2. Some transactions succeed, and it will return the failed transactions and a 206 3. No transactions succeed, and it will also return the failed transactions and a 206  To submit a transaction as JSON, you must submit a SubmitTransactionRequest. To build this request, do the following:  1. Encode the transaction as BCS. If you are using a language that has native BCS support, make sure to use that library. If not, you may take advantage of /transactions/encode_submission. When using this endpoint, make sure you trust the node you're talking to, as it is possible they could manipulate your request. 2. Sign the encoded transaction and use it to create a TransactionSignature. 3. Submit the request. Make sure to use the \"application/json\" Content-Type.  To submit a transaction as BCS, you must submit a SignedTransaction encoded as BCS. See SignedTransaction in types/src/transaction/mod.rs. Make sure to use the `application/x.aptos.signed_transaction+bcs` Content-Type.
+    //
     //Future<TransactionsBatchSubmissionResult> submitBatchTransactions(BuiltList<SubmitTransactionRequest> submitTransactionRequest) async
     test('test submitBatchTransactions', () async {
       // TODO
@@ -74,7 +80,7 @@ void main() {
 
     // Submit transaction
     //
-    // This endpoint accepts transaction submissions in two formats.  To submit a transaction as JSON, you must submit a SubmitTransactionRequest. To build this request, do the following:  1. Encode the transaction as BCS. If you are using a language that has native BCS support, make sure of that library. If not, you may take advantage of /transactions/encode_submission. When using this endpoint, make sure you trust the node you're talking to, as it is possible they could manipulate your request. 2. Sign the encoded transaction and use it to create a TransactionSignature. 3. Submit the request. Make sure to use the \"application/json\" Content-Type.  To submit a transaction as BCS, you must submit a SignedTransaction encoded as BCS. See SignedTransaction in types/src/transaction/mod.rs.
+    // This endpoint accepts transaction submissions in two formats.  To submit a transaction as JSON, you must submit a SubmitTransactionRequest. To build this request, do the following:  1. Encode the transaction as BCS. If you are using a language that has native BCS support, make sure of that library. If not, you may take advantage of /transactions/encode_submission. When using this endpoint, make sure you trust the node you're talking to, as it is possible they could manipulate your request. 2. Sign the encoded transaction and use it to create a TransactionSignature. 3. Submit the request. Make sure to use the \"application/json\" Content-Type.  To submit a transaction as BCS, you must submit a SignedTransaction encoded as BCS. See SignedTransaction in types/src/transaction/mod.rs. Make sure to use the `application/x.aptos.signed_transaction+bcs` Content-Type.
     //
     //Future<PendingTransaction> submitTransaction(SubmitTransactionRequest submitTransactionRequest) async
     test('test submitTransaction', () async {

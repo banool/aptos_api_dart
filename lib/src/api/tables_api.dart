@@ -20,12 +20,12 @@ class TablesApi {
   const TablesApi(this._dio, this._serializers);
 
   /// Get table item
-  /// Get a table item from the table identified by {table_handle} in the path and the \&quot;key\&quot; (TableItemRequest) provided in the request body.  This is a POST endpoint because the \&quot;key\&quot; for requesting a specific table item (TableItemRequest) could be quite complex, as each of its fields could themselves be composed of other structs. This makes it impractical to express using query params, meaning GET isn&#39;t an option.
+  /// Get a table item at a specific ledger version from the table identified by {table_handle} in the path and the \&quot;key\&quot; (TableItemRequest) provided in the request body.  This is a POST endpoint because the \&quot;key\&quot; for requesting a specific table item (TableItemRequest) could be quite complex, as each of its fields could themselves be composed of other structs. This makes it impractical to express using query params, meaning GET isn&#39;t an option.  The Aptos nodes prune account state history, via a configurable time window. If the requested ledger version has been pruned, the server responds with a 410.
   ///
   /// Parameters:
-  /// * [tableHandle]
+  /// * [tableHandle] - Table handle hex encoded 32-byte string
   /// * [tableItemRequest]
-  /// * [ledgerVersion]
+  /// * [ledgerVersion] - Ledger version to get state of account  If not provided, it will be the latest version
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
