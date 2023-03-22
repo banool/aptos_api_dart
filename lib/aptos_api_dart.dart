@@ -15,6 +15,7 @@ export 'package:aptos_api_dart/src/api/events_api.dart';
 export 'package:aptos_api_dart/src/api/general_api.dart';
 export 'package:aptos_api_dart/src/api/tables_api.dart';
 export 'package:aptos_api_dart/src/api/transactions_api.dart';
+export 'package:aptos_api_dart/src/api/view_api.dart';
 
 export 'package:aptos_api_dart/src/model/account_data.dart';
 export 'package:aptos_api_dart/src/model/account_signature.dart';
@@ -59,6 +60,7 @@ export 'package:aptos_api_dart/src/model/move_value.dart';
 export 'package:aptos_api_dart/src/model/multi_agent_signature.dart';
 export 'package:aptos_api_dart/src/model/multi_ed25519_signature.dart';
 export 'package:aptos_api_dart/src/model/pending_transaction.dart';
+export 'package:aptos_api_dart/src/model/raw_table_item_request.dart';
 export 'package:aptos_api_dart/src/model/role_type.dart';
 export 'package:aptos_api_dart/src/model/script_payload.dart';
 export 'package:aptos_api_dart/src/model/script_write_set.dart';
@@ -92,6 +94,7 @@ export 'package:aptos_api_dart/src/model/transactions_batch_single_submission_fa
 export 'package:aptos_api_dart/src/model/transactions_batch_submission_result.dart';
 export 'package:aptos_api_dart/src/model/user_transaction.dart';
 export 'package:aptos_api_dart/src/model/versioned_event.dart';
+export 'package:aptos_api_dart/src/model/view_request.dart';
 export 'package:aptos_api_dart/src/model/write_module.dart';
 export 'package:aptos_api_dart/src/model/write_resource.dart';
 export 'package:aptos_api_dart/src/model/write_set.dart';

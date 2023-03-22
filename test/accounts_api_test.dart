@@ -8,7 +8,7 @@ void main() {
   group(AccountsApi, () {
     // Get account
     //
-    // Retrieves high level information about an account such as its sequence number and authentication key  Returns a 404 if the account doesn't exist
+    // Return the authentication key and the sequence number for an account address. Optionally, a ledger version can be specified. If the ledger version is not specified in the request, the latest ledger version is used.
     //
     //Future<AccountData> getAccount(String address, { String ledgerVersion }) async
     test('test getAccount', () async {
@@ -28,7 +28,7 @@ void main() {
     //
     // Retrieves all account modules' bytecode for a given account at a specific ledger version. If the ledger version is not specified in the request, the latest ledger version is used.  The Aptos nodes prune account state history, via a configurable time window. If the requested ledger version has been pruned, the server responds with a 410.
     //
-    //Future<BuiltList<MoveModuleBytecode>> getAccountModules(String address, { String ledgerVersion }) async
+    //Future<BuiltList<MoveModuleBytecode>> getAccountModules(String address, { String ledgerVersion, String start, int limit }) async
     test('test getAccountModules', () async {
       // TODO
     });
@@ -46,7 +46,7 @@ void main() {
     //
     // Retrieves all account resources for a given account and a specific ledger version.  If the ledger version is not specified in the request, the latest ledger version is used.  The Aptos nodes prune account state history, via a configurable time window. If the requested ledger version has been pruned, the server responds with a 410.
     //
-    //Future<BuiltList<MoveResource>> getAccountResources(String address, { String ledgerVersion }) async
+    //Future<BuiltList<MoveResource>> getAccountResources(String address, { String ledgerVersion, String start, int limit }) async
     test('test getAccountResources', () async {
       // TODO
     });

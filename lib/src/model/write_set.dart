@@ -31,8 +31,6 @@ abstract class WriteSet implements Built<WriteSet, WriteSetBuilder> {
   static const String discriminatorFieldName = r'type';
 
   static const Map<String, Type> discriminatorMapping = {
-    r'WriteSet_DirectWriteSet': WriteSetDirectWriteSet,
-    r'WriteSet_ScriptWriteSet': WriteSetScriptWriteSet,
     r'direct_write_set': WriteSetDirectWriteSet,
     r'script_write_set': WriteSetScriptWriteSet,
   };
@@ -46,6 +44,30 @@ abstract class WriteSet implements Built<WriteSet, WriteSetBuilder> {
 
   @BuiltValueSerializer(custom: true)
   static Serializer<WriteSet> get serializer => _$WriteSetSerializer();
+}
+
+extension WriteSetDiscriminatorExt on WriteSet {
+  String? get discriminatorValue {
+    if (this is WriteSetDirectWriteSet) {
+      return r'direct_write_set';
+    }
+    if (this is WriteSetScriptWriteSet) {
+      return r'script_write_set';
+    }
+    return null;
+  }
+}
+
+extension WriteSetBuilderDiscriminatorExt on WriteSetBuilder {
+  String? get discriminatorValue {
+    if (this is WriteSetDirectWriteSetBuilder) {
+      return r'direct_write_set';
+    }
+    if (this is WriteSetScriptWriteSetBuilder) {
+      return r'script_write_set';
+    }
+    return null;
+  }
 }
 
 class _$WriteSetSerializer implements PrimitiveSerializer<WriteSet> {
@@ -89,34 +111,18 @@ class _$WriteSetSerializer implements PrimitiveSerializer<WriteSet> {
     final oneOfTypes = [
       WriteSetDirectWriteSet,
       WriteSetScriptWriteSet,
-      WriteSetDirectWriteSet,
-      WriteSetScriptWriteSet,
     ];
     Object oneOfResult;
     Type oneOfType;
     switch (discValue) {
-      case 'WriteSet_DirectWriteSet':
+      case r'direct_write_set':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
           specifiedType: FullType(WriteSetDirectWriteSet),
         ) as WriteSetDirectWriteSet;
         oneOfType = WriteSetDirectWriteSet;
         break;
-      case 'WriteSet_ScriptWriteSet':
-        oneOfResult = serializers.deserialize(
-          oneOfDataSrc,
-          specifiedType: FullType(WriteSetScriptWriteSet),
-        ) as WriteSetScriptWriteSet;
-        oneOfType = WriteSetScriptWriteSet;
-        break;
-      case 'direct_write_set':
-        oneOfResult = serializers.deserialize(
-          oneOfDataSrc,
-          specifiedType: FullType(WriteSetDirectWriteSet),
-        ) as WriteSetDirectWriteSet;
-        oneOfType = WriteSetDirectWriteSet;
-        break;
-      case 'script_write_set':
+      case r'script_write_set':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
           specifiedType: FullType(WriteSetScriptWriteSet),

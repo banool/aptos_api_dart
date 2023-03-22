@@ -36,12 +36,6 @@ abstract class TransactionSignature
   static const String discriminatorFieldName = r'type';
 
   static const Map<String, Type> discriminatorMapping = {
-    r'TransactionSignature_Ed25519Signature':
-        TransactionSignatureEd25519Signature,
-    r'TransactionSignature_MultiAgentSignature':
-        TransactionSignatureMultiAgentSignature,
-    r'TransactionSignature_MultiEd25519Signature':
-        TransactionSignatureMultiEd25519Signature,
     r'ed25519_signature': TransactionSignatureEd25519Signature,
     r'multi_agent_signature': TransactionSignatureMultiAgentSignature,
     r'multi_ed25519_signature': TransactionSignatureMultiEd25519Signature,
@@ -58,6 +52,37 @@ abstract class TransactionSignature
   @BuiltValueSerializer(custom: true)
   static Serializer<TransactionSignature> get serializer =>
       _$TransactionSignatureSerializer();
+}
+
+extension TransactionSignatureDiscriminatorExt on TransactionSignature {
+  String? get discriminatorValue {
+    if (this is TransactionSignatureEd25519Signature) {
+      return r'ed25519_signature';
+    }
+    if (this is TransactionSignatureMultiAgentSignature) {
+      return r'multi_agent_signature';
+    }
+    if (this is TransactionSignatureMultiEd25519Signature) {
+      return r'multi_ed25519_signature';
+    }
+    return null;
+  }
+}
+
+extension TransactionSignatureBuilderDiscriminatorExt
+    on TransactionSignatureBuilder {
+  String? get discriminatorValue {
+    if (this is TransactionSignatureEd25519SignatureBuilder) {
+      return r'ed25519_signature';
+    }
+    if (this is TransactionSignatureMultiAgentSignatureBuilder) {
+      return r'multi_agent_signature';
+    }
+    if (this is TransactionSignatureMultiEd25519SignatureBuilder) {
+      return r'multi_ed25519_signature';
+    }
+    return null;
+  }
 }
 
 class _$TransactionSignatureSerializer
@@ -106,49 +131,25 @@ class _$TransactionSignatureSerializer
       TransactionSignatureEd25519Signature,
       TransactionSignatureMultiAgentSignature,
       TransactionSignatureMultiEd25519Signature,
-      TransactionSignatureEd25519Signature,
-      TransactionSignatureMultiAgentSignature,
-      TransactionSignatureMultiEd25519Signature,
     ];
     Object oneOfResult;
     Type oneOfType;
     switch (discValue) {
-      case 'TransactionSignature_Ed25519Signature':
+      case r'ed25519_signature':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
           specifiedType: FullType(TransactionSignatureEd25519Signature),
         ) as TransactionSignatureEd25519Signature;
         oneOfType = TransactionSignatureEd25519Signature;
         break;
-      case 'TransactionSignature_MultiAgentSignature':
+      case r'multi_agent_signature':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
           specifiedType: FullType(TransactionSignatureMultiAgentSignature),
         ) as TransactionSignatureMultiAgentSignature;
         oneOfType = TransactionSignatureMultiAgentSignature;
         break;
-      case 'TransactionSignature_MultiEd25519Signature':
-        oneOfResult = serializers.deserialize(
-          oneOfDataSrc,
-          specifiedType: FullType(TransactionSignatureMultiEd25519Signature),
-        ) as TransactionSignatureMultiEd25519Signature;
-        oneOfType = TransactionSignatureMultiEd25519Signature;
-        break;
-      case 'ed25519_signature':
-        oneOfResult = serializers.deserialize(
-          oneOfDataSrc,
-          specifiedType: FullType(TransactionSignatureEd25519Signature),
-        ) as TransactionSignatureEd25519Signature;
-        oneOfType = TransactionSignatureEd25519Signature;
-        break;
-      case 'multi_agent_signature':
-        oneOfResult = serializers.deserialize(
-          oneOfDataSrc,
-          specifiedType: FullType(TransactionSignatureMultiAgentSignature),
-        ) as TransactionSignatureMultiAgentSignature;
-        oneOfType = TransactionSignatureMultiAgentSignature;
-        break;
-      case 'multi_ed25519_signature':
+      case r'multi_ed25519_signature':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
           specifiedType: FullType(TransactionSignatureMultiEd25519Signature),

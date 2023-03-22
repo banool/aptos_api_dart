@@ -2,7 +2,7 @@
 
 # Adapted from https://www.reddit.com/r/FlutterDev/comments/isokya/comment/hrhq53v/?utm_source=share&utm_medium=web2x&context=3
 
-OPENAPI_GENERATOR_CLI="openapitools/openapi-generator-cli:v6.2.1"
+OPENAPI_GENERATOR_CLI="openapitools/openapi-generator-cli:v6.4.0"
 
 set -e
 
@@ -21,7 +21,7 @@ rm -rf .openapi-generator
 
 spec="$1"
 if [[ $spec == "" ]]; then
-    spec="https://raw.githubusercontent.com/aptos-labs/aptos-core/devnet/api/doc/spec.yaml"
+    spec="https://raw.githubusercontent.com/aptos-labs/aptos-core/mainnet/api/doc/spec.yaml"
 fi
 
 # Get current version

@@ -22,7 +22,7 @@ class AccountsApi {
   const AccountsApi(this._dio, this._serializers);
 
   /// Get account
-  /// Retrieves high level information about an account such as its sequence number and authentication key  Returns a 404 if the account doesn&#39;t exist
+  /// Return the authentication key and the sequence number for an account address. Optionally, a ledger version can be specified. If the ledger version is not specified in the request, the latest ledger version is used.
   ///
   /// Parameters:
   /// * [address] - Address of account with or without a `0x` prefix
@@ -87,9 +87,10 @@ class AccountsApi {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<AccountData>(
@@ -173,9 +174,10 @@ class AccountsApi {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<MoveModuleBytecode>(
@@ -196,6 +198,8 @@ class AccountsApi {
   /// Parameters:
   /// * [address] - Address of account with or without a `0x` prefix
   /// * [ledgerVersion] - Ledger version to get state of account  If not provided, it will be the latest version
+  /// * [start] - Cursor specifying where to start for pagination  This cursor cannot be derived manually client-side. Instead, you must call this endpoint once without this query parameter specified, and then use the cursor returned in the X-Aptos-Cursor header in the response.
+  /// * [limit] - Max number of account modules to retrieve  If not provided, defaults to default page size.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -208,6 +212,8 @@ class AccountsApi {
   Future<Response<BuiltList<MoveModuleBytecode>>> getAccountModules({
     required String address,
     String? ledgerVersion,
+    String? start,
+    int? limit,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -233,6 +239,12 @@ class AccountsApi {
       if (ledgerVersion != null)
         r'ledger_version': encodeQueryParameter(
             _serializers, ledgerVersion, const FullType(String)),
+      if (start != null)
+        r'start':
+            encodeQueryParameter(_serializers, start, const FullType(String)),
+      if (limit != null)
+        r'limit':
+            encodeQueryParameter(_serializers, limit, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(
@@ -256,9 +268,10 @@ class AccountsApi {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<BuiltList<MoveModuleBytecode>>(
@@ -342,9 +355,10 @@ class AccountsApi {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<MoveResource>(
@@ -365,6 +379,8 @@ class AccountsApi {
   /// Parameters:
   /// * [address] - Address of account with or without a `0x` prefix
   /// * [ledgerVersion] - Ledger version to get state of account  If not provided, it will be the latest version
+  /// * [start] - Cursor specifying where to start for pagination  This cursor cannot be derived manually client-side. Instead, you must call this endpoint once without this query parameter specified, and then use the cursor returned in the X-Aptos-Cursor header in the response.
+  /// * [limit] - Max number of account resources to retrieve  If not provided, defaults to default page size.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -377,6 +393,8 @@ class AccountsApi {
   Future<Response<BuiltList<MoveResource>>> getAccountResources({
     required String address,
     String? ledgerVersion,
+    String? start,
+    int? limit,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -402,6 +420,12 @@ class AccountsApi {
       if (ledgerVersion != null)
         r'ledger_version': encodeQueryParameter(
             _serializers, ledgerVersion, const FullType(String)),
+      if (start != null)
+        r'start':
+            encodeQueryParameter(_serializers, start, const FullType(String)),
+      if (limit != null)
+        r'limit':
+            encodeQueryParameter(_serializers, limit, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(
@@ -425,9 +449,10 @@ class AccountsApi {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<BuiltList<MoveResource>>(

@@ -75,6 +75,7 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(MoveStructField.serializer)
       ..add(MoveStructGenericTypeParam.serializer)
       ..add(MoveValue.serializer)
+      ..add(RawTableItemRequest.serializer)
       ..add(RoleType.serializer)
       ..add(SubmitTransactionRequest.serializer)
       ..add(TableItemRequest.serializer)
@@ -95,6 +96,7 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(TransactionsBatchSingleSubmissionFailure.serializer)
       ..add(TransactionsBatchSubmissionResult.serializer)
       ..add(VersionedEvent.serializer)
+      ..add(ViewRequest.serializer)
       ..add(WriteSet.serializer)
       ..add(WriteSetChange.serializer)
       ..add(WriteSetChangeDeleteModule.serializer)
@@ -160,6 +162,11 @@ Serializers _$serializers = (Serializers().toBuilder()
           () => ListBuilder<String>())
       ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
           () => ListBuilder<String>())
+      ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
+          () => ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, [FullType.nullable(JsonObject)]),
+          () => ListBuilder<JsonObject?>())
       ..addBuilderFactory(const FullType(BuiltList, [FullType(String)]),
           () => ListBuilder<String>())
       ..addBuilderFactory(

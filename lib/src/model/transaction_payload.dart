@@ -34,11 +34,6 @@ abstract class TransactionPayload
   static const String discriminatorFieldName = r'type';
 
   static const Map<String, Type> discriminatorMapping = {
-    r'TransactionPayload_EntryFunctionPayload':
-        TransactionPayloadEntryFunctionPayload,
-    r'TransactionPayload_ModuleBundlePayload':
-        TransactionPayloadModuleBundlePayload,
-    r'TransactionPayload_ScriptPayload': TransactionPayloadScriptPayload,
     r'entry_function_payload': TransactionPayloadEntryFunctionPayload,
     r'module_bundle_payload': TransactionPayloadModuleBundlePayload,
     r'script_payload': TransactionPayloadScriptPayload,
@@ -55,6 +50,37 @@ abstract class TransactionPayload
   @BuiltValueSerializer(custom: true)
   static Serializer<TransactionPayload> get serializer =>
       _$TransactionPayloadSerializer();
+}
+
+extension TransactionPayloadDiscriminatorExt on TransactionPayload {
+  String? get discriminatorValue {
+    if (this is TransactionPayloadEntryFunctionPayload) {
+      return r'entry_function_payload';
+    }
+    if (this is TransactionPayloadModuleBundlePayload) {
+      return r'module_bundle_payload';
+    }
+    if (this is TransactionPayloadScriptPayload) {
+      return r'script_payload';
+    }
+    return null;
+  }
+}
+
+extension TransactionPayloadBuilderDiscriminatorExt
+    on TransactionPayloadBuilder {
+  String? get discriminatorValue {
+    if (this is TransactionPayloadEntryFunctionPayloadBuilder) {
+      return r'entry_function_payload';
+    }
+    if (this is TransactionPayloadModuleBundlePayloadBuilder) {
+      return r'module_bundle_payload';
+    }
+    if (this is TransactionPayloadScriptPayloadBuilder) {
+      return r'script_payload';
+    }
+    return null;
+  }
 }
 
 class _$TransactionPayloadSerializer
@@ -100,49 +126,25 @@ class _$TransactionPayloadSerializer
       TransactionPayloadEntryFunctionPayload,
       TransactionPayloadModuleBundlePayload,
       TransactionPayloadScriptPayload,
-      TransactionPayloadEntryFunctionPayload,
-      TransactionPayloadModuleBundlePayload,
-      TransactionPayloadScriptPayload,
     ];
     Object oneOfResult;
     Type oneOfType;
     switch (discValue) {
-      case 'TransactionPayload_EntryFunctionPayload':
+      case r'entry_function_payload':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
           specifiedType: FullType(TransactionPayloadEntryFunctionPayload),
         ) as TransactionPayloadEntryFunctionPayload;
         oneOfType = TransactionPayloadEntryFunctionPayload;
         break;
-      case 'TransactionPayload_ModuleBundlePayload':
+      case r'module_bundle_payload':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
           specifiedType: FullType(TransactionPayloadModuleBundlePayload),
         ) as TransactionPayloadModuleBundlePayload;
         oneOfType = TransactionPayloadModuleBundlePayload;
         break;
-      case 'TransactionPayload_ScriptPayload':
-        oneOfResult = serializers.deserialize(
-          oneOfDataSrc,
-          specifiedType: FullType(TransactionPayloadScriptPayload),
-        ) as TransactionPayloadScriptPayload;
-        oneOfType = TransactionPayloadScriptPayload;
-        break;
-      case 'entry_function_payload':
-        oneOfResult = serializers.deserialize(
-          oneOfDataSrc,
-          specifiedType: FullType(TransactionPayloadEntryFunctionPayload),
-        ) as TransactionPayloadEntryFunctionPayload;
-        oneOfType = TransactionPayloadEntryFunctionPayload;
-        break;
-      case 'module_bundle_payload':
-        oneOfResult = serializers.deserialize(
-          oneOfDataSrc,
-          specifiedType: FullType(TransactionPayloadModuleBundlePayload),
-        ) as TransactionPayloadModuleBundlePayload;
-        oneOfType = TransactionPayloadModuleBundlePayload;
-        break;
-      case 'script_payload':
+      case r'script_payload':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
           specifiedType: FullType(TransactionPayloadScriptPayload),

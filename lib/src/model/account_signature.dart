@@ -31,9 +31,6 @@ abstract class AccountSignature
   static const String discriminatorFieldName = r'type';
 
   static const Map<String, Type> discriminatorMapping = {
-    r'AccountSignature_Ed25519Signature': AccountSignatureEd25519Signature,
-    r'AccountSignature_MultiEd25519Signature':
-        AccountSignatureMultiEd25519Signature,
     r'ed25519_signature': AccountSignatureEd25519Signature,
     r'multi_ed25519_signature': AccountSignatureMultiEd25519Signature,
   };
@@ -49,6 +46,30 @@ abstract class AccountSignature
   @BuiltValueSerializer(custom: true)
   static Serializer<AccountSignature> get serializer =>
       _$AccountSignatureSerializer();
+}
+
+extension AccountSignatureDiscriminatorExt on AccountSignature {
+  String? get discriminatorValue {
+    if (this is AccountSignatureEd25519Signature) {
+      return r'ed25519_signature';
+    }
+    if (this is AccountSignatureMultiEd25519Signature) {
+      return r'multi_ed25519_signature';
+    }
+    return null;
+  }
+}
+
+extension AccountSignatureBuilderDiscriminatorExt on AccountSignatureBuilder {
+  String? get discriminatorValue {
+    if (this is AccountSignatureEd25519SignatureBuilder) {
+      return r'ed25519_signature';
+    }
+    if (this is AccountSignatureMultiEd25519SignatureBuilder) {
+      return r'multi_ed25519_signature';
+    }
+    return null;
+  }
 }
 
 class _$AccountSignatureSerializer
@@ -93,34 +114,18 @@ class _$AccountSignatureSerializer
     final oneOfTypes = [
       AccountSignatureEd25519Signature,
       AccountSignatureMultiEd25519Signature,
-      AccountSignatureEd25519Signature,
-      AccountSignatureMultiEd25519Signature,
     ];
     Object oneOfResult;
     Type oneOfType;
     switch (discValue) {
-      case 'AccountSignature_Ed25519Signature':
+      case r'ed25519_signature':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
           specifiedType: FullType(AccountSignatureEd25519Signature),
         ) as AccountSignatureEd25519Signature;
         oneOfType = AccountSignatureEd25519Signature;
         break;
-      case 'AccountSignature_MultiEd25519Signature':
-        oneOfResult = serializers.deserialize(
-          oneOfDataSrc,
-          specifiedType: FullType(AccountSignatureMultiEd25519Signature),
-        ) as AccountSignatureMultiEd25519Signature;
-        oneOfType = AccountSignatureMultiEd25519Signature;
-        break;
-      case 'ed25519_signature':
-        oneOfResult = serializers.deserialize(
-          oneOfDataSrc,
-          specifiedType: FullType(AccountSignatureEd25519Signature),
-        ) as AccountSignatureEd25519Signature;
-        oneOfType = AccountSignatureEd25519Signature;
-        break;
-      case 'multi_ed25519_signature':
+      case r'multi_ed25519_signature':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
           specifiedType: FullType(AccountSignatureMultiEd25519Signature),

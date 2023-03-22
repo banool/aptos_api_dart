@@ -57,6 +57,7 @@ import 'package:aptos_api_dart/src/model/move_value.dart';
 import 'package:aptos_api_dart/src/model/multi_agent_signature.dart';
 import 'package:aptos_api_dart/src/model/multi_ed25519_signature.dart';
 import 'package:aptos_api_dart/src/model/pending_transaction.dart';
+import 'package:aptos_api_dart/src/model/raw_table_item_request.dart';
 import 'package:aptos_api_dart/src/model/role_type.dart';
 import 'package:aptos_api_dart/src/model/script_payload.dart';
 import 'package:aptos_api_dart/src/model/script_write_set.dart';
@@ -90,6 +91,7 @@ import 'package:aptos_api_dart/src/model/transactions_batch_single_submission_fa
 import 'package:aptos_api_dart/src/model/transactions_batch_submission_result.dart';
 import 'package:aptos_api_dart/src/model/user_transaction.dart';
 import 'package:aptos_api_dart/src/model/versioned_event.dart';
+import 'package:aptos_api_dart/src/model/view_request.dart';
 import 'package:aptos_api_dart/src/model/write_module.dart';
 import 'package:aptos_api_dart/src/model/write_resource.dart';
 import 'package:aptos_api_dart/src/model/write_set.dart';
@@ -174,6 +176,7 @@ part 'serializers.g.dart';
   $MultiEd25519Signature,
   PendingTransaction,
   $PendingTransaction,
+  RawTableItemRequest,
   RoleType,
   ScriptPayload,
   $ScriptPayload,
@@ -220,6 +223,7 @@ part 'serializers.g.dart';
   UserTransaction,
   $UserTransaction,
   VersionedEvent,
+  ViewRequest,
   WriteModule,
   $WriteModule,
   WriteResource,
@@ -279,6 +283,10 @@ Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(VersionedEvent)]),
         () => ListBuilder<VersionedEvent>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(MoveValue)]),
+        () => ListBuilder<MoveValue>(),
       )
       ..add(AccountSignatureEd25519SignatureAllOf.serializer)
       ..add(AccountSignatureMultiEd25519SignatureAllOf.serializer)

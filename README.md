@@ -9,8 +9,8 @@ For more information, please visit [https://github.com/aptos-labs/aptos-core](ht
 
 ## Requirements
 
-* Dart 2.12.0 or later OR Flutter 1.26.0 or later
-* Dio 4.0.0+
+* Dart 2.15.0+ or Flutter 2.8.0+
+* Dio 5.0.0+ (https://pub.dev/packages/dio)
 
 ## Installation & Usage
 
@@ -78,6 +78,7 @@ Class | Method | HTTP request | Description
 [*GeneralApi*](doc/GeneralApi.md) | [**getLedgerInfo**](doc/GeneralApi.md#getledgerinfo) | **GET** / | Get ledger info
 [*GeneralApi*](doc/GeneralApi.md) | [**healthy**](doc/GeneralApi.md#healthy) | **GET** /-/healthy | Check basic node health
 [*GeneralApi*](doc/GeneralApi.md) | [**spec**](doc/GeneralApi.md#spec) | **GET** /spec | Show OpenAPI explorer
+[*TablesApi*](doc/TablesApi.md) | [**getRawTableItem**](doc/TablesApi.md#getrawtableitem) | **POST** /tables/{table_handle}/raw_item | Get raw table item
 [*TablesApi*](doc/TablesApi.md) | [**getTableItem**](doc/TablesApi.md#gettableitem) | **POST** /tables/{table_handle}/item | Get table item
 [*TransactionsApi*](doc/TransactionsApi.md) | [**encodeSubmission**](doc/TransactionsApi.md#encodesubmission) | **POST** /transactions/encode_submission | Encode submission
 [*TransactionsApi*](doc/TransactionsApi.md) | [**estimateGasPrice**](doc/TransactionsApi.md#estimategasprice) | **GET** /estimate_gas_price | Estimate gas price
@@ -88,6 +89,7 @@ Class | Method | HTTP request | Description
 [*TransactionsApi*](doc/TransactionsApi.md) | [**simulateTransaction**](doc/TransactionsApi.md#simulatetransaction) | **POST** /transactions/simulate | Simulate transaction
 [*TransactionsApi*](doc/TransactionsApi.md) | [**submitBatchTransactions**](doc/TransactionsApi.md#submitbatchtransactions) | **POST** /transactions/batch | Submit batch transactions
 [*TransactionsApi*](doc/TransactionsApi.md) | [**submitTransaction**](doc/TransactionsApi.md#submittransaction) | **POST** /transactions | Submit transaction
+[*ViewApi*](doc/ViewApi.md) | [**view**](doc/ViewApi.md#view) | **POST** /view | Execute view function of a module
 
 
 ## Documentation For Models
@@ -135,6 +137,7 @@ Class | Method | HTTP request | Description
  - [MultiAgentSignature](doc/MultiAgentSignature.md)
  - [MultiEd25519Signature](doc/MultiEd25519Signature.md)
  - [PendingTransaction](doc/PendingTransaction.md)
+ - [RawTableItemRequest](doc/RawTableItemRequest.md)
  - [RoleType](doc/RoleType.md)
  - [ScriptPayload](doc/ScriptPayload.md)
  - [ScriptWriteSet](doc/ScriptWriteSet.md)
@@ -168,6 +171,7 @@ Class | Method | HTTP request | Description
  - [TransactionsBatchSubmissionResult](doc/TransactionsBatchSubmissionResult.md)
  - [UserTransaction](doc/UserTransaction.md)
  - [VersionedEvent](doc/VersionedEvent.md)
+ - [ViewRequest](doc/ViewRequest.md)
  - [WriteModule](doc/WriteModule.md)
  - [WriteResource](doc/WriteResource.md)
  - [WriteSet](doc/WriteSet.md)

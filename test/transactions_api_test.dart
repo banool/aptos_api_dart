@@ -26,7 +26,7 @@ void main() {
 
     // Get account transactions
     //
-    // Retrieves transactions from an account.  If the start version is too far in the past a 410 will be returned.  If no start version is given, it will start at 0
+    // Retrieves on-chain committed transactions from an account. If the start version is too far in the past, a 410 will be returned.  If no start version is given, it will start at version 0.  To retrieve a pending transaction, use /transactions/by_hash.
     //
     //Future<BuiltList<Transaction>> getAccountTransactions(String address, { String start, int limit }) async
     test('test getAccountTransactions', () async {
@@ -44,7 +44,7 @@ void main() {
 
     // Get transaction by version
     //
-    // Retrieves a transaction by a given version.  If the version has been pruned, a 410 will be returned.
+    // Retrieves a transaction by a given version. If the version has been pruned, a 410 will be returned.
     //
     //Future<Transaction> getTransactionByVersion(String txnVersion) async
     test('test getTransactionByVersion', () async {
@@ -53,7 +53,7 @@ void main() {
 
     // Get transactions
     //
-    // Retrieve on-chain committed transactions. The page size and start can be provided to get a specific sequence of transactions.  If the version has been pruned, then a 410 will be returned
+    // Retrieve on-chain committed transactions. The page size and start ledger version can be provided to get a specific sequence of transactions.  If the version has been pruned, then a 410 will be returned.  To retrieve a pending transaction, use /transactions/by_hash.
     //
     //Future<BuiltList<Transaction>> getTransactions({ String start, int limit }) async
     test('test getTransactions', () async {

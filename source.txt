@@ -1,1 +1,1 @@
-Generated spec from: https://raw.githubusercontent.com/aptos-labs/aptos-core/devnet/api/doc/spec.yaml
+Generated spec from: https://raw.githubusercontent.com/aptos-labs/aptos-core/mainnet/api/doc/spec.yaml

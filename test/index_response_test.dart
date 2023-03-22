@@ -54,6 +54,7 @@ void main() {
       // TODO
     });
 
+    // Git hash of the build of the API endpoint.  Can be used to determine the exact software version used by the API endpoint.
     // String gitHash
     test('to test the property `gitHash`', () async {
       // TODO

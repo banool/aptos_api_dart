@@ -15,6 +15,7 @@ import 'package:aptos_api_dart/src/api/events_api.dart';
 import 'package:aptos_api_dart/src/api/general_api.dart';
 import 'package:aptos_api_dart/src/api/tables_api.dart';
 import 'package:aptos_api_dart/src/api/transactions_api.dart';
+import 'package:aptos_api_dart/src/api/view_api.dart';
 
 class AptosApiDart {
   static const String basePath = r'https://raw.githubusercontent.com/v1';
@@ -31,8 +32,8 @@ class AptosApiDart {
         this.dio = dio ??
             Dio(BaseOptions(
               baseUrl: basePathOverride ?? basePath,
-              connectTimeout: 5000,
-              receiveTimeout: 3000,
+              connectTimeout: const Duration(milliseconds: 5000),
+              receiveTimeout: const Duration(milliseconds: 3000),
             )) {
     if (interceptors == null) {
       this.dio.interceptors.addAll([
@@ -115,5 +116,11 @@ class AptosApiDart {
   /// by doing that all interceptors will not be executed
   TransactionsApi getTransactionsApi() {
     return TransactionsApi(dio, serializers);
+  }
+
+  /// Get ViewApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  ViewApi getViewApi() {
+    return ViewApi(dio, serializers);
   }
 }

@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 Get account
 
-Retrieves high level information about an account such as its sequence number and authentication key  Returns a 404 if the account doesn't exist
+Return the authentication key and the sequence number for an account address. Optionally, a ledger version can be specified. If the ledger version is not specified in the request, the latest ledger version is used.
 
 ### Example
 ```dart
@@ -109,7 +109,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAccountModules**
-> BuiltList<MoveModuleBytecode> getAccountModules(address, ledgerVersion)
+> BuiltList<MoveModuleBytecode> getAccountModules(address, ledgerVersion, start, limit)
 
 Get account modules
 
@@ -122,9 +122,11 @@ import 'package:aptos_api_dart/api.dart';
 final api = AptosApiDart().getAccountsApi();
 final String address = address_example; // String | Address of account with or without a `0x` prefix
 final String ledgerVersion = ledgerVersion_example; // String | Ledger version to get state of account  If not provided, it will be the latest version
+final String start = start_example; // String | Cursor specifying where to start for pagination  This cursor cannot be derived manually client-side. Instead, you must call this endpoint once without this query parameter specified, and then use the cursor returned in the X-Aptos-Cursor header in the response.
+final int limit = 56; // int | Max number of account modules to retrieve  If not provided, defaults to default page size.
 
 try {
-    final response = api.getAccountModules(address, ledgerVersion);
+    final response = api.getAccountModules(address, ledgerVersion, start, limit);
     print(response);
 } catch on DioError (e) {
     print('Exception when calling AccountsApi->getAccountModules: $e\n');
@@ -137,6 +139,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **address** | **String**| Address of account with or without a `0x` prefix | 
  **ledgerVersion** | **String**| Ledger version to get state of account  If not provided, it will be the latest version | [optional] 
+ **start** | **String**| Cursor specifying where to start for pagination  This cursor cannot be derived manually client-side. Instead, you must call this endpoint once without this query parameter specified, and then use the cursor returned in the X-Aptos-Cursor header in the response. | [optional] 
+ **limit** | **int**| Max number of account modules to retrieve  If not provided, defaults to default page size. | [optional] 
 
 ### Return type
 
@@ -201,7 +205,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAccountResources**
-> BuiltList<MoveResource> getAccountResources(address, ledgerVersion)
+> BuiltList<MoveResource> getAccountResources(address, ledgerVersion, start, limit)
 
 Get account resources
 
@@ -214,9 +218,11 @@ import 'package:aptos_api_dart/api.dart';
 final api = AptosApiDart().getAccountsApi();
 final String address = address_example; // String | Address of account with or without a `0x` prefix
 final String ledgerVersion = ledgerVersion_example; // String | Ledger version to get state of account  If not provided, it will be the latest version
+final String start = start_example; // String | Cursor specifying where to start for pagination  This cursor cannot be derived manually client-side. Instead, you must call this endpoint once without this query parameter specified, and then use the cursor returned in the X-Aptos-Cursor header in the response.
+final int limit = 56; // int | Max number of account resources to retrieve  If not provided, defaults to default page size.
 
 try {
-    final response = api.getAccountResources(address, ledgerVersion);
+    final response = api.getAccountResources(address, ledgerVersion, start, limit);
     print(response);
 } catch on DioError (e) {
     print('Exception when calling AccountsApi->getAccountResources: $e\n');
@@ -229,6 +235,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **address** | **String**| Address of account with or without a `0x` prefix | 
  **ledgerVersion** | **String**| Ledger version to get state of account  If not provided, it will be the latest version | [optional] 
+ **start** | **String**| Cursor specifying where to start for pagination  This cursor cannot be derived manually client-side. Instead, you must call this endpoint once without this query parameter specified, and then use the cursor returned in the X-Aptos-Cursor header in the response. | [optional] 
+ **limit** | **int**| Max number of account resources to retrieve  If not provided, defaults to default page size. | [optional] 
 
 ### Return type
 

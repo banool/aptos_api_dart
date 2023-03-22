@@ -20,7 +20,7 @@ part 'index_response.g.dart';
 /// * [nodeRole]
 /// * [oldestBlockHeight] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
 /// * [blockHeight] - A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.
-/// * [gitHash]
+/// * [gitHash] - Git hash of the build of the API endpoint.  Can be used to determine the exact software version used by the API endpoint.
 @BuiltValue()
 abstract class IndexResponse
     implements Built<IndexResponse, IndexResponseBuilder> {
@@ -56,6 +56,7 @@ abstract class IndexResponse
   @BuiltValueField(wireName: r'block_height')
   String get blockHeight;
 
+  /// Git hash of the build of the API endpoint.  Can be used to determine the exact software version used by the API endpoint.
   @BuiltValueField(wireName: r'git_hash')
   String? get gitHash;
 

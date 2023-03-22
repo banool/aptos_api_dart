@@ -23,7 +23,7 @@ part 'write_set_change.g.dart';
 /// * [address] - A hex encoded 32 byte Aptos account address.  This is represented in a string as a 64 character hex string, sometimes shortened by stripping leading 0s, and adding a 0x.  For example, address 0x0000000000000000000000000000000000000000000000000000000000000001 is represented as 0x1.
 /// * [stateKeyHash]
 /// * [module] - Move module id is a string representation of Move module.  Format: `{address}::{module name}`  `address` should be hex-encoded 32 byte account address that is prefixed with `0x`.  Module name is case-sensitive.
-/// * [resource] - String representation of a MoveStructTag (on-chain Move struct type). This exists so you can specify MoveStructTags as path / query parameters, e.g. for get_events_by_event_handle.  It is a combination of:   1. `move_module_address`, `module_name` and `struct_name`, all joined by `::`   2. `struct generic type parameters` joined by `, `  Examples:   * `0x1::coin::CoinStore<0x1::aptos_coin::AptosCoin>`   * `0x1::account::Account`  Note:   1. Empty chars should be ignored when comparing 2 struct tag ids.   2. When used in an URL path, should be encoded by url-encoding (AKA percent-encoding).  See [doc](https://aptos.dev/concepts/basics-accounts) for more details.
+/// * [resource] - String representation of a MoveStructTag (on-chain Move struct type). This exists so you can specify MoveStructTags as path / query parameters, e.g. for get_events_by_event_handle.  It is a combination of:   1. `move_module_address`, `module_name` and `struct_name`, all joined by `::`   2. `struct generic type parameters` joined by `, `  Examples:   * `0x1::coin::CoinStore<0x1::aptos_coin::AptosCoin>`   * `0x1::account::Account`  Note:   1. Empty chars should be ignored when comparing 2 struct tag ids.   2. When used in an URL path, should be encoded by url-encoding (AKA percent-encoding).  See [doc](https://aptos.dev/concepts/accounts) for more details.
 /// * [handle] - All bytes (Vec<u8>) data is represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Unlike the `Address` type, HexEncodedBytes will not trim any zeros.
 /// * [key] - All bytes (Vec<u8>) data is represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Unlike the `Address` type, HexEncodedBytes will not trim any zeros.
 /// * [data]
@@ -37,12 +37,6 @@ abstract class WriteSetChange
   static const String discriminatorFieldName = r'type';
 
   static const Map<String, Type> discriminatorMapping = {
-    r'WriteSetChange_DeleteModule': WriteSetChangeDeleteModule,
-    r'WriteSetChange_DeleteResource': WriteSetChangeDeleteResource,
-    r'WriteSetChange_DeleteTableItem': WriteSetChangeDeleteTableItem,
-    r'WriteSetChange_WriteModule': WriteSetChangeWriteModule,
-    r'WriteSetChange_WriteResource': WriteSetChangeWriteResource,
-    r'WriteSetChange_WriteTableItem': WriteSetChangeWriteTableItem,
     r'delete_module': WriteSetChangeDeleteModule,
     r'delete_resource': WriteSetChangeDeleteResource,
     r'delete_table_item': WriteSetChangeDeleteTableItem,
@@ -62,6 +56,54 @@ abstract class WriteSetChange
   @BuiltValueSerializer(custom: true)
   static Serializer<WriteSetChange> get serializer =>
       _$WriteSetChangeSerializer();
+}
+
+extension WriteSetChangeDiscriminatorExt on WriteSetChange {
+  String? get discriminatorValue {
+    if (this is WriteSetChangeDeleteModule) {
+      return r'delete_module';
+    }
+    if (this is WriteSetChangeDeleteResource) {
+      return r'delete_resource';
+    }
+    if (this is WriteSetChangeDeleteTableItem) {
+      return r'delete_table_item';
+    }
+    if (this is WriteSetChangeWriteModule) {
+      return r'write_module';
+    }
+    if (this is WriteSetChangeWriteResource) {
+      return r'write_resource';
+    }
+    if (this is WriteSetChangeWriteTableItem) {
+      return r'write_table_item';
+    }
+    return null;
+  }
+}
+
+extension WriteSetChangeBuilderDiscriminatorExt on WriteSetChangeBuilder {
+  String? get discriminatorValue {
+    if (this is WriteSetChangeDeleteModuleBuilder) {
+      return r'delete_module';
+    }
+    if (this is WriteSetChangeDeleteResourceBuilder) {
+      return r'delete_resource';
+    }
+    if (this is WriteSetChangeDeleteTableItemBuilder) {
+      return r'delete_table_item';
+    }
+    if (this is WriteSetChangeWriteModuleBuilder) {
+      return r'write_module';
+    }
+    if (this is WriteSetChangeWriteResourceBuilder) {
+      return r'write_resource';
+    }
+    if (this is WriteSetChangeWriteTableItemBuilder) {
+      return r'write_table_item';
+    }
+    return null;
+  }
 }
 
 class _$WriteSetChangeSerializer
@@ -110,94 +152,46 @@ class _$WriteSetChangeSerializer
       WriteSetChangeWriteModule,
       WriteSetChangeWriteResource,
       WriteSetChangeWriteTableItem,
-      WriteSetChangeDeleteModule,
-      WriteSetChangeDeleteResource,
-      WriteSetChangeDeleteTableItem,
-      WriteSetChangeWriteModule,
-      WriteSetChangeWriteResource,
-      WriteSetChangeWriteTableItem,
     ];
     Object oneOfResult;
     Type oneOfType;
     switch (discValue) {
-      case 'WriteSetChange_DeleteModule':
+      case r'delete_module':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
           specifiedType: FullType(WriteSetChangeDeleteModule),
         ) as WriteSetChangeDeleteModule;
         oneOfType = WriteSetChangeDeleteModule;
         break;
-      case 'WriteSetChange_DeleteResource':
+      case r'delete_resource':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
           specifiedType: FullType(WriteSetChangeDeleteResource),
         ) as WriteSetChangeDeleteResource;
         oneOfType = WriteSetChangeDeleteResource;
         break;
-      case 'WriteSetChange_DeleteTableItem':
+      case r'delete_table_item':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
           specifiedType: FullType(WriteSetChangeDeleteTableItem),
         ) as WriteSetChangeDeleteTableItem;
         oneOfType = WriteSetChangeDeleteTableItem;
         break;
-      case 'WriteSetChange_WriteModule':
+      case r'write_module':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
           specifiedType: FullType(WriteSetChangeWriteModule),
         ) as WriteSetChangeWriteModule;
         oneOfType = WriteSetChangeWriteModule;
         break;
-      case 'WriteSetChange_WriteResource':
+      case r'write_resource':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
           specifiedType: FullType(WriteSetChangeWriteResource),
         ) as WriteSetChangeWriteResource;
         oneOfType = WriteSetChangeWriteResource;
         break;
-      case 'WriteSetChange_WriteTableItem':
-        oneOfResult = serializers.deserialize(
-          oneOfDataSrc,
-          specifiedType: FullType(WriteSetChangeWriteTableItem),
-        ) as WriteSetChangeWriteTableItem;
-        oneOfType = WriteSetChangeWriteTableItem;
-        break;
-      case 'delete_module':
-        oneOfResult = serializers.deserialize(
-          oneOfDataSrc,
-          specifiedType: FullType(WriteSetChangeDeleteModule),
-        ) as WriteSetChangeDeleteModule;
-        oneOfType = WriteSetChangeDeleteModule;
-        break;
-      case 'delete_resource':
-        oneOfResult = serializers.deserialize(
-          oneOfDataSrc,
-          specifiedType: FullType(WriteSetChangeDeleteResource),
-        ) as WriteSetChangeDeleteResource;
-        oneOfType = WriteSetChangeDeleteResource;
-        break;
-      case 'delete_table_item':
-        oneOfResult = serializers.deserialize(
-          oneOfDataSrc,
-          specifiedType: FullType(WriteSetChangeDeleteTableItem),
-        ) as WriteSetChangeDeleteTableItem;
-        oneOfType = WriteSetChangeDeleteTableItem;
-        break;
-      case 'write_module':
-        oneOfResult = serializers.deserialize(
-          oneOfDataSrc,
-          specifiedType: FullType(WriteSetChangeWriteModule),
-        ) as WriteSetChangeWriteModule;
-        oneOfType = WriteSetChangeWriteModule;
-        break;
-      case 'write_resource':
-        oneOfResult = serializers.deserialize(
-          oneOfDataSrc,
-          specifiedType: FullType(WriteSetChangeWriteResource),
-        ) as WriteSetChangeWriteResource;
-        oneOfType = WriteSetChangeWriteResource;
-        break;
-      case 'write_table_item':
+      case r'write_table_item':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
           specifiedType: FullType(WriteSetChangeWriteTableItem),

@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **nodeRole** | [**RoleType**](RoleType.md) |  | 
 **oldestBlockHeight** | **String** | A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.  | 
 **blockHeight** | **String** | A string containing a 64-bit unsigned integer.  We represent u64 values as a string to ensure compatibility with languages such as JavaScript that do not parse u64s in JSON natively.  | 
-**gitHash** | **String** |  | [optional] 
+**gitHash** | **String** | Git hash of the build of the API endpoint.  Can be used to determine the exact software version used by the API endpoint. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

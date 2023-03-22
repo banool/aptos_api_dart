@@ -48,6 +48,7 @@ doc/MoveValue.md
 doc/MultiAgentSignature.md
 doc/MultiEd25519Signature.md
 doc/PendingTransaction.md
+doc/RawTableItemRequest.md
 doc/RoleType.md
 doc/ScriptPayload.md
 doc/ScriptWriteSet.md
@@ -83,6 +84,8 @@ doc/TransactionsBatchSingleSubmissionFailure.md
 doc/TransactionsBatchSubmissionResult.md
 doc/UserTransaction.md
 doc/VersionedEvent.md
+doc/ViewApi.md
+doc/ViewRequest.md
 doc/WriteModule.md
 doc/WriteResource.md
 doc/WriteSet.md
@@ -113,6 +116,7 @@ lib/src/api/events_api.dart
 lib/src/api/general_api.dart
 lib/src/api/tables_api.dart
 lib/src/api/transactions_api.dart
+lib/src/api/view_api.dart
 lib/src/api_util.dart
 lib/src/auth/api_key_auth.dart
 lib/src/auth/auth.dart
@@ -164,6 +168,7 @@ lib/src/model/move_value.dart
 lib/src/model/multi_agent_signature.dart
 lib/src/model/multi_ed25519_signature.dart
 lib/src/model/pending_transaction.dart
+lib/src/model/raw_table_item_request.dart
 lib/src/model/role_type.dart
 lib/src/model/script_payload.dart
 lib/src/model/script_write_set.dart
@@ -197,6 +202,7 @@ lib/src/model/transactions_batch_single_submission_failure.dart
 lib/src/model/transactions_batch_submission_result.dart
 lib/src/model/user_transaction.dart
 lib/src/model/versioned_event.dart
+lib/src/model/view_request.dart
 lib/src/model/write_module.dart
 lib/src/model/write_resource.dart
 lib/src/model/write_set.dart
@@ -268,6 +274,7 @@ test/move_value_test.dart
 test/multi_agent_signature_test.dart
 test/multi_ed25519_signature_test.dart
 test/pending_transaction_test.dart
+test/raw_table_item_request_test.dart
 test/role_type_test.dart
 test/script_payload_test.dart
 test/script_write_set_test.dart
@@ -303,6 +310,8 @@ test/transactions_batch_single_submission_failure_test.dart
 test/transactions_batch_submission_result_test.dart
 test/user_transaction_test.dart
 test/versioned_event_test.dart
+test/view_api_test.dart
+test/view_request_test.dart
 test/write_module_test.dart
 test/write_resource_test.dart
 test/write_set_change_delete_module_all_of_test.dart

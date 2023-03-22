@@ -56,13 +56,6 @@ abstract class Transaction implements Built<Transaction, TransactionBuilder> {
   static const String discriminatorFieldName = r'type';
 
   static const Map<String, Type> discriminatorMapping = {
-    r'Transaction_BlockMetadataTransaction':
-        TransactionBlockMetadataTransaction,
-    r'Transaction_GenesisTransaction': TransactionGenesisTransaction,
-    r'Transaction_PendingTransaction': TransactionPendingTransaction,
-    r'Transaction_StateCheckpointTransaction':
-        TransactionStateCheckpointTransaction,
-    r'Transaction_UserTransaction': TransactionUserTransaction,
     r'block_metadata_transaction': TransactionBlockMetadataTransaction,
     r'genesis_transaction': TransactionGenesisTransaction,
     r'pending_transaction': TransactionPendingTransaction,
@@ -79,6 +72,48 @@ abstract class Transaction implements Built<Transaction, TransactionBuilder> {
 
   @BuiltValueSerializer(custom: true)
   static Serializer<Transaction> get serializer => _$TransactionSerializer();
+}
+
+extension TransactionDiscriminatorExt on Transaction {
+  String? get discriminatorValue {
+    if (this is TransactionBlockMetadataTransaction) {
+      return r'block_metadata_transaction';
+    }
+    if (this is TransactionGenesisTransaction) {
+      return r'genesis_transaction';
+    }
+    if (this is TransactionPendingTransaction) {
+      return r'pending_transaction';
+    }
+    if (this is TransactionStateCheckpointTransaction) {
+      return r'state_checkpoint_transaction';
+    }
+    if (this is TransactionUserTransaction) {
+      return r'user_transaction';
+    }
+    return null;
+  }
+}
+
+extension TransactionBuilderDiscriminatorExt on TransactionBuilder {
+  String? get discriminatorValue {
+    if (this is TransactionBlockMetadataTransactionBuilder) {
+      return r'block_metadata_transaction';
+    }
+    if (this is TransactionGenesisTransactionBuilder) {
+      return r'genesis_transaction';
+    }
+    if (this is TransactionPendingTransactionBuilder) {
+      return r'pending_transaction';
+    }
+    if (this is TransactionStateCheckpointTransactionBuilder) {
+      return r'state_checkpoint_transaction';
+    }
+    if (this is TransactionUserTransactionBuilder) {
+      return r'user_transaction';
+    }
+    return null;
+  }
 }
 
 class _$TransactionSerializer implements PrimitiveSerializer<Transaction> {
@@ -125,79 +160,39 @@ class _$TransactionSerializer implements PrimitiveSerializer<Transaction> {
       TransactionPendingTransaction,
       TransactionStateCheckpointTransaction,
       TransactionUserTransaction,
-      TransactionBlockMetadataTransaction,
-      TransactionGenesisTransaction,
-      TransactionPendingTransaction,
-      TransactionStateCheckpointTransaction,
-      TransactionUserTransaction,
     ];
     Object oneOfResult;
     Type oneOfType;
     switch (discValue) {
-      case 'Transaction_BlockMetadataTransaction':
+      case r'block_metadata_transaction':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
           specifiedType: FullType(TransactionBlockMetadataTransaction),
         ) as TransactionBlockMetadataTransaction;
         oneOfType = TransactionBlockMetadataTransaction;
         break;
-      case 'Transaction_GenesisTransaction':
+      case r'genesis_transaction':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
           specifiedType: FullType(TransactionGenesisTransaction),
         ) as TransactionGenesisTransaction;
         oneOfType = TransactionGenesisTransaction;
         break;
-      case 'Transaction_PendingTransaction':
+      case r'pending_transaction':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
           specifiedType: FullType(TransactionPendingTransaction),
         ) as TransactionPendingTransaction;
         oneOfType = TransactionPendingTransaction;
         break;
-      case 'Transaction_StateCheckpointTransaction':
+      case r'state_checkpoint_transaction':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
           specifiedType: FullType(TransactionStateCheckpointTransaction),
         ) as TransactionStateCheckpointTransaction;
         oneOfType = TransactionStateCheckpointTransaction;
         break;
-      case 'Transaction_UserTransaction':
-        oneOfResult = serializers.deserialize(
-          oneOfDataSrc,
-          specifiedType: FullType(TransactionUserTransaction),
-        ) as TransactionUserTransaction;
-        oneOfType = TransactionUserTransaction;
-        break;
-      case 'block_metadata_transaction':
-        oneOfResult = serializers.deserialize(
-          oneOfDataSrc,
-          specifiedType: FullType(TransactionBlockMetadataTransaction),
-        ) as TransactionBlockMetadataTransaction;
-        oneOfType = TransactionBlockMetadataTransaction;
-        break;
-      case 'genesis_transaction':
-        oneOfResult = serializers.deserialize(
-          oneOfDataSrc,
-          specifiedType: FullType(TransactionGenesisTransaction),
-        ) as TransactionGenesisTransaction;
-        oneOfType = TransactionGenesisTransaction;
-        break;
-      case 'pending_transaction':
-        oneOfResult = serializers.deserialize(
-          oneOfDataSrc,
-          specifiedType: FullType(TransactionPendingTransaction),
-        ) as TransactionPendingTransaction;
-        oneOfType = TransactionPendingTransaction;
-        break;
-      case 'state_checkpoint_transaction':
-        oneOfResult = serializers.deserialize(
-          oneOfDataSrc,
-          specifiedType: FullType(TransactionStateCheckpointTransaction),
-        ) as TransactionStateCheckpointTransaction;
-        oneOfType = TransactionStateCheckpointTransaction;
-        break;
-      case 'user_transaction':
+      case r'user_transaction':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
           specifiedType: FullType(TransactionUserTransaction),

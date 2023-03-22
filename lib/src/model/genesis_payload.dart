@@ -25,7 +25,6 @@ abstract class GenesisPayload
   static const String discriminatorFieldName = r'type';
 
   static const Map<String, Type> discriminatorMapping = {
-    r'GenesisPayload_WriteSetPayload': GenesisPayloadWriteSetPayload,
     r'write_set_payload': GenesisPayloadWriteSetPayload,
   };
 
@@ -40,6 +39,24 @@ abstract class GenesisPayload
   @BuiltValueSerializer(custom: true)
   static Serializer<GenesisPayload> get serializer =>
       _$GenesisPayloadSerializer();
+}
+
+extension GenesisPayloadDiscriminatorExt on GenesisPayload {
+  String? get discriminatorValue {
+    if (this is GenesisPayloadWriteSetPayload) {
+      return r'write_set_payload';
+    }
+    return null;
+  }
+}
+
+extension GenesisPayloadBuilderDiscriminatorExt on GenesisPayloadBuilder {
+  String? get discriminatorValue {
+    if (this is GenesisPayloadWriteSetPayloadBuilder) {
+      return r'write_set_payload';
+    }
+    return null;
+  }
 }
 
 class _$GenesisPayloadSerializer
@@ -83,19 +100,11 @@ class _$GenesisPayloadSerializer
     oneOfDataSrc = serialized;
     final oneOfTypes = [
       GenesisPayloadWriteSetPayload,
-      GenesisPayloadWriteSetPayload,
     ];
     Object oneOfResult;
     Type oneOfType;
     switch (discValue) {
-      case 'GenesisPayload_WriteSetPayload':
-        oneOfResult = serializers.deserialize(
-          oneOfDataSrc,
-          specifiedType: FullType(GenesisPayloadWriteSetPayload),
-        ) as GenesisPayloadWriteSetPayload;
-        oneOfType = GenesisPayloadWriteSetPayload;
-        break;
-      case 'write_set_payload':
+      case r'write_set_payload':
         oneOfResult = serializers.deserialize(
           oneOfDataSrc,
           specifiedType: FullType(GenesisPayloadWriteSetPayload),

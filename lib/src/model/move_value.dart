@@ -50,15 +50,9 @@ class _$MoveValueSerializer implements PrimitiveSerializer<MoveValue> {
     FullType specifiedType = FullType.unspecified,
   }) {
     final anyOf = object.anyOf;
-    final result = <Object?>[];
-    for (var _valueEntry in anyOf.values.entries) {
-      final _typeIndex = _valueEntry.key;
-      final _type = anyOf.types[_typeIndex];
-      final _value = _valueEntry.value;
-      result.addAll(serializers.serialize(_value,
-          specifiedType: FullType(_type)) as Iterable<Object?>);
-    }
-    return result;
+    return serializers.serialize(anyOf,
+        specifiedType: FullType(
+            AnyOf, anyOf.valueTypes.map((type) => FullType(type)).toList()))!;
   }
 
   @override
@@ -71,6 +65,9 @@ class _$MoveValueSerializer implements PrimitiveSerializer<MoveValue> {
     Object? anyOfDataSrc;
     final targetType = const FullType(AnyOf, [
       FullType(int),
+      FullType(int),
+      FullType(int),
+      FullType(String),
       FullType(String),
       FullType(String),
       FullType(bool),
