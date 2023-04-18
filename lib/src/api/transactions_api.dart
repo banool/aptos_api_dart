@@ -192,7 +192,7 @@ class TransactionsApi {
   ///
   /// Parameters:
   /// * [address] - Address of account with or without a `0x` prefix
-  /// * [start] - Ledger version to start list of transactions  If not provided, defaults to showing the latest transactions
+  /// * [start] - Account sequence number to start list of transactions  If not provided, defaults to showing the latest transactions
   /// * [limit] - Max number of transactions to retrieve.  If not provided, defaults to default page size
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request

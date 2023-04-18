@@ -2,7 +2,7 @@
 
 # Adapted from https://www.reddit.com/r/FlutterDev/comments/isokya/comment/hrhq53v/?utm_source=share&utm_medium=web2x&context=3
 
-OPENAPI_GENERATOR_CLI="openapitools/openapi-generator-cli:v6.4.0"
+OPENAPI_GENERATOR_CLI="openapitools/openapi-generator-cli:v6.5.0"
 
 set -e
 

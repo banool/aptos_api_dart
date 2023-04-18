@@ -47,6 +47,8 @@ doc/MoveStructGenericTypeParam.md
 doc/MoveValue.md
 doc/MultiAgentSignature.md
 doc/MultiEd25519Signature.md
+doc/MultisigPayload.md
+doc/MultisigTransactionPayload.md
 doc/PendingTransaction.md
 doc/RawTableItemRequest.md
 doc/RoleType.md
@@ -66,6 +68,8 @@ doc/TransactionPayloadEntryFunctionPayload.md
 doc/TransactionPayloadEntryFunctionPayloadAllOf.md
 doc/TransactionPayloadModuleBundlePayload.md
 doc/TransactionPayloadModuleBundlePayloadAllOf.md
+doc/TransactionPayloadMultisigPayload.md
+doc/TransactionPayloadMultisigPayloadAllOf.md
 doc/TransactionPayloadScriptPayload.md
 doc/TransactionPayloadScriptPayloadAllOf.md
 doc/TransactionPendingTransaction.md
@@ -167,6 +171,8 @@ lib/src/model/move_struct_generic_type_param.dart
 lib/src/model/move_value.dart
 lib/src/model/multi_agent_signature.dart
 lib/src/model/multi_ed25519_signature.dart
+lib/src/model/multisig_payload.dart
+lib/src/model/multisig_transaction_payload.dart
 lib/src/model/pending_transaction.dart
 lib/src/model/raw_table_item_request.dart
 lib/src/model/role_type.dart
@@ -185,6 +191,8 @@ lib/src/model/transaction_payload_entry_function_payload.dart
 lib/src/model/transaction_payload_entry_function_payload_all_of.dart
 lib/src/model/transaction_payload_module_bundle_payload.dart
 lib/src/model/transaction_payload_module_bundle_payload_all_of.dart
+lib/src/model/transaction_payload_multisig_payload.dart
+lib/src/model/transaction_payload_multisig_payload_all_of.dart
 lib/src/model/transaction_payload_script_payload.dart
 lib/src/model/transaction_payload_script_payload_all_of.dart
 lib/src/model/transaction_pending_transaction.dart
@@ -273,6 +281,8 @@ test/move_struct_test.dart
 test/move_value_test.dart
 test/multi_agent_signature_test.dart
 test/multi_ed25519_signature_test.dart
+test/multisig_payload_test.dart
+test/multisig_transaction_payload_test.dart
 test/pending_transaction_test.dart
 test/raw_table_item_request_test.dart
 test/role_type_test.dart
@@ -290,6 +300,8 @@ test/transaction_payload_entry_function_payload_all_of_test.dart
 test/transaction_payload_entry_function_payload_test.dart
 test/transaction_payload_module_bundle_payload_all_of_test.dart
 test/transaction_payload_module_bundle_payload_test.dart
+test/transaction_payload_multisig_payload_all_of_test.dart
+test/transaction_payload_multisig_payload_test.dart
 test/transaction_payload_script_payload_all_of_test.dart
 test/transaction_payload_script_payload_test.dart
 test/transaction_payload_test.dart

@@ -59,6 +59,8 @@ export 'package:aptos_api_dart/src/model/move_struct_generic_type_param.dart';
 export 'package:aptos_api_dart/src/model/move_value.dart';
 export 'package:aptos_api_dart/src/model/multi_agent_signature.dart';
 export 'package:aptos_api_dart/src/model/multi_ed25519_signature.dart';
+export 'package:aptos_api_dart/src/model/multisig_payload.dart';
+export 'package:aptos_api_dart/src/model/multisig_transaction_payload.dart';
 export 'package:aptos_api_dart/src/model/pending_transaction.dart';
 export 'package:aptos_api_dart/src/model/raw_table_item_request.dart';
 export 'package:aptos_api_dart/src/model/role_type.dart';
@@ -77,6 +79,8 @@ export 'package:aptos_api_dart/src/model/transaction_payload_entry_function_payl
 export 'package:aptos_api_dart/src/model/transaction_payload_entry_function_payload_all_of.dart';
 export 'package:aptos_api_dart/src/model/transaction_payload_module_bundle_payload.dart';
 export 'package:aptos_api_dart/src/model/transaction_payload_module_bundle_payload_all_of.dart';
+export 'package:aptos_api_dart/src/model/transaction_payload_multisig_payload.dart';
+export 'package:aptos_api_dart/src/model/transaction_payload_multisig_payload_all_of.dart';
 export 'package:aptos_api_dart/src/model/transaction_payload_script_payload.dart';
 export 'package:aptos_api_dart/src/model/transaction_payload_script_payload_all_of.dart';
 export 'package:aptos_api_dart/src/model/transaction_pending_transaction.dart';

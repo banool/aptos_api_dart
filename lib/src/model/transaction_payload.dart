@@ -5,6 +5,8 @@
 // ignore_for_file: unused_element
 import 'package:aptos_api_dart/src/model/transaction_payload_script_payload.dart';
 import 'package:aptos_api_dart/src/model/move_script_bytecode.dart';
+import 'package:aptos_api_dart/src/model/multisig_transaction_payload.dart';
+import 'package:aptos_api_dart/src/model/transaction_payload_multisig_payload.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:aptos_api_dart/src/model/transaction_payload_entry_function_payload.dart';
 import 'package:aptos_api_dart/src/model/transaction_payload_module_bundle_payload.dart';
@@ -25,10 +27,12 @@ part 'transaction_payload.g.dart';
 /// * [arguments] - Arguments of the function
 /// * [code]
 /// * [modules]
+/// * [multisigAddress] - A hex encoded 32 byte Aptos account address.  This is represented in a string as a 64 character hex string, sometimes shortened by stripping leading 0s, and adding a 0x.  For example, address 0x0000000000000000000000000000000000000000000000000000000000000001 is represented as 0x1.
+/// * [transactionPayload]
 @BuiltValue()
 abstract class TransactionPayload
     implements Built<TransactionPayload, TransactionPayloadBuilder> {
-  /// One Of [TransactionPayloadEntryFunctionPayload], [TransactionPayloadModuleBundlePayload], [TransactionPayloadScriptPayload]
+  /// One Of [TransactionPayloadEntryFunctionPayload], [TransactionPayloadModuleBundlePayload], [TransactionPayloadMultisigPayload], [TransactionPayloadScriptPayload]
   OneOf get oneOf;
 
   static const String discriminatorFieldName = r'type';
@@ -36,6 +40,7 @@ abstract class TransactionPayload
   static const Map<String, Type> discriminatorMapping = {
     r'entry_function_payload': TransactionPayloadEntryFunctionPayload,
     r'module_bundle_payload': TransactionPayloadModuleBundlePayload,
+    r'multisig_payload': TransactionPayloadMultisigPayload,
     r'script_payload': TransactionPayloadScriptPayload,
   };
 
@@ -60,6 +65,9 @@ extension TransactionPayloadDiscriminatorExt on TransactionPayload {
     if (this is TransactionPayloadModuleBundlePayload) {
       return r'module_bundle_payload';
     }
+    if (this is TransactionPayloadMultisigPayload) {
+      return r'multisig_payload';
+    }
     if (this is TransactionPayloadScriptPayload) {
       return r'script_payload';
     }
@@ -75,6 +83,9 @@ extension TransactionPayloadBuilderDiscriminatorExt
     }
     if (this is TransactionPayloadModuleBundlePayloadBuilder) {
       return r'module_bundle_payload';
+    }
+    if (this is TransactionPayloadMultisigPayloadBuilder) {
+      return r'multisig_payload';
     }
     if (this is TransactionPayloadScriptPayloadBuilder) {
       return r'script_payload';
@@ -125,6 +136,7 @@ class _$TransactionPayloadSerializer
     final oneOfTypes = [
       TransactionPayloadEntryFunctionPayload,
       TransactionPayloadModuleBundlePayload,
+      TransactionPayloadMultisigPayload,
       TransactionPayloadScriptPayload,
     ];
     Object oneOfResult;
@@ -143,6 +155,13 @@ class _$TransactionPayloadSerializer
           specifiedType: FullType(TransactionPayloadModuleBundlePayload),
         ) as TransactionPayloadModuleBundlePayload;
         oneOfType = TransactionPayloadModuleBundlePayload;
+        break;
+      case r'multisig_payload':
+        oneOfResult = serializers.deserialize(
+          oneOfDataSrc,
+          specifiedType: FullType(TransactionPayloadMultisigPayload),
+        ) as TransactionPayloadMultisigPayload;
+        oneOfType = TransactionPayloadMultisigPayload;
         break;
       case r'script_payload':
         oneOfResult = serializers.deserialize(

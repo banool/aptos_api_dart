@@ -115,7 +115,7 @@ import 'package:aptos_api_dart/api.dart';
 
 final api = AptosApiDart().getTransactionsApi();
 final String address = address_example; // String | Address of account with or without a `0x` prefix
-final String start = start_example; // String | Ledger version to start list of transactions  If not provided, defaults to showing the latest transactions
+final String start = start_example; // String | Account sequence number to start list of transactions  If not provided, defaults to showing the latest transactions
 final int limit = 56; // int | Max number of transactions to retrieve.  If not provided, defaults to default page size
 
 try {
@@ -131,7 +131,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **address** | **String**| Address of account with or without a `0x` prefix | 
- **start** | **String**| Ledger version to start list of transactions  If not provided, defaults to showing the latest transactions | [optional] 
+ **start** | **String**| Account sequence number to start list of transactions  If not provided, defaults to showing the latest transactions | [optional] 
  **limit** | **int**| Max number of transactions to retrieve.  If not provided, defaults to default page size | [optional] 
 
 ### Return type

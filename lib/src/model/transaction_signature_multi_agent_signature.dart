@@ -5,8 +5,8 @@
 // ignore_for_file: unused_element
 import 'package:aptos_api_dart/src/model/account_signature.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:aptos_api_dart/src/model/transaction_signature_multi_agent_signature_all_of.dart';
 import 'package:aptos_api_dart/src/model/multi_agent_signature.dart';
+import 'package:aptos_api_dart/src/model/transaction_signature_multi_agent_signature_all_of.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 

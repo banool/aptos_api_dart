@@ -56,6 +56,8 @@ import 'package:aptos_api_dart/src/model/move_struct_generic_type_param.dart';
 import 'package:aptos_api_dart/src/model/move_value.dart';
 import 'package:aptos_api_dart/src/model/multi_agent_signature.dart';
 import 'package:aptos_api_dart/src/model/multi_ed25519_signature.dart';
+import 'package:aptos_api_dart/src/model/multisig_payload.dart';
+import 'package:aptos_api_dart/src/model/multisig_transaction_payload.dart';
 import 'package:aptos_api_dart/src/model/pending_transaction.dart';
 import 'package:aptos_api_dart/src/model/raw_table_item_request.dart';
 import 'package:aptos_api_dart/src/model/role_type.dart';
@@ -74,6 +76,8 @@ import 'package:aptos_api_dart/src/model/transaction_payload_entry_function_payl
 import 'package:aptos_api_dart/src/model/transaction_payload_entry_function_payload_all_of.dart';
 import 'package:aptos_api_dart/src/model/transaction_payload_module_bundle_payload.dart';
 import 'package:aptos_api_dart/src/model/transaction_payload_module_bundle_payload_all_of.dart';
+import 'package:aptos_api_dart/src/model/transaction_payload_multisig_payload.dart';
+import 'package:aptos_api_dart/src/model/transaction_payload_multisig_payload_all_of.dart';
 import 'package:aptos_api_dart/src/model/transaction_payload_script_payload.dart';
 import 'package:aptos_api_dart/src/model/transaction_payload_script_payload_all_of.dart';
 import 'package:aptos_api_dart/src/model/transaction_pending_transaction.dart';
@@ -174,6 +178,9 @@ part 'serializers.g.dart';
   $MultiAgentSignature,
   MultiEd25519Signature,
   $MultiEd25519Signature,
+  MultisigPayload,
+  $MultisigPayload,
+  MultisigTransactionPayload,
   PendingTransaction,
   $PendingTransaction,
   RawTableItemRequest,
@@ -200,6 +207,9 @@ part 'serializers.g.dart';
   TransactionPayloadModuleBundlePayload,
   TransactionPayloadModuleBundlePayloadAllOf,
   $TransactionPayloadModuleBundlePayloadAllOf,
+  TransactionPayloadMultisigPayload,
+  TransactionPayloadMultisigPayloadAllOf,
+  $TransactionPayloadMultisigPayloadAllOf,
   TransactionPayloadScriptPayload,
   TransactionPayloadScriptPayloadAllOf,
   $TransactionPayloadScriptPayloadAllOf,
@@ -302,6 +312,7 @@ Serializers serializers = (_$serializers.toBuilder()
       ..add(ModuleBundlePayload.serializer)
       ..add(MultiAgentSignature.serializer)
       ..add(MultiEd25519Signature.serializer)
+      ..add(MultisigPayload.serializer)
       ..add(PendingTransaction.serializer)
       ..add(ScriptPayload.serializer)
       ..add(ScriptWriteSet.serializer)
@@ -310,6 +321,7 @@ Serializers serializers = (_$serializers.toBuilder()
       ..add(TransactionGenesisTransactionAllOf.serializer)
       ..add(TransactionPayloadEntryFunctionPayloadAllOf.serializer)
       ..add(TransactionPayloadModuleBundlePayloadAllOf.serializer)
+      ..add(TransactionPayloadMultisigPayloadAllOf.serializer)
       ..add(TransactionPayloadScriptPayloadAllOf.serializer)
       ..add(TransactionPendingTransactionAllOf.serializer)
       ..add(TransactionSignatureMultiAgentSignatureAllOf.serializer)

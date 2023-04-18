@@ -3,75 +3,72 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:aptos_api_dart/src/model/write_module.dart';
-import 'package:aptos_api_dart/src/model/write_set_change_write_module_all_of.dart';
-import 'package:aptos_api_dart/src/model/move_module_bytecode.dart';
+import 'package:aptos_api_dart/src/model/multisig_transaction_payload.dart';
+import 'package:aptos_api_dart/src/model/multisig_payload.dart';
+import 'package:aptos_api_dart/src/model/transaction_payload_multisig_payload_all_of.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'write_set_change_write_module.g.dart';
+part 'transaction_payload_multisig_payload.g.dart';
 
-/// WriteSetChangeWriteModule
+/// TransactionPayloadMultisigPayload
 ///
 /// Properties:
 /// * [type]
-/// * [address] - A hex encoded 32 byte Aptos account address.  This is represented in a string as a 64 character hex string, sometimes shortened by stripping leading 0s, and adding a 0x.  For example, address 0x0000000000000000000000000000000000000000000000000000000000000001 is represented as 0x1.
-/// * [stateKeyHash] - State key hash
-/// * [data]
+/// * [multisigAddress] - A hex encoded 32 byte Aptos account address.  This is represented in a string as a 64 character hex string, sometimes shortened by stripping leading 0s, and adding a 0x.  For example, address 0x0000000000000000000000000000000000000000000000000000000000000001 is represented as 0x1.
+/// * [transactionPayload]
 @BuiltValue()
-abstract class WriteSetChangeWriteModule
+abstract class TransactionPayloadMultisigPayload
     implements
-        WriteModule,
-        WriteSetChangeWriteModuleAllOf,
-        Built<WriteSetChangeWriteModule, WriteSetChangeWriteModuleBuilder> {
-  WriteSetChangeWriteModule._();
+        MultisigPayload,
+        TransactionPayloadMultisigPayloadAllOf,
+        Built<TransactionPayloadMultisigPayload,
+            TransactionPayloadMultisigPayloadBuilder> {
+  TransactionPayloadMultisigPayload._();
 
-  factory WriteSetChangeWriteModule(
-          [void updates(WriteSetChangeWriteModuleBuilder b)]) =
-      _$WriteSetChangeWriteModule;
+  factory TransactionPayloadMultisigPayload(
+          [void updates(TransactionPayloadMultisigPayloadBuilder b)]) =
+      _$TransactionPayloadMultisigPayload;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(WriteSetChangeWriteModuleBuilder b) => b;
+  static void _defaults(TransactionPayloadMultisigPayloadBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WriteSetChangeWriteModule> get serializer =>
-      _$WriteSetChangeWriteModuleSerializer();
+  static Serializer<TransactionPayloadMultisigPayload> get serializer =>
+      _$TransactionPayloadMultisigPayloadSerializer();
 }
 
-class _$WriteSetChangeWriteModuleSerializer
-    implements PrimitiveSerializer<WriteSetChangeWriteModule> {
+class _$TransactionPayloadMultisigPayloadSerializer
+    implements PrimitiveSerializer<TransactionPayloadMultisigPayload> {
   @override
   final Iterable<Type> types = const [
-    WriteSetChangeWriteModule,
-    _$WriteSetChangeWriteModule
+    TransactionPayloadMultisigPayload,
+    _$TransactionPayloadMultisigPayload
   ];
 
   @override
-  final String wireName = r'WriteSetChangeWriteModule';
+  final String wireName = r'TransactionPayloadMultisigPayload';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    WriteSetChangeWriteModule object, {
+    TransactionPayloadMultisigPayload object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'address';
+    yield r'multisig_address';
     yield serializers.serialize(
-      object.address,
+      object.multisigAddress,
       specifiedType: const FullType(String),
     );
-    yield r'data';
-    yield serializers.serialize(
-      object.data,
-      specifiedType: const FullType(MoveModuleBytecode),
-    );
+    if (object.transactionPayload != null) {
+      yield r'transaction_payload';
+      yield serializers.serialize(
+        object.transactionPayload,
+        specifiedType: const FullType(MultisigTransactionPayload),
+      );
+    }
     yield r'type';
     yield serializers.serialize(
       object.type,
-      specifiedType: const FullType(String),
-    );
-    yield r'state_key_hash';
-    yield serializers.serialize(
-      object.stateKeyHash,
       specifiedType: const FullType(String),
     );
   }
@@ -79,7 +76,7 @@ class _$WriteSetChangeWriteModuleSerializer
   @override
   Object serialize(
     Serializers serializers,
-    WriteSetChangeWriteModule object, {
+    TransactionPayloadMultisigPayload object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object,
@@ -92,26 +89,26 @@ class _$WriteSetChangeWriteModuleSerializer
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required WriteSetChangeWriteModuleBuilder result,
+    required TransactionPayloadMultisigPayloadBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'address':
+        case r'multisig_address':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.address = valueDes;
+          result.multisigAddress = valueDes;
           break;
-        case r'data':
+        case r'transaction_payload':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(MoveModuleBytecode),
-          ) as MoveModuleBytecode;
-          result.data.replace(valueDes);
+            specifiedType: const FullType(MultisigTransactionPayload),
+          ) as MultisigTransactionPayload;
+          result.transactionPayload.replace(valueDes);
           break;
         case r'type':
           final valueDes = serializers.deserialize(
@@ -119,13 +116,6 @@ class _$WriteSetChangeWriteModuleSerializer
             specifiedType: const FullType(String),
           ) as String;
           result.type = valueDes;
-          break;
-        case r'state_key_hash':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.stateKeyHash = valueDes;
           break;
         default:
           unhandled.add(key);
@@ -136,12 +126,12 @@ class _$WriteSetChangeWriteModuleSerializer
   }
 
   @override
-  WriteSetChangeWriteModule deserialize(
+  TransactionPayloadMultisigPayload deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = WriteSetChangeWriteModuleBuilder();
+    final result = TransactionPayloadMultisigPayloadBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(
