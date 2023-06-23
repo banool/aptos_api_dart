@@ -14,6 +14,8 @@ class _$MoveFunction extends MoveFunction {
   @override
   final bool isEntry;
   @override
+  final bool isView;
+  @override
   final BuiltList<MoveFunctionGenericTypeParam> genericTypeParams;
   @override
   final BuiltList<String> params;
@@ -27,6 +29,7 @@ class _$MoveFunction extends MoveFunction {
       {required this.name,
       required this.visibility,
       required this.isEntry,
+      required this.isView,
       required this.genericTypeParams,
       required this.params,
       required this.return_})
@@ -35,6 +38,7 @@ class _$MoveFunction extends MoveFunction {
     BuiltValueNullFieldError.checkNotNull(
         visibility, r'MoveFunction', 'visibility');
     BuiltValueNullFieldError.checkNotNull(isEntry, r'MoveFunction', 'isEntry');
+    BuiltValueNullFieldError.checkNotNull(isView, r'MoveFunction', 'isView');
     BuiltValueNullFieldError.checkNotNull(
         genericTypeParams, r'MoveFunction', 'genericTypeParams');
     BuiltValueNullFieldError.checkNotNull(params, r'MoveFunction', 'params');
@@ -55,6 +59,7 @@ class _$MoveFunction extends MoveFunction {
         name == other.name &&
         visibility == other.visibility &&
         isEntry == other.isEntry &&
+        isView == other.isView &&
         genericTypeParams == other.genericTypeParams &&
         params == other.params &&
         return_ == other.return_;
@@ -62,14 +67,16 @@ class _$MoveFunction extends MoveFunction {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc($jc($jc(0, name.hashCode), visibility.hashCode),
-                    isEntry.hashCode),
-                genericTypeParams.hashCode),
-            params.hashCode),
-        return_.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, visibility.hashCode);
+    _$hash = $jc(_$hash, isEntry.hashCode);
+    _$hash = $jc(_$hash, isView.hashCode);
+    _$hash = $jc(_$hash, genericTypeParams.hashCode);
+    _$hash = $jc(_$hash, params.hashCode);
+    _$hash = $jc(_$hash, return_.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -78,6 +85,7 @@ class _$MoveFunction extends MoveFunction {
           ..add('name', name)
           ..add('visibility', visibility)
           ..add('isEntry', isEntry)
+          ..add('isView', isView)
           ..add('genericTypeParams', genericTypeParams)
           ..add('params', params)
           ..add('return_', return_))
@@ -101,6 +109,10 @@ class MoveFunctionBuilder
   bool? _isEntry;
   bool? get isEntry => _$this._isEntry;
   set isEntry(bool? isEntry) => _$this._isEntry = isEntry;
+
+  bool? _isView;
+  bool? get isView => _$this._isView;
+  set isView(bool? isView) => _$this._isView = isView;
 
   ListBuilder<MoveFunctionGenericTypeParam>? _genericTypeParams;
   ListBuilder<MoveFunctionGenericTypeParam> get genericTypeParams =>
@@ -127,6 +139,7 @@ class MoveFunctionBuilder
       _name = $v.name;
       _visibility = $v.visibility;
       _isEntry = $v.isEntry;
+      _isView = $v.isView;
       _genericTypeParams = $v.genericTypeParams.toBuilder();
       _params = $v.params.toBuilder();
       _return_ = $v.return_.toBuilder();
@@ -160,6 +173,8 @@ class MoveFunctionBuilder
                   visibility, r'MoveFunction', 'visibility'),
               isEntry: BuiltValueNullFieldError.checkNotNull(
                   isEntry, r'MoveFunction', 'isEntry'),
+              isView: BuiltValueNullFieldError.checkNotNull(
+                  isView, r'MoveFunction', 'isView'),
               genericTypeParams: genericTypeParams.build(),
               params: params.build(),
               return_: return_.build());
@@ -183,4 +198,4 @@ class MoveFunctionBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

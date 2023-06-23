@@ -81,14 +81,17 @@ class EventsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<VersionedEvent> _responseData;
+    BuiltList<VersionedEvent>? _responseData;
 
     try {
-      const _responseType = FullType(BuiltList, [FullType(VersionedEvent)]);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
-      ) as BuiltList<VersionedEvent>;
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType:
+                  const FullType(BuiltList, [FullType(VersionedEvent)]),
+            ) as BuiltList<VersionedEvent>;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -176,14 +179,17 @@ class EventsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<VersionedEvent> _responseData;
+    BuiltList<VersionedEvent>? _responseData;
 
     try {
-      const _responseType = FullType(BuiltList, [FullType(VersionedEvent)]);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
-      ) as BuiltList<VersionedEvent>;
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType:
+                  const FullType(BuiltList, [FullType(VersionedEvent)]),
+            ) as BuiltList<VersionedEvent>;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,

@@ -89,10 +89,11 @@ class TransactionsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    String _responseData;
+    String? _responseData;
 
     try {
-      _responseData = _response.data as String;
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : rawResponse as String;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -157,14 +158,16 @@ class TransactionsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    GasEstimation _responseData;
+    GasEstimation? _responseData;
 
     try {
-      const _responseType = FullType(GasEstimation);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
-      ) as GasEstimation;
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GasEstimation),
+            ) as GasEstimation;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -246,14 +249,16 @@ class TransactionsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<Transaction> _responseData;
+    BuiltList<Transaction>? _responseData;
 
     try {
-      const _responseType = FullType(BuiltList, [FullType(Transaction)]);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
-      ) as BuiltList<Transaction>;
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(BuiltList, [FullType(Transaction)]),
+            ) as BuiltList<Transaction>;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -321,14 +326,16 @@ class TransactionsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    Transaction _responseData;
+    Transaction? _responseData;
 
     try {
-      const _responseType = FullType(Transaction);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
-      ) as Transaction;
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(Transaction),
+            ) as Transaction;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -396,14 +403,16 @@ class TransactionsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    Transaction _responseData;
+    Transaction? _responseData;
 
     try {
-      const _responseType = FullType(Transaction);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
-      ) as Transaction;
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(Transaction),
+            ) as Transaction;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -482,14 +491,16 @@ class TransactionsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<Transaction> _responseData;
+    BuiltList<Transaction>? _responseData;
 
     try {
-      const _responseType = FullType(BuiltList, [FullType(Transaction)]);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
-      ) as BuiltList<Transaction>;
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(BuiltList, [FullType(Transaction)]),
+            ) as BuiltList<Transaction>;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -598,14 +609,17 @@ class TransactionsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<UserTransaction> _responseData;
+    BuiltList<UserTransaction>? _responseData;
 
     try {
-      const _responseType = FullType(BuiltList, [FullType(UserTransaction)]);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
-      ) as BuiltList<UserTransaction>;
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType:
+                  const FullType(BuiltList, [FullType(UserTransaction)]),
+            ) as BuiltList<UserTransaction>;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -692,14 +706,16 @@ class TransactionsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    TransactionsBatchSubmissionResult _responseData;
+    TransactionsBatchSubmissionResult? _responseData;
 
     try {
-      const _responseType = FullType(TransactionsBatchSubmissionResult);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
-      ) as TransactionsBatchSubmissionResult;
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(TransactionsBatchSubmissionResult),
+            ) as TransactionsBatchSubmissionResult;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -786,14 +802,16 @@ class TransactionsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    PendingTransaction _responseData;
+    PendingTransaction? _responseData;
 
     try {
-      const _responseType = FullType(PendingTransaction);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
-      ) as PendingTransaction;
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(PendingTransaction),
+            ) as PendingTransaction;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,

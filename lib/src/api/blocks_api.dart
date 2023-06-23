@@ -72,14 +72,16 @@ class BlocksApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    Block _responseData;
+    Block? _responseData;
 
     try {
-      const _responseType = FullType(Block);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
-      ) as Block;
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(Block),
+            ) as Block;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -156,14 +158,16 @@ class BlocksApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    Block _responseData;
+    Block? _responseData;
 
     try {
-      const _responseType = FullType(Block);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
-      ) as Block;
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(Block),
+            ) as Block;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,

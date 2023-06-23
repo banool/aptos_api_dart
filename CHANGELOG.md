@@ -1,3 +1,7 @@
+## 1.2.0
+- Build against API spec from /v1 from https://github.com/aptos-labs/aptos-core/commit/4e13837a2cc78dd80262936f340d2fe9556eabb6.
+- Use version 6.6.0 of the openapi-generator-cli tool.
+
 ## 1.1.1
 - Build against API spec from /v1 from https://github.com/aptos-labs/aptos-core/commit/2b7d71f3ec14becc6e95339779fe6ed3c7bea9ca.
 - Use version 6.5.0 of the openapi-generator-cli tool.

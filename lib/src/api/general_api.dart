@@ -61,14 +61,16 @@ class GeneralApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    IndexResponse _responseData;
+    IndexResponse? _responseData;
 
     try {
-      const _responseType = FullType(IndexResponse);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
-      ) as IndexResponse;
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(IndexResponse),
+            ) as IndexResponse;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -142,14 +144,16 @@ class GeneralApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    HealthCheckSuccess _responseData;
+    HealthCheckSuccess? _responseData;
 
     try {
-      const _responseType = FullType(HealthCheckSuccess);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
-      ) as HealthCheckSuccess;
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(HealthCheckSuccess),
+            ) as HealthCheckSuccess;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -214,10 +218,11 @@ class GeneralApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    String _responseData;
+    String? _responseData;
 
     try {
-      _responseData = _response.data as String;
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : rawResponse as String;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,

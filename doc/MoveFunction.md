@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **name** | **String** |  | 
 **visibility** | [**MoveFunctionVisibility**](MoveFunctionVisibility.md) |  | 
 **isEntry** | **bool** | Whether the function can be called as an entry function directly in a transaction | 
+**isView** | **bool** | Whether the function is a view function or not | 
 **genericTypeParams** | [**BuiltList&lt;MoveFunctionGenericTypeParam&gt;**](MoveFunctionGenericTypeParam.md) | Generic type params associated with the Move function | 
 **params** | **BuiltList&lt;String&gt;** | Parameters associated with the move function | 
 **return_** | **BuiltList&lt;String&gt;** | Return type of the function | 

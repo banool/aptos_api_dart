@@ -75,14 +75,16 @@ class AccountsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    AccountData _responseData;
+    AccountData? _responseData;
 
     try {
-      const _responseType = FullType(AccountData);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
-      ) as AccountData;
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(AccountData),
+            ) as AccountData;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -162,14 +164,16 @@ class AccountsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    MoveModuleBytecode _responseData;
+    MoveModuleBytecode? _responseData;
 
     try {
-      const _responseType = FullType(MoveModuleBytecode);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
-      ) as MoveModuleBytecode;
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(MoveModuleBytecode),
+            ) as MoveModuleBytecode;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -256,14 +260,17 @@ class AccountsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<MoveModuleBytecode> _responseData;
+    BuiltList<MoveModuleBytecode>? _responseData;
 
     try {
-      const _responseType = FullType(BuiltList, [FullType(MoveModuleBytecode)]);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
-      ) as BuiltList<MoveModuleBytecode>;
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType:
+                  const FullType(BuiltList, [FullType(MoveModuleBytecode)]),
+            ) as BuiltList<MoveModuleBytecode>;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -343,14 +350,16 @@ class AccountsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    MoveResource _responseData;
+    MoveResource? _responseData;
 
     try {
-      const _responseType = FullType(MoveResource);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
-      ) as MoveResource;
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(MoveResource),
+            ) as MoveResource;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -437,14 +446,17 @@ class AccountsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<MoveResource> _responseData;
+    BuiltList<MoveResource>? _responseData;
 
     try {
-      const _responseType = FullType(BuiltList, [FullType(MoveResource)]);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
-      ) as BuiltList<MoveResource>;
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType:
+                  const FullType(BuiltList, [FullType(MoveResource)]),
+            ) as BuiltList<MoveResource>;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,

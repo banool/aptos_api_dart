@@ -23,6 +23,12 @@ void main() {
       // TODO
     });
 
+    // Whether the function is a view function or not
+    // bool isView
+    test('to test the property `isView`', () async {
+      // TODO
+    });
+
     // Generic type params associated with the Move function
     // BuiltList<MoveFunctionGenericTypeParam> genericTypeParams
     test('to test the property `genericTypeParams`', () async {

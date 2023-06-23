@@ -17,6 +17,7 @@ part 'move_function.g.dart';
 /// * [name]
 /// * [visibility]
 /// * [isEntry] - Whether the function can be called as an entry function directly in a transaction
+/// * [isView] - Whether the function is a view function or not
 /// * [genericTypeParams] - Generic type params associated with the Move function
 /// * [params] - Parameters associated with the move function
 /// * [return_] - Return type of the function
@@ -33,6 +34,10 @@ abstract class MoveFunction
   /// Whether the function can be called as an entry function directly in a transaction
   @BuiltValueField(wireName: r'is_entry')
   bool get isEntry;
+
+  /// Whether the function is a view function or not
+  @BuiltValueField(wireName: r'is_view')
+  bool get isView;
 
   /// Generic type params associated with the Move function
   @BuiltValueField(wireName: r'generic_type_params')
@@ -82,6 +87,11 @@ class _$MoveFunctionSerializer implements PrimitiveSerializer<MoveFunction> {
     yield r'is_entry';
     yield serializers.serialize(
       object.isEntry,
+      specifiedType: const FullType(bool),
+    );
+    yield r'is_view';
+    yield serializers.serialize(
+      object.isView,
       specifiedType: const FullType(bool),
     );
     yield r'generic_type_params';
@@ -145,6 +155,13 @@ class _$MoveFunctionSerializer implements PrimitiveSerializer<MoveFunction> {
             specifiedType: const FullType(bool),
           ) as bool;
           result.isEntry = valueDes;
+          break;
+        case r'is_view':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.isView = valueDes;
           break;
         case r'generic_type_params':
           final valueDes = serializers.deserialize(

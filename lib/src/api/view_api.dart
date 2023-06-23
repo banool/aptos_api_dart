@@ -93,14 +93,16 @@ class ViewApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<MoveValue> _responseData;
+    BuiltList<MoveValue>? _responseData;
 
     try {
-      const _responseType = FullType(BuiltList, [FullType(MoveValue)]);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
-      ) as BuiltList<MoveValue>;
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(BuiltList, [FullType(MoveValue)]),
+            ) as BuiltList<MoveValue>;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,

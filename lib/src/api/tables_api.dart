@@ -97,14 +97,16 @@ class TablesApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    MoveValue _responseData;
+    MoveValue? _responseData;
 
     try {
-      const _responseType = FullType(MoveValue);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
-      ) as MoveValue;
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(MoveValue),
+            ) as MoveValue;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -204,14 +206,16 @@ class TablesApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    MoveValue _responseData;
+    MoveValue? _responseData;
 
     try {
-      const _responseType = FullType(MoveValue);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
-      ) as MoveValue;
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(MoveValue),
+            ) as MoveValue;
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,

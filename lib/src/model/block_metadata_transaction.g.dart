@@ -197,48 +197,27 @@ class _$$BlockMetadataTransaction extends $BlockMetadataTransaction {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc(
-                                        $jc(
-                                            $jc(
-                                                $jc(
-                                                    $jc(
-                                                        $jc(
-                                                            $jc(
-                                                                $jc(
-                                                                    $jc(
-                                                                        $jc(
-                                                                            0,
-                                                                            version
-                                                                                .hashCode),
-                                                                        hash
-                                                                            .hashCode),
-                                                                    stateChangeHash
-                                                                        .hashCode),
-                                                                eventRootHash
-                                                                    .hashCode),
-                                                            stateCheckpointHash
-                                                                .hashCode),
-                                                        gasUsed.hashCode),
-                                                    success.hashCode),
-                                                vmStatus.hashCode),
-                                            accumulatorRootHash.hashCode),
-                                        changes.hashCode),
-                                    id.hashCode),
-                                epoch.hashCode),
-                            round.hashCode),
-                        events.hashCode),
-                    previousBlockVotesBitvec.hashCode),
-                proposer.hashCode),
-            failedProposerIndices.hashCode),
-        timestamp.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, version.hashCode);
+    _$hash = $jc(_$hash, hash.hashCode);
+    _$hash = $jc(_$hash, stateChangeHash.hashCode);
+    _$hash = $jc(_$hash, eventRootHash.hashCode);
+    _$hash = $jc(_$hash, stateCheckpointHash.hashCode);
+    _$hash = $jc(_$hash, gasUsed.hashCode);
+    _$hash = $jc(_$hash, success.hashCode);
+    _$hash = $jc(_$hash, vmStatus.hashCode);
+    _$hash = $jc(_$hash, accumulatorRootHash.hashCode);
+    _$hash = $jc(_$hash, changes.hashCode);
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, epoch.hashCode);
+    _$hash = $jc(_$hash, round.hashCode);
+    _$hash = $jc(_$hash, events.hashCode);
+    _$hash = $jc(_$hash, previousBlockVotesBitvec.hashCode);
+    _$hash = $jc(_$hash, proposer.hashCode);
+    _$hash = $jc(_$hash, failedProposerIndices.hashCode);
+    _$hash = $jc(_$hash, timestamp.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -455,4 +434,4 @@ class $BlockMetadataTransactionBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint
