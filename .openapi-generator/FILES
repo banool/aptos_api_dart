@@ -25,6 +25,8 @@ doc/EntryFunctionPayload.md
 doc/Event.md
 doc/EventGuid.md
 doc/EventsApi.md
+doc/FeePayerSignature.md
+doc/FeePayerSignatureFeePayerSigner.md
 doc/GasEstimation.md
 doc/GeneralApi.md
 doc/GenesisPayload.md
@@ -76,6 +78,8 @@ doc/TransactionPendingTransaction.md
 doc/TransactionPendingTransactionAllOf.md
 doc/TransactionSignature.md
 doc/TransactionSignatureEd25519Signature.md
+doc/TransactionSignatureFeePayerSignature.md
+doc/TransactionSignatureFeePayerSignatureAllOf.md
 doc/TransactionSignatureMultiAgentSignature.md
 doc/TransactionSignatureMultiAgentSignatureAllOf.md
 doc/TransactionSignatureMultiEd25519Signature.md
@@ -150,6 +154,8 @@ lib/src/model/encode_submission_request.dart
 lib/src/model/entry_function_payload.dart
 lib/src/model/event.dart
 lib/src/model/event_guid.dart
+lib/src/model/fee_payer_signature.dart
+lib/src/model/fee_payer_signature_fee_payer_signer.dart
 lib/src/model/gas_estimation.dart
 lib/src/model/genesis_payload.dart
 lib/src/model/genesis_payload_write_set_payload.dart
@@ -199,6 +205,8 @@ lib/src/model/transaction_pending_transaction.dart
 lib/src/model/transaction_pending_transaction_all_of.dart
 lib/src/model/transaction_signature.dart
 lib/src/model/transaction_signature_ed25519_signature.dart
+lib/src/model/transaction_signature_fee_payer_signature.dart
+lib/src/model/transaction_signature_fee_payer_signature_all_of.dart
 lib/src/model/transaction_signature_multi_agent_signature.dart
 lib/src/model/transaction_signature_multi_agent_signature_all_of.dart
 lib/src/model/transaction_signature_multi_ed25519_signature.dart
@@ -259,6 +267,8 @@ test/entry_function_payload_test.dart
 test/event_guid_test.dart
 test/event_test.dart
 test/events_api_test.dart
+test/fee_payer_signature_fee_payer_signer_test.dart
+test/fee_payer_signature_test.dart
 test/gas_estimation_test.dart
 test/general_api_test.dart
 test/genesis_payload_test.dart
@@ -308,6 +318,8 @@ test/transaction_payload_test.dart
 test/transaction_pending_transaction_all_of_test.dart
 test/transaction_pending_transaction_test.dart
 test/transaction_signature_ed25519_signature_test.dart
+test/transaction_signature_fee_payer_signature_all_of_test.dart
+test/transaction_signature_fee_payer_signature_test.dart
 test/transaction_signature_multi_agent_signature_all_of_test.dart
 test/transaction_signature_multi_agent_signature_test.dart
 test/transaction_signature_multi_ed25519_signature_test.dart

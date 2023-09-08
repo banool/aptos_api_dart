@@ -1,12 +1,12 @@
 import 'package:test/test.dart';
 import 'package:aptos_api_dart/aptos_api_dart.dart';
 
-// tests for AccountSignature
+// tests for FeePayerSignatureFeePayerSigner
 void main() {
-  //final instance = AccountSignatureBuilder();
+  final instance = FeePayerSignatureFeePayerSignerBuilder();
   // TODO add properties to the builder and call build()
 
-  group(AccountSignature, () {
+  group(FeePayerSignatureFeePayerSigner, () {
     // String type
     test('to test the property `type`', () async {
       // TODO

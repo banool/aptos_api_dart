@@ -17,6 +17,8 @@ const AptosErrorCode _$transactionNotFound =
 const AptosErrorCode _$tableItemNotFound =
     AptosErrorCode._('tableItemNotFound');
 const AptosErrorCode _$blockNotFound = AptosErrorCode._('blockNotFound');
+const AptosErrorCode _$stateValueNotFound =
+    AptosErrorCode._('stateValueNotFound');
 const AptosErrorCode _$versionPruned = AptosErrorCode._('versionPruned');
 const AptosErrorCode _$blockPruned = AptosErrorCode._('blockPruned');
 const AptosErrorCode _$invalidInput = AptosErrorCode._('invalidInput');
@@ -52,6 +54,8 @@ AptosErrorCode _$valueOf(String name) {
       return _$tableItemNotFound;
     case 'blockNotFound':
       return _$blockNotFound;
+    case 'stateValueNotFound':
+      return _$stateValueNotFound;
     case 'versionPruned':
       return _$versionPruned;
     case 'blockPruned':
@@ -91,6 +95,7 @@ final BuiltSet<AptosErrorCode> _$values =
   _$transactionNotFound,
   _$tableItemNotFound,
   _$blockNotFound,
+  _$stateValueNotFound,
   _$versionPruned,
   _$blockPruned,
   _$invalidInput,
@@ -115,6 +120,7 @@ class _$AptosErrorCodeMeta {
   AptosErrorCode get transactionNotFound => _$transactionNotFound;
   AptosErrorCode get tableItemNotFound => _$tableItemNotFound;
   AptosErrorCode get blockNotFound => _$blockNotFound;
+  AptosErrorCode get stateValueNotFound => _$stateValueNotFound;
   AptosErrorCode get versionPruned => _$versionPruned;
   AptosErrorCode get blockPruned => _$blockPruned;
   AptosErrorCode get invalidInput => _$invalidInput;
@@ -150,6 +156,7 @@ class _$AptosErrorCodeSerializer
     'transactionNotFound': 'transaction_not_found',
     'tableItemNotFound': 'table_item_not_found',
     'blockNotFound': 'block_not_found',
+    'stateValueNotFound': 'state_value_not_found',
     'versionPruned': 'version_pruned',
     'blockPruned': 'block_pruned',
     'invalidInput': 'invalid_input',
@@ -172,6 +179,7 @@ class _$AptosErrorCodeSerializer
     'transaction_not_found': 'transactionNotFound',
     'table_item_not_found': 'tableItemNotFound',
     'block_not_found': 'blockNotFound',
+    'state_value_not_found': 'stateValueNotFound',
     'version_pruned': 'versionPruned',
     'block_pruned': 'blockPruned',
     'invalid_input': 'invalidInput',

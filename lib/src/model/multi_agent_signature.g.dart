@@ -9,8 +9,8 @@ part of 'multi_agent_signature.dart';
 abstract class MultiAgentSignatureBuilder {
   void replace(MultiAgentSignature other);
   void update(void Function(MultiAgentSignatureBuilder) updates);
-  AccountSignatureBuilder get sender;
-  set sender(AccountSignatureBuilder? sender);
+  AccountSignature? get sender;
+  set sender(AccountSignature? sender);
 
   ListBuilder<String> get secondarySignerAddresses;
   set secondarySignerAddresses(ListBuilder<String>? secondarySignerAddresses);
@@ -88,11 +88,9 @@ class $MultiAgentSignatureBuilder
         MultiAgentSignatureBuilder {
   _$$MultiAgentSignature? _$v;
 
-  AccountSignatureBuilder? _sender;
-  AccountSignatureBuilder get sender =>
-      _$this._sender ??= AccountSignatureBuilder();
-  set sender(covariant AccountSignatureBuilder? sender) =>
-      _$this._sender = sender;
+  AccountSignature? _sender;
+  AccountSignature? get sender => _$this._sender;
+  set sender(covariant AccountSignature? sender) => _$this._sender = sender;
 
   ListBuilder<String>? _secondarySignerAddresses;
   ListBuilder<String> get secondarySignerAddresses =>
@@ -115,7 +113,7 @@ class $MultiAgentSignatureBuilder
   $MultiAgentSignatureBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _sender = $v.sender.toBuilder();
+      _sender = $v.sender;
       _secondarySignerAddresses = $v.secondarySignerAddresses.toBuilder();
       _secondarySigners = $v.secondarySigners.toBuilder();
       _$v = null;
@@ -142,14 +140,13 @@ class $MultiAgentSignatureBuilder
     try {
       _$result = _$v ??
           _$$MultiAgentSignature._(
-              sender: sender.build(),
+              sender: BuiltValueNullFieldError.checkNotNull(
+                  sender, r'$MultiAgentSignature', 'sender'),
               secondarySignerAddresses: secondarySignerAddresses.build(),
               secondarySigners: secondarySigners.build());
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'sender';
-        sender.build();
         _$failedField = 'secondarySignerAddresses';
         secondarySignerAddresses.build();
         _$failedField = 'secondarySigners';

@@ -4,7 +4,9 @@
 
 // ignore_for_file: unused_element
 import 'package:aptos_api_dart/src/model/account_signature.dart';
+import 'package:aptos_api_dart/src/model/transaction_signature_fee_payer_signature.dart';
 import 'package:built_collection/built_collection.dart';
+import 'package:aptos_api_dart/src/model/fee_payer_signature_fee_payer_signer.dart';
 import 'package:aptos_api_dart/src/model/transaction_signature_multi_ed25519_signature.dart';
 import 'package:aptos_api_dart/src/model/transaction_signature_ed25519_signature.dart';
 import 'package:aptos_api_dart/src/model/transaction_signature_multi_agent_signature.dart';
@@ -27,16 +29,19 @@ part 'transaction_signature.g.dart';
 /// * [sender]
 /// * [secondarySignerAddresses] - The other involved parties' addresses
 /// * [secondarySigners] - The associated signatures, in the same order as the secondary addresses
+/// * [feePayerAddress]
+/// * [feePayerSigner]
 @BuiltValue()
 abstract class TransactionSignature
     implements Built<TransactionSignature, TransactionSignatureBuilder> {
-  /// One Of [TransactionSignatureEd25519Signature], [TransactionSignatureMultiAgentSignature], [TransactionSignatureMultiEd25519Signature]
+  /// One Of [TransactionSignatureEd25519Signature], [TransactionSignatureFeePayerSignature], [TransactionSignatureMultiAgentSignature], [TransactionSignatureMultiEd25519Signature]
   OneOf get oneOf;
 
   static const String discriminatorFieldName = r'type';
 
   static const Map<String, Type> discriminatorMapping = {
     r'ed25519_signature': TransactionSignatureEd25519Signature,
+    r'fee_payer_signature': TransactionSignatureFeePayerSignature,
     r'multi_agent_signature': TransactionSignatureMultiAgentSignature,
     r'multi_ed25519_signature': TransactionSignatureMultiEd25519Signature,
   };
@@ -59,6 +64,9 @@ extension TransactionSignatureDiscriminatorExt on TransactionSignature {
     if (this is TransactionSignatureEd25519Signature) {
       return r'ed25519_signature';
     }
+    if (this is TransactionSignatureFeePayerSignature) {
+      return r'fee_payer_signature';
+    }
     if (this is TransactionSignatureMultiAgentSignature) {
       return r'multi_agent_signature';
     }
@@ -74,6 +82,9 @@ extension TransactionSignatureBuilderDiscriminatorExt
   String? get discriminatorValue {
     if (this is TransactionSignatureEd25519SignatureBuilder) {
       return r'ed25519_signature';
+    }
+    if (this is TransactionSignatureFeePayerSignatureBuilder) {
+      return r'fee_payer_signature';
     }
     if (this is TransactionSignatureMultiAgentSignatureBuilder) {
       return r'multi_agent_signature';
@@ -129,6 +140,7 @@ class _$TransactionSignatureSerializer
     oneOfDataSrc = serialized;
     final oneOfTypes = [
       TransactionSignatureEd25519Signature,
+      TransactionSignatureFeePayerSignature,
       TransactionSignatureMultiAgentSignature,
       TransactionSignatureMultiEd25519Signature,
     ];
@@ -141,6 +153,13 @@ class _$TransactionSignatureSerializer
           specifiedType: FullType(TransactionSignatureEd25519Signature),
         ) as TransactionSignatureEd25519Signature;
         oneOfType = TransactionSignatureEd25519Signature;
+        break;
+      case r'fee_payer_signature':
+        oneOfResult = serializers.deserialize(
+          oneOfDataSrc,
+          specifiedType: FullType(TransactionSignatureFeePayerSignature),
+        ) as TransactionSignatureFeePayerSignature;
+        oneOfType = TransactionSignatureFeePayerSignature;
         break;
       case r'multi_agent_signature':
         oneOfResult = serializers.deserialize(

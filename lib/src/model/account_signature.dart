@@ -22,9 +22,8 @@ part 'account_signature.g.dart';
 /// * [signatures] - Signature associated with the public keys in the same order
 /// * [threshold] - The number of signatures required for a successful transaction
 /// * [bitmap] - All bytes (Vec<u8>) data is represented as hex-encoded string prefixed with `0x` and fulfilled with two hex digits per byte.  Unlike the `Address` type, HexEncodedBytes will not trim any zeros.
-@BuiltValue()
-abstract class AccountSignature
-    implements Built<AccountSignature, AccountSignatureBuilder> {
+@BuiltValue(instantiable: false)
+abstract class AccountSignature {
   /// One Of [AccountSignatureEd25519Signature], [AccountSignatureMultiEd25519Signature]
   OneOf get oneOf;
 
@@ -34,14 +33,6 @@ abstract class AccountSignature
     r'ed25519_signature': AccountSignatureEd25519Signature,
     r'multi_ed25519_signature': AccountSignatureMultiEd25519Signature,
   };
-
-  AccountSignature._();
-
-  factory AccountSignature([void updates(AccountSignatureBuilder b)]) =
-      _$AccountSignature;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(AccountSignatureBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<AccountSignature> get serializer =>
@@ -75,7 +66,7 @@ extension AccountSignatureBuilderDiscriminatorExt on AccountSignatureBuilder {
 class _$AccountSignatureSerializer
     implements PrimitiveSerializer<AccountSignature> {
   @override
-  final Iterable<Type> types = const [AccountSignature, _$AccountSignature];
+  final Iterable<Type> types = const [AccountSignature];
 
   @override
   final String wireName = r'AccountSignature';
@@ -103,7 +94,7 @@ class _$AccountSignatureSerializer
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = AccountSignatureBuilder();
+    final result = $AccountSignatureBuilder();
     Object? oneOfDataSrc;
     final serializedList = (serialized as Iterable<Object?>).toList();
     final discIndex =
@@ -114,6 +105,7 @@ class _$AccountSignatureSerializer
     final oneOfTypes = [
       AccountSignatureEd25519Signature,
       AccountSignatureMultiEd25519Signature,
+      $AccountSignature
     ];
     Object oneOfResult;
     Type oneOfType;
@@ -133,13 +125,64 @@ class _$AccountSignatureSerializer
         oneOfType = AccountSignatureMultiEd25519Signature;
         break;
       default:
-        throw UnsupportedError(
-            "Couldn't deserialize oneOf for the discriminator value: ${discValue}");
+        oneOfResult = serializers.deserialize(
+          oneOfDataSrc,
+          specifiedType: FullType($AccountSignature),
+        ) as $AccountSignature;
+        oneOfType = $AccountSignature;
     }
     result.oneOf = OneOfDynamic(
         typeIndex: oneOfTypes.indexOf(oneOfType),
         types: oneOfTypes,
         value: oneOfResult);
+    return result.build();
+  }
+}
+
+/// a concrete implementation of [AccountSignature], since [AccountSignature] is not instantiable
+@BuiltValue(instantiable: true)
+abstract class $AccountSignature
+    implements
+        AccountSignature,
+        Built<$AccountSignature, $AccountSignatureBuilder> {
+  $AccountSignature._();
+
+  factory $AccountSignature(
+      [void Function($AccountSignatureBuilder)? updates]) = _$$AccountSignature;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults($AccountSignatureBuilder b) => b;
+
+  @BuiltValueSerializer(custom: true)
+  static Serializer<$AccountSignature> get serializer =>
+      _$$AccountSignatureSerializer();
+}
+
+class _$$AccountSignatureSerializer
+    implements PrimitiveSerializer<$AccountSignature> {
+  @override
+  final Iterable<Type> types = const [$AccountSignature, _$$AccountSignature];
+
+  @override
+  final String wireName = r'$AccountSignature';
+
+  @override
+  Object serialize(
+    Serializers serializers,
+    $AccountSignature object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return serializers.serialize(object,
+        specifiedType: FullType(AccountSignature))!;
+  }
+
+  @override
+  $AccountSignature deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    final result = $AccountSignatureBuilder();
     return result.build();
   }
 }

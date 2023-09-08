@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'transaction_signature_multi_agent_signature.dart';
+part of 'transaction_signature_fee_payer_signature.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$TransactionSignatureMultiAgentSignature
-    extends TransactionSignatureMultiAgentSignature {
+class _$TransactionSignatureFeePayerSignature
+    extends TransactionSignatureFeePayerSignature {
   @override
   final AccountSignature sender;
   @override
@@ -15,47 +15,59 @@ class _$TransactionSignatureMultiAgentSignature
   @override
   final BuiltList<AccountSignature> secondarySigners;
   @override
+  final String feePayerAddress;
+  @override
+  final FeePayerSignatureFeePayerSigner feePayerSigner;
+  @override
   final String type;
 
-  factory _$TransactionSignatureMultiAgentSignature(
-          [void Function(TransactionSignatureMultiAgentSignatureBuilder)?
+  factory _$TransactionSignatureFeePayerSignature(
+          [void Function(TransactionSignatureFeePayerSignatureBuilder)?
               updates]) =>
-      (TransactionSignatureMultiAgentSignatureBuilder()..update(updates))
+      (TransactionSignatureFeePayerSignatureBuilder()..update(updates))
           ._build();
 
-  _$TransactionSignatureMultiAgentSignature._(
+  _$TransactionSignatureFeePayerSignature._(
       {required this.sender,
       required this.secondarySignerAddresses,
       required this.secondarySigners,
+      required this.feePayerAddress,
+      required this.feePayerSigner,
       required this.type})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
-        sender, r'TransactionSignatureMultiAgentSignature', 'sender');
+        sender, r'TransactionSignatureFeePayerSignature', 'sender');
     BuiltValueNullFieldError.checkNotNull(secondarySignerAddresses,
-        r'TransactionSignatureMultiAgentSignature', 'secondarySignerAddresses');
+        r'TransactionSignatureFeePayerSignature', 'secondarySignerAddresses');
     BuiltValueNullFieldError.checkNotNull(secondarySigners,
-        r'TransactionSignatureMultiAgentSignature', 'secondarySigners');
+        r'TransactionSignatureFeePayerSignature', 'secondarySigners');
+    BuiltValueNullFieldError.checkNotNull(feePayerAddress,
+        r'TransactionSignatureFeePayerSignature', 'feePayerAddress');
+    BuiltValueNullFieldError.checkNotNull(feePayerSigner,
+        r'TransactionSignatureFeePayerSignature', 'feePayerSigner');
     BuiltValueNullFieldError.checkNotNull(
-        type, r'TransactionSignatureMultiAgentSignature', 'type');
+        type, r'TransactionSignatureFeePayerSignature', 'type');
   }
 
   @override
-  TransactionSignatureMultiAgentSignature rebuild(
-          void Function(TransactionSignatureMultiAgentSignatureBuilder)
+  TransactionSignatureFeePayerSignature rebuild(
+          void Function(TransactionSignatureFeePayerSignatureBuilder)
               updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  TransactionSignatureMultiAgentSignatureBuilder toBuilder() =>
-      TransactionSignatureMultiAgentSignatureBuilder()..replace(this);
+  TransactionSignatureFeePayerSignatureBuilder toBuilder() =>
+      TransactionSignatureFeePayerSignatureBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is TransactionSignatureMultiAgentSignature &&
+    return other is TransactionSignatureFeePayerSignature &&
         sender == other.sender &&
         secondarySignerAddresses == other.secondarySignerAddresses &&
         secondarySigners == other.secondarySigners &&
+        feePayerAddress == other.feePayerAddress &&
+        feePayerSigner == other.feePayerSigner &&
         type == other.type;
   }
 
@@ -65,6 +77,8 @@ class _$TransactionSignatureMultiAgentSignature
     _$hash = $jc(_$hash, sender.hashCode);
     _$hash = $jc(_$hash, secondarySignerAddresses.hashCode);
     _$hash = $jc(_$hash, secondarySigners.hashCode);
+    _$hash = $jc(_$hash, feePayerAddress.hashCode);
+    _$hash = $jc(_$hash, feePayerSigner.hashCode);
     _$hash = $jc(_$hash, type.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -73,22 +87,24 @@ class _$TransactionSignatureMultiAgentSignature
   @override
   String toString() {
     return (newBuiltValueToStringHelper(
-            r'TransactionSignatureMultiAgentSignature')
+            r'TransactionSignatureFeePayerSignature')
           ..add('sender', sender)
           ..add('secondarySignerAddresses', secondarySignerAddresses)
           ..add('secondarySigners', secondarySigners)
+          ..add('feePayerAddress', feePayerAddress)
+          ..add('feePayerSigner', feePayerSigner)
           ..add('type', type))
         .toString();
   }
 }
 
-class TransactionSignatureMultiAgentSignatureBuilder
+class TransactionSignatureFeePayerSignatureBuilder
     implements
-        Builder<TransactionSignatureMultiAgentSignature,
-            TransactionSignatureMultiAgentSignatureBuilder>,
-        MultiAgentSignatureBuilder,
-        TransactionSignatureMultiAgentSignatureAllOfBuilder {
-  _$TransactionSignatureMultiAgentSignature? _$v;
+        Builder<TransactionSignatureFeePayerSignature,
+            TransactionSignatureFeePayerSignatureBuilder>,
+        FeePayerSignatureBuilder,
+        TransactionSignatureFeePayerSignatureAllOfBuilder {
+  _$TransactionSignatureFeePayerSignature? _$v;
 
   AccountSignature? _sender;
   AccountSignature? get sender => _$this._sender;
@@ -108,20 +124,34 @@ class TransactionSignatureMultiAgentSignatureBuilder
           covariant ListBuilder<AccountSignature>? secondarySigners) =>
       _$this._secondarySigners = secondarySigners;
 
+  String? _feePayerAddress;
+  String? get feePayerAddress => _$this._feePayerAddress;
+  set feePayerAddress(covariant String? feePayerAddress) =>
+      _$this._feePayerAddress = feePayerAddress;
+
+  FeePayerSignatureFeePayerSignerBuilder? _feePayerSigner;
+  FeePayerSignatureFeePayerSignerBuilder get feePayerSigner =>
+      _$this._feePayerSigner ??= FeePayerSignatureFeePayerSignerBuilder();
+  set feePayerSigner(
+          covariant FeePayerSignatureFeePayerSignerBuilder? feePayerSigner) =>
+      _$this._feePayerSigner = feePayerSigner;
+
   String? _type;
   String? get type => _$this._type;
   set type(covariant String? type) => _$this._type = type;
 
-  TransactionSignatureMultiAgentSignatureBuilder() {
-    TransactionSignatureMultiAgentSignature._defaults(this);
+  TransactionSignatureFeePayerSignatureBuilder() {
+    TransactionSignatureFeePayerSignature._defaults(this);
   }
 
-  TransactionSignatureMultiAgentSignatureBuilder get _$this {
+  TransactionSignatureFeePayerSignatureBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _sender = $v.sender;
       _secondarySignerAddresses = $v.secondarySignerAddresses.toBuilder();
       _secondarySigners = $v.secondarySigners.toBuilder();
+      _feePayerAddress = $v.feePayerAddress;
+      _feePayerSigner = $v.feePayerSigner.toBuilder();
       _type = $v.type;
       _$v = null;
     }
@@ -130,31 +160,36 @@ class TransactionSignatureMultiAgentSignatureBuilder
 
   @override
 // ignore: override_on_non_overriding_method
-  void replace(covariant TransactionSignatureMultiAgentSignature other) {
+  void replace(covariant TransactionSignatureFeePayerSignature other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$TransactionSignatureMultiAgentSignature;
+    _$v = other as _$TransactionSignatureFeePayerSignature;
   }
 
   @override
   void update(
-      void Function(TransactionSignatureMultiAgentSignatureBuilder)? updates) {
+      void Function(TransactionSignatureFeePayerSignatureBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  TransactionSignatureMultiAgentSignature build() => _build();
+  TransactionSignatureFeePayerSignature build() => _build();
 
-  _$TransactionSignatureMultiAgentSignature _build() {
-    _$TransactionSignatureMultiAgentSignature _$result;
+  _$TransactionSignatureFeePayerSignature _build() {
+    _$TransactionSignatureFeePayerSignature _$result;
     try {
       _$result = _$v ??
-          _$TransactionSignatureMultiAgentSignature._(
+          _$TransactionSignatureFeePayerSignature._(
               sender: BuiltValueNullFieldError.checkNotNull(
-                  sender, r'TransactionSignatureMultiAgentSignature', 'sender'),
+                  sender, r'TransactionSignatureFeePayerSignature', 'sender'),
               secondarySignerAddresses: secondarySignerAddresses.build(),
               secondarySigners: secondarySigners.build(),
+              feePayerAddress: BuiltValueNullFieldError.checkNotNull(
+                  feePayerAddress,
+                  r'TransactionSignatureFeePayerSignature',
+                  'feePayerAddress'),
+              feePayerSigner: feePayerSigner.build(),
               type: BuiltValueNullFieldError.checkNotNull(
-                  type, r'TransactionSignatureMultiAgentSignature', 'type'));
+                  type, r'TransactionSignatureFeePayerSignature', 'type'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -162,9 +197,12 @@ class TransactionSignatureMultiAgentSignatureBuilder
         secondarySignerAddresses.build();
         _$failedField = 'secondarySigners';
         secondarySigners.build();
+
+        _$failedField = 'feePayerSigner';
+        feePayerSigner.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'TransactionSignatureMultiAgentSignature',
+            r'TransactionSignatureFeePayerSignature',
             _$failedField,
             e.toString());
       }

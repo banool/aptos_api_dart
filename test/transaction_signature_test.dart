@@ -64,5 +64,15 @@ void main() {
     test('to test the property `secondarySigners`', () async {
       // TODO
     });
+
+    // String feePayerAddress
+    test('to test the property `feePayerAddress`', () async {
+      // TODO
+    });
+
+    // FeePayerSignatureFeePayerSigner feePayerSigner
+    test('to test the property `feePayerSigner`', () async {
+      // TODO
+    });
   });
 }

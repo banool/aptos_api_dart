@@ -43,6 +43,10 @@ class AptosErrorCode extends EnumClass {
   static const AptosErrorCode blockNotFound = _$blockNotFound;
 
   /// These codes provide more granular error information beyond just the HTTP status code of the response.
+  @BuiltValueEnumConst(wireName: r'state_value_not_found')
+  static const AptosErrorCode stateValueNotFound = _$stateValueNotFound;
+
+  /// These codes provide more granular error information beyond just the HTTP status code of the response.
   @BuiltValueEnumConst(wireName: r'version_pruned')
   static const AptosErrorCode versionPruned = _$versionPruned;
 

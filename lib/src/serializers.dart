@@ -35,6 +35,8 @@ import 'package:aptos_api_dart/src/model/encode_submission_request.dart';
 import 'package:aptos_api_dart/src/model/entry_function_payload.dart';
 import 'package:aptos_api_dart/src/model/event.dart';
 import 'package:aptos_api_dart/src/model/event_guid.dart';
+import 'package:aptos_api_dart/src/model/fee_payer_signature.dart';
+import 'package:aptos_api_dart/src/model/fee_payer_signature_fee_payer_signer.dart';
 import 'package:aptos_api_dart/src/model/gas_estimation.dart';
 import 'package:aptos_api_dart/src/model/genesis_payload.dart';
 import 'package:aptos_api_dart/src/model/genesis_payload_write_set_payload.dart';
@@ -84,6 +86,8 @@ import 'package:aptos_api_dart/src/model/transaction_pending_transaction.dart';
 import 'package:aptos_api_dart/src/model/transaction_pending_transaction_all_of.dart';
 import 'package:aptos_api_dart/src/model/transaction_signature.dart';
 import 'package:aptos_api_dart/src/model/transaction_signature_ed25519_signature.dart';
+import 'package:aptos_api_dart/src/model/transaction_signature_fee_payer_signature.dart';
+import 'package:aptos_api_dart/src/model/transaction_signature_fee_payer_signature_all_of.dart';
 import 'package:aptos_api_dart/src/model/transaction_signature_multi_agent_signature.dart';
 import 'package:aptos_api_dart/src/model/transaction_signature_multi_agent_signature_all_of.dart';
 import 'package:aptos_api_dart/src/model/transaction_signature_multi_ed25519_signature.dart';
@@ -124,6 +128,7 @@ part 'serializers.g.dart';
 @SerializersFor([
   AccountData,
   AccountSignature,
+  $AccountSignature,
   AccountSignatureEd25519Signature,
   AccountSignatureEd25519SignatureAllOf,
   $AccountSignatureEd25519SignatureAllOf,
@@ -152,6 +157,9 @@ part 'serializers.g.dart';
   $EntryFunctionPayload,
   Event,
   EventGuid,
+  FeePayerSignature,
+  $FeePayerSignature,
+  FeePayerSignatureFeePayerSigner,
   GasEstimation,
   GenesisPayload,
   GenesisPayloadWriteSetPayload,
@@ -218,6 +226,9 @@ part 'serializers.g.dart';
   $TransactionPendingTransactionAllOf,
   TransactionSignature,
   TransactionSignatureEd25519Signature,
+  TransactionSignatureFeePayerSignature,
+  TransactionSignatureFeePayerSignatureAllOf,
+  $TransactionSignatureFeePayerSignatureAllOf,
   TransactionSignatureMultiAgentSignature,
   TransactionSignatureMultiAgentSignatureAllOf,
   $TransactionSignatureMultiAgentSignatureAllOf,
@@ -298,6 +309,7 @@ Serializers serializers = (_$serializers.toBuilder()
         const FullType(BuiltList, [FullType(MoveValue)]),
         () => ListBuilder<MoveValue>(),
       )
+      ..add(AccountSignature.serializer)
       ..add(AccountSignatureEd25519SignatureAllOf.serializer)
       ..add(AccountSignatureMultiEd25519SignatureAllOf.serializer)
       ..add(BlockMetadataTransaction.serializer)
@@ -307,6 +319,7 @@ Serializers serializers = (_$serializers.toBuilder()
       ..add(DirectWriteSet.serializer)
       ..add(Ed25519Signature.serializer)
       ..add(EntryFunctionPayload.serializer)
+      ..add(FeePayerSignature.serializer)
       ..add(GenesisPayloadWriteSetPayloadAllOf.serializer)
       ..add(GenesisTransaction.serializer)
       ..add(ModuleBundlePayload.serializer)
@@ -324,6 +337,7 @@ Serializers serializers = (_$serializers.toBuilder()
       ..add(TransactionPayloadMultisigPayloadAllOf.serializer)
       ..add(TransactionPayloadScriptPayloadAllOf.serializer)
       ..add(TransactionPendingTransactionAllOf.serializer)
+      ..add(TransactionSignatureFeePayerSignatureAllOf.serializer)
       ..add(TransactionSignatureMultiAgentSignatureAllOf.serializer)
       ..add(TransactionStateCheckpointTransactionAllOf.serializer)
       ..add(TransactionUserTransactionAllOf.serializer)
